@@ -1,0 +1,9 @@
+{
+  "name": "reverse-aesthetics-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "vercel-build": "cd reverseaesthetics && npm install && npm run build"
+  }
+}
+

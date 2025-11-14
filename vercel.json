@@ -1,6 +1,7 @@
 {
   "buildCommand": "cd reverseaesthetics && npm run build",
   "installCommand": "cd reverseaesthetics && npm install",
+  "outputDirectory": "reverseaesthetics/.next",
   "framework": "nextjs"
 }
 
