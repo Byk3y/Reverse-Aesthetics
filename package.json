@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "vercel-build": "cd reverseaesthetics && npm install && npm run build"
+  },
+  "dependencies": {
+    "next": "16.0.1"
   }
 }
 
