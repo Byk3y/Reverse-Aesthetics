@@ -410,3 +410,4 @@ By booking or submitting an enquiry, you agree to our clinic policies on safety,
 Natural transformations, medical‑led care. Aesthetics, skin, weight, dental, and hair—Lagos & Abuja. Book a visit.
 
 
+
