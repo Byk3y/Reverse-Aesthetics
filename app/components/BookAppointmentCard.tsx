@@ -291,7 +291,7 @@ Please confirm if this date works for you. Thank you!`;
                   </div>
 
                   {/* Date and Phone Row */}
-                  <div className="grid grid-cols-2 gap-3 mb-2.5" suppressHydrationWarning>
+                  <div className="grid grid-cols-2 gap-4 mb-2.5" suppressHydrationWarning>
                     <div className="min-w-0" suppressHydrationWarning>
                       <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
                         Date
@@ -304,7 +304,7 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         min={new Date().toISOString().split("T")[0]}
-                        className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full px-2.5 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent box-border"
                       />
                     </div>
                     <div className="min-w-0" suppressHydrationWarning>
@@ -319,7 +319,7 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         placeholder="Phone number"
-                        className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full px-2.5 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent box-border"
                       />
                     </div>
                   </div>
