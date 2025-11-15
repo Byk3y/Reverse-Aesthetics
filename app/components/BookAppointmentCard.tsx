@@ -225,38 +225,38 @@ export default function BookAppointmentCard() {
                     )}
                   </div>
 
-                  {/* Date and Phone Row */}
-                  <div className="grid grid-cols-2 gap-2 mb-3" suppressHydrationWarning>
-                    <div suppressHydrationWarning>
-                      <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
-                        Date
-                      </label>
-                      <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleChange}
-                        required
-                        min={new Date().toISOString().split("T")[0]}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                      />
-                    </div>
-                    <div suppressHydrationWarning>
-                      <label htmlFor="phone" className="block text-xs font-medium text-gray-600 mb-1.5">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="Phone number"
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                      />
-                    </div>
+                  {/* Date - Full Width on Mobile */}
+                  <div className="mb-3" suppressHydrationWarning>
+                    <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                      required
+                      min={new Date().toISOString().split("T")[0]}
+                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    />
+                  </div>
+
+                  {/* Phone - Full Width on Mobile */}
+                  <div className="mb-3" suppressHydrationWarning>
+                    <label htmlFor="phone" className="block text-xs font-medium text-gray-600 mb-1.5">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="Phone number"
+                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    />
                   </div>
 
                   {/* Full Name - Full Width */}
