@@ -291,8 +291,8 @@ Please confirm if this date works for you. Thank you!`;
                   </div>
 
                   {/* Date and Phone Row */}
-                  <div className="grid grid-cols-2 gap-2 mb-2.5" suppressHydrationWarning>
-                    <div suppressHydrationWarning>
+                  <div className="grid grid-cols-2 gap-3 mb-2.5" suppressHydrationWarning>
+                    <div className="min-w-0" suppressHydrationWarning>
                       <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
                         Date
                       </label>
@@ -304,10 +304,10 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         min={new Date().toISOString().split("T")[0]}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                       />
                     </div>
-                    <div suppressHydrationWarning>
+                    <div className="min-w-0" suppressHydrationWarning>
                       <label htmlFor="phone" className="block text-xs font-medium text-gray-600 mb-1.5">
                         Phone
                       </label>
@@ -319,7 +319,7 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         placeholder="Phone number"
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                       />
                     </div>
                   </div>
@@ -337,7 +337,7 @@ Please confirm if this date works for you. Thank you!`;
                       onChange={handleChange}
                       required
                       placeholder="Enter your full name"
-                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     />
                   </div>
 
@@ -354,7 +354,7 @@ Please confirm if this date works for you. Thank you!`;
                       onChange={handleChange}
                       required
                       placeholder="Enter your email address"
-                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     />
                   </div>
 

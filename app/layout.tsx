@@ -21,6 +21,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://reverseaesthetic.com'),
   title: "Reverse Aesthetics | Natural Transformations in Lagos & Abuja",
   description: "Nigeria's leading aesthetics, dermatology, weight loss, dental, and hair clinic. Safe, natural results with expert care. Book a visit in Lagos or Abuja.",
   keywords: [
@@ -41,7 +42,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Reverse Aesthetics" }],
   creator: "Reverse Aesthetics",
   publisher: "Reverse Aesthetics",
-  metadataBase: new URL('https://reverseaesthetic.com'),
   alternates: {
     canonical: '/',
   },
@@ -79,6 +79,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({
