@@ -33,6 +33,27 @@ export default function BookAppointmentCard() {
     setMounted(true);
   }, []);
 
+  // Prevent body scroll when card is open
+  useEffect(() => {
+    if (isOpen) {
+      // Prevent background scroll
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      // Restore scroll
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    return () => {
+      // Cleanup on unmount
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [isOpen]);
+
   // Close services dropdown when clicking outside
   useEffect(() => {
     if (!isServicesOpen) return;
@@ -72,8 +93,52 @@ export default function BookAppointmentCard() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    
+    // Format the message for WhatsApp
+    const locationCapitalized = formData.location.charAt(0).toUpperCase() + formData.location.slice(1);
+    
+    // Format date to be more readable (e.g., "2025-11-17" -> "November 17, 2025")
+    const formatDate = (dateString: string) => {
+      if (!dateString) return dateString;
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    };
+    
+    const message = `Hello! I would like to book an appointment at Reverse Aesthetics:
+
+📍 *Location:* ${locationCapitalized}
+💆 *Service:* ${formData.service}
+📅 *Preferred Date:* ${formatDate(formData.date)}
+👤 *Name:* ${formData.name}
+📞 *Phone:* ${formData.phone}
+📧 *Email:* ${formData.email}
+
+Please confirm if this date works for you. Thank you!`;
+
+    // Create WhatsApp URL
+    const phoneNumber = '2349159188094'; // Clinic WhatsApp number
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // Close the modal after a short delay
+    setTimeout(() => {
+      closeAppointment();
+      // Reset form
+      setFormData({
+        location: "lagos",
+        service: "",
+        date: "",
+        name: "",
+        phone: "",
+        email: "",
+      });
+    }, 500);
   };
 
   // Close card when clicking on backdrop (not on card itself)
@@ -125,16 +190,16 @@ export default function BookAppointmentCard() {
               zIndex: 9999,
             }}
           >
-            <div className="bg-white rounded-t-3xl shadow-2xl border-t border-gray-200 h-[60vh] flex flex-col" suppressHydrationWarning>
+            <div className="bg-white rounded-t-3xl shadow-2xl border-t border-gray-200 max-h-[85vh] flex flex-col" suppressHydrationWarning>
               <div className="flex-shrink-0 px-5 py-3 border-b border-gray-200" suppressHydrationWarning>
                 <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-2"></div>
                 <h2 className="text-lg font-semibold text-gray-900 text-center">Book Appointment</h2>
               </div>
               
-              <div className="flex-1 overflow-hidden" suppressHydrationWarning>
-                <form onSubmit={handleSubmit} className="h-full flex flex-col px-5 py-4" suppressHydrationWarning>
+              <div className="flex-1 overflow-y-auto overscroll-contain" suppressHydrationWarning style={{ touchAction: 'pan-y' }}>
+                <form onSubmit={handleSubmit} className="flex flex-col px-5 py-3 pb-4" suppressHydrationWarning>
                   {/* Location Buttons */}
-                  <div className="mb-3" suppressHydrationWarning>
+                  <div className="mb-2.5" suppressHydrationWarning>
                     <label className="block text-xs font-medium text-gray-600 mb-2">Location</label>
                     <div className="flex gap-2" suppressHydrationWarning>
                       <button
@@ -169,7 +234,7 @@ export default function BookAppointmentCard() {
                   </div>
 
                   {/* Services Section */}
-                  <div className="mb-3 relative services-dropdown-container" suppressHydrationWarning>
+                  <div className="mb-2.5 relative services-dropdown-container" suppressHydrationWarning>
                     <label className="block text-xs font-medium text-gray-600 mb-2">Service</label>
                     <button
                       type="button"
@@ -225,42 +290,42 @@ export default function BookAppointmentCard() {
                     )}
                   </div>
 
-                  {/* Date - Full Width on Mobile */}
-                  <div className="mb-3" suppressHydrationWarning>
-                    <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
-                      Date
-                    </label>
-                    <input
-                      type="date"
-                      id="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleChange}
-                      required
-                      min={new Date().toISOString().split("T")[0]}
-                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    />
-                  </div>
-
-                  {/* Phone - Full Width on Mobile */}
-                  <div className="mb-3" suppressHydrationWarning>
-                    <label htmlFor="phone" className="block text-xs font-medium text-gray-600 mb-1.5">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="Phone number"
-                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    />
+                  {/* Date and Phone Row */}
+                  <div className="grid grid-cols-2 gap-2 mb-2.5" suppressHydrationWarning>
+                    <div suppressHydrationWarning>
+                      <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
+                        Date
+                      </label>
+                      <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                        required
+                        min={new Date().toISOString().split("T")[0]}
+                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      />
+                    </div>
+                    <div suppressHydrationWarning>
+                      <label htmlFor="phone" className="block text-xs font-medium text-gray-600 mb-1.5">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        placeholder="Phone number"
+                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      />
+                    </div>
                   </div>
 
                   {/* Full Name - Full Width */}
-                  <div className="mb-3" suppressHydrationWarning>
+                  <div className="mb-2.5" suppressHydrationWarning>
                     <label htmlFor="name" className="block text-xs font-medium text-gray-600 mb-1.5">
                       Full Name
                     </label>
@@ -277,7 +342,7 @@ export default function BookAppointmentCard() {
                   </div>
 
                   {/* Email - Full Width */}
-                  <div className="mb-4" suppressHydrationWarning>
+                  <div className="mb-2.5" suppressHydrationWarning>
                     <label htmlFor="email" className="block text-xs font-medium text-gray-600 mb-1.5">
                       Email
                     </label>
@@ -296,7 +361,7 @@ export default function BookAppointmentCard() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="mt-auto bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wide shadow-lg transition hover:bg-purple-700 hover:shadow-xl"
+                    className="mt-4 mb-2 bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wide shadow-lg transition hover:bg-purple-700 hover:shadow-xl"
                   >
                     Book Appointment
                   </button>

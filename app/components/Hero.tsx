@@ -43,7 +43,7 @@ export default function Hero() {
             suppressHydrationWarning
           >
             <Image
-              src="/images/hero/hero-home.png"
+              src="/images/hero/hero-home.jpg"
               alt="Professional aesthetic treatment at Reverse Aesthetics"
               fill
               className="object-cover object-right -scale-x-100"
@@ -81,7 +81,7 @@ export default function Hero() {
             {/* Square Image on Top */}
             <div className="relative h-[52vh] min-h-[300px] z-10" suppressHydrationWarning>
               <Image
-                src="/images/hero/D945A6DA-82DB-4D15-9E9E-08F28796ED9E.PNG"
+                src="/images/hero/hero-hair.jpg"
                 alt="Hair restoration treatment at Reverse Aesthetics"
                 fill
                 className="object-cover object-center rounded-lg"
@@ -242,7 +242,7 @@ export default function Hero() {
             suppressHydrationWarning
           >
             <Image
-              src="/images/hero/hero-home.png"
+              src="/images/hero/hero-home.jpg"
               alt="Professional aesthetic treatment at Reverse Aesthetics"
               fill
               className="object-cover"
@@ -274,7 +274,7 @@ export default function Hero() {
             <div className="absolute right-0 top-0 bottom-0 w-1/2 pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-28 flex items-center justify-center z-10" suppressHydrationWarning>
               <div className="relative w-full max-w-2xl aspect-square" suppressHydrationWarning>
                 <Image
-                  src="/images/hero/D945A6DA-82DB-4D15-9E9E-08F28796ED9E.PNG"
+                  src="/images/hero/hero-hair.jpg"
                   alt="Hair restoration treatment at Reverse Aesthetics"
                   fill
                   className="object-cover rounded-lg shadow-2xl"

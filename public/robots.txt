@@ -1,0 +1,13 @@
+# robots.txt for Reverse Aesthetics
+# https://reverseaesthetic.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location (Next.js generates this automatically from app/sitemap.ts)
+Sitemap: https://reverseaesthetic.com/sitemap.xml
+
