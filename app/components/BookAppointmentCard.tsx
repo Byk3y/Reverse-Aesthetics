@@ -19,7 +19,10 @@ export default function BookAppointmentCard() {
   });
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const dragHandleRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [touchStart, setTouchStart] = useState<{ y: number; time: number } | null>(null);
+  const [touchCurrent, setTouchCurrent] = useState<number | null>(null);
 
   const services = [
     { category: "Aesthetics & Dermatology", services: ["Botox", "Dermal Fillers", "Skin Rejuvenation", "Acne Treatment", "HIFU", "Thread Lift"] },
@@ -154,6 +157,64 @@ Please confirm if this date works for you. Thank you!`;
     e.stopPropagation();
   };
 
+  // Swipe to close handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    // Only allow swipe from the drag handle area (top section with gray bar)
+    const target = e.target as HTMLElement;
+    const isInDragHandle = dragHandleRef.current?.contains(target) || 
+                          target.closest('.drag-handle-area') !== null;
+    
+    if (isInDragHandle) {
+      e.stopPropagation();
+      setTouchStart({
+        y: e.touches[0].clientY,
+        time: Date.now(),
+      });
+      setTouchCurrent(e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    
+    e.preventDefault(); // Prevent page scroll when dragging
+    const currentY = e.touches[0].clientY;
+    setTouchCurrent(currentY);
+    
+    // Only allow downward swipes
+    const deltaY = currentY - touchStart.y;
+    if (deltaY > 0 && cardRef.current) {
+      // Apply transform to card for visual feedback
+      const maxTransform = Math.min(deltaY, 300); // Limit max transform
+      cardRef.current.style.transform = `translateY(${maxTransform}px)`;
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null || touchCurrent === null) {
+      setTouchStart(null);
+      setTouchCurrent(null);
+      return;
+    }
+
+    const deltaY = touchCurrent - touchStart.y;
+    const deltaTime = Date.now() - touchStart.time;
+    const velocity = deltaY / deltaTime;
+
+    // Reset transform
+    if (cardRef.current) {
+      cardRef.current.style.transform = '';
+    }
+
+    // Close if swiped down more than 100px or with sufficient velocity
+    if (deltaY > 100 || (deltaY > 50 && velocity > 0.3)) {
+      closeAppointment();
+    }
+
+    setTouchStart(null);
+    setTouchCurrent(null);
+  };
+
   return (
     <>
       {/* Mobile: Bottom Sheet - Rendered via portal when open */}
@@ -184,19 +245,42 @@ Please confirm if this date works for you. Thank you!`;
             className="lg:hidden fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up" 
             ref={cardRef}
             onClick={handleCardClick}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             suppressHydrationWarning
             style={{ 
               pointerEvents: 'auto',
               zIndex: 9999,
+              transition: touchStart === null ? 'transform 0.2s ease-out' : 'none',
             }}
           >
             <div className="bg-white rounded-t-3xl shadow-2xl border-t border-gray-200 max-h-[85vh] flex flex-col" suppressHydrationWarning>
-              <div className="flex-shrink-0 px-5 py-3 border-b border-gray-200" suppressHydrationWarning>
+              <div 
+                ref={dragHandleRef}
+                className="drag-handle-area flex-shrink-0 px-5 py-3 border-b border-gray-200 cursor-grab active:cursor-grabbing" 
+                suppressHydrationWarning
+              >
                 <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-2"></div>
                 <h2 className="text-lg font-semibold text-gray-900 text-center">Book Appointment</h2>
               </div>
               
-              <div className="flex-1 overflow-y-auto overscroll-contain" suppressHydrationWarning style={{ touchAction: 'pan-y' }}>
+              <div 
+                className="flex-1 overflow-y-auto overscroll-contain" 
+                suppressHydrationWarning 
+                style={{ touchAction: 'pan-y' }}
+                onTouchStart={(e) => {
+                  // Prevent swipe-to-close when touching form content
+                  const target = e.target as HTMLElement;
+                  if (!dragHandleRef.current?.contains(target) && 
+                      target.closest('.drag-handle-area') === null) {
+                    if (touchStart !== null) {
+                      setTouchStart(null);
+                      setTouchCurrent(null);
+                    }
+                  }
+                }}
+              >
                 <form onSubmit={handleSubmit} className="flex flex-col px-5 py-3 pb-4" suppressHydrationWarning>
                   {/* Location Buttons */}
                   <div className="mb-2.5" suppressHydrationWarning>
