@@ -1,23 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: ["italic", "normal"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -126,14 +122,8 @@ export default function RootLayout({
       longitude: 3.4197
     },
     areaServed: [
-      {
-        '@type': 'City',
-        name: 'Lagos'
-      },
-      {
-        '@type': 'City',
-        name: 'Abuja'
-      }
+      { '@type': 'City', name: 'Lagos' },
+      { '@type': 'City', name: 'Abuja' }
     ],
     openingHoursSpecification: [
       {
@@ -143,42 +133,14 @@ export default function RootLayout({
         closes: '19:00'
       }
     ],
-    medicalSpecialty: [
-      'Dermatology',
-      'Aesthetic Medicine',
-      'Cosmetic Dermatology'
-    ],
+    medicalSpecialty: ['Dermatology', 'Aesthetic Medicine', 'Cosmetic Dermatology'],
     availableService: [
-      {
-        '@type': 'MedicalProcedure',
-        name: 'Botox & Dermal Fillers',
-        description: 'Injectable treatments for facial rejuvenation'
-      },
-      {
-        '@type': 'MedicalProcedure',
-        name: 'HIFU & Thread Lift',
-        description: 'Non-surgical skin tightening treatments'
-      },
-      {
-        '@type': 'MedicalProcedure',
-        name: 'Laser & RF Treatments',
-        description: 'Advanced laser and radiofrequency skin treatments'
-      },
-      {
-        '@type': 'MedicalTherapy',
-        name: 'Weight Loss Programs',
-        description: 'Medical weight management and body contouring'
-      },
-      {
-        '@type': 'MedicalProcedure',
-        name: 'Hair Restoration',
-        description: 'Surgical and non-surgical hair restoration solutions'
-      },
-      {
-        '@type': 'DentalService',
-        name: 'Dental Aesthetics',
-        description: 'Cosmetic dental treatments for smile enhancement'
-      }
+      { '@type': 'MedicalProcedure', name: 'Botox & Dermal Fillers', description: 'Injectable treatments for facial rejuvenation' },
+      { '@type': 'MedicalProcedure', name: 'HIFU & Thread Lift', description: 'Non-surgical skin tightening treatments' },
+      { '@type': 'MedicalProcedure', name: 'Laser & RF Treatments', description: 'Advanced laser and radiofrequency skin treatments' },
+      { '@type': 'MedicalTherapy', name: 'Weight Loss Programs', description: 'Medical weight management and body contouring' },
+      { '@type': 'MedicalProcedure', name: 'Hair Restoration', description: 'Surgical and non-surgical hair restoration solutions' },
+      { '@type': 'DentalService', name: 'Dental Aesthetics', description: 'Cosmetic dental treatments for smile enhancement' }
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -203,7 +165,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased`}
+        className={`${inter.variable} ${playfairDisplay.variable} antialiased`}
         suppressHydrationWarning
       >
         <div suppressHydrationWarning>

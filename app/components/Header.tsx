@@ -1,158 +1,173 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useAppointment } from "../contexts/AppointmentContext";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { openAppointment } = useAppointment();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/clinics", label: "Clinics" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/blog", label: "Journal" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 lg:pt-4" suppressHydrationWarning>
-      <div className="mx-auto max-w-7xl lg:px-0 xl:px-0" suppressHydrationWarning>
-        {/* Navigation Bar - Sticky on Mobile, Floating on Desktop */}
-        <nav className="bg-white/40 backdrop-blur-2xl lg:rounded-2xl shadow-2xl border border-white/40 w-full py-2 lg:py-4 backdrop-saturate-150">
-          <div className="flex items-center justify-between px-4 lg:px-16 xl:px-24" suppressHydrationWarning>
-            {/* Logo */}
-            <Link href="/" className="text-lg lg:text-xl font-semibold text-gray-900 ml-0 lg:-ml-8">
-              Reverse Aesthetics
-            </Link>
-
-            {/* Mobile: Hamburger Menu */}
-            <button
-              onClick={toggleMenu}
-              className="lg:hidden flex flex-col gap-1.5 p-2 z-50 relative"
-              aria-label="Menu"
-              aria-expanded={isMenuOpen}
-            >
-              <span
-                className={`w-6 h-0.5 bg-gray-900 rounded transition-all duration-300 ${
-                  isMenuOpen ? "rotate-45 translate-y-2" : ""
-                }`}
-              ></span>
-              <span
-                className={`w-6 h-0.5 bg-gray-900 rounded transition-all duration-300 ${
-                  isMenuOpen ? "opacity-0" : ""
-                }`}
-              ></span>
-              <span
-                className={`w-6 h-0.5 bg-gray-900 rounded transition-all duration-300 ${
-                  isMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                }`}
-              ></span>
-            </button>
-
-            {/* Desktop: Navigation Links */}
-            <div className="hidden lg:flex items-center gap-8" suppressHydrationWarning>
-              <Link
-                href="/"
-                className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="/clinics"
-                className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors"
-              >
-                Clinics
-              </Link>
-              <Link
-                href="/#book"
-                className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors"
-              >
-                Bookings
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors"
-              >
-                Contact
-              </Link>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  openAppointment();
-                }}
-                className="ml-4 rounded-lg bg-purple-600 px-6 py-2.5 text-sm font-semibold text-white uppercase tracking-wide shadow-lg transition hover:bg-purple-700 hover:shadow-xl"
-              >
-                Book Appointment
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile: Dropdown Menu */}
-          <div
-            className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
-            suppressHydrationWarning
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "glass-nav shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <nav className="flex items-center justify-between py-4 lg:py-5">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-xl lg:text-2xl font-semibold tracking-tight text-plum"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            <div className="px-4 py-6 space-y-4 border-t border-white/20 mt-2" suppressHydrationWarning>
+            Reverse <span className="italic font-normal">Aesthetics</span>
+          </Link>
+
+          {/* Mobile: Hamburger */}
+          <button
+            onClick={toggleMenu}
+            className="lg:hidden flex flex-col gap-1.5 p-2 z-50 relative"
+            aria-label="Menu"
+            aria-expanded={isMenuOpen}
+          >
+            <span
+              className={`w-6 h-0.5 bg-plum rounded-full transition-all duration-300 ${
+                isMenuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            />
+            <span
+              className={`w-6 h-0.5 bg-plum rounded-full transition-all duration-300 ${
+                isMenuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`w-6 h-0.5 bg-plum rounded-full transition-all duration-300 ${
+                isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            />
+          </button>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
               <Link
-                href="/"
-                onClick={closeMenu}
-                className="block text-base font-medium text-gray-700 hover:text-purple-600 transition-colors py-2"
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  isActive(link.href)
+                    ? "text-purple-600"
+                    : "text-plum-muted hover:text-purple-600"
+                }`}
               >
-                Home
+                {link.label}
               </Link>
-              <Link
-                href="/about"
-                onClick={closeMenu}
-                className="block text-base font-medium text-gray-700 hover:text-purple-600 transition-colors py-2"
-              >
-                About
-              </Link>
-              <Link
-                href="/clinics"
-                onClick={closeMenu}
-                className="block text-base font-medium text-gray-700 hover:text-purple-600 transition-colors py-2"
-              >
-                Clinics
-              </Link>
-                  <Link
-                    href="/#book"
-                    onClick={closeMenu}
-                    className="block text-base font-medium text-gray-700 hover:text-purple-600 transition-colors py-2"
-                  >
-                    Bookings
-                  </Link>
-                  <Link
-                    href="/contact"
-                    onClick={closeMenu}
-                    className="block text-base font-medium text-gray-700 hover:text-purple-600 transition-colors py-2"
-                  >
-                    Contact
-                  </Link>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      closeMenu();
-                      openAppointment();
-                    }}
-                    className="block w-full mt-4 rounded-lg bg-purple-600 px-6 py-3 text-base font-semibold text-white uppercase tracking-wide shadow-lg transition hover:bg-purple-700 hover:shadow-xl text-center"
-                  >
-                    Book Appointment
-                  </button>
-            </div>
+            ))}
+            <Link
+              href="/booking"
+              className="btn-gold text-xs py-3 px-6"
+            >
+              Book a Visit
+            </Link>
           </div>
         </nav>
+
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`lg:hidden fixed inset-0 z-40 transition-all duration-400 ${
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-plum/20 backdrop-blur-sm"
+            onClick={closeMenu}
+          />
+
+          {/* Menu Panel */}
+          <div
+            className={`absolute top-0 right-0 w-[80%] max-w-sm h-full bg-ivory shadow-2xl transition-transform duration-400 ease-out ${
+              isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex flex-col pt-24 px-8 gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={`text-lg font-medium py-3 transition-colors border-b border-warm-gray-100 ${
+                    isActive(link.href)
+                      ? "text-purple-600"
+                      : "text-plum hover:text-purple-600"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="pt-6">
+                <Link
+                  href="/booking"
+                  onClick={closeMenu}
+                  className="btn-gold w-full text-center block"
+                >
+                  Book a Visit
+                </Link>
+              </div>
+
+              {/* Contact info in mobile menu */}
+              <div className="mt-8 pt-6 border-t border-warm-gray-100">
+                <p className="text-xs uppercase tracking-wider text-plum-muted mb-3 font-medium">
+                  Get in touch
+                </p>
+                <a
+                  href="tel:+2349159188094"
+                  className="text-sm text-plum hover:text-purple-600 transition-colors block mb-2"
+                >
+                  +234 915 918 8094
+                </a>
+                <a
+                  href="mailto:reverseaestheticsng@gmail.com"
+                  className="text-sm text-plum-muted hover:text-purple-600 transition-colors block"
+                >
+                  reverseaestheticsng@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );
 }
-
