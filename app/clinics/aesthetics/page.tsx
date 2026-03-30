@@ -39,18 +39,18 @@ export default function AestheticsPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 lg:pt-32 pb-16 bg-ivory">
+      <section className="pt-28 lg:pt-36 pb-16 bg-ivory">
         <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
             Specialist Clinic
           </p>
           <h1
-            className="text-plum mb-6"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-charcoal font-light mb-6"
+            style={{ fontFamily: "var(--font-display), serif" }}
           >
             Aesthetics & <span className="italic">Dermatology</span>
           </h1>
-          <p className="text-plum-muted text-lg leading-relaxed">
+          <p className="text-warm-gray-400 font-light text-lg leading-relaxed">
             Our flagship clinic offering advanced, medically-led treatments designed
             to restore, protect, and enhance your skin's natural beauty.
           </p>
@@ -69,7 +69,7 @@ export default function AestheticsPage() {
                 }`}
               >
                 {/* Image */}
-                <div className={`relative aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg ${index % 2 !== 0 ? "lg:[direction:ltr]" : ""}`}>
+                <div className={`relative aspect-square lg:aspect-[4/3] rounded-sm overflow-hidden ${index % 2 !== 0 ? "lg:[direction:ltr]" : ""}`}>
                   <Image
                     src={treatment.image}
                     alt={treatment.name}
@@ -82,20 +82,20 @@ export default function AestheticsPage() {
                 {/* Content */}
                 <div className={index % 2 !== 0 ? "lg:[direction:ltr]" : ""}>
                   <h2
-                    className="text-2xl lg:text-3xl text-plum mb-4"
-                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                    className="text-2xl lg:text-3xl font-light text-charcoal mb-4"
+                    style={{ fontFamily: "var(--font-display), serif" }}
                   >
                     {treatment.name}
                   </h2>
-                  <p className="text-plum-muted leading-relaxed mb-6">
+                  <p className="text-warm-gray-400 font-light leading-relaxed mb-6">
                     {treatment.description}
                   </p>
-                  
-                  <div className="bg-ivory rounded-xl p-4 inline-block mb-8 border border-warm-gray-100">
-                    <p className="text-xs text-plum-muted uppercase tracking-wider mb-1">
+
+                  <div className="bg-ivory rounded-sm p-4 inline-block mb-8 border border-warm-gray-100">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-1">
                       Starting Price
                     </p>
-                    <p className="font-semibold text-plum">
+                    <p className="font-semibold text-charcoal">
                       {treatment.price}
                     </p>
                   </div>
@@ -115,11 +115,11 @@ export default function AestheticsPage() {
       {/* Philosophy */}
       <section className="py-20 bg-ivory text-center">
         <div className="mx-auto max-w-4xl px-6 lg:px-12">
-          <div className="text-gold/20 text-6xl leading-none font-serif mb-4">"</div>
-          <p className="text-xl lg:text-2xl text-plum mb-6 italic" style={{ fontFamily: "var(--font-playfair), serif" }}>
-            We don't believe in changing how you look. We believe in restoring your skin's health so your natural confidence can shine through.
+          <div className="text-bronze/20 text-6xl leading-none font-serif mb-4">&ldquo;</div>
+          <p className="text-xl lg:text-2xl text-charcoal font-light mb-6 italic" style={{ fontFamily: "var(--font-display), serif" }}>
+            We don&apos;t believe in changing how you look. We believe in restoring your skin&apos;s health so your natural confidence can shine through.
           </p>
-          <p className="text-sm font-semibold text-plum uppercase tracking-widest">
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-charcoal">
             — Dr. Ral Abana
           </p>
         </div>

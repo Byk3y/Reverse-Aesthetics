@@ -50,10 +50,7 @@ export default function FAQ() {
   const currentFAQ = faqs.find(f => f.category === selectedCategory);
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-br from-white via-purple-50/25 to-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-purple-100/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-rose-100/20 rounded-full blur-3xl" />
+    <section id="faq" className="py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,10 +59,11 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">FAQ</p>
+          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto">
             Everything you need to know about our treatments and services
           </p>
         </motion.div>
@@ -88,19 +86,19 @@ export default function FAQ() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300"
+                  className="bg-white border border-warm-gray-100 overflow-hidden hover:border-bronze transition-colors duration-300"
                 >
                   <button
                     onClick={() => setOpenQuestion(openQuestion === index ? null : index)}
-                    className="w-full px-6 py-5 text-left flex justify-between items-center gap-4 hover:bg-gray-50 transition-colors duration-200"
+                    className="w-full px-6 py-5 text-left flex justify-between items-center gap-4 hover:bg-ivory transition-colors duration-200"
                   >
-                    <span className="text-lg font-semibold text-gray-900 flex-1">
+                    <span className="text-lg font-light text-charcoal flex-1">
                       {faq.q}
                     </span>
                     <motion.svg
                       animate={{ rotate: openQuestion === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="w-6 h-6 text-[#D4A574] flex-shrink-0"
+                      className="w-6 h-6 text-bronze flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -123,7 +121,7 @@ export default function FAQ() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-5 text-gray-600 leading-relaxed">
+                        <div className="px-6 pb-5 text-warm-gray-400 font-light leading-relaxed">
                           {faq.a}
                         </div>
                       </motion.div>
@@ -140,19 +138,19 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-12 text-center bg-gradient-to-br from-purple-50 to-transparent rounded-2xl p-8"
+            className="mt-12 text-center bg-ivory border border-warm-gray-100 p-8"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
               Still have questions?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-warm-gray-400 font-light mb-6">
               Our team is here to help! Schedule a free consultation or give us a call.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-300 font-medium">
+              <button className="bg-charcoal text-white px-8 py-3 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
                 Book Free Consultation
               </button>
-              <button className="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg hover:bg-purple-600 hover:text-white transition-colors duration-300 font-medium">
+              <button className="border border-charcoal text-charcoal px-8 py-3 hover:bg-charcoal hover:text-white transition-colors duration-300 font-medium">
                 Call Us: 09159188094
               </button>
             </div>

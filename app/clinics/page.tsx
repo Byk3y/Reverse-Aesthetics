@@ -81,18 +81,18 @@ export default function ClinicsPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 lg:pt-32 pb-16 bg-ivory">
+      <section className="pt-28 lg:pt-36 pb-16 bg-ivory">
         <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
             Our Clinics
           </p>
           <h1
-            className="text-plum mb-6"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-charcoal mb-6"
+            style={{ fontFamily: "var(--font-display), serif" }}
           >
             Four clinics. <span className="italic">One standard</span> of excellence.
           </h1>
-          <p className="text-plum-muted text-lg leading-relaxed">
+          <p className="text-warm-gray-400 text-lg leading-relaxed font-light">
             Each clinic is led by accredited specialists, using internationally
             approved products and techniques to deliver safe, natural results.
           </p>
@@ -115,7 +115,7 @@ export default function ClinicsPage() {
                 }`}
               >
                 {/* Image */}
-                <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg ${index % 2 !== 0 ? "lg:[direction:ltr]" : ""}`}>
+                <div className={`relative aspect-[4/3] overflow-hidden ${index % 2 !== 0 ? "lg:[direction:ltr]" : ""}`}>
                   <Image
                     src={clinic.image}
                     alt={clinic.title}
@@ -127,17 +127,17 @@ export default function ClinicsPage() {
 
                 {/* Content */}
                 <div className={index % 2 !== 0 ? "lg:[direction:ltr]" : ""}>
+                  <span className="text-[11px] font-medium tracking-[0.3em] text-bronze mb-3 block">
+                    0{index + 1} / {clinic.tagline}
+                  </span>
                   <hr className="divider-gold mb-6" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gold mb-2">
-                    {clinic.tagline}
-                  </p>
                   <h2
-                    className="text-plum text-3xl mb-4"
-                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                    className="text-charcoal text-3xl mb-4 font-light"
+                    style={{ fontFamily: "var(--font-display), serif" }}
                   >
                     {clinic.title}
                   </h2>
-                  <p className="text-plum-muted leading-relaxed mb-6">
+                  <p className="text-warm-gray-400 leading-relaxed font-light mb-6">
                     {clinic.description}
                   </p>
 
@@ -146,9 +146,9 @@ export default function ClinicsPage() {
                     {clinic.treatments.map((treatment) => (
                       <div
                         key={treatment}
-                        className="flex items-center gap-2 text-sm text-plum"
+                        className="flex items-center gap-2.5 text-sm text-charcoal"
                       >
-                        <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
+                        <span className="w-1 h-1 rounded-full bg-bronze flex-shrink-0" />
                         {treatment}
                       </div>
                     ))}

@@ -96,21 +96,21 @@ export default function BookAppointmentCard() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Format the message for WhatsApp
     const locationCapitalized = formData.location.charAt(0).toUpperCase() + formData.location.slice(1);
-    
+
     // Format date to be more readable (e.g., "2025-11-17" -> "November 17, 2025")
     const formatDate = (dateString: string) => {
       if (!dateString) return dateString;
       const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       });
     };
-    
+
     const message = `Hello! I would like to book an appointment at Reverse Aesthetics:
 
 📍 *Location:* ${locationCapitalized}
@@ -125,10 +125,10 @@ Please confirm if this date works for you. Thank you!`;
     // Create WhatsApp URL
     const phoneNumber = '2349159188094'; // Clinic WhatsApp number
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    
+
     // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
-    
+
     // Close the modal after a short delay
     setTimeout(() => {
       closeAppointment();
@@ -161,9 +161,9 @@ Please confirm if this date works for you. Thank you!`;
   const handleTouchStart = (e: React.TouchEvent) => {
     // Only allow swipe from the drag handle area (top section with gray bar)
     const target = e.target as HTMLElement;
-    const isInDragHandle = dragHandleRef.current?.contains(target) || 
+    const isInDragHandle = dragHandleRef.current?.contains(target) ||
                           target.closest('.drag-handle-area') !== null;
-    
+
     if (isInDragHandle) {
       e.stopPropagation();
       setTouchStart({
@@ -176,11 +176,11 @@ Please confirm if this date works for you. Thank you!`;
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStart === null) return;
-    
+
     e.preventDefault(); // Prevent page scroll when dragging
     const currentY = e.touches[0].clientY;
     setTouchCurrent(currentY);
-    
+
     // Only allow downward swipes
     const deltaY = currentY - touchStart.y;
     if (deltaY > 0 && cardRef.current) {
@@ -221,11 +221,11 @@ Please confirm if this date works for you. Thank you!`;
       {isOpen && mounted && typeof document !== 'undefined' && createPortal(
         <>
           {/* Backdrop */}
-          <div 
-            className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm" 
+          <div
+            className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={handleBackdropClick}
             suppressHydrationWarning
-            style={{ 
+            style={{
               position: 'fixed',
               top: 0,
               left: 0,
@@ -239,40 +239,40 @@ Please confirm if this date works for you. Thank you!`;
               pointerEvents: 'auto',
             }}
           />
-          
+
           {/* Card */}
-          <div 
-            className="lg:hidden fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up" 
+          <div
+            className="lg:hidden fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up"
             ref={cardRef}
             onClick={handleCardClick}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             suppressHydrationWarning
-            style={{ 
+            style={{
               pointerEvents: 'auto',
               zIndex: 9999,
               transition: touchStart === null ? 'transform 0.2s ease-out' : 'none',
             }}
           >
-            <div className="bg-white rounded-t-3xl shadow-2xl border-t border-gray-200 max-h-[85vh] flex flex-col" suppressHydrationWarning>
-              <div 
+            <div className="bg-white rounded-t-sm shadow-sm border-t border-warm-gray-100 max-h-[85vh] flex flex-col" suppressHydrationWarning>
+              <div
                 ref={dragHandleRef}
-                className="drag-handle-area flex-shrink-0 px-5 py-3 border-b border-gray-200 cursor-grab active:cursor-grabbing" 
+                className="drag-handle-area flex-shrink-0 px-5 py-3 border-b border-warm-gray-100 cursor-grab active:cursor-grabbing"
                 suppressHydrationWarning
               >
-                <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-2"></div>
-                <h2 className="text-lg font-semibold text-gray-900 text-center">Book Appointment</h2>
+                <div className="w-12 h-1 bg-warm-gray-200 rounded-full mx-auto mb-2"></div>
+                <h2 className="text-lg font-light text-charcoal text-center" style={{ fontFamily: 'var(--font-display), serif' }}>Book Appointment</h2>
               </div>
-              
-              <div 
-                className="flex-1 overflow-y-auto overscroll-contain" 
-                suppressHydrationWarning 
+
+              <div
+                className="flex-1 overflow-y-auto overscroll-contain"
+                suppressHydrationWarning
                 style={{ touchAction: 'pan-y' }}
                 onTouchStart={(e) => {
                   // Prevent swipe-to-close when touching form content
                   const target = e.target as HTMLElement;
-                  if (!dragHandleRef.current?.contains(target) && 
+                  if (!dragHandleRef.current?.contains(target) &&
                       target.closest('.drag-handle-area') === null) {
                     if (touchStart !== null) {
                       setTouchStart(null);
@@ -284,15 +284,15 @@ Please confirm if this date works for you. Thank you!`;
                 <form onSubmit={handleSubmit} className="flex flex-col px-5 py-3 pb-4" suppressHydrationWarning>
                   {/* Location Buttons */}
                   <div className="mb-2.5" suppressHydrationWarning>
-                    <label className="block text-xs font-medium text-gray-600 mb-2">Location</label>
+                    <label className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-2">Location</label>
                     <div className="flex gap-2" suppressHydrationWarning>
                       <button
                         type="button"
                         onClick={() => handleLocationSelect("lagos")}
-                        className={`flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-all ${
+                        className={`flex-1 px-4 py-2.5 font-medium text-sm transition-all ${
                           formData.location === "lagos"
-                            ? "bg-purple-600 text-white shadow-md"
-                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            ? "bg-charcoal text-white"
+                            : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                         }`}
                       >
                         Lagos
@@ -300,10 +300,10 @@ Please confirm if this date works for you. Thank you!`;
                       <button
                         type="button"
                         onClick={() => handleLocationSelect("abuja")}
-                        className={`flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-all ${
+                        className={`flex-1 px-4 py-2.5 font-medium text-sm transition-all ${
                           formData.location === "abuja"
-                            ? "bg-purple-600 text-white shadow-md"
-                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            ? "bg-charcoal text-white"
+                            : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                         }`}
                       >
                         Abuja
@@ -319,17 +319,17 @@ Please confirm if this date works for you. Thank you!`;
 
                   {/* Services Section */}
                   <div className="mb-2.5 relative services-dropdown-container" suppressHydrationWarning>
-                    <label className="block text-xs font-medium text-gray-600 mb-2">Service</label>
+                    <label className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-2">Service</label>
                     <button
                       type="button"
                       onClick={() => setIsServicesOpen(!isServicesOpen)}
-                      className={`w-full px-3 py-2 text-sm border border-gray-300 rounded-lg text-left flex items-center justify-between transition-all ${
+                      className={`w-full px-3 py-2 text-sm border rounded-sm text-left flex items-center justify-between transition-all ${
                         formData.service
-                          ? "bg-purple-50 border-purple-300 text-gray-900"
-                          : "bg-white text-gray-500"
+                          ? "bg-ivory border-bronze text-charcoal"
+                          : "bg-white border-warm-gray-100 text-warm-gray-400"
                       }`}
                     >
-                      <span className={formData.service ? "text-gray-900" : "text-gray-500"}>
+                      <span className={formData.service ? "text-charcoal" : "text-warm-gray-400"}>
                         {formData.service || "Select a service"}
                       </span>
                       <svg
@@ -347,13 +347,13 @@ Please confirm if this date works for you. Thank you!`;
                       value={formData.service}
                       required
                     />
-                    
+
                     {/* Services Dropdown */}
                     {isServicesOpen && (
-                      <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-64 overflow-y-auto" suppressHydrationWarning>
+                      <div className="absolute z-10 w-full mt-1 bg-white border border-warm-gray-100 rounded-sm shadow-sm max-h-64 overflow-y-auto" suppressHydrationWarning>
                         {services.map((category, idx) => (
-                          <div key={idx} className="border-b border-gray-100 last:border-b-0" suppressHydrationWarning>
-                            <div className="px-3 py-2 text-xs font-semibold text-gray-500 bg-gray-50 uppercase tracking-wide" suppressHydrationWarning>
+                          <div key={idx} className="border-b border-warm-gray-100 last:border-b-0" suppressHydrationWarning>
+                            <div className="px-3 py-2 text-[11px] font-medium text-bronze bg-ivory uppercase tracking-[0.25em]" suppressHydrationWarning>
                               {category.category}
                             </div>
                             {category.services.map((service, serviceIdx) => (
@@ -361,8 +361,8 @@ Please confirm if this date works for you. Thank you!`;
                                 key={serviceIdx}
                                 type="button"
                                 onClick={() => handleServiceSelect(service)}
-                                className={`w-full px-4 py-2.5 text-sm text-left hover:bg-purple-50 transition-colors ${
-                                  formData.service === service ? "bg-purple-50 text-purple-700 font-medium" : "text-gray-700"
+                                className={`w-full px-4 py-2.5 text-sm text-left hover:bg-ivory transition-colors ${
+                                  formData.service === service ? "bg-ivory text-bronze font-medium" : "text-charcoal"
                                 }`}
                               >
                                 {service}
@@ -377,7 +377,7 @@ Please confirm if this date works for you. Thank you!`;
                   {/* Date and Phone Row */}
                   <div className="grid grid-cols-2 gap-4 mb-2.5" suppressHydrationWarning>
                     <div className="min-w-0" suppressHydrationWarning>
-                      <label htmlFor="date" className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label htmlFor="date" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-1.5">
                         Date
                       </label>
                       <input
@@ -388,11 +388,11 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         min={new Date().toISOString().split("T")[0]}
-                        className="w-full px-2.5 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent box-border"
+                        className="w-full px-2.5 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent box-border"
                       />
                     </div>
                     <div className="min-w-0" suppressHydrationWarning>
-                      <label htmlFor="phone" className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label htmlFor="phone" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-1.5">
                         Phone
                       </label>
                       <input
@@ -403,14 +403,14 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         placeholder="Phone number"
-                        className="w-full px-2.5 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent box-border"
+                        className="w-full px-2.5 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent box-border"
                       />
                     </div>
                   </div>
 
                   {/* Full Name - Full Width */}
                   <div className="mb-2.5" suppressHydrationWarning>
-                    <label htmlFor="name" className="block text-xs font-medium text-gray-600 mb-1.5">
+                    <label htmlFor="name" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-1.5">
                       Full Name
                     </label>
                     <input
@@ -421,13 +421,13 @@ Please confirm if this date works for you. Thank you!`;
                       onChange={handleChange}
                       required
                       placeholder="Enter your full name"
-                      className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="w-full px-3 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
                     />
                   </div>
 
                   {/* Email - Full Width */}
                   <div className="mb-2.5" suppressHydrationWarning>
-                    <label htmlFor="email" className="block text-xs font-medium text-gray-600 mb-1.5">
+                    <label htmlFor="email" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-1.5">
                       Email
                     </label>
                     <input
@@ -438,14 +438,14 @@ Please confirm if this date works for you. Thank you!`;
                       onChange={handleChange}
                       required
                       placeholder="Enter your email address"
-                      className="w-full px-3 py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="w-full px-3 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
                     />
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="mt-4 mb-2 bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wide shadow-lg transition hover:bg-purple-700 hover:shadow-xl"
+                    className="mt-4 mb-2 bg-charcoal text-white py-3 px-6 font-medium text-[11px] uppercase tracking-[0.25em] transition hover:bg-charcoal/90"
                   >
                     Book Appointment
                   </button>
@@ -461,11 +461,11 @@ Please confirm if this date works for you. Thank you!`;
       {isOpen && mounted && typeof document !== 'undefined' && createPortal(
         <>
           {/* Backdrop - Clickable area */}
-          <div 
-            className="hidden lg:block fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]" 
+          <div
+            className="hidden lg:block fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]"
             onClick={handleBackdropClick}
             suppressHydrationWarning
-            style={{ 
+            style={{
               position: 'fixed',
               top: 0,
               left: 0,
@@ -478,30 +478,30 @@ Please confirm if this date works for you. Thank you!`;
               pointerEvents: 'auto',
             }}
           />
-          
+
           {/* Desktop Card Modal Container */}
-          <div 
-            className="hidden lg:flex fixed inset-0 z-[9999] items-center justify-center p-4 pointer-events-none" 
+          <div
+            className="hidden lg:flex fixed inset-0 z-[9999] items-center justify-center p-4 pointer-events-none"
             suppressHydrationWarning
-            style={{ 
+            style={{
               zIndex: 9999,
             }}
           >
             {/* Desktop Card Modal */}
-            <div 
-              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto" 
+            <div
+              className="bg-white border border-warm-gray-100 max-w-3xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto"
               onClick={handleCardClick}
               suppressHydrationWarning
             >
             <div className="p-8 lg:p-10" suppressHydrationWarning>
             <div className="text-center mb-6" suppressHydrationWarning>
-              <h2 className="text-3xl lg:text-4xl font-normal mb-2">
+              <h2 className="text-3xl lg:text-4xl font-light mb-2 text-charcoal">
                 Book an{" "}
-                <span className="italic" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+                <span className="italic" style={{ fontFamily: 'var(--font-display), serif' }}>
                   Appointment
                 </span>
               </h2>
-              <p className="text-gray-600 text-base">
+              <p className="text-warm-gray-400 font-light text-base">
                 Choose your location and provide your details.
               </p>
             </div>
@@ -509,15 +509,15 @@ Please confirm if this date works for you. Thank you!`;
             <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
               {/* Location Buttons */}
               <div suppressHydrationWarning>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Location</label>
+                <label className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-3">Location</label>
                 <div className="flex gap-3" suppressHydrationWarning>
                   <button
                     type="button"
                     onClick={() => handleLocationSelect("lagos")}
-                    className={`flex-1 px-6 py-3 rounded-lg font-medium text-base transition-all ${
+                    className={`flex-1 px-6 py-3 font-medium text-base transition-all ${
                       formData.location === "lagos"
-                        ? "bg-purple-600 text-white shadow-md"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-charcoal text-white"
+                        : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                     }`}
                   >
                     Lagos
@@ -525,10 +525,10 @@ Please confirm if this date works for you. Thank you!`;
                   <button
                     type="button"
                     onClick={() => handleLocationSelect("abuja")}
-                    className={`flex-1 px-6 py-3 rounded-lg font-medium text-base transition-all ${
+                    className={`flex-1 px-6 py-3 font-medium text-base transition-all ${
                       formData.location === "abuja"
-                        ? "bg-purple-600 text-white shadow-md"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-charcoal text-white"
+                        : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                     }`}
                   >
                     Abuja
@@ -544,17 +544,17 @@ Please confirm if this date works for you. Thank you!`;
 
               {/* Services Section */}
               <div className="relative services-dropdown-container" suppressHydrationWarning>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Service</label>
+                <label className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-3">Service</label>
                 <button
                   type="button"
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-left flex items-center justify-between transition-all ${
+                  className={`w-full px-4 py-2.5 border rounded-sm text-left flex items-center justify-between transition-all ${
                     formData.service
-                      ? "bg-purple-50 border-purple-300 text-gray-900"
-                      : "bg-white text-gray-500"
+                      ? "bg-ivory border-bronze text-charcoal"
+                      : "bg-white border-warm-gray-100 text-warm-gray-400"
                   }`}
                 >
-                  <span className={formData.service ? "text-gray-900" : "text-gray-500"}>
+                  <span className={formData.service ? "text-charcoal" : "text-warm-gray-400"}>
                     {formData.service || "Select a service"}
                   </span>
                   <svg
@@ -572,13 +572,13 @@ Please confirm if this date works for you. Thank you!`;
                   value={formData.service}
                   required
                 />
-                
+
                 {/* Services Dropdown */}
                 {isServicesOpen && (
-                  <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-80 overflow-y-auto" suppressHydrationWarning>
+                  <div className="absolute z-10 w-full mt-1 bg-white border border-warm-gray-100 rounded-sm shadow-sm max-h-80 overflow-y-auto" suppressHydrationWarning>
                     {services.map((category, idx) => (
-                      <div key={idx} className="border-b border-gray-100 last:border-b-0" suppressHydrationWarning>
-                        <div className="px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-50 uppercase tracking-wide" suppressHydrationWarning>
+                      <div key={idx} className="border-b border-warm-gray-100 last:border-b-0" suppressHydrationWarning>
+                        <div className="px-4 py-2 text-[11px] font-medium text-bronze bg-ivory uppercase tracking-[0.25em]" suppressHydrationWarning>
                           {category.category}
                         </div>
                         {category.services.map((service, serviceIdx) => (
@@ -586,8 +586,8 @@ Please confirm if this date works for you. Thank you!`;
                             key={serviceIdx}
                             type="button"
                             onClick={() => handleServiceSelect(service)}
-                            className={`w-full px-4 py-2.5 text-sm text-left hover:bg-purple-50 transition-colors ${
-                              formData.service === service ? "bg-purple-50 text-purple-700 font-medium" : "text-gray-700"
+                            className={`w-full px-4 py-2.5 text-sm text-left hover:bg-ivory transition-colors ${
+                              formData.service === service ? "bg-ivory text-bronze font-medium" : "text-charcoal"
                             }`}
                           >
                             {service}
@@ -602,7 +602,7 @@ Please confirm if this date works for you. Thank you!`;
               <div className="grid grid-cols-2 gap-4" suppressHydrationWarning>
                 {/* Date */}
                 <div suppressHydrationWarning>
-                  <label htmlFor="date-desktop" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="date-desktop" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-2">
                     Date
                   </label>
                   <input
@@ -613,13 +613,13 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     min={new Date().toISOString().split("T")[0]}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
 
                 {/* Name */}
                 <div suppressHydrationWarning>
-                  <label htmlFor="name-desktop" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name-desktop" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-2">
                     Full Name
                   </label>
                   <input
@@ -630,13 +630,13 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     placeholder="Enter your full name"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
 
                 {/* Phone */}
                 <div suppressHydrationWarning>
-                  <label htmlFor="phone-desktop" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone-desktop" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-2">
                     Phone Number
                   </label>
                   <input
@@ -647,13 +647,13 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     placeholder="Enter your phone number"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
 
                 {/* Email */}
                 <div suppressHydrationWarning>
-                  <label htmlFor="email-desktop" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email-desktop" className="block text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-2">
                     Email
                   </label>
                   <input
@@ -664,7 +664,7 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     placeholder="Enter your email"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
               </div>
@@ -672,7 +672,7 @@ Please confirm if this date works for you. Thank you!`;
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full mt-4 bg-purple-600 text-white py-3.5 px-6 rounded-lg font-semibold uppercase tracking-wide shadow-lg transition hover:bg-purple-700 hover:shadow-xl"
+                className="w-full mt-4 bg-charcoal text-white py-3.5 px-6 font-medium text-[11px] uppercase tracking-[0.25em] transition hover:bg-charcoal/90"
               >
                 Book Appointment
               </button>

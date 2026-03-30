@@ -13,36 +13,25 @@ export default function CTABanner({
   subtitle = "Book a consultation with our expert team and discover what's possible.",
   buttonText = "Book a Visit",
   buttonHref = "/booking",
-  variant = "gold",
 }: CTABannerProps) {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        className={`${
-          variant === "gold"
-            ? "bg-gradient-to-br from-gold-100 via-gold-50 to-ivory"
-            : "bg-gradient-to-br from-purple-100 via-purple-50 to-ivory"
-        }`}
-      >
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100/20 rounded-full blur-3xl" />
-
-        <div className="mx-auto max-w-4xl px-6 lg:px-12 py-20 lg:py-28 text-center relative z-10">
-          <hr className="divider-gold mx-auto mb-8" />
+    <section className="relative overflow-hidden border-t border-warm-gray-100">
+      <div className="bg-charcoal">
+        <div className="mx-auto max-w-4xl px-6 lg:px-12 py-24 lg:py-32 text-center relative z-10">
+          <hr className="divider-gold mx-auto mb-8" style={{ background: "#B8956A" }} />
           <h2
-            className="text-3xl lg:text-4xl mb-4 text-plum"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-3xl lg:text-[2.75rem] mb-5 text-white font-light leading-[1.1]"
+            style={{ fontFamily: "var(--font-display), serif" }}
           >
             {title}
           </h2>
-          <p className="text-plum-muted text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/50 text-lg mb-10 max-w-2xl mx-auto leading-relaxed font-light">
             {subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={buttonHref}
-              className={variant === "gold" ? "btn-gold" : "btn-purple"}
+              className="inline-flex items-center justify-center px-10 py-4 bg-white text-charcoal text-[11px] font-medium uppercase tracking-[0.15em] transition-all duration-400 hover:bg-bronze hover:text-white"
             >
               {buttonText}
             </Link>
@@ -50,7 +39,7 @@ export default function CTABanner({
               href="https://wa.me/2349159188094"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline"
+              className="inline-flex items-center justify-center px-10 py-4 border border-white/30 text-white text-[11px] font-medium uppercase tracking-[0.15em] transition-all duration-400 hover:border-white hover:bg-white/10"
             >
               Chat on WhatsApp
             </a>

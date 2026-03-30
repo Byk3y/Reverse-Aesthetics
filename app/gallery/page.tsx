@@ -11,43 +11,36 @@ const categories = ["All", "Aesthetics", "Weight Loss", "Dental", "Hair"];
 const galleryItems = [
   {
     category: "Aesthetics",
-    before: "/images/services/dermal-fillers-before.avif",
-    after: "/images/services/dermal-fillers-after.avif",
-    title: "Dermal Fillers",
-    description: "Lip & cheek enhancement — natural volume restored.",
-  },
-  {
-    category: "Aesthetics",
-    before: "/images/services/skin-before.avif",
-    after: "/images/services/skin-after.avif",
-    title: "Skin Rejuvenation",
-    description: "Laser treatment — even-toned, radiant skin achieved.",
-  },
-  {
-    category: "Aesthetics",
-    before: "/images/services/acne-scarring-before.avif",
-    after: "/images/services/acne-scarring-after.avif",
+    before: "/images/services/acne-face.jpg",
+    after: "/images/services/acne-healed-face.jpg",
     title: "Acne Scar Treatment",
     description: "Multi-session protocol — clear, smooth skin restored.",
   },
   {
+    category: "Aesthetics",
+    before: "/images/generated/aesthetics_service.png",
+    after: "/images/generated/aesthetics_service.png",
+    title: "Skin Rejuvenation",
+    description: "Laser treatment — even-toned, radiant skin achieved.",
+  },
+  {
     category: "Dental",
-    before: "/images/services/dental-before.avif",
-    after: "/images/services/dental-after.avif",
+    before: "/images/services/dental.avif",
+    after: "/images/generated/dental_smile.png",
     title: "Smile Makeover",
     description: "Full veneer transformation — Hollywood smile achieved.",
   },
   {
     category: "Hair",
-    before: "/images/services/hair-before.avif",
-    after: "/images/services/hair-after.avif",
-    title: "Hair Transplant",
+    before: "/images/services/hair-services.jpg",
+    after: "/images/services/hair-services-2.jpg",
+    title: "Hair Restoration",
     description: "FUE procedure — natural hairline fully restored.",
   },
   {
     category: "Weight Loss",
-    before: "/images/services/body-before.avif",
-    after: "/images/services/body-after.avif",
+    before: "/images/services/weight-loss-before.jpg",
+    after: "/images/services/weight-loss-after.jpg",
     title: "Body Transformation",
     description: "Medical program — sustainable weight loss achieved.",
   },
@@ -67,39 +60,44 @@ export default function GalleryPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 lg:pt-32 pb-16 bg-ivory">
+      <section className="pt-28 lg:pt-36 pb-16 bg-ivory">
         <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
             Before & After
           </p>
           <h1
-            className="text-plum mb-6"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-charcoal mb-6"
+            style={{ fontFamily: "var(--font-display), serif" }}
           >
             Real results. <span className="italic">Real transformations.</span>
           </h1>
-          <p className="text-plum-muted text-lg leading-relaxed">
+          <p className="text-warm-gray-400 text-lg leading-relaxed font-light">
             Every image tells a story of confidence restored. Hover to see the
             transformation — all results are from actual Reverse Aesthetics patients.
           </p>
         </div>
       </section>
 
-      {/* Filter Tabs */}
+      {/* Filter Tabs — editorial text tabs with underline */}
       <section className="bg-white sticky top-[73px] z-30 border-b border-warm-gray-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="flex gap-2 py-4 overflow-x-auto">
+          <div className="flex gap-8 py-5 overflow-x-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                className={`relative text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap pb-1 ${
                   activeCategory === cat
-                    ? "bg-purple-600 text-white shadow-md"
-                    : "bg-ivory text-plum-muted hover:bg-purple-50 hover:text-purple-600"
+                    ? "text-charcoal"
+                    : "text-warm-gray-300 hover:text-warm-gray-500"
                 }`}
               >
                 {cat}
+                <span
+                  className={`absolute bottom-0 left-0 h-[1px] bg-bronze transition-all duration-300 ${
+                    activeCategory === cat ? "w-full" : "w-0"
+                  }`}
+                />
               </button>
             ))}
           </div>
@@ -134,10 +132,10 @@ export default function GalleryPage() {
                   {/* Before/After Badge */}
                   <div className="absolute top-4 left-4">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
+                      className={`px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] ${
                         hoveredIndex === index
-                          ? "bg-gold text-white"
-                          : "bg-white/90 text-plum"
+                          ? "bg-bronze text-white"
+                          : "bg-white/90 text-charcoal"
                       } transition-all duration-300`}
                     >
                       {hoveredIndex === index ? "After" : "Before"}
@@ -146,7 +144,7 @@ export default function GalleryPage() {
 
                   {/* Category Badge */}
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-plum/70 text-white backdrop-blur-sm">
+                    <span className="px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] bg-charcoal/70 text-white backdrop-blur-sm">
                       {item.category}
                     </span>
                   </div>
@@ -155,12 +153,12 @@ export default function GalleryPage() {
                 {/* Content */}
                 <div className="p-5">
                   <h3
-                    className="text-plum text-lg mb-1"
-                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                    className="text-charcoal text-lg mb-1"
+                    style={{ fontFamily: "var(--font-display), serif" }}
                   >
                     {item.title}
                   </h3>
-                  <p className="text-plum-muted text-sm">{item.description}</p>
+                  <p className="text-warm-gray-400 text-sm font-light">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -168,7 +166,7 @@ export default function GalleryPage() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-plum-muted text-lg">
+              <p className="text-warm-gray-400 text-lg font-light">
                 No results in this category yet. Check back soon!
               </p>
             </div>

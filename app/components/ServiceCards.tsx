@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const services = [
   {
@@ -15,7 +19,7 @@ const services = [
     description:
       "Medical programs, injection support, and body contouring for sustainable, healthy transformation.",
     image: "/images/generated/weightloss_service.png",
-    href: "/clinics",
+    href: "/clinics/weightloss",
     treatments: ["Medical Programs", "Injection Support", "Body Contouring", "Wellness Plans"],
   },
   {
@@ -23,7 +27,7 @@ const services = [
     description:
       "Smile makeovers, whitening, veneers, and gum aesthetics for your most confident smile.",
     image: "/images/services/dental.avif",
-    href: "/clinics",
+    href: "/clinics/dental",
     treatments: ["Teeth Whitening", "Veneers", "Smile Design", "Gum Contouring"],
   },
   {
@@ -31,90 +35,111 @@ const services = [
     description:
       "Transplant, regeneration, and hair health optimization with surgical and non-surgical solutions.",
     image: "/images/services/hair-services.jpg",
-    href: "/clinics",
+    href: "/clinics/hair",
     treatments: ["Hair Transplant", "Beard & Eyebrow", "PRP Therapy", "Scalp Treatments"],
   },
 ];
+
+function ServiceSpread({
+  service,
+  index,
+}: {
+  service: (typeof services)[number];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const reversed = index % 2 !== 0;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay: 0.1 }}
+    >
+      <Link
+        href={service.href}
+        className={`group flex flex-col ${
+          reversed ? "lg:flex-row-reverse" : "lg:flex-row"
+        } border-b border-warm-gray-100`}
+      >
+        {/* Image — 55% width on desktop */}
+        <div className="relative w-full lg:w-[55%] h-72 lg:h-[480px] overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: imageY }}>
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              loading="lazy"
+            />
+          </motion.div>
+        </div>
+
+        {/* Content — 45% width on desktop */}
+        <div className="w-full lg:w-[45%] flex flex-col justify-center px-6 py-10 lg:px-14 xl:px-20 lg:py-0">
+          {/* Number label */}
+          <span className="text-[11px] font-medium tracking-[0.3em] text-bronze mb-4">
+            0{index + 1}
+          </span>
+
+          <h3
+            className="text-3xl lg:text-4xl xl:text-[2.75rem] font-light text-charcoal leading-[1.1] mb-5"
+            style={{ fontFamily: "var(--font-display), serif" }}
+          >
+            {service.title}
+          </h3>
+
+          <p className="text-base text-warm-gray-400 font-light leading-relaxed mb-6">
+            {service.description}
+          </p>
+
+          {/* Treatment tags — editorial inline */}
+          <p className="text-[11px] uppercase tracking-[0.15em] text-warm-gray-300 mb-8">
+            {service.treatments.join(" / ")}
+          </p>
+
+          {/* Explore link — underline reveal */}
+          <span className="relative inline-block text-[11px] font-medium uppercase tracking-[0.2em] text-charcoal w-fit">
+            Explore
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-bronze group-hover:w-full transition-all duration-400" />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
 
 export default function ServiceCards() {
   return (
     <section className="section-padding bg-ivory">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-14">
-          <hr className="divider-gold mx-auto mb-6" />
+        <div className="text-center mb-16 lg:mb-20 lg:px-12">
+          <hr className="divider-gold mx-auto mb-7" />
           <h2
-            className="text-plum mb-4"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-charcoal mb-4"
+            style={{ fontFamily: "var(--font-display), serif" }}
           >
             Our Clinics
           </h2>
-          <p className="text-plum-muted text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-warm-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-light">
             Four specialist clinics under one roof, each led by accredited professionals
             delivering world-class results.
           </p>
         </div>
 
-        {/* Service Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {services.map((service) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className="card-luxury group flex flex-col"
-            >
-              {/* Image */}
-              <div className="relative h-64 lg:h-72 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-plum/40 to-transparent" />
-                <h3
-                  className="absolute bottom-4 left-6 text-white text-2xl"
-                  style={{ fontFamily: "var(--font-playfair), serif" }}
-                >
-                  {service.title}
-                </h3>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-1">
-                <p className="text-plum-muted text-sm leading-relaxed mb-4">
-                  {service.description}
-                </p>
-
-                {/* Treatment Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {service.treatments.map((treatment) => (
-                    <span
-                      key={treatment}
-                      className="text-xs bg-purple-50 text-purple-600 px-3 py-1 rounded-full font-medium"
-                    >
-                      {treatment}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Explore Link */}
-                <div className="mt-auto flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wide group-hover:gap-3 transition-all duration-300">
-                  <span>Explore</span>
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
+        {/* Editorial Spreads */}
+        <div className="flex flex-col">
+          {services.map((service, index) => (
+            <ServiceSpread key={service.title} service={service} index={index} />
           ))}
         </div>
       </div>

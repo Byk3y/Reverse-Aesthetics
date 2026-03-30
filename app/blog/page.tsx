@@ -46,19 +46,19 @@ export default function BlogPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 lg:pt-32 pb-16 bg-ivory border-b border-warm-gray-100">
+      <section className="pt-28 lg:pt-36 pb-16 bg-ivory border-b border-warm-gray-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
+            <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
               The Journal
             </p>
             <h1
-              className="text-plum mb-6 text-4xl lg:text-5xl"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
+              className="text-charcoal mb-6 text-4xl lg:text-5xl font-light"
+              style={{ fontFamily: "var(--font-display), serif" }}
             >
               <span className="italic">Expert insights</span> on aesthetics, wellness, and beauty.
             </h1>
-            <p className="text-plum-muted text-lg leading-relaxed">
+            <p className="text-warm-gray-400 text-lg leading-relaxed font-light">
               Educational resources, treatment guides, and clinical advice written
               by our medical team.
             </p>
@@ -66,22 +66,22 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Featured Post (First item) */}
+      {/* Featured Post */}
       <section className="section-padding bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Image */}
-            <Link href={`/blog/${posts[0].slug}`} className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group block">
+            <Link href={`/blog/${posts[0].slug}`} className="relative aspect-[4/3] overflow-hidden group block">
               <Image
                 src={posts[0].image}
                 alt={posts[0].title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                <span className="text-xs font-semibold text-plum uppercase tracking-wider">
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1">
+                <span className="text-[10px] font-medium text-charcoal uppercase tracking-[0.2em]">
                   Featured
                 </span>
               </div>
@@ -89,28 +89,28 @@ export default function BlogPage() {
 
             {/* Content */}
             <div className="flex flex-col justify-center">
-              <div className="flex items-center gap-3 text-xs text-gold font-medium uppercase tracking-widest mb-4">
-                <span>{posts[0].category}</span>
-                <span className="w-1 h-1 rounded-full bg-warm-gray-300" />
-                <span className="text-plum-muted">{posts[0].date}</span>
+              <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] mb-5">
+                <span className="text-bronze font-medium">{posts[0].category}</span>
+                <span className="w-1 h-1 rounded-full bg-warm-gray-200" />
+                <span className="text-warm-gray-400">{posts[0].date}</span>
               </div>
               <h2
-                className="text-3xl lg:text-4xl text-plum mb-4 hover:text-purple-600 transition-colors"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
+                className="text-3xl lg:text-4xl text-charcoal mb-4 font-light hover:text-bronze transition-colors"
+                style={{ fontFamily: "var(--font-display), serif" }}
               >
                 <Link href={`/blog/${posts[0].slug}`}>
                   {posts[0].title}
                 </Link>
               </h2>
-              <p className="text-plum-muted text-lg leading-relaxed mb-8">
+              <p className="text-warm-gray-400 text-lg leading-relaxed mb-8 font-light">
                 {posts[0].excerpt}
               </p>
-              
+
               <div className="flex items-center gap-4">
                 <Link href={`/blog/${posts[0].slug}`} className="btn-outline">
                   Read Article
                 </Link>
-                <span className="text-sm text-plum-muted">{posts[0].readingTime}</span>
+                <span className="text-sm text-warm-gray-300">{posts[0].readingTime}</span>
               </div>
             </div>
           </div>
@@ -121,12 +121,12 @@ export default function BlogPage() {
       <section className="pb-24 lg:pb-32 bg-white border-t border-warm-gray-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-12 pt-16">
           <h3
-            className="text-2xl text-plum mb-10"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-2xl text-charcoal mb-10 font-light"
+            style={{ fontFamily: "var(--font-display), serif" }}
           >
             Latest Articles
           </h3>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.slice(1).map((post) => (
               <article
@@ -134,16 +134,16 @@ export default function BlogPage() {
                 className="group cursor-pointer flex flex-col h-full"
               >
                 {/* Image */}
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6">
+                <div className="relative aspect-[4/3] overflow-hidden mb-6">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
-                    <span className="text-xs font-semibold text-plum uppercase tracking-wider">
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1">
+                    <span className="text-[10px] font-medium text-charcoal uppercase tracking-[0.2em]">
                       {post.category}
                     </span>
                   </div>
@@ -151,38 +151,30 @@ export default function BlogPage() {
 
                 {/* Content */}
                 <div className="flex flex-col flex-grow">
-                  <div className="flex items-center gap-2 text-xs text-plum-muted uppercase tracking-widest mb-3">
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-warm-gray-400 mb-3">
                     <span>{post.date}</span>
                     <span className="w-1 h-1 rounded-full bg-warm-gray-200" />
                     <span>{post.readingTime}</span>
                   </div>
                   <h4
-                    className="text-xl text-plum mb-3 group-hover:text-purple-600 transition-colors"
-                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                    className="text-xl text-charcoal mb-3 font-light group-hover:text-bronze transition-colors"
+                    style={{ fontFamily: "var(--font-display), serif" }}
                   >
                     <Link href={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
                   </h4>
-                  <p className="text-plum-muted text-sm leading-relaxed line-clamp-3 mb-6 flex-grow">
+                  <p className="text-warm-gray-400 text-sm leading-relaxed line-clamp-3 mb-6 flex-grow font-light">
                     {post.excerpt}
                   </p>
-                  
+
                   <div className="mt-auto">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="text-gold font-semibold text-sm uppercase tracking-wide inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
+                      className="relative inline-block text-[11px] font-medium text-charcoal uppercase tracking-[0.2em]"
                     >
                       Read More
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                      </svg>
+                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-bronze group-hover:w-full transition-all duration-400" />
                     </Link>
                   </div>
                 </div>
@@ -193,7 +185,6 @@ export default function BlogPage() {
       </section>
 
       <CTABanner
-        variant="gold"
         title="Ready to start your journey?"
         subtitle="Consult with our experts for professional, medically-sound advice."
       />

@@ -1,18 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 
-const inter = Inter({
-  variable: "--font-inter",
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
+const dmSans = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
-  style: ["italic", "normal"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
@@ -165,10 +174,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${playfairDisplay.variable} antialiased`}
+        className={`${cormorantGaramond.variable} ${dmSans.variable} ${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
-        <div suppressHydrationWarning>
+        <div suppressHydrationWarning className="overflow-x-clip">
           <AppointmentProvider>
             {children}
           </AppointmentProvider>

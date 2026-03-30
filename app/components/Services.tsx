@@ -68,7 +68,7 @@ export default function Services() {
     servicesWithBeforeAfter.forEach((title, index) => {
       // Stagger the initial start time for each service (1 second apart)
       const initialDelay = index * 1000;
-      
+
       // Set initial timeout to start the first transition
       timeoutRefs.current[title] = setTimeout(() => {
         setShowAfter((prev) => ({
@@ -96,10 +96,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="pt-20 pb-12 md:py-20 bg-gradient-to-b from-white via-purple-50/30 to-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-purple-100/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-rose-100/20 rounded-full blur-3xl" />
+    <section id="services" className="pt-20 pb-12 md:py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -108,10 +105,11 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">What We Offer</p>
+          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto">
             Discover our comprehensive range of aesthetic treatments designed to enhance your natural beauty
           </p>
         </motion.div>
@@ -124,11 +122,11 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col h-full"
+              className="bg-white border border-warm-gray-100 overflow-hidden hover:border-bronze transition-colors duration-300 group flex flex-col h-full"
             >
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                
+
                 {/* Before/After Transition for services with before/after images */}
                 {service.hasBeforeAfter && service.beforeImage && service.afterImage ? (
                   <>
@@ -157,12 +155,12 @@ export default function Services() {
                       }}
                     />
                     {/* Before/After Labels */}
-                    <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium z-20 transition-opacity duration-500"
+                    <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 text-xs font-medium z-20 transition-opacity duration-500"
                       style={{ opacity: showAfter[service.title] ? 0 : 1 }}
                     >
                       Before
                     </div>
-                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium z-20 transition-opacity duration-500"
+                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 text-xs font-medium z-20 transition-opacity duration-500"
                       style={{ opacity: showAfter[service.title] ? 1 : 0 }}
                     >
                       After
@@ -179,14 +177,14 @@ export default function Services() {
                     loading="lazy"
                   />
                 )}
-                
-                <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white z-20">
+
+                <h3 className="absolute bottom-4 left-4 text-2xl font-light text-white z-20" style={{ fontFamily: 'var(--font-display), serif' }}>
                   {service.title}
                 </h3>
               </div>
 
               <div className="p-6 flex flex-col flex-1">
-                <p className="text-gray-600 mb-4">
+                <p className="text-warm-gray-400 font-light mb-4">
                   {service.description}
                 </p>
 
@@ -194,10 +192,10 @@ export default function Services() {
                   {service.treatments.map((treatment) => (
                     <div
                       key={treatment}
-                      className="flex items-center text-sm text-gray-700"
+                      className="flex items-center text-sm text-charcoal font-light"
                     >
                       <svg
-                        className="w-4 h-4 mr-2 text-[#D4A574]"
+                        className="w-4 h-4 mr-2 text-bronze"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -212,7 +210,7 @@ export default function Services() {
                   ))}
                 </div>
 
-                <button className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors duration-300 mt-auto">
+                <button className="w-full bg-charcoal text-white py-3 hover:bg-charcoal/90 transition-colors duration-300 mt-auto">
                   Learn More
                 </button>
               </div>

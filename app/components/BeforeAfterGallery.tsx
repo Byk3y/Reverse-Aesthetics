@@ -66,10 +66,7 @@ export default function BeforeAfterGallery() {
     : galleries.filter(item => item.category === selectedCategory);
 
   return (
-    <section id="gallery" className="py-20 bg-gradient-to-b from-white via-rose-50/20 to-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-20 w-96 h-96 bg-purple-100/15 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-20 w-80 h-80 bg-rose-100/15 rounded-full blur-3xl" />
+    <section id="gallery" className="py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,10 +75,11 @@ export default function BeforeAfterGallery() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">Gallery</p>
+          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
             Real Results
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto mb-8">
             See the transformative results our clients have achieved
           </p>
 
@@ -91,10 +89,10 @@ export default function BeforeAfterGallery() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-2 font-medium transition-all duration-300 text-sm ${
                   selectedCategory === category
-                    ? 'bg-purple-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-charcoal text-white'
+                    : 'bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100'
                 }`}
               >
                 {category}
@@ -113,7 +111,7 @@ export default function BeforeAfterGallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-white border border-warm-gray-100 overflow-hidden hover:border-bronze transition-colors duration-300"
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
@@ -145,22 +143,22 @@ export default function BeforeAfterGallery() {
                     </motion.div>
 
                     {/* Before/After Labels */}
-                    <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 text-sm font-medium">
                       Before
                     </div>
-                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 text-sm font-medium">
                       After
                     </div>
 
                     {/* Divider Line */}
                     <motion.div
-                      className="absolute top-0 h-full w-1 bg-white shadow-lg"
+                      className="absolute top-0 h-full w-1 bg-white shadow-sm"
                       initial={{ left: '50%' }}
                       animate={{ left: hoveredId === item.id ? '100%' : '50%' }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white shadow-sm flex items-center justify-center">
+                        <svg className="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
                         </svg>
                       </div>
@@ -169,13 +167,13 @@ export default function BeforeAfterGallery() {
                 </div>
 
                 <div className="p-6">
-                  <div className="inline-block px-3 py-1 bg-[#D4A574]/10 text-[#D4A574] rounded-full text-sm font-medium mb-3">
+                  <div className="inline-block px-3 py-1 bg-bronze/10 text-bronze text-[11px] font-medium uppercase tracking-[0.25em] mb-3">
                     {item.category}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-light text-charcoal mb-2" style={{ fontFamily: 'var(--font-display), serif' }}>
                     {item.treatment}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-warm-gray-400 font-light">
                     {item.description}
                   </p>
                 </div>
@@ -191,10 +189,10 @@ export default function BeforeAfterGallery() {
           transition={{ duration: 0.6 }}
           className="text-center mt-12"
         >
-          <p className="text-gray-600 mb-6">
+          <p className="text-warm-gray-400 font-light mb-6">
             Results may vary. Individual results depend on various factors including skin type, age, and lifestyle.
           </p>
-          <button className="bg-purple-600 text-white px-8 py-4 rounded-lg hover:bg-purple-700 transition-colors duration-300 font-medium">
+          <button className="bg-charcoal text-white px-8 py-4 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
             Schedule Your Consultation
           </button>
         </motion.div>
