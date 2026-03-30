@@ -17,7 +17,7 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <Image
-            src="/images/hero/hero-home.jpg"
+            src="/images/hero/hero-home.avif"
             alt="Professional aesthetic treatment at Reverse Aesthetics clinic in Lagos"
             fill
             className="object-cover"
@@ -95,7 +95,7 @@ export default function Hero() {
         {/* Image Section */}
         <div className="relative h-[55vh] min-h-[360px]">
           <Image
-            src="/images/generated/hero_mobile.png"
+            src="/images/generated/hero_mobile.avif"
             alt="Professional aesthetic treatment at Reverse Aesthetics clinic in Lagos"
             fill
             className="object-cover object-center"

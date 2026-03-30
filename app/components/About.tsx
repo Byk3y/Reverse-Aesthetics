@@ -101,7 +101,7 @@ export default function About({ compact = false }: { compact?: boolean }) {
             className="relative h-[500px] overflow-hidden border border-warm-gray-100"
           >
             <Image
-              src="/images/about/clinic.png"
+              src="/images/about/clinic.avif"
               alt="Reverse Aesthetics Clinic"
               fill
               className="object-cover"

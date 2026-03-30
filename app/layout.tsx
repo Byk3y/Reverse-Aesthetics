@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     siteName: 'Reverse Aesthetics',
     images: [
       {
-        url: '/images/about/clinic.png',
+        url: '/images/about/clinic.avif',
         width: 1200,
         height: 630,
         alt: 'Reverse Aesthetics Clinic - Lagos & Abuja',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Reverse Aesthetics | Natural Transformations in Lagos & Abuja',
     description: "Nigeria's leading aesthetics, dermatology, weight loss, dental, and hair clinic. Safe, natural results with expert care.",
-    images: ['/images/about/clinic.png'],
+    images: ['/images/about/clinic.avif'],
     creator: '@reverseaesthetics',
   },
   robots: {
@@ -109,8 +109,8 @@ export default function RootLayout({
     telephone: '+2349159188094',
     email: 'reverseaestheticsng@gmail.com',
     priceRange: '$$',
-    image: 'https://reverseaesthetic.com/images/about/clinic.png',
-    logo: 'https://reverseaesthetic.com/images/about/clinic.png',
+    image: 'https://reverseaesthetic.com/images/about/clinic.avif',
+    logo: 'https://reverseaesthetic.com/images/about/clinic.avif',
     founder: {
       '@type': 'Person',
       name: 'Dr. Ral Abana',

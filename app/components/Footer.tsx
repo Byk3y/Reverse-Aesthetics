@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-charcoal text-white/70">
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-6 lg:px-12 py-20 lg:py-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link
@@ -74,6 +74,32 @@ export default function Footer() {
                 { href: "/blog", label: "Blog" },
                 { href: "/booking", label: "Book Appointment" },
                 { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-white/50 hover:text-bronze text-sm transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Popular Treatments */}
+          <div>
+            <h4 className="text-[11px] font-light uppercase tracking-[0.25em] text-white/35 mb-7">
+              Popular Treatments
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { href: "/treatments", label: "All Treatments" },
+                { href: "/treatments/botox-and-dermal-fillers-lagos", label: "Botox & Fillers" },
+                { href: "/treatments/hair-transplant-nigeria", label: "Hair Transplant" },
+                { href: "/treatments/medical-weight-loss-lagos", label: "Weight Loss" },
+                { href: "/treatments/dental-aesthetics-lagos", label: "Dental Aesthetics" },
+                { href: "/treatments/hifu-skin-tightening-nigeria", label: "HIFU Skin Tightening" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

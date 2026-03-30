@@ -78,7 +78,7 @@ export default function WellnessClinic() {
 
             <div className="relative aspect-[4/5] overflow-hidden order-1 lg:order-2 rounded-sm">
               <Image
-                src="/images/generated/hero_mobile.png"
+                src="/images/generated/hero_mobile.avif"
                 alt="IV Therapy Lounge"
                 fill
                 className="object-cover"
@@ -119,8 +119,8 @@ export default function WellnessClinic() {
               </div>
               <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
                 <span className="text-charcoal font-semibold">From ₦75,000</span>
-                <Link href="/booking" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Book Session
+                <Link href="/treatments/iv-glow-therapy-lagos" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
+                  Learn More
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </Link>
               </div>
@@ -141,8 +141,8 @@ export default function WellnessClinic() {
               </div>
               <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
                 <span className="text-charcoal font-semibold">From ₦150,000</span>
-                <Link href="/booking" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Book Session
+                <Link href="/treatments/iv-glow-therapy-lagos" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
+                  Learn More
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </Link>
               </div>

@@ -23,6 +23,7 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
+    { href: "/treatments", label: "Treatments" },
     { href: "/clinics", label: "Clinics" },
     { href: "/gallery", label: "Gallery" },
     { href: "/blog", label: "Blog" },
@@ -33,6 +34,8 @@ export default function Header() {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  const isDarkPage = pathname === "/" || pathname.startsWith("/treatments") || pathname.startsWith("/locations");
 
   return (
     <header
@@ -47,7 +50,13 @@ export default function Header() {
           {/* Logo — Editorial: uppercase tracked + italic lowercase accent */}
           <Link
             href="/"
-            className={`text-lg lg:text-xl font-bold uppercase tracking-[0.05em] transition-colors duration-300 ${isScrolled ? "text-charcoal" : "text-white lg:text-charcoal"}`}
+            className={`text-lg lg:text-xl font-bold uppercase tracking-[0.05em] transition-colors duration-300 ${
+              isScrolled 
+                ? "text-charcoal" 
+                : isDarkPage 
+                  ? "text-white lg:text-charcoal" 
+                  : "text-charcoal"
+            }`}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Reverse{" "}
@@ -65,17 +74,29 @@ export default function Header() {
           >
             <span
               className={`w-6 h-[2px] transition-all duration-300 ${
-                isMenuOpen ? "rotate-45 translate-y-[9px] bg-charcoal" : isScrolled ? "bg-charcoal" : "bg-white"
+                isMenuOpen 
+                  ? "rotate-45 translate-y-[9px] bg-charcoal" 
+                  : isScrolled || !isDarkPage
+                    ? "bg-charcoal" 
+                    : "bg-white"
               }`}
             />
             <span
               className={`w-6 h-[2px] transition-all duration-300 ${
-                isMenuOpen ? "opacity-0" : isScrolled ? "bg-charcoal" : "bg-white"
+                isMenuOpen 
+                  ? "opacity-0" 
+                  : isScrolled || !isDarkPage
+                    ? "bg-charcoal" 
+                    : "bg-white"
               }`}
             />
             <span
               className={`w-6 h-[2px] transition-all duration-300 ${
-                isMenuOpen ? "-rotate-45 -translate-y-[9px] bg-charcoal" : isScrolled ? "bg-charcoal" : "bg-white"
+                isMenuOpen 
+                  ? "-rotate-45 -translate-y-[9px] bg-charcoal" 
+                  : isScrolled || !isDarkPage
+                    ? "bg-charcoal" 
+                    : "bg-white"
               }`}
             />
           </button>

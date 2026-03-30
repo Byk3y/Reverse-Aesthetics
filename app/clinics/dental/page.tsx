@@ -78,7 +78,7 @@ export default function DentalClinic() {
 
             <div className="relative aspect-[4/5] overflow-hidden order-1 lg:order-2 rounded-sm">
               <Image
-                src="/images/generated/dental_smile.png"
+                src="/images/generated/dental_smile.avif"
                 alt="Dental Aesthetics"
                 fill
                 className="object-cover"
@@ -119,8 +119,8 @@ export default function DentalClinic() {
               </div>
               <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
                 <span className="text-charcoal font-semibold">From ₦80,000</span>
-                <Link href="/booking" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Book Consult
+                <Link href="/treatments/dental-aesthetics-lagos" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
+                  Learn More
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </Link>
               </div>

@@ -44,7 +44,7 @@ export default function HairClinic() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
-                src="/images/generated/hair_restoration.png"
+                src="/images/generated/hair_restoration.avif"
                 alt="Hair Restoration Therapy"
                 fill
                 className="object-cover"
@@ -117,8 +117,8 @@ export default function HairClinic() {
               </div>
               <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
                 <span className="text-charcoal font-semibold">From ₦120,000 / session</span>
-                <Link href="/booking" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Book Consult
+                <Link href="/treatments/hair-transplant-nigeria" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
+                  Learn More
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </Link>
               </div>

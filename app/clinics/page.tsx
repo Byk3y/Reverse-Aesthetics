@@ -16,7 +16,7 @@ const clinics = [
     tagline: "Your skin, perfected.",
     description:
       "Our flagship clinic specializes in advanced skincare, injectables, skin tightening, and glow treatments. From acne management to anti-aging protocols, every treatment is tailored to your unique complexion and goals.",
-    image: "/images/generated/aesthetics_service.png",
+    image: "/images/generated/aesthetics_service.avif",
     treatments: [
       "Botox & Dermal Fillers",
       "HIFU Skin Tightening",
@@ -33,7 +33,7 @@ const clinics = [
     tagline: "Transform your body, sustainably.",
     description:
       "Our medical weight loss programs combine prescription support, nutritional guidance, body contouring, and ongoing supervision for results that last. Every program is physician-led and tailored to your body.",
-    image: "/images/generated/weightloss_service.png",
+    image: "/images/generated/weightloss_service.avif",
     treatments: [
       "Medical Weight Programs",
       "Injection Support (Saxenda, etc.)",
@@ -48,7 +48,7 @@ const clinics = [
     tagline: "Smile with absolute confidence.",
     description:
       "Our dental aesthetics clinic delivers smile makeovers that look completely natural. From whitening to full veneer transformations, we combine artistry with dental precision.",
-    image: "/images/generated/dental_smile.png",
+    image: "/images/generated/dental_smile.avif",
     treatments: [
       "Teeth Whitening",
       "Porcelain Veneers",
@@ -63,7 +63,7 @@ const clinics = [
     tagline: "Reclaim your crown.",
     description:
       "Surgical and non-surgical solutions for hair loss. Whether it's FUE transplant, PRP therapy, or scalp regeneration, our specialists help you regain natural, full hair.",
-    image: "/images/generated/hair_restoration.png",
+    image: "/images/generated/hair_restoration.avif",
     treatments: [
       "FUE Hair Transplant",
       "Beard Transplant",
@@ -156,6 +156,9 @@ export default function ClinicsPage() {
 
                   <Link href="/booking" className="btn-gold">
                     Book a Consultation
+                  </Link>
+                  <Link href="/treatments" className="btn-outline ml-4">
+                    View All Treatments
                   </Link>
                 </div>
               </div>

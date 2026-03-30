@@ -19,8 +19,8 @@ const services: Service[] = [
     title: 'Aesthetics & Dermatology',
     description: 'Advanced skincare, injectables, skin tightening, and glow treatments.',
     image: '/images/services/aesthetics.jpg',
-    beforeImage: '/images/services/acne-face.jpg',
-    afterImage: '/images/services/acne-healed-face.jpg',
+    beforeImage: '/images/services/acne-face.avif',
+    afterImage: '/images/services/acne-healed-face.avif',
     hasBeforeAfter: true,
     treatments: ['Botox & Fillers', 'HIFU & Thread Lift', 'Laser & RF', 'Acne Treatment', 'Chemical Peels', 'Hydradermabrasion']
   },
@@ -28,8 +28,8 @@ const services: Service[] = [
     title: 'Weight Loss',
     description: 'Medical programs, injection support, and body contouring.',
     image: '/images/services/weightloss.jpg',
-    beforeImage: '/images/services/weight-loss-before.jpg',
-    afterImage: '/images/services/weight-loss-after.jpg',
+    beforeImage: '/images/services/weight-loss-before.avif',
+    afterImage: '/images/services/weight-loss-after.avif',
     hasBeforeAfter: true,
     treatments: ['Medical Weight Loss', 'Injection Support', 'Body Contouring', 'Skin Firming', 'Wellness Programs']
   },
@@ -42,7 +42,7 @@ const services: Service[] = [
   {
     title: 'Hair',
     description: 'Transplant, regeneration, and hair health optimization.',
-    image: '/images/services/hair-services.jpg',
+    image: '/images/services/hair-services.avif',
     treatments: ['Hair Transplant', 'Beard & Eyebrow', 'Hair Regeneration', 'Hairline Design', 'Scalp Treatments']
   }
 ];

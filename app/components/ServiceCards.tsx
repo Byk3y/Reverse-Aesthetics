@@ -4,23 +4,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const services = [
   {
     title: "Aesthetics & Dermatology",
     description:
       "Advanced skincare, injectables, skin tightening, and glow treatments tailored to your unique complexion.",
-    image: "/images/generated/aesthetics_service.png",
+    image: "/images/generated/aesthetics_service.avif",
     href: "/clinics/aesthetics",
-    treatments: ["Botox & Fillers", "HIFU & Thread Lift", "Laser Treatments", "Chemical Peels"],
+    treatmentLinks: [
+      { label: "Botox & Fillers", href: "/treatments/botox-and-dermal-fillers-lagos" },
+      { label: "HIFU & Skin Tightening", href: "/treatments/hifu-skin-tightening-nigeria" },
+      { label: "Laser Treatments", href: "/treatments/laser-skin-resurfacing-lagos" },
+      { label: "IV Glow Therapy", href: "/treatments/iv-glow-therapy-lagos" },
+    ],
   },
   {
     title: "Weight Loss",
     description:
       "Medical programs, injection support, and body contouring for sustainable, healthy transformation.",
-    image: "/images/generated/weightloss_service.png",
+    image: "/images/generated/weightloss_service.avif",
     href: "/clinics/weightloss",
-    treatments: ["Medical Programs", "Injection Support", "Body Contouring", "Wellness Plans"],
+    treatmentLinks: [
+      { label: "Medical Programs", href: "/treatments/medical-weight-loss-lagos" },
+      { label: "Injection Support", href: "/treatments/medical-weight-loss-lagos" },
+      { label: "Body Contouring", href: "/treatments/medical-weight-loss-lagos" },
+    ],
   },
   {
     title: "Dental Aesthetics",
@@ -28,15 +38,23 @@ const services = [
       "Smile makeovers, whitening, veneers, and gum aesthetics for your most confident smile.",
     image: "/images/services/dental.avif",
     href: "/clinics/dental",
-    treatments: ["Teeth Whitening", "Veneers", "Smile Design", "Gum Contouring"],
+    treatmentLinks: [
+      { label: "Teeth Whitening", href: "/treatments/dental-aesthetics-lagos" },
+      { label: "Veneers", href: "/treatments/dental-aesthetics-lagos" },
+      { label: "Smile Design", href: "/treatments/dental-aesthetics-lagos" },
+    ],
   },
   {
     title: "Hair Restoration",
     description:
       "Transplant, regeneration, and hair health optimization with surgical and non-surgical solutions.",
-    image: "/images/services/hair-services.jpg",
+    image: "/images/services/hair-services.avif",
     href: "/clinics/hair",
-    treatments: ["Hair Transplant", "Beard & Eyebrow", "PRP Therapy", "Scalp Treatments"],
+    treatmentLinks: [
+      { label: "Hair Transplant", href: "/treatments/hair-transplant-nigeria" },
+      { label: "PRP Therapy", href: "/treatments/hair-transplant-nigeria" },
+      { label: "Scalp Treatments", href: "/treatments/hair-transplant-nigeria" },
+    ],
   },
 ];
 
@@ -48,6 +66,7 @@ function ServiceSpread({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -63,11 +82,11 @@ function ServiceSpread({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: 0.1 }}
     >
-      <Link
-        href={service.href}
+      <div
+        onClick={() => router.push(service.href)}
         className={`group flex flex-col ${
           reversed ? "lg:flex-row-reverse" : "lg:flex-row"
-        } border-b border-warm-gray-100`}
+        } border-b border-warm-gray-100 cursor-pointer`}
       >
         {/* Image — 55% width on desktop */}
         <div className="relative w-full lg:w-[55%] h-72 lg:h-[480px] overflow-hidden">
@@ -101,18 +120,33 @@ function ServiceSpread({
             {service.description}
           </p>
 
-          {/* Treatment tags — editorial inline */}
+          {/* Treatment tags — linked to spoke pages */}
           <p className="text-[11px] uppercase tracking-[0.15em] text-warm-gray-300 mb-8">
-            {service.treatments.join(" / ")}
+            {service.treatmentLinks.map((link, i) => (
+              <span key={link.label}>
+                <Link
+                  href={link.href}
+                  onClick={(e) => e.stopPropagation()}
+                  className="hover:text-bronze transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+                {i < service.treatmentLinks.length - 1 && <span> / </span>}
+              </span>
+            ))}
           </p>
 
           {/* Explore link — underline reveal */}
-          <span className="relative inline-block text-[11px] font-medium uppercase tracking-[0.2em] text-charcoal w-fit">
+          <Link
+            href={service.href}
+            onClick={(e) => e.stopPropagation()}
+            className="relative inline-block text-[11px] font-medium uppercase tracking-[0.2em] text-charcoal w-fit"
+          >
             Explore
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-bronze group-hover:w-full transition-all duration-400" />
-          </span>
+          </Link>
         </div>
-      </Link>
+      </div>
     </motion.div>
   );
 }

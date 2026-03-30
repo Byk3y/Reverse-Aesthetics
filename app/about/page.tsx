@@ -43,7 +43,7 @@ export default function AboutPage() {
             {/* Image */}
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
-                src="/images/generated/founder_portrait.png"
+                src="/images/generated/founder_portrait.avif"
                 alt="Dr. Ral Abana - Founder of Reverse Aesthetics"
                 fill
                 className="object-cover"
@@ -170,7 +170,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16">
           <div className="relative aspect-[21/9] overflow-hidden">
             <Image
-              src="/images/about/clinic.png"
+              src="/images/about/clinic.avif"
               alt="Reverse Aesthetics clinic interior in Lagos"
               fill
               className="object-cover"

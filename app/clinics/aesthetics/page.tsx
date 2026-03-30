@@ -11,25 +11,29 @@ const aestheticTreatments = [
     name: "Botox & Dermal Fillers",
     description: "Restore volume, smooth wrinkles, and enhance facial contours with premium injectables.",
     price: "From ₦150,000",
-    image: "/images/generated/aesthetics_service.png",
+    image: "/images/generated/aesthetics_service.avif",
+    href: "/treatments/botox-and-dermal-fillers-lagos",
   },
   {
     name: "HIFU Skin Tightening",
     description: "Non-surgical facelift using High-Intensity Focused Ultrasound to lift and tighten the skin.",
     price: "From ₦250,000",
-    image: "/images/generated/testimonial_patient.png",
+    image: "/images/generated/testimonial_patient.avif",
+    href: "/treatments/hifu-skin-tightening-nigeria",
   },
   {
     name: "Laser Skin Resurfacing",
     description: "Advanced laser technology to treat pigmentation, acne scars, and uneven skin tone.",
     price: "From ₦180,000",
-    image: "/images/generated/clinic_interior.png",
+    image: "/images/generated/clinic_interior.avif",
+    href: "/treatments/laser-skin-resurfacing-lagos",
   },
   {
     name: "IV Glow Therapy",
     description: "Intravenous vitamin and antioxidant infusions for deep hydration and a radiant complexion.",
     price: "From ₦85,000",
-    image: "/images/generated/aesthetics_service.png",
+    image: "/images/generated/aesthetics_service.avif",
+    href: "/treatments/iv-glow-therapy-lagos",
   },
 ];
 
@@ -101,8 +105,8 @@ export default function AestheticsPage() {
                   </div>
 
                   <div>
-                    <Link href="/booking" className="btn-outline">
-                      Book Consultation
+                    <Link href={treatment.href} className="btn-outline">
+                      Learn More
                     </Link>
                   </div>
                 </div>

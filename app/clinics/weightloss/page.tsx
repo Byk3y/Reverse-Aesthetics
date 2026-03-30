@@ -44,7 +44,7 @@ export default function WeightlossClinic() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
-                src="/images/generated/weightloss_service.png"
+                src="/images/generated/weightloss_service.avif"
                 alt="Medical Weightloss Consultation"
                 fill
                 className="object-cover"
@@ -119,8 +119,8 @@ export default function WeightlossClinic() {
               </div>
               <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
                 <span className="text-charcoal font-semibold">From ₦350,000 / month</span>
-                <Link href="/booking" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Book Consult
+                <Link href="/treatments/medical-weight-loss-lagos" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
+                  Learn More
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </Link>
               </div>

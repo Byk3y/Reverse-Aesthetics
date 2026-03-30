@@ -17,7 +17,7 @@ const posts = [
     category: "Skincare",
     date: "March 15, 2026",
     readingTime: "4 min read",
-    image: "/images/generated/blog_skincare.png",
+    image: "/images/generated/blog_skincare.avif",
     slug: "understanding-skin-barrier",
   },
   {
@@ -26,7 +26,7 @@ const posts = [
     category: "Wellness",
     date: "March 02, 2026",
     readingTime: "6 min read",
-    image: "/images/generated/blog_wellness.png",
+    image: "/images/generated/blog_wellness.avif",
     slug: "gut-health-and-skin",
   },
   {
@@ -35,7 +35,7 @@ const posts = [
     category: "Dental Aesthetics",
     date: "February 20, 2026",
     readingTime: "5 min read",
-    image: "/images/generated/blog_dental.png",
+    image: "/images/generated/blog_dental.avif",
     slug: "veneers-vs-bonding",
   },
 ];
