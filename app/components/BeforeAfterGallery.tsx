@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const galleries = [
@@ -57,13 +58,15 @@ const galleries = [
 
 const categories = ['All', 'Botox & Fillers', 'Laser Treatments', 'Skin Treatments', 'Body Contouring'];
 
-export default function BeforeAfterGallery() {
+export default function BeforeAfterGallery({ compact = false }: { compact?: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const filteredGalleries = selectedCategory === 'All'
     ? galleries
     : galleries.filter(item => item.category === selectedCategory);
+
+  const displayGalleries = compact ? filteredGalleries.slice(0, 3) : filteredGalleries;
 
   return (
     <section id="gallery" className="py-20 bg-white relative overflow-hidden">
@@ -83,27 +86,29 @@ export default function BeforeAfterGallery() {
             See the transformative results our clients have achieved
           </p>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 font-medium transition-all duration-300 text-sm ${
-                  selectedCategory === category
-                    ? 'bg-charcoal text-white'
-                    : 'bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          {/* Category Filter — full mode only */}
+          {!compact && (
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2 font-medium transition-all duration-300 text-sm ${
+                    selectedCategory === category
+                      ? 'bg-charcoal text-white'
+                      : 'bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          )}
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredGalleries.map((item, index) => (
+            {displayGalleries.map((item, index) => (
               <motion.div
                 key={item.id}
                 layout
@@ -189,12 +194,26 @@ export default function BeforeAfterGallery() {
           transition={{ duration: 0.6 }}
           className="text-center mt-12"
         >
-          <p className="text-warm-gray-400 font-light mb-6">
-            Results may vary. Individual results depend on various factors including skin type, age, and lifestyle.
-          </p>
-          <button className="bg-charcoal text-white px-8 py-4 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
-            Schedule Your Consultation
-          </button>
+          {compact ? (
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-charcoal hover:text-bronze transition-colors duration-300"
+            >
+              View Full Gallery
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          ) : (
+            <>
+              <p className="text-warm-gray-400 font-light mb-6">
+                Results may vary. Individual results depend on various factors including skin type, age, and lifestyle.
+              </p>
+              <button className="bg-charcoal text-white px-8 py-4 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
+                Schedule Your Consultation
+              </button>
+            </>
+          )}
         </motion.div>
       </div>
     </section>

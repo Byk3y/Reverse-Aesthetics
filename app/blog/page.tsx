@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Journal | Reverse Aesthetics",
+  title: "Blog | Reverse Aesthetics",
   description: "Insights, advice, and stories from Nigeria's leading aesthetic experts on skincare, wellness, and cosmetic treatments.",
 };
 
@@ -50,7 +50,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="max-w-3xl">
             <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
-              The Journal
+              The Blog
             </p>
             <h1
               className="text-charcoal mb-6 text-4xl lg:text-5xl font-light"

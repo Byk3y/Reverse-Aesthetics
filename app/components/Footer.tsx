@@ -71,7 +71,7 @@ export default function Footer() {
                 { href: "/about", label: "About Us" },
                 { href: "/clinics", label: "Our Clinics" },
                 { href: "/gallery", label: "Before & After" },
-                { href: "/blog", label: "Journal" },
+                { href: "/blog", label: "Blog" },
                 { href: "/booking", label: "Book Appointment" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (

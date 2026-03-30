@@ -128,10 +128,10 @@ export default function ServiceCards() {
             className="text-charcoal mb-4"
             style={{ fontFamily: "var(--font-display), serif" }}
           >
-            Our Clinics
+            Our Specialties
           </h2>
           <p className="text-warm-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-light">
-            Four specialist clinics under one roof, each led by accredited professionals
+            Four specialist disciplines under one roof, each led by accredited professionals
             delivering world-class results.
           </p>
         </div>

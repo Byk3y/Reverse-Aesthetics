@@ -43,11 +43,14 @@ const faqs = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ({ compact = false }: { compact?: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
 
   const currentFAQ = faqs.find(f => f.category === selectedCategory);
+  const displayQuestions = compact
+    ? currentFAQ?.questions.slice(0, 5)
+    : currentFAQ?.questions;
 
   return (
     <section id="faq" className="py-20 bg-white relative overflow-hidden">
@@ -80,7 +83,7 @@ export default function FAQ() {
               transition={{ duration: 0.3 }}
               className="space-y-4"
             >
-              {currentFAQ?.questions.map((faq, index) => (
+              {displayQuestions?.map((faq, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -132,29 +135,31 @@ export default function FAQ() {
             </motion.div>
           </AnimatePresence>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-12 text-center bg-ivory border border-warm-gray-100 p-8"
-          >
-            <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
-              Still have questions?
-            </h3>
-            <p className="text-warm-gray-400 font-light mb-6">
-              Our team is here to help! Schedule a free consultation or give us a call.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-charcoal text-white px-8 py-3 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
-                Book Free Consultation
-              </button>
-              <button className="border border-charcoal text-charcoal px-8 py-3 hover:bg-charcoal hover:text-white transition-colors duration-300 font-medium">
-                Call Us: 09159188094
-              </button>
-            </div>
-          </motion.div>
+          {/* CTA — full mode only */}
+          {!compact && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-12 text-center bg-ivory border border-warm-gray-100 p-8"
+            >
+              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+                Still have questions?
+              </h3>
+              <p className="text-warm-gray-400 font-light mb-6">
+                Our team is here to help! Schedule a free consultation or give us a call.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-charcoal text-white px-8 py-3 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
+                  Book Free Consultation
+                </button>
+                <button className="border border-charcoal text-charcoal px-8 py-3 hover:bg-charcoal hover:text-white transition-colors duration-300 font-medium">
+                  Call Us: 09159188094
+                </button>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

@@ -25,7 +25,7 @@ export default function Header() {
     { href: "/about", label: "About" },
     { href: "/clinics", label: "Clinics" },
     { href: "/gallery", label: "Gallery" },
-    { href: "/blog", label: "Journal" },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
 
