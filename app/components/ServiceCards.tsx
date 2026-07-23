@@ -110,24 +110,24 @@ function ServiceSpread({
           </span>
 
           <h3
-            className="text-3xl lg:text-4xl xl:text-[2.75rem] font-light text-charcoal leading-[1.1] mb-5"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            className="text-3xl lg:text-4xl xl:text-[2.75rem] font-semibold text-charcoal leading-[1.1] mb-5"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             {service.title}
           </h3>
 
-          <p className="text-base text-warm-gray-400 font-light leading-relaxed mb-6">
+          <p className="text-base text-warm-gray-400 font-normal leading-relaxed mb-6">
             {service.description}
           </p>
 
           {/* Treatment tags — linked to spoke pages */}
-          <p className="text-[11px] uppercase tracking-[0.15em] text-warm-gray-300 mb-8">
+          <p className="text-[12px] sm:text-[13px] uppercase tracking-[0.1em] text-warm-gray-300 mb-8">
             {service.treatmentLinks.map((link, i) => (
               <span key={link.label}>
                 <Link
                   href={link.href}
                   onClick={(e) => e.stopPropagation()}
-                  className="hover:text-bronze transition-colors duration-300"
+                  className="hover:text-bronze transition-colors duration-300 py-1 inline-block"
                 >
                   {link.label}
                 </Link>
@@ -140,7 +140,7 @@ function ServiceSpread({
           <Link
             href={service.href}
             onClick={(e) => e.stopPropagation()}
-            className="relative inline-block text-[11px] font-medium uppercase tracking-[0.2em] text-charcoal w-fit"
+            className="relative inline-block text-[13px] font-semibold uppercase tracking-[0.12em] text-charcoal w-fit py-1"
           >
             Explore
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-bronze group-hover:w-full transition-all duration-400" />
@@ -160,11 +160,11 @@ export default function ServiceCards() {
           <hr className="divider-gold mx-auto mb-7" />
           <h2
             className="text-charcoal mb-4"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Our Specialties
           </h2>
-          <p className="text-warm-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-warm-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-normal">
             Four specialist disciplines under one roof, each led by accredited professionals
             delivering world-class results.
           </p>

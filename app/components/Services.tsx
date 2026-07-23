@@ -106,10 +106,10 @@ export default function Services() {
           className="text-center mb-16"
         >
           <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">What We Offer</p>
-          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+          <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             Our Services
           </h2>
-          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl font-normal text-warm-gray-400 max-w-2xl mx-auto">
             Discover our comprehensive range of aesthetic treatments designed to enhance your natural beauty
           </p>
         </motion.div>
@@ -178,7 +178,7 @@ export default function Services() {
                   />
                 )}
 
-                <h3 className="absolute bottom-4 left-4 text-2xl font-light text-white z-20" style={{ fontFamily: 'var(--font-display), serif' }}>
+                <h3 className="absolute bottom-4 left-4 text-2xl font-medium text-white z-20" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   {service.title}
                 </h3>
               </div>

@@ -255,14 +255,14 @@ Please confirm if this date works for you. Thank you!`;
               transition: touchStart === null ? 'transform 0.2s ease-out' : 'none',
             }}
           >
-            <div className="bg-white rounded-t-sm shadow-sm border-t border-warm-gray-100 max-h-[85vh] flex flex-col" suppressHydrationWarning>
+            <div className="bg-white rounded-t-[20px] shadow-sm border-t border-warm-gray-100 max-h-[85vh] flex flex-col" suppressHydrationWarning>
               <div
                 ref={dragHandleRef}
                 className="drag-handle-area flex-shrink-0 px-5 py-3 border-b border-warm-gray-100 cursor-grab active:cursor-grabbing"
                 suppressHydrationWarning
               >
                 <div className="w-12 h-1 bg-warm-gray-200 rounded-full mx-auto mb-2"></div>
-                <h2 className="text-lg font-light text-charcoal text-center" style={{ fontFamily: 'var(--font-display), serif' }}>Book Appointment</h2>
+                <h2 className="text-lg font-semibold text-charcoal text-center" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Book Appointment</h2>
               </div>
 
               <div
@@ -289,9 +289,9 @@ Please confirm if this date works for you. Thank you!`;
                       <button
                         type="button"
                         onClick={() => handleLocationSelect("lagos")}
-                        className={`flex-1 px-4 py-2.5 font-medium text-sm transition-all ${
+                        className={`flex-1 px-4 py-3 font-medium text-sm rounded-[12px] transition-all ${
                           formData.location === "lagos"
-                            ? "bg-charcoal text-white"
+                            ? "bg-bronze text-white"
                             : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                         }`}
                       >
@@ -300,9 +300,9 @@ Please confirm if this date works for you. Thank you!`;
                       <button
                         type="button"
                         onClick={() => handleLocationSelect("abuja")}
-                        className={`flex-1 px-4 py-2.5 font-medium text-sm transition-all ${
+                        className={`flex-1 px-4 py-3 font-medium text-sm rounded-[12px] transition-all ${
                           formData.location === "abuja"
-                            ? "bg-charcoal text-white"
+                            ? "bg-bronze text-white"
                             : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                         }`}
                       >
@@ -323,7 +323,7 @@ Please confirm if this date works for you. Thank you!`;
                     <button
                       type="button"
                       onClick={() => setIsServicesOpen(!isServicesOpen)}
-                      className={`w-full px-3 py-2 text-sm border rounded-sm text-left flex items-center justify-between transition-all ${
+                      className={`w-full px-3 py-2 text-sm border rounded-[12px] text-left flex items-center justify-between transition-all ${
                         formData.service
                           ? "bg-ivory border-bronze text-charcoal"
                           : "bg-white border-warm-gray-100 text-warm-gray-400"
@@ -350,7 +350,7 @@ Please confirm if this date works for you. Thank you!`;
 
                     {/* Services Dropdown */}
                     {isServicesOpen && (
-                      <div className="absolute z-10 w-full mt-1 bg-white border border-warm-gray-100 rounded-sm shadow-sm max-h-64 overflow-y-auto" suppressHydrationWarning>
+                      <div className="absolute z-10 w-full mt-1 bg-white border border-warm-gray-100 rounded-[12px] shadow-sm max-h-64 overflow-y-auto" suppressHydrationWarning>
                         {services.map((category, idx) => (
                           <div key={idx} className="border-b border-warm-gray-100 last:border-b-0" suppressHydrationWarning>
                             <div className="px-3 py-2 text-[11px] font-medium text-bronze bg-ivory uppercase tracking-[0.25em]" suppressHydrationWarning>
@@ -388,7 +388,7 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         min={new Date().toISOString().split("T")[0]}
-                        className="w-full px-2.5 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent box-border"
+                        className="w-full px-2.5 py-2 text-base border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent box-border"
                       />
                     </div>
                     <div className="min-w-0" suppressHydrationWarning>
@@ -403,7 +403,7 @@ Please confirm if this date works for you. Thank you!`;
                         onChange={handleChange}
                         required
                         placeholder="Phone number"
-                        className="w-full px-2.5 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent box-border"
+                        className="w-full px-2.5 py-2 text-base border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent box-border"
                       />
                     </div>
                   </div>
@@ -421,7 +421,7 @@ Please confirm if this date works for you. Thank you!`;
                       onChange={handleChange}
                       required
                       placeholder="Enter your full name"
-                      className="w-full px-3 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
+                      className="w-full px-3 py-2 text-base border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent"
                     />
                   </div>
 
@@ -438,14 +438,14 @@ Please confirm if this date works for you. Thank you!`;
                       onChange={handleChange}
                       required
                       placeholder="Enter your email address"
-                      className="w-full px-3 py-2 text-base border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
+                      className="w-full px-3 py-2 text-base border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent"
                     />
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="mt-4 mb-2 bg-charcoal text-white py-3 px-6 font-medium text-[11px] uppercase tracking-[0.25em] transition hover:bg-charcoal/90"
+                    className="mt-4 mb-2 bg-bronze text-white py-4 px-6 font-semibold text-[13px] uppercase tracking-[0.08em] rounded-[20px] transition hover:bg-bronze-dark"
                   >
                     Book Appointment
                   </button>
@@ -497,7 +497,7 @@ Please confirm if this date works for you. Thank you!`;
             <div className="text-center mb-6" suppressHydrationWarning>
               <h2 className="text-3xl lg:text-4xl font-light mb-2 text-charcoal">
                 Book an{" "}
-                <span className="italic" style={{ fontFamily: 'var(--font-display), serif' }}>
+                <span className="italic" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   Appointment
                 </span>
               </h2>
@@ -514,9 +514,9 @@ Please confirm if this date works for you. Thank you!`;
                   <button
                     type="button"
                     onClick={() => handleLocationSelect("lagos")}
-                    className={`flex-1 px-6 py-3 font-medium text-base transition-all ${
+                    className={`flex-1 px-6 py-3 font-medium text-base rounded-[12px] transition-all ${
                       formData.location === "lagos"
-                        ? "bg-charcoal text-white"
+                        ? "bg-bronze text-white"
                         : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                     }`}
                   >
@@ -525,9 +525,9 @@ Please confirm if this date works for you. Thank you!`;
                   <button
                     type="button"
                     onClick={() => handleLocationSelect("abuja")}
-                    className={`flex-1 px-6 py-3 font-medium text-base transition-all ${
+                    className={`flex-1 px-6 py-3 font-medium text-base rounded-[12px] transition-all ${
                       formData.location === "abuja"
-                        ? "bg-charcoal text-white"
+                        ? "bg-bronze text-white"
                         : "bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100"
                     }`}
                   >
@@ -548,7 +548,7 @@ Please confirm if this date works for you. Thank you!`;
                 <button
                   type="button"
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className={`w-full px-4 py-2.5 border rounded-sm text-left flex items-center justify-between transition-all ${
+                  className={`w-full px-4 py-2.5 border rounded-[12px] text-left flex items-center justify-between transition-all ${
                     formData.service
                       ? "bg-ivory border-bronze text-charcoal"
                       : "bg-white border-warm-gray-100 text-warm-gray-400"
@@ -575,7 +575,7 @@ Please confirm if this date works for you. Thank you!`;
 
                 {/* Services Dropdown */}
                 {isServicesOpen && (
-                  <div className="absolute z-10 w-full mt-1 bg-white border border-warm-gray-100 rounded-sm shadow-sm max-h-80 overflow-y-auto" suppressHydrationWarning>
+                  <div className="absolute z-10 w-full mt-1 bg-white border border-warm-gray-100 rounded-[12px] shadow-sm max-h-80 overflow-y-auto" suppressHydrationWarning>
                     {services.map((category, idx) => (
                       <div key={idx} className="border-b border-warm-gray-100 last:border-b-0" suppressHydrationWarning>
                         <div className="px-4 py-2 text-[11px] font-medium text-bronze bg-ivory uppercase tracking-[0.25em]" suppressHydrationWarning>
@@ -613,7 +613,7 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     min={new Date().toISOString().split("T")[0]}
-                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
 
@@ -630,7 +630,7 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     placeholder="Enter your full name"
-                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
 
@@ -647,7 +647,7 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     placeholder="Enter your phone number"
-                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
 
@@ -664,7 +664,7 @@ Please confirm if this date works for you. Thank you!`;
                     onChange={handleChange}
                     required
                     placeholder="Enter your email"
-                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-sm focus:ring-2 focus:ring-bronze focus:border-transparent"
+                    className="w-full px-4 py-2.5 border border-warm-gray-100 rounded-[12px] focus:ring-2 focus:ring-bronze focus:border-transparent"
                   />
                 </div>
               </div>
@@ -672,7 +672,7 @@ Please confirm if this date works for you. Thank you!`;
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full mt-4 bg-charcoal text-white py-3.5 px-6 font-medium text-[11px] uppercase tracking-[0.25em] transition hover:bg-charcoal/90"
+                className="w-full mt-4 bg-bronze text-white py-4 px-6 font-semibold text-[13px] uppercase tracking-[0.08em] rounded-[20px] transition hover:bg-bronze-dark"
               >
                 Book Appointment
               </button>

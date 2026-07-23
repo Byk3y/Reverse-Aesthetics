@@ -47,20 +47,20 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <nav className="flex items-center justify-between py-5 lg:py-6">
-          {/* Logo — Editorial: uppercase tracked + italic lowercase accent */}
+          {/* Logo — Reverse Aesthetics text logo */}
           <Link
             href="/"
             className={`text-lg lg:text-xl font-bold uppercase tracking-[0.05em] transition-colors duration-300 ${
-              isScrolled 
-                ? "text-charcoal" 
-                : isDarkPage 
-                  ? "text-white lg:text-charcoal" 
+              isScrolled
+                ? "text-charcoal"
+                : isDarkPage
+                  ? "text-white lg:text-charcoal"
                   : "text-charcoal"
             }`}
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Reverse{" "}
-            <span className="font-semibold">
+            <span className="font-extrabold">
               Aesthetics
             </span>
           </Link>
@@ -107,7 +107,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[11px] font-medium uppercase tracking-[0.2em] transition-colors duration-300 pb-1 ${
+                className={`relative text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors duration-300 pb-1 ${
                   isActive(link.href)
                     ? "text-charcoal"
                     : "text-warm-gray-400 hover:text-charcoal"
@@ -124,7 +124,7 @@ export default function Header() {
             ))}
             <Link
               href="/booking"
-              className="btn-gold text-[10px] py-3 px-7"
+              className="btn-gold text-[11px] py-3 px-7"
             >
               Book a Visit
             </Link>
@@ -157,12 +157,12 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className={`text-base font-light uppercase tracking-[0.15em] py-4 transition-colors border-b border-warm-gray-100 ${
+                  className={`text-[15px] font-medium uppercase tracking-[0.1em] py-[18px] transition-colors border-b border-warm-gray-100 ${
                     isActive(link.href)
-                      ? "text-charcoal font-normal"
+                      ? "text-charcoal font-semibold"
                       : "text-warm-gray-500 hover:text-charcoal"
                   }`}
-                  style={{ fontFamily: "var(--font-display), serif" }}
+                  style={{ fontFamily: "var(--font-display), sans-serif" }}
                 >
                   {link.label}
                 </Link>
@@ -171,7 +171,7 @@ export default function Header() {
                 <Link
                   href="/booking"
                   onClick={closeMenu}
-                  className="btn-gold w-full text-center block"
+                  className="btn-gold w-full text-center block py-4"
                 >
                   Book a Visit
                 </Link>
@@ -179,18 +179,18 @@ export default function Header() {
 
               {/* Contact info in mobile menu */}
               <div className="mt-10 pt-6 border-t border-warm-gray-100">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-warm-gray-500 mb-4 font-medium">
+                <p className="text-[12px] uppercase tracking-[0.15em] text-warm-gray-400 mb-4 font-semibold">
                   Get in touch
                 </p>
                 <a
                   href="tel:+2349159188094"
-                  className="text-sm text-charcoal hover:text-bronze transition-colors block mb-2"
+                  className="text-[15px] text-charcoal hover:text-bronze transition-colors block mb-3 py-1"
                 >
                   +234 915 918 8094
                 </a>
                 <a
                   href="mailto:reverseaestheticsng@gmail.com"
-                  className="text-sm text-warm-gray-500 hover:text-bronze transition-colors block"
+                  className="text-[14px] text-warm-gray-500 hover:text-bronze transition-colors block py-1"
                 >
                   reverseaestheticsng@gmail.com
                 </a>

@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: process.cwd(),
+  },
   images: {
     // Enable modern image formats (AVIF and WebP)
     formats: ['image/avif', 'image/webp'],
@@ -11,7 +14,12 @@ const nextConfig: NextConfig = {
     // Cache optimized images for 60 days
     minimumCacheTTL: 60 * 60 * 24 * 60,
     // Allow remote images if needed in the future
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'framerusercontent.com',
+      },
+    ],
   },
 };
 

@@ -25,7 +25,7 @@ export default function WhatsAppButton() {
       </svg>
 
       {/* Label — visible on desktop, hidden on mobile */}
-      <span className="hidden md:inline text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">
+      <span className="hidden md:inline text-[12px] font-semibold uppercase tracking-[0.1em] text-white/80">
         WhatsApp
       </span>
     </a>

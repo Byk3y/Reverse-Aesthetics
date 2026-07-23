@@ -46,22 +46,39 @@ function CountUp({ value, suffix, duration = 2 }: { value: number; suffix: strin
 
 const values = [
   {
-    icon: '🛡️',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
     title: 'Safety First',
     description: 'Hospital-grade protocols, medical screening, and evidence-based care'
   },
   {
-    icon: '🎯',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+      </svg>
+    ),
     title: 'Personalization',
     description: 'Your goals, lifestyle, and features inform your plan'
   },
   {
-    icon: '✨',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+      </svg>
+    ),
     title: 'Natural Aesthetic',
     description: 'We enhance proportion, balance, and harmony—never overdo'
   },
   {
-    icon: '💜',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      </svg>
+    ),
     title: 'Aftercare',
     description: 'Clear guidance, easy access to the team, and thoughtful follow-ups'
   }
@@ -78,17 +95,17 @@ export default function About({ compact = false }: { compact?: boolean }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">About Us</p>
-            <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-6" style={{ fontFamily: 'var(--font-display), serif' }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-bronze mb-4">About Us</p>
+            <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               More than a clinic. A commitment to confidence.
             </h2>
-            <p className="text-lg font-light text-warm-gray-400 mb-6">
+            <p className="text-lg font-normal text-warm-gray-400 mb-6">
               Reverse Aesthetics was founded to elevate aesthetic medicine in Africa—pairing medical precision with an eye for beauty. We believe the best results are natural, tailored, and responsibly delivered.
             </p>
-            <p className="text-lg font-light text-warm-gray-400 mb-6">
+            <p className="text-lg font-normal text-warm-gray-400 mb-6">
               Founded by Dr. Ral Abana, an award-winning aesthetic medical physician registered with the GMC (UK), our clinic combines nearly a decade of specialty experience with a commitment to subtle, elegant outcomes and uncompromising safety.
             </p>
-            <p className="text-lg font-light text-warm-gray-400">
+            <p className="text-lg font-normal text-warm-gray-400">
               Our focus: your confidence, safety, and long-term skin and body health. Through hospital-grade protocols, medical screening, and evidence-based care, we deliver natural transformations expertly delivered.
             </p>
           </motion.div>
@@ -98,7 +115,7 @@ export default function About({ compact = false }: { compact?: boolean }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative h-[500px] overflow-hidden border border-warm-gray-100"
+            className="relative h-[500px] overflow-hidden border border-warm-gray-100 rounded-[20px]"
           >
             <Image
               src="/images/about/clinic.avif"
@@ -126,9 +143,9 @@ export default function About({ compact = false }: { compact?: boolean }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.12 }}
-              className="text-center p-6 bg-white border border-warm-gray-100"
+              className="text-center p-6 bg-white border border-warm-gray-100 rounded-[20px]"
             >
-              <div className="text-4xl md:text-5xl font-light text-bronze mb-2" style={{ fontFamily: 'var(--font-display), serif' }}>
+              <div className="text-4xl md:text-5xl font-bold text-bronze mb-2" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 <CountUp value={stat.value} suffix={stat.suffix} duration={2.2} />
               </div>
               <div className="text-warm-gray-400 font-medium">
@@ -148,11 +165,11 @@ export default function About({ compact = false }: { compact?: boolean }) {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">Our Philosophy</p>
-              <h3 className="text-3xl md:text-4xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-bronze mb-4">Our Philosophy</p>
+              <h3 className="text-3xl md:text-4xl font-semibold text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 Our Approach
               </h3>
-              <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto">
+              <p className="text-xl font-normal text-warm-gray-400 max-w-2xl mx-auto">
                 How we deliver exceptional results with care and precision
               </p>
             </motion.div>
@@ -165,13 +182,13 @@ export default function About({ compact = false }: { compact?: boolean }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-8 border border-warm-gray-100 text-center hover:border-bronze transition-colors duration-300"
+                  className="bg-white p-8 border border-warm-gray-100 rounded-[20px] text-center hover:border-bronze transition-colors duration-300 cursor-pointer"
                 >
-                  <div className="text-5xl mb-4">{value.icon}</div>
-                  <h4 className="text-xl font-light text-charcoal mb-3" style={{ fontFamily: 'var(--font-display), serif' }}>
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-bronze/10 text-bronze mb-4">{value.icon}</div>
+                  <h4 className="text-xl font-semibold text-charcoal mb-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     {value.title}
                   </h4>
-                  <p className="text-warm-gray-400 font-light">
+                  <p className="text-warm-gray-400 font-normal">
                     {value.description}
                   </p>
                 </motion.div>

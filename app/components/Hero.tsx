@@ -45,8 +45,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="text-6xl xl:text-[5.5rem] font-light text-white leading-[0.95] mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              className="text-5xl xl:text-[4.5rem] font-bold text-white leading-[1.05] mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Natural{" "}
               <span className="italic">transformations</span>.
@@ -58,7 +58,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="text-lg text-white/90 font-light leading-relaxed mb-10 max-w-xl"
+              className="text-lg text-white/90 font-normal leading-relaxed mb-10 max-w-xl"
             >
               Personalized, medically led treatments for skin, face, body, hair,
               and smile — designed to look like you, only refined.
@@ -73,7 +73,7 @@ export default function Hero() {
             >
               <Link
                 href="/booking"
-                className="inline-flex items-center justify-center px-10 py-4 bg-white text-charcoal text-[11px] font-semibold uppercase tracking-[0.15em] cursor-pointer transition-all duration-300 hover:bg-bronze hover:text-white"
+                className="inline-flex items-center justify-center px-10 py-4 bg-white text-charcoal text-[12px] font-semibold uppercase tracking-[0.08em] rounded-[20px] cursor-pointer transition-all duration-300 hover:bg-bronze hover:text-white"
               >
                 Book a Visit
               </Link>
@@ -81,7 +81,7 @@ export default function Hero() {
                 href="https://wa.me/2349159188094"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-10 py-4 border border-white/50 text-white text-[11px] font-semibold uppercase tracking-[0.15em] cursor-pointer transition-all duration-300 hover:border-white hover:bg-white/15"
+                className="inline-flex items-center justify-center px-10 py-4 border border-white/50 text-white text-[12px] font-semibold uppercase tracking-[0.08em] rounded-[20px] cursor-pointer transition-all duration-300 hover:border-white hover:bg-white/15"
               >
                 Chat on WhatsApp
               </a>
@@ -93,7 +93,7 @@ export default function Hero() {
       {/* Mobile Layout — Cinematic vertical */}
       <div className="flex flex-col lg:hidden min-h-screen">
         {/* Image Section */}
-        <div className="relative h-[55vh] min-h-[360px]">
+        <div className="relative h-[50vh] min-h-[320px]">
           <Image
             src="/images/generated/hero_mobile.avif"
             alt="Professional aesthetic treatment at Reverse Aesthetics clinic in Lagos"
@@ -102,45 +102,45 @@ export default function Hero() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
-
-          {/* Book button on image */}
-          <Link
-            href="/booking"
-            className="absolute bottom-20 left-6 z-10 inline-flex items-center justify-center px-8 py-3 bg-white text-charcoal text-[10px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-bronze hover:text-white"
-          >
-            Book a Visit
-          </Link>
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-transparent" />
         </div>
 
         {/* Content Section */}
-        <div className="flex-1 bg-charcoal px-6 -mt-12 relative z-10 pb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze mb-5">
+        <div className="flex-1 bg-charcoal px-6 pt-8 pb-12 relative z-10">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.15em] text-bronze mb-4">
             Nigeria&apos;s Leading Aesthetic Clinic
           </p>
           <h1
-            className="text-[2.5rem] leading-[0.98] mb-5 text-white font-light"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            className="text-[2rem] leading-[1.15] mb-5 text-white font-bold"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Natural{" "}
             <span className="italic">transformations</span>.
             <br />
             <span className="italic">Expertly</span> delivered.
           </h1>
-          <p className="text-base text-white/85 font-light leading-relaxed mb-8">
+          <p className="text-[15px] text-white/80 font-normal leading-relaxed mb-8">
             Personalized, medically led treatments for skin, face, body, hair,
             and smile — designed to look like you, only refined.
           </p>
 
-          {/* CTA */}
-          <a
-            href="https://wa.me/2349159188094"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full px-8 py-4 border border-white/50 text-white text-[11px] font-semibold uppercase tracking-[0.15em] cursor-pointer transition-all duration-300 hover:border-white text-center"
-          >
-            Chat on WhatsApp
-          </a>
+          {/* CTAs — stacked for mobile */}
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/booking"
+              className="inline-flex items-center justify-center w-full px-8 py-4 bg-bronze text-white text-[13px] font-semibold uppercase tracking-[0.08em] rounded-[20px] transition-all duration-300 hover:bg-bronze-dark text-center"
+            >
+              Book a Visit
+            </Link>
+            <a
+              href="https://wa.me/2349159188094"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full px-8 py-4 border border-white/40 text-white text-[13px] font-semibold uppercase tracking-[0.08em] rounded-[20px] cursor-pointer transition-all duration-300 hover:border-white hover:bg-white/10 text-center"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>

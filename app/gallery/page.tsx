@@ -67,7 +67,7 @@ export default function GalleryPage() {
           </p>
           <h1
             className="text-charcoal mb-6"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Real results. <span className="italic">Real transformations.</span>
           </h1>
@@ -154,7 +154,7 @@ export default function GalleryPage() {
                 <div className="p-5">
                   <h3
                     className="text-charcoal text-lg mb-1"
-                    style={{ fontFamily: "var(--font-display), serif" }}
+                    style={{ fontFamily: "var(--font-display), sans-serif" }}
                   >
                     {item.title}
                   </h3>

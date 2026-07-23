@@ -88,7 +88,7 @@ export default function ClinicsPage() {
           </p>
           <h1
             className="text-charcoal mb-6"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Four clinics. <span className="italic">One standard</span> of excellence.
           </h1>
@@ -133,7 +133,7 @@ export default function ClinicsPage() {
                   <hr className="divider-gold mb-6" />
                   <h2
                     className="text-charcoal text-3xl mb-4 font-light"
-                    style={{ fontFamily: "var(--font-display), serif" }}
+                    style={{ fontFamily: "var(--font-display), sans-serif" }}
                   >
                     {clinic.title}
                   </h2>

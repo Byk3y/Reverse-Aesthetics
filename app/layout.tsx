@@ -1,27 +1,26 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans, Poppins } from "next/font/google";
+import { Onest, Red_Hat_Text, Montserrat } from "next/font/google";
 import "./globals.css";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 
-const cormorantGaramond = Cormorant_Garamond({
+const onest = Onest({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const redHatText = Red_Hat_Text({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const poppins = Poppins({
+const montserrat = Montserrat({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -174,7 +173,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${cormorantGaramond.variable} ${dmSans.variable} ${poppins.variable} antialiased`}
+        className={`${onest.variable} ${redHatText.variable} ${montserrat.variable} antialiased`}
         suppressHydrationWarning
       >
         <div suppressHydrationWarning className="overflow-x-clip">

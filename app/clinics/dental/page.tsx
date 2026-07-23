@@ -21,8 +21,8 @@ export default function DentalClinic() {
             Dental Aesthetics
           </p>
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Design your <span className="italic font-light">Signature Smile</span>.
           </h1>
@@ -45,16 +45,16 @@ export default function DentalClinic() {
 
             <div className="order-2 lg:order-1">
               <h2
-                className="text-3xl md:text-4xl font-light text-charcoal mb-6"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                className="text-3xl md:text-4xl font-semibold text-charcoal mb-6"
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 Where oral health meets high aesthetics.
               </h2>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-6">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-6">
                 Your smile is often the first thing people notice. Our dental clinic doesn&apos;t just treat teeth;
                 we design smiles that complement your facial features and boost your confidence.
               </p>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-10">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-10">
                 From professional hygiene routines to advanced whitening systems, we provide gentle,
                 premium dental care in a luxury environment designed to alleviate any dental anxiety.
               </p>
@@ -94,8 +94,8 @@ export default function DentalClinic() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2
-              className="text-3xl md:text-4xl font-light text-charcoal mb-4"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              className="text-3xl md:text-4xl font-semibold text-charcoal mb-4"
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Our Treatments
             </h2>
@@ -106,7 +106,7 @@ export default function DentalClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 Laser Teeth Whitening
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">
@@ -128,7 +128,7 @@ export default function DentalClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 Scaling & Polishing
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">

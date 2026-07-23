@@ -4,37 +4,54 @@
 
 @theme {
   /* ============================================
-     REVERSE AESTHETICS — EDITORIAL LUXURY SYSTEM
+     MEDVi — PROFESSIONAL HEALTHCARE SYSTEM
      ============================================ */
 
-  /* Primary — Deep Charcoal */
-  --color-charcoal: #1a1a1a;
-  --color-charcoal-light: #2C2C2C;
-  --color-charcoal-soft: #3a3a3a;
+  /* Primary — Dark Text */
+  --color-charcoal: #242220;
+  --color-charcoal-light: #3a3830;
+  --color-charcoal-soft: #4a4840;
 
-  /* Accent — Brushed Bronze */
-  --color-bronze: #B8956A;
-  --color-bronze-light: #D4B896;
-  --color-bronze-dark: #9A7A50;
-  --color-bronze-muted: #C8AD85;
+  /* Accent — Teal & Sage Green */
+  --color-bronze: #2E936F;
+  --color-bronze-light: #779D7C;
+  --color-bronze-dark: #247A5A;
+  --color-bronze-muted: #8FB396;
 
-  /* Backgrounds — Warm Ivory */
-  --color-ivory: #FAF6F0;
-  --color-ivory-dark: #F0EBE3;
+  /* Brand Primary — Blue */
+  --color-primary: #0000EE;
+
+  /* Backgrounds — Clean White */
+  --color-ivory: #FFFFFF;
+  --color-ivory-dark: #F5F5F5;
   --color-white: #FFFFFF;
 
-  /* Warm Neutral Palette */
-  --color-warm-gray-50: #F5F2EE;
-  --color-warm-gray-100: #E8E4DE;
-  --color-warm-gray-200: #D1CBC2;
-  --color-warm-gray-300: #B8B0A5;
-  --color-warm-gray-400: #8A8279;
-  --color-warm-gray-500: #6B645C;
-  --color-warm-gray-600: #504A44;
+  /* Neutral Palette */
+  --color-warm-gray-50: #F8F8F8;
+  --color-warm-gray-100: #EEEEEE;
+  --color-warm-gray-200: #D4D4D4;
+  --color-warm-gray-300: #B0B0B0;
+  --color-warm-gray-400: #888888;
+  --color-warm-gray-500: #666666;
+  --color-warm-gray-600: #4A4A4A;
 
   /* Fonts */
   --font-display: var(--font-display);
   --font-body: var(--font-body);
+
+  /* ============================================
+     CLINIC FUNNEL TOKENS (arogyam-style layout,
+     Reverse Aesthetics brand palette)
+     ============================================ */
+  --color-clinic-navy: #23201d;        /* deep warm charcoal — dark panels, headings, footer */
+  --color-clinic-teal: #2E936F;        /* Reverse sage green — primary accent */
+  --color-clinic-teal-dark: #247A5A;
+  --color-clinic-hero-accent: #2E936F;
+  --color-clinic-hero-top: #f3f1ec;    /* warm pale hero background */
+  --color-clinic-light-bg: #f1f4f1;
+  --color-clinic-warm-bg: #f7f4f0;
+  --color-clinic-gold: #c6a673;        /* luxury gold accent */
+  --color-clinic-gold-hover: #BA9456;
 }
 
 /* ============================================
@@ -48,42 +65,50 @@ html {
 }
 
 body {
-  background-color: #FAF6F0;
-  color: #1a1a1a;
+  background-color: #FFFFFF;
+  color: #242220;
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.7;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: rgba(184, 149, 106, 0.2);
-  color: #1a1a1a;
+  background-color: rgba(46, 147, 111, 0.15);
+  color: #242220;
 }
 
 /* ============================================
    TYPOGRAPHY — Editorial Scale
    ============================================ */
 
-h1, h2, h3 {
-  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
-  font-weight: 400;
+h1, h2, h3, h4 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
 }
 
 h1 {
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-h2 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.025em;
   line-height: 1.1;
 }
 
+h2 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1.2;
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  letter-spacing: 0;
+  line-height: 1.3;
 }
 
 /* ============================================
@@ -95,16 +120,16 @@ h3 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF6F0;
+  background: #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(184, 149, 106, 0.2);
+  background: rgba(46, 147, 111, 0.2);
   border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(184, 149, 106, 0.4);
+  background: rgba(46, 147, 111, 0.4);
 }
 
 /* ============================================
@@ -180,6 +205,16 @@ h3 {
   transform-origin: left;
 }
 
+/* Reduced motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Staggered animation delays */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
@@ -198,26 +233,26 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px;
-  background-color: #1a1a1a;
-  color: #FAF6F0;
+  padding: 14px 36px;
+  background-color: #2E936F;
+  color: #FFFFFF;
   font-family: var(--font-body), system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-radius: 0;
-  border: 1px solid #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid #2E936F;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-gold:hover {
-  background-color: #B8956A;
-  border-color: #B8956A;
+  background-color: #247A5A;
+  border-color: #247A5A;
   color: #FFFFFF;
   transform: none;
-  box-shadow: none;
+  box-shadow: 0 4px 12px rgba(46, 147, 111, 0.25);
 }
 
 .btn-gold:active {
@@ -228,49 +263,50 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px;
-  background-color: #1a1a1a;
-  color: #FAF6F0;
+  padding: 14px 36px;
+  background-color: #0000EE;
+  color: #FFFFFF;
   font-family: var(--font-body), system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-radius: 0;
-  border: 1px solid #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid #0000EE;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-purple:hover {
-  background-color: #B8956A;
-  border-color: #B8956A;
+  background-color: #0000CC;
+  border-color: #0000CC;
   color: #FFFFFF;
   transform: none;
-  box-shadow: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 238, 0.25);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px;
+  padding: 14px 36px;
   background-color: transparent;
-  color: #1a1a1a;
+  color: #242220;
   font-family: var(--font-body), system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-radius: 0;
-  border: 1px solid #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid #D4D4D4;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-  background-color: #1a1a1a;
-  color: #FAF6F0;
+  background-color: #2E936F;
+  border-color: #2E936F;
+  color: #FFFFFF;
   transform: none;
 }
 
@@ -280,15 +316,15 @@ h3 {
 
 .card-luxury {
   background: #ffffff;
-  border-radius: 2px;
-  border: 1px solid #E8E4DE;
-  transition: all 0.4s ease;
+  border-radius: 20px;
+  border: 1px solid #EEEEEE;
+  transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .card-luxury:hover {
-  border-color: #B8956A;
-  box-shadow: none;
+  border-color: #2E936F;
+  box-shadow: 0 4px 20px rgba(46, 147, 111, 0.08);
   transform: none;
 }
 
@@ -298,15 +334,16 @@ h3 {
 
 .divider-gold {
   width: 40px;
-  height: 1px;
-  background: #B8956A;
+  height: 2px;
+  background: #2E936F;
   border: none;
+  border-radius: 1px;
 }
 
 .divider-gold-wide {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 149, 106, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(46, 147, 111, 0.25), transparent);
   border: none;
 }
 
@@ -329,10 +366,10 @@ h3 {
    ============================================ */
 
 .glass-nav {
-  background: rgba(250, 246, 240, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(184, 149, 106, 0.12);
+  border-bottom: 1px solid rgba(46, 147, 111, 0.1);
 }
 
 /* ============================================
@@ -343,20 +380,230 @@ h3 {
   width: 100%;
   padding: 14px 18px;
   background: #ffffff;
-  border: 1px solid #D1CBC2;
-  border-radius: 0;
+  border: 1px solid #D4D4D4;
+  border-radius: 20px;
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.9375rem;
-  color: #1a1a1a;
+  color: #242220;
   transition: all 0.3s ease;
   outline: none;
 }
 
 .input-luxury:focus {
-  border-color: #B8956A;
-  box-shadow: none;
+  border-color: #2E936F;
+  box-shadow: 0 0 0 3px rgba(46, 147, 111, 0.1);
 }
 
 .input-luxury::placeholder {
-  color: #8A8279;
+  color: #888888;
+}
+
+/* ============================================
+   CLINIC FUNNEL — scroll motion, hero mosaic,
+   drawer + float animations (arogyam-style)
+   ============================================ */
+
+html {
+  scroll-padding-top: 120px;
+}
+
+.testimonial-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonial-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-copy-reveal {
+  animation: hero-copy-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-mosaic-image {
+  animation: hero-mosaic-zoom-out 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform: scale(1.12);
+}
+
+.motion-heading,
+.motion-card,
+.reveal-on-scroll {
+  opacity: 1;
+  transform-origin: center bottom;
+  transition:
+    opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-heading h2,
+.motion-heading h3 {
+  text-wrap: balance;
+}
+
+.motion-heading h2 {
+  transition:
+    opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-motion-ready .motion-heading,
+.js-motion-ready .motion-card,
+.js-motion-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js-motion-ready .motion-heading h2 {
+  opacity: 0.35;
+  transform: translateY(10px);
+}
+
+.js-motion-ready .motion-heading.is-visible,
+.js-motion-ready .motion-card.is-visible,
+.js-motion-ready .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-motion-ready .motion-heading.is-visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-motion-ready .motion-card:nth-child(2),
+.js-motion-ready .motion-scope .grid > .motion-card:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+.js-motion-ready .motion-card:nth-child(3),
+.js-motion-ready .motion-scope .grid > .motion-card:nth-child(3) {
+  transition-delay: 180ms;
+}
+
+.js-motion-ready .motion-card:nth-child(4),
+.js-motion-ready .motion-scope .grid > .motion-card:nth-child(4) {
+  transition-delay: 270ms;
+}
+
+.js-motion-ready .motion-card:nth-child(5),
+.js-motion-ready .motion-scope .grid > .motion-card:nth-child(5) {
+  transition-delay: 360ms;
+}
+
+.js-motion-ready .motion-card:nth-child(6),
+.js-motion-ready .motion-scope .grid > .motion-card:nth-child(6) {
+  transition-delay: 450ms;
+}
+
+.motion-lift,
+.motion-float {
+  box-shadow: 0 0 0 rgba(35, 32, 29, 0);
+  transition:
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-lift:hover,
+.motion-float:hover {
+  box-shadow: 0 18px 42px rgba(35, 32, 29, 0.12);
+}
+
+.motion-image-frame img {
+  transform: scale(1.045);
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-image-frame:hover img {
+  transform: scale(1.095);
+}
+
+.motion-scope svg {
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-card:hover svg,
+.reveal-on-scroll:hover svg {
+  transform: translateY(-1px) scale(1.06);
+}
+
+@keyframes hero-copy-reveal {
+  0% { opacity: 0; transform: translateY(22px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-mosaic-zoom-out {
+  0% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes drawer-overlay-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drawer-slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.drawer-overlay {
+  animation: drawer-overlay-fade 220ms ease-out both;
+}
+
+.drawer-panel {
+  animation: drawer-slide-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes whatsapp-float-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 767px) {
+  .hero-mosaic {
+    width: 632px;
+    margin-left: calc(50% - 316px);
+    margin-right: 0;
+  }
+
+  .hero-mosaic-grid {
+    grid-template-columns: 202px 200px 202px;
+    grid-template-rows: 84px 168px 250px;
+  }
+
+  .hero-mosaic-tall {
+    width: 200px;
+    height: 168px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mosaic-image {
+    filter: none;
+    transform: scale(1);
+    will-change: auto;
+  }
+
+  .hero-copy-reveal,
+  .motion-heading,
+  .motion-card,
+  .reveal-on-scroll,
+  .motion-heading h2 {
+    animation: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .motion-image-frame img,
+  .motion-image-frame:hover img,
+  .motion-card:hover svg,
+  .reveal-on-scroll:hover svg {
+    filter: none;
+    transform: none;
+    transition: none;
+  }
 }

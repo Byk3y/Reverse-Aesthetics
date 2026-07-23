@@ -12,11 +12,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link
               href="/"
-              className="text-xl font-light uppercase tracking-[0.08em] text-white inline-block mb-5"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              className="text-xl font-bold uppercase tracking-[0.05em] text-white inline-block mb-5"
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Reverse{" "}
-              <span className="italic font-normal normal-case tracking-[0.02em]">
+              <span className="font-extrabold">
                 Aesthetics
               </span>
             </Link>
@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://www.instagram.com/reverseaesthetics"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300"
+                className="w-11 h-11 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300 rounded-full hover:bg-white/5 cursor-pointer"
                 aria-label="Instagram"
               >
                 <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ export default function Footer() {
                 href="https://www.facebook.com/reverseaesthetics"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300"
+                className="w-11 h-11 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300 rounded-full hover:bg-white/5 cursor-pointer"
                 aria-label="Facebook"
               >
                 <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@ export default function Footer() {
                 href="https://twitter.com/reverseaesthetics"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300"
+                className="w-11 h-11 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300 rounded-full hover:bg-white/5 cursor-pointer"
                 aria-label="Twitter"
               >
                 <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-[11px] font-light uppercase tracking-[0.25em] text-white/35 mb-7">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/35 mb-7">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -89,7 +89,7 @@ export default function Footer() {
 
           {/* Popular Treatments */}
           <div>
-            <h4 className="text-[11px] font-light uppercase tracking-[0.25em] text-white/35 mb-7">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/35 mb-7">
               Popular Treatments
             </h4>
             <ul className="space-y-3">
@@ -115,7 +115,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-[11px] font-light uppercase tracking-[0.25em] text-white/35 mb-7">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/35 mb-7">
               Our Clinics
             </h4>
             <ul className="space-y-3">
@@ -140,18 +140,18 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-[11px] font-light uppercase tracking-[0.25em] text-white/35 mb-7">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/35 mb-7">
               Visit Us
             </h4>
             <div className="space-y-5">
               <div>
-                <p className="text-bronze text-[10px] uppercase tracking-[0.25em] font-medium mb-1">Lagos</p>
+                <p className="text-bronze text-[12px] uppercase tracking-[0.12em] font-semibold mb-1">Lagos</p>
                 <p className="text-white/50 text-sm leading-relaxed">
                   Historia Mews, No. 5 Ayo Babatunde Crescent, Oniru, Lekki
                 </p>
               </div>
               <div>
-                <p className="text-bronze text-[10px] uppercase tracking-[0.25em] font-medium mb-1">Abuja</p>
+                <p className="text-bronze text-[12px] uppercase tracking-[0.12em] font-semibold mb-1">Abuja</p>
                 <p className="text-white/50 text-sm leading-relaxed">
                   Coming Soon
                 </p>

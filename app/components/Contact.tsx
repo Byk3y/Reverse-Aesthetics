@@ -48,10 +48,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">Contact</p>
-          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+          <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             Get In Touch
           </h2>
-          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl font-normal text-warm-gray-400 max-w-2xl mx-auto">
             Ready to start your aesthetic journey? Contact us today for a free consultation
           </p>
         </motion.div>
@@ -66,7 +66,7 @@ export default function Contact() {
           >
             <div className="space-y-8">
               <div>
-                <h3 className="text-3xl font-light text-charcoal mb-6" style={{ fontFamily: 'var(--font-display), serif' }}>
+                <h3 className="text-3xl font-semibold text-charcoal mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   Visit Our Clinic
                 </h3>
                 <p className="text-warm-gray-400 font-light mb-8">
@@ -172,7 +172,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <form onSubmit={handleSubmit} className="bg-white border border-warm-gray-100 p-8">
-              <h3 className="text-2xl font-light text-charcoal mb-6" style={{ fontFamily: 'var(--font-display), serif' }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 Send us a message
               </h3>
 

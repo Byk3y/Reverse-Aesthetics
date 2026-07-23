@@ -67,12 +67,12 @@ export default function TrustHighlights() {
               </div>
 
               {/* Title */}
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white mb-2">
+              <p className="text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.1em] text-white mb-2">
                 {item.title}
               </p>
 
               {/* Description */}
-              <p className="text-sm text-white/45 leading-relaxed font-light">
+              <p className="text-[13px] sm:text-sm text-white/50 leading-relaxed font-normal">
                 {item.description}
               </p>
             </motion.div>

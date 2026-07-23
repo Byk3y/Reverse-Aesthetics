@@ -116,7 +116,7 @@ export default function TreatmentsPage() {
           </p>
           <h1
             className="text-charcoal font-light mb-6"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Our <span className="italic">Treatments</span>
           </h1>
@@ -132,7 +132,7 @@ export default function TreatmentsPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <h2
               className="text-2xl lg:text-3xl text-charcoal font-light mb-10"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               {cat.category}
             </h2>
@@ -145,7 +145,7 @@ export default function TreatmentsPage() {
                 >
                   <h3
                     className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300"
-                    style={{ fontFamily: "var(--font-display), serif" }}
+                    style={{ fontFamily: "var(--font-display), sans-serif" }}
                   >
                     {treatment.name}
                   </h3>

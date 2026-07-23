@@ -41,11 +41,11 @@ export default function Testimonials() {
           <hr className="divider-gold mx-auto mb-7" />
           <h2
             className="text-charcoal mb-4"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             What Our Patients Say
           </h2>
-          <p className="text-warm-gray-400 text-lg font-light">
+          <p className="text-warm-gray-400 text-lg font-normal">
             Real stories from real transformations.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function Testimonials() {
           {/* Giant decorative quote mark */}
           <div
             className="absolute -top-6 left-0 lg:left-8 text-[140px] lg:text-[180px] leading-none text-bronze/[0.07] select-none pointer-events-none"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             &ldquo;
           </div>
@@ -71,18 +71,18 @@ export default function Testimonials() {
             >
               {/* Quote text — large editorial display */}
               <p
-                className="text-2xl lg:text-[2.25rem] font-light text-charcoal leading-snug lg:leading-[1.3] mb-10"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                className="text-2xl lg:text-[2.25rem] font-semibold text-charcoal leading-snug lg:leading-[1.3] mb-10"
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 &ldquo;{testimonials[activeIndex].quote}&rdquo;
               </p>
 
               {/* Attribution */}
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-charcoal mb-1">
+                <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-charcoal mb-1">
                   {testimonials[activeIndex].name}
                 </p>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-bronze font-light">
+                <p className="text-[12px] uppercase tracking-[0.1em] text-bronze font-medium">
                   {testimonials[activeIndex].treatment}
                 </p>
               </div>
@@ -95,10 +95,10 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`h-[1px] rounded-full transition-all duration-400 ${
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   activeIndex === index
                     ? "w-10 bg-bronze"
-                    : "w-5 bg-warm-gray-200 hover:bg-warm-gray-300"
+                    : "w-3 bg-warm-gray-200 hover:bg-warm-gray-300"
                 }`}
                 aria-label={`View testimonial ${index + 1}`}
               />

@@ -54,7 +54,7 @@ export default function BlogPage() {
             </p>
             <h1
               className="text-charcoal mb-6 text-4xl lg:text-5xl font-light"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               <span className="italic">Expert insights</span> on aesthetics, wellness, and beauty.
             </h1>
@@ -96,7 +96,7 @@ export default function BlogPage() {
               </div>
               <h2
                 className="text-3xl lg:text-4xl text-charcoal mb-4 font-light hover:text-bronze transition-colors"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 <Link href={`/blog/${posts[0].slug}`}>
                   {posts[0].title}
@@ -122,7 +122,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12 pt-16">
           <h3
             className="text-2xl text-charcoal mb-10 font-light"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Latest Articles
           </h3>
@@ -158,7 +158,7 @@ export default function BlogPage() {
                   </div>
                   <h4
                     className="text-xl text-charcoal mb-3 font-light group-hover:text-bronze transition-colors"
-                    style={{ fontFamily: "var(--font-display), serif" }}
+                    style={{ fontFamily: "var(--font-display), sans-serif" }}
                   >
                     <Link href={`/blog/${post.slug}`}>
                       {post.title}

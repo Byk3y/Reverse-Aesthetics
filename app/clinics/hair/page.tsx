@@ -21,8 +21,8 @@ export default function HairClinic() {
             Hair & Scalp Clinic
           </p>
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Revitalize your <span className="italic font-light">Hair Growth</span>.
           </h1>
@@ -53,17 +53,17 @@ export default function HairClinic() {
 
             <div>
               <h2
-                className="text-3xl md:text-4xl font-light text-charcoal mb-6"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                className="text-3xl md:text-4xl font-semibold text-charcoal mb-6"
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 Harnessing your body&apos;s healing power.
               </h2>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-6">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-6">
                 Hair loss can occur due to genetics, stress, hormones, or trauma. At Reverse,
                 we address the root cause and utilize the latest in regenerative medicine to
                 awaken dormant hair follicles.
               </p>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-10">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-10">
                 Our signature PRP (Platelet-Rich Plasma) therapy uses the growth factors found
                 naturally in your own blood to significantly boost hair thickness and combat thinning.
               </p>
@@ -93,8 +93,8 @@ export default function HairClinic() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2
-              className="text-3xl md:text-4xl font-light text-charcoal mb-4"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              className="text-3xl md:text-4xl font-semibold text-charcoal mb-4"
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Our Protocols
             </h2>
@@ -105,7 +105,7 @@ export default function HairClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300 col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 PRP Hair Restoration (Platelet-Rich Plasma)
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">

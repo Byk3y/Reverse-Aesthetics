@@ -68,11 +68,11 @@ export default function DentalAestheticsPage() {
             </span>
             <h1
               className="text-5xl lg:text-[4rem] font-light leading-tight mb-6"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Premium <span className="italic">Teeth Whitening</span> & <span className="italic">Veneers</span> in Lagos
             </h1>
-            <p className="text-lg text-white/80 font-light leading-relaxed mb-10 max-w-xl">
+            <p className="text-lg text-white/80 font-normal leading-relaxed mb-10 max-w-xl">
               Achieve a radiant, camera-ready smile with our advanced cosmetic dental treatments. From professional-grade whitening to bespoke porcelain veneers, our dental specialists craft results that look natural and last.
             </p>
             <Link
@@ -106,7 +106,7 @@ export default function DentalAestheticsPage() {
             <div>
               <h2
                 className="text-charcoal text-4xl mb-6 font-light"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 A confident smile starts with <span className="italic">expert dental care</span>.
               </h2>
@@ -145,7 +145,7 @@ export default function DentalAestheticsPage() {
           <div className="text-center mb-16">
             <h2
               className="text-charcoal text-4xl font-light mb-4"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Frequently Asked Questions
             </h2>
@@ -180,22 +180,22 @@ export default function DentalAestheticsPage() {
       {/* Related Treatments */}
       <section className="py-20 bg-ivory border-t border-warm-gray-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), serif" }}>
+          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), sans-serif" }}>
             Related <span className="italic">Treatments</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/treatments/botox-and-dermal-fillers-lagos" className="group p-8 border border-warm-gray-100 bg-white hover:bg-ivory transition-all duration-300">
-              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), serif" }}>Botox & Dermal Fillers</h3>
+              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), sans-serif" }}>Botox & Dermal Fillers</h3>
               <p className="text-warm-gray-400 font-light text-sm leading-relaxed mb-4">Targeted injectables for wrinkle reduction, volume restoration, and facial harmony.</p>
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">Learn More &rarr;</span>
             </Link>
             <Link href="/treatments/laser-skin-resurfacing-lagos" className="group p-8 border border-warm-gray-100 bg-white hover:bg-ivory transition-all duration-300">
-              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), serif" }}>Laser Skin Resurfacing</h3>
+              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), sans-serif" }}>Laser Skin Resurfacing</h3>
               <p className="text-warm-gray-400 font-light text-sm leading-relaxed mb-4">Precision lasers for pigmentation correction, acne scars, and skin renewal.</p>
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">Learn More &rarr;</span>
             </Link>
             <Link href="/treatments/iv-glow-therapy-lagos" className="group p-8 border border-warm-gray-100 bg-white hover:bg-ivory transition-all duration-300">
-              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), serif" }}>IV Glow Therapy</h3>
+              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), sans-serif" }}>IV Glow Therapy</h3>
               <p className="text-warm-gray-400 font-light text-sm leading-relaxed mb-4">Medical-grade vitamin infusions for skin radiance, immunity, and anti-aging.</p>
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">Learn More &rarr;</span>
             </Link>

@@ -74,11 +74,11 @@ export default function LagosLocationPage() {
             </span>
             <h1
               className="text-5xl lg:text-[4rem] font-light leading-tight mb-6"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Premium Aesthetic Care in <span className="italic">Lagos</span>
             </h1>
-            <p className="text-lg text-white/80 font-light leading-relaxed mb-10 max-w-xl">
+            <p className="text-lg text-white/80 font-normal leading-relaxed mb-10 max-w-xl">
               Located in the heart of Oniru, Lekki. We serve patients from across Victoria Island, Ikoyi, and the mainland with world-class, medical-led skin, body, and hair treatments.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -122,7 +122,7 @@ export default function LagosLocationPage() {
             <div>
               <h2
                 className="text-charcoal text-4xl mb-6 font-light"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 Visit us in <span className="italic">Lekki</span>.
               </h2>
@@ -173,7 +173,7 @@ export default function LagosLocationPage() {
       {/* Targeted Services Snippet */}
       <section className="py-20 bg-white border-t border-warm-gray-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), serif" }}>
+          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), sans-serif" }}>
             Top Treatments at our <span className="italic">Lagos Clinic</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -50,7 +50,7 @@ export default function AestheticsPage() {
           </p>
           <h1
             className="text-charcoal font-light mb-6"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Aesthetics & <span className="italic">Dermatology</span>
           </h1>
@@ -86,12 +86,12 @@ export default function AestheticsPage() {
                 {/* Content */}
                 <div className={index % 2 !== 0 ? "lg:[direction:ltr]" : ""}>
                   <h2
-                    className="text-2xl lg:text-3xl font-light text-charcoal mb-4"
-                    style={{ fontFamily: "var(--font-display), serif" }}
+                    className="text-2xl lg:text-3xl font-semibold text-charcoal mb-4"
+                    style={{ fontFamily: "var(--font-display), sans-serif" }}
                   >
                     {treatment.name}
                   </h2>
-                  <p className="text-warm-gray-400 font-light leading-relaxed mb-6">
+                  <p className="text-warm-gray-400 font-normal leading-relaxed mb-6">
                     {treatment.description}
                   </p>
 
@@ -120,7 +120,7 @@ export default function AestheticsPage() {
       <section className="py-20 bg-ivory text-center">
         <div className="mx-auto max-w-4xl px-6 lg:px-12">
           <div className="text-bronze/20 text-6xl leading-none font-serif mb-4">&ldquo;</div>
-          <p className="text-xl lg:text-2xl text-charcoal font-light mb-6 italic" style={{ fontFamily: "var(--font-display), serif" }}>
+          <p className="text-xl lg:text-2xl text-charcoal font-light mb-6 italic" style={{ fontFamily: "var(--font-display), sans-serif" }}>
             We don&apos;t believe in changing how you look. We believe in restoring your skin&apos;s health so your natural confidence can shine through.
           </p>
           <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-charcoal">

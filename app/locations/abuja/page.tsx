@@ -67,11 +67,11 @@ export default function AbujaLocationPage() {
             </span>
             <h1
               className="text-5xl lg:text-[4rem] font-light leading-tight mb-6"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Expert Aesthetics in <span className="italic">Abuja</span>
             </h1>
-            <p className="text-lg text-white/80 font-light leading-relaxed mb-10 max-w-xl">
+            <p className="text-lg text-white/80 font-normal leading-relaxed mb-10 max-w-xl">
               Delivering our signature standard of natural transformations and medical-grade care to the capital city. Consultations and exclusive treatments available by private appointment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -107,7 +107,7 @@ export default function AbujaLocationPage() {
             <div>
               <h2
                 className="text-charcoal text-4xl mb-6 font-light"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 Exclusive care in the <span className="italic">Capital</span>.
               </h2>
@@ -156,7 +156,7 @@ export default function AbujaLocationPage() {
       {/* Targeted Services Snippet */}
       <section className="py-20 bg-white border-t border-warm-gray-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), serif" }}>
+          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), sans-serif" }}>
             Available for Consultation in <span className="italic">Abuja</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

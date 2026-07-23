@@ -21,8 +21,8 @@ export default function WellnessClinic() {
             Wellness & IV Therapy
           </p>
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Beauty begins from <span className="italic font-light">Within</span>.
           </h1>
@@ -44,17 +44,17 @@ export default function WellnessClinic() {
 
             <div className="order-2 lg:order-1">
               <h2
-                className="text-3xl md:text-4xl font-light text-charcoal mb-6"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                className="text-3xl md:text-4xl font-semibold text-charcoal mb-6"
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 100% absorption, immediate vitality.
               </h2>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-6">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-6">
                 When you take oral vitamins, your body only absorbs about 20-30%. Intravenous (IV)
                 therapy bypasses the digestive system entirely, delivering essential vitamins,
                 minerals, and antioxidants directly into your bloodstream for maximum absorption.
               </p>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-10">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-10">
                 Whether you need a post-travel immunity boost, a skin-brightening glutathione push,
                 or advanced NAD+ anti-aging therapy, our customized drips provide the ultimate wellness upgrade.
               </p>
@@ -94,8 +94,8 @@ export default function WellnessClinic() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2
-              className="text-3xl md:text-4xl font-light text-charcoal mb-4"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              className="text-3xl md:text-4xl font-semibold text-charcoal mb-4"
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Our Drip Menu
             </h2>
@@ -106,7 +106,7 @@ export default function WellnessClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 The Reverse Signature Glow
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">
@@ -128,7 +128,7 @@ export default function WellnessClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 NAD+ Anti-Aging Infusion
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">

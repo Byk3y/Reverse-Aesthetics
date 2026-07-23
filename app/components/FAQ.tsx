@@ -62,11 +62,11 @@ export default function FAQ({ compact = false }: { compact?: boolean }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">FAQ</p>
-          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-bronze mb-4">FAQ</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl font-normal text-warm-gray-400 max-w-2xl mx-auto">
             Everything you need to know about our treatments and services
           </p>
         </motion.div>
@@ -89,13 +89,13 @@ export default function FAQ({ compact = false }: { compact?: boolean }) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="bg-white border border-warm-gray-100 overflow-hidden hover:border-bronze transition-colors duration-300"
+                  className="bg-white border border-warm-gray-100 rounded-[16px] overflow-hidden hover:border-bronze transition-colors duration-300"
                 >
                   <button
                     onClick={() => setOpenQuestion(openQuestion === index ? null : index)}
                     className="w-full px-6 py-5 text-left flex justify-between items-center gap-4 hover:bg-ivory transition-colors duration-200"
                   >
-                    <span className="text-lg font-light text-charcoal flex-1">
+                    <span className="text-lg font-semibold text-charcoal flex-1">
                       {faq.q}
                     </span>
                     <motion.svg
@@ -124,7 +124,7 @@ export default function FAQ({ compact = false }: { compact?: boolean }) {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-5 text-warm-gray-400 font-light leading-relaxed">
+                        <div className="px-6 pb-5 text-warm-gray-400 font-normal leading-relaxed">
                           {faq.a}
                         </div>
                       </motion.div>
@@ -142,19 +142,19 @@ export default function FAQ({ compact = false }: { compact?: boolean }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mt-12 text-center bg-ivory border border-warm-gray-100 p-8"
+              className="mt-12 text-center bg-ivory border border-warm-gray-100 rounded-[20px] p-8"
             >
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 Still have questions?
               </h3>
-              <p className="text-warm-gray-400 font-light mb-6">
+              <p className="text-warm-gray-400 font-normal mb-6">
                 Our team is here to help! Schedule a free consultation or give us a call.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-charcoal text-white px-8 py-3 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
+                <button className="btn-gold cursor-pointer">
                   Book Free Consultation
                 </button>
-                <button className="border border-charcoal text-charcoal px-8 py-3 hover:bg-charcoal hover:text-white transition-colors duration-300 font-medium">
+                <button className="btn-outline cursor-pointer">
                   Call Us: 09159188094
                 </button>
               </div>

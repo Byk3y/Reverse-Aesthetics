@@ -21,8 +21,8 @@ export default function WeightlossClinic() {
             Medical Weightloss
           </p>
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             Sustainable Weightloss, <span className="italic font-light">Medically Guided</span>.
           </h1>
@@ -53,17 +53,17 @@ export default function WeightlossClinic() {
 
             <div>
               <h2
-                className="text-3xl md:text-4xl font-light text-charcoal mb-6"
-                style={{ fontFamily: "var(--font-display), serif" }}
+                className="text-3xl md:text-4xl font-semibold text-charcoal mb-6"
+                style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 A clinical approach to body confidence.
               </h2>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-6">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-6">
                 Diet and exercise aren&apos;t always enough to reach your goals. At Reverse Aesthetics,
                 we recognize that weight management is a complex medical issue requiring clinical
                 intervention, not just willpower.
               </p>
-              <p className="text-warm-gray-400 font-light leading-relaxed mb-10">
+              <p className="text-warm-gray-400 font-normal leading-relaxed mb-10">
                 Our programs combine cutting-edge GLP-1 medications (like Semaglutide) with
                 continuous medical monitoring, lifestyle adjustments, and targeted contouring
                 treatments for phenomenal, lasting results.
@@ -94,8 +94,8 @@ export default function WeightlossClinic() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2
-              className="text-3xl md:text-4xl font-light text-charcoal mb-4"
-              style={{ fontFamily: "var(--font-display), serif" }}
+              className="text-3xl md:text-4xl font-semibold text-charcoal mb-4"
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               Our Programs & Treatments
             </h2>
@@ -106,7 +106,7 @@ export default function WeightlossClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 Semaglutide Program
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">
@@ -128,7 +128,7 @@ export default function WeightlossClinic() {
 
             {/* Treatment Card */}
             <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-light text-charcoal mb-4" style={{ fontFamily: "var(--font-display), serif" }}>
+              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
                 Body Contouring (Cavitation/RF)
               </h3>
               <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">
@@ -159,7 +159,7 @@ export default function WeightlossClinic() {
           </svg>
           <h2
             className="text-3xl md:text-4xl font-light mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-display), serif" }}
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             &ldquo;Weightloss is not a test of character, it is medicine. We treat the root cause.&rdquo;
           </h2>

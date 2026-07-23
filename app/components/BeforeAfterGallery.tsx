@@ -78,11 +78,11 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-bronze mb-4">Gallery</p>
-          <h2 className="text-4xl md:text-5xl font-light text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), serif' }}>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-bronze mb-4">Gallery</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             Real Results
           </h2>
-          <p className="text-xl font-light text-warm-gray-400 max-w-2xl mx-auto mb-8">
+          <p className="text-xl font-normal text-warm-gray-400 max-w-2xl mx-auto mb-8">
             See the transformative results our clients have achieved
           </p>
 
@@ -93,9 +93,9 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2 font-medium transition-all duration-300 text-sm ${
+                  className={`px-6 py-2.5 font-medium transition-all duration-300 text-sm rounded-[20px] cursor-pointer ${
                     selectedCategory === category
-                      ? 'bg-charcoal text-white'
+                      ? 'bg-bronze text-white'
                       : 'bg-warm-gray-50 text-charcoal hover:bg-warm-gray-100'
                   }`}
                 >
@@ -116,7 +116,7 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-white border border-warm-gray-100 overflow-hidden hover:border-bronze transition-colors duration-300"
+                className="bg-white border border-warm-gray-100 rounded-[20px] overflow-hidden hover:border-bronze transition-colors duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
@@ -148,10 +148,10 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
                     </motion.div>
 
                     {/* Before/After Labels */}
-                    <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 text-sm font-medium">
+                    <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-full">
                       Before
                     </div>
-                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 text-sm font-medium">
+                    <div className="absolute top-4 right-4 bg-black/60 text-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-full">
                       After
                     </div>
 
@@ -162,7 +162,7 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
                       animate={{ left: hoveredId === item.id ? '100%' : '50%' }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white shadow-sm flex items-center justify-center">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white shadow-sm rounded-full flex items-center justify-center">
                         <svg className="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
                         </svg>
@@ -172,13 +172,13 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
                 </div>
 
                 <div className="p-6">
-                  <div className="inline-block px-3 py-1 bg-bronze/10 text-bronze text-[11px] font-medium uppercase tracking-[0.25em] mb-3">
+                  <div className="inline-block px-3 py-1.5 bg-bronze/10 text-bronze text-[12px] font-semibold uppercase tracking-[0.1em] rounded-full mb-3">
                     {item.category}
                   </div>
-                  <h3 className="text-xl font-light text-charcoal mb-2" style={{ fontFamily: 'var(--font-display), serif' }}>
+                  <h3 className="text-xl font-semibold text-charcoal mb-2" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     {item.treatment}
                   </h3>
-                  <p className="text-warm-gray-400 font-light">
+                  <p className="text-warm-gray-400 font-normal">
                     {item.description}
                   </p>
                 </div>
@@ -197,7 +197,7 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
           {compact ? (
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-charcoal hover:text-bronze transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.1em] text-charcoal hover:text-bronze transition-colors duration-300"
             >
               View Full Gallery
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,10 +206,10 @@ export default function BeforeAfterGallery({ compact = false }: { compact?: bool
             </Link>
           ) : (
             <>
-              <p className="text-warm-gray-400 font-light mb-6">
+              <p className="text-warm-gray-400 font-normal mb-6">
                 Results may vary. Individual results depend on various factors including skin type, age, and lifestyle.
               </p>
-              <button className="bg-charcoal text-white px-8 py-4 hover:bg-charcoal/90 transition-colors duration-300 font-medium">
+              <button className="btn-gold cursor-pointer">
                 Schedule Your Consultation
               </button>
             </>
