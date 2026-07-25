@@ -3,7 +3,16 @@
 import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 
-const NS = "reverse-inline";
+const NS_BASE = "reverse-inline";
+
+/**
+ * Cal keeps embed state per namespace, so a shared one would keep serving the
+ * first calLink it saw — switching clinic changed the address text but left the
+ * calendar pointed at the other city. One namespace per link, plus a matching
+ * `key` to force a remount, keeps the two in step.
+ */
+const namespaceFor = (calLink: string) =>
+  `${NS_BASE}-${calLink.replace(/[^a-zA-Z0-9]+/g, "-")}`;
 
 export default function CalInline({
   calLink,
@@ -17,11 +26,13 @@ export default function CalInline({
   treatment?: string;
   onBooking?: () => void;
 }) {
+  const namespace = namespaceFor(calLink);
+
   useEffect(() => {
     let mounted = true;
     (async () => {
       try {
-        const cal = await getCalApi({ namespace: NS });
+        const cal = await getCalApi({ namespace });
         cal("ui", {
           styles: { branding: { brandColor: "#2E936F" } },
           hideEventTypeDetails: false,
@@ -42,11 +53,12 @@ export default function CalInline({
     return () => {
       mounted = false;
     };
-  }, [onBooking]);
+  }, [namespace, onBooking]);
 
   return (
     <Cal
-      namespace={NS}
+      key={calLink}
+      namespace={namespace}
       calLink={calLink}
       // width only → the embed auto-resizes to its content height (no nested scroll)
       style={{ width: "100%" }}

@@ -66,6 +66,12 @@ export function findClinic(id?: string | null) {
   return BOOKING_CLINICS.find((c) => c.id === id) ?? null;
 }
 
-export function findTreatment(id?: string | null) {
-  return TREATMENTS.find((t) => t.id === id) ?? null;
+/**
+ * Accepts either the treatment id or its Cal/LP slug — four of them differ
+ * (`hair` vs `hair-restoration`), and a deep link built from the landing-page
+ * URL would otherwise silently fail to preselect anything.
+ */
+export function findTreatment(idOrSlug?: string | null) {
+  if (!idOrSlug) return null;
+  return TREATMENTS.find((t) => t.id === idOrSlug || t.calSlug === idOrSlug) ?? null;
 }
