@@ -8,25 +8,17 @@ import {
   WHATSAPP_URL,
 } from "./homeData";
 
-/* Social profile links — update with the real handles when confirmed */
+/* Social profile links — Instagram still needs the real handle */
 const SOCIALS = {
   instagram: "https://www.instagram.com/reverseaesthetics",
-  facebook: "https://www.facebook.com/reverseaesthetics",
-  youtube: "https://www.youtube.com/@reverseaesthetics",
-  linkedin: "https://www.linkedin.com/company/reverse-aesthetics",
-  x: "https://x.com/reverseaesthetics",
+  facebook: "https://www.facebook.com/profile.php?id=61566953914310",
+  youtube: "https://www.youtube.com/@reverse-aesthetics",
+  x: "https://x.com/reverseasthetic",
 };
 
-type SocialName = "linkedin" | "instagram" | "facebook" | "youtube" | "x";
+type SocialName = "instagram" | "facebook" | "youtube" | "x";
 
 function SocialIcon({ name }: { name: SocialName }) {
-  if (name === "linkedin") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M6.94 8.98H3.55v10.83h3.39V8.98Zm.23-3.35a1.96 1.96 0 1 0-3.92 0 1.96 1.96 0 0 0 3.92 0Zm13.58 8.02c0-3.1-1.65-4.54-3.85-4.54a3.32 3.32 0 0 0-3 1.65h-.05V8.98h-3.25v10.83h3.39v-5.36c0-1.41.27-2.78 2.02-2.78 1.72 0 1.74 1.61 1.74 2.87v5.27h3.39v-5.94c0-.08 0-.15-.01-.22Z" />
-      </svg>
-    );
-  }
   if (name === "instagram") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -75,7 +67,6 @@ const socialButtons: { name: SocialName; href: string; label: string }[] = [
   { name: "instagram", href: SOCIALS.instagram, label: "Reverse Aesthetics on Instagram" },
   { name: "facebook", href: SOCIALS.facebook, label: "Reverse Aesthetics on Facebook" },
   { name: "youtube", href: SOCIALS.youtube, label: "Reverse Aesthetics on YouTube" },
-  { name: "linkedin", href: SOCIALS.linkedin, label: "Reverse Aesthetics on LinkedIn" },
   { name: "x", href: SOCIALS.x, label: "Reverse Aesthetics on X" },
 ];
 

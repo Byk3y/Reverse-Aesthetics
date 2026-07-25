@@ -11,6 +11,7 @@ import {
   BOOKING_CLINICS,
   TREATMENTS,
   WHATSAPP_URL,
+  calLinkFor,
   findClinic,
   findTreatment,
 } from "./bookingData";
@@ -178,8 +179,9 @@ export default function BookingWizard({
                   </p>
                   <div className="overflow-hidden rounded-[10px]">
                     <CalInline
-                      calLink={clinic.calLink}
+                      calLink={calLinkFor(clinic, treatment?.calSlug)}
                       notes={treatment ? `Interested in: ${treatment.label}` : ""}
+                      treatment={treatment?.label}
                       onBooking={() =>
                         track("booking_submitted", {
                           service: treatment?.label ?? "consultation",
@@ -206,8 +208,9 @@ export default function BookingWizard({
                     clinic. Pick a time and you&apos;re confirmed instantly.
                   </p>
                   <CalPopupButton
-                    calLink={clinic.calLink}
+                    calLink={calLinkFor(clinic, treatment?.calSlug)}
                     notes={treatment ? `Interested in: ${treatment.label}` : ""}
+                    treatment={treatment?.label}
                     onBooking={() =>
                       track("booking_submitted", {
                         service: treatment?.label ?? "consultation",

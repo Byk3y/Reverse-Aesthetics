@@ -8,12 +8,15 @@ const NS = "reverse-popup";
 export default function CalPopupButton({
   calLink,
   notes,
+  treatment,
   onBooking,
   className,
   children,
 }: {
   calLink: string;
   notes?: string;
+  /** Prefills the Cal.com "Which treatment?" question — must match an option exactly */
+  treatment?: string;
   onBooking?: () => void;
   className?: string;
   children: React.ReactNode;
@@ -54,6 +57,7 @@ export default function CalPopupButton({
         layout: "month_view",
         theme: "light",
         notes: notes ?? "",
+        ...(treatment ? { treatment } : {}),
       })}
       className={className}
     >

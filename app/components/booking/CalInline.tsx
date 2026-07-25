@@ -8,10 +8,13 @@ const NS = "reverse-inline";
 export default function CalInline({
   calLink,
   notes,
+  treatment,
   onBooking,
 }: {
   calLink: string;
   notes?: string;
+  /** Prefills the Cal.com "Which treatment?" question — must match an option exactly */
+  treatment?: string;
   onBooking?: () => void;
 }) {
   useEffect(() => {
@@ -47,7 +50,12 @@ export default function CalInline({
       calLink={calLink}
       // width only → the embed auto-resizes to its content height (no nested scroll)
       style={{ width: "100%" }}
-      config={{ layout: "month_view", theme: "light", notes: notes ?? "" }}
+      config={{
+        layout: "month_view",
+        theme: "light",
+        notes: notes ?? "",
+        ...(treatment ? { treatment } : {}),
+      }}
     />
   );
 }

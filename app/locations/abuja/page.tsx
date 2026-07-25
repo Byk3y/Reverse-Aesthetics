@@ -8,14 +8,14 @@ import TrustHighlights from "../../components/TrustHighlights";
 
 export const metadata: Metadata = {
   title: "Premium Aesthetic Clinic in Abuja | Reverse Aesthetics",
-  description: "Reverse Aesthetics offers premium medical aesthetic services in Abuja. Expert Botox, dermal fillers, and more—available by appointment.",
+  description: "Reverse Aesthetics offers premium medical aesthetic services in Abuja. Expert Botox, dermal fillers, and more at our Mabushi clinic. Open Monday–Saturday, 9am–7pm.",
   keywords: ["Aesthetic Clinic in Abuja", "Botox Abuja", "Dermatologist Abuja", "Medical aesthetics FCT", "Hair transplant consultation Abuja"],
   alternates: {
     canonical: "https://reverseaesthetic.com/locations/abuja",
   },
   openGraph: {
     title: "Premium Aesthetic Clinic in Abuja | Reverse Aesthetics",
-    description: "Reverse Aesthetics offers premium medical aesthetic services in Abuja. Connect with us to book your private appointment.",
+    description: "Reverse Aesthetics offers premium medical aesthetic services in Abuja. Visit our Mabushi clinic, open Monday–Saturday, 9am–7pm.",
     url: "https://reverseaesthetic.com/locations/abuja",
   }
 };
@@ -31,12 +31,19 @@ export default function AbujaLocationPage() {
     "email": "reverseaestheticsng@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Abuja",
+      "streetAddress": "4 Adamu Mathew Street, near Royal Hospital, Behind Capital Hub",
+      "addressLocality": "Mabushi",
       "addressRegion": "FCT",
       "addressCountry": "NG"
     },
-    // Leaving out street address + precise opening hours 
-    // to match "By appointment only" dynamic
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ]
   };
 
   return (
@@ -112,7 +119,7 @@ export default function AbujaLocationPage() {
                 Exclusive care in the <span className="italic">Capital</span>.
               </h2>
               <p className="text-warm-gray-400 leading-relaxed font-light mb-12 max-w-lg">
-                Our Abuja presence operates strictly by appointment, ensuring completely undisturbed consultations and dedicated clinical attention for premium clients who require absolute discretion.
+                Our Abuja clinic in Mabushi is open six days a week, offering the same medical-led care as our Lagos practice — unhurried consultations, dedicated clinical attention, and complete discretion.
               </p>
 
               <div className="space-y-10">
@@ -122,8 +129,8 @@ export default function AbujaLocationPage() {
                     Location
                   </h3>
                   <p className="text-warm-gray-400 font-light text-sm leading-relaxed pl-8">
-                    Abuja, FCT <br />
-                    <span className="italic opacity-80">(Exact address provided upon confirmed appointment)</span>
+                    4 Adamu Mathew Street, near Royal Hospital,<br />
+                    Behind Capital Hub, Mabushi, Abuja
                   </p>
                 </div>
                 
@@ -133,7 +140,8 @@ export default function AbujaLocationPage() {
                     Operating Hours
                   </h3>
                   <p className="text-warm-gray-400 font-light text-sm leading-relaxed pl-8">
-                    By Appointment Only.
+                    Monday – Saturday: 9:00 AM – 7:00 PM<br />
+                    Sunday: Closed
                   </p>
                 </div>
 

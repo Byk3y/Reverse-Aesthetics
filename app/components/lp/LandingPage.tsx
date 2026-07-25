@@ -153,7 +153,11 @@ export default function LandingPage({ service }: { service: LpService }) {
           <p className="mx-auto mb-[26px] max-w-[460px] text-center text-[15px] leading-[1.6] text-[#6f6a64]">
             Choose your clinic and pick a time that works — your booking is confirmed instantly.
           </p>
-          <LandingBooking treatmentLabel={service.treatmentLabel} waMessage={service.waMessage} />
+          <LandingBooking
+            treatmentLabel={service.treatmentLabel}
+            waMessage={service.waMessage}
+            calSlug={service.slug}
+          />
         </div>
       </section>
 

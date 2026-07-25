@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Check, MapPin, MessageCircle } from "lucide-react";
 import CalPopupButton from "@/app/components/booking/CalPopupButton";
 import CalInline from "@/app/components/booking/CalInline";
-import { BOOKING_CLINICS } from "@/app/components/booking/bookingData";
+import { BOOKING_CLINICS, calLinkFor } from "@/app/components/booking/bookingData";
 import { PHONE_DISPLAY } from "@/app/components/home/homeData";
 import { waLink } from "./lpData";
 import { track } from "@/app/lib/track";
@@ -12,12 +12,16 @@ import { track } from "@/app/lib/track";
 export default function LandingBooking({
   treatmentLabel,
   waMessage,
+  calSlug,
 }: {
   treatmentLabel: string;
   waMessage: string;
+  /** Dedicated Cal.com event for this service */
+  calSlug?: string;
 }) {
   const [clinicId, setClinicId] = useState<"lagos" | "abuja">("lagos");
   const clinic = BOOKING_CLINICS.find((c) => c.id === clinicId)!;
+  const calLink = calLinkFor(clinic, calSlug);
   const wa = waLink(waMessage);
 
   return (
@@ -62,8 +66,9 @@ export default function LandingBooking({
           {/* Desktop (≥768px): inline calendar — compact, higher-converting */}
           <div className="hidden overflow-hidden rounded-[10px] bg-white md:block">
             <CalInline
-              calLink={clinic.calLink}
+              calLink={calLink}
               notes={`Interested in: ${treatmentLabel}`}
+              treatment={treatmentLabel}
               onBooking={() =>
                 track("booking_submitted", { service: treatmentLabel, clinic: clinic.city })
               }
@@ -72,8 +77,9 @@ export default function LandingBooking({
 
           {/* Mobile (<768px): popup — avoids the long slot list inline */}
           <CalPopupButton
-            calLink={clinic.calLink}
+            calLink={calLink}
             notes={`Interested in: ${treatmentLabel}`}
+            treatment={treatmentLabel}
             onBooking={() =>
               track("booking_submitted", { service: treatmentLabel, clinic: clinic.city })
             }

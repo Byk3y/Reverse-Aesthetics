@@ -37,7 +37,7 @@ const faqs = [
       },
       {
         q: 'Where are you located?',
-        a: 'Lagos (Oniru, Lekki). Abuja (by appointment). See our Contact page for details and hours.'
+        a: 'Lagos (Oniru, Lekki). Abuja (Mabushi). See our Contact page for details and hours.'
       }
     ]
   }

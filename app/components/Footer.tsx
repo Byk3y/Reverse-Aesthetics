@@ -37,7 +37,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/reverseaesthetics"
+                href="https://www.facebook.com/profile.php?id=61566953914310"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300 rounded-full hover:bg-white/5 cursor-pointer"
@@ -48,11 +48,11 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://twitter.com/reverseaesthetics"
+                href="https://x.com/reverseasthetic"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300 rounded-full hover:bg-white/5 cursor-pointer"
-                aria-label="Twitter"
+                aria-label="X"
               >
                 <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -153,7 +153,7 @@ export default function Footer() {
               <div>
                 <p className="text-bronze text-[12px] uppercase tracking-[0.12em] font-semibold mb-1">Abuja</p>
                 <p className="text-white/50 text-sm leading-relaxed">
-                  Coming Soon
+                  4 Adamu Mathew Street, near Royal Hospital, Behind Capital Hub, Mabushi
                 </p>
               </div>
               <div className="pt-1">

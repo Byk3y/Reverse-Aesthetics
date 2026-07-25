@@ -86,7 +86,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-medium text-charcoal mb-1">Address</h4>
-                    <p className="text-warm-gray-400 font-light">Historia Mews, No. 5 Ayo Babatunde Crescent<br />Oniru, Lekki, Lagos<br /><span className="text-sm">Abuja: By appointment</span></p>
+                    <p className="text-warm-gray-400 font-light">Historia Mews, No. 5 Ayo Babatunde Crescent<br />Oniru, Lekki, Lagos<br /><span className="text-sm">Abuja: 4 Adamu Mathew Street, Mabushi</span></p>
                   </div>
                 </div>
 

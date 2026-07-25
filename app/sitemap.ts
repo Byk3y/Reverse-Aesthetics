@@ -1,9 +1,12 @@
 import { MetadataRoute } from 'next'
+import { getAllPostSlugs, getCategories } from './lib/blog/queries'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 300
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://reverseaesthetic.com'
   const currentDate = new Date().toISOString()
-  
+
   const routes = [
     { url: '', priority: 1.0, changeFrequency: 'weekly' },
     { url: '/about', priority: 0.8, changeFrequency: 'monthly' },
@@ -36,11 +39,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/treatments/acne-scar-treatment-lagos', priority: 0.9, changeFrequency: 'monthly' },
   ]
 
-  return routes.map((route) => ({
+  const staticEntries: MetadataRoute.Sitemap = routes.map((route) => ({
     url: `${baseUrl}${route.url}`,
     lastModified: currentDate,
     changeFrequency: route.changeFrequency as "weekly" | "monthly" | "yearly" | "always" | "hourly" | "daily" | "never" | undefined,
     priority: route.priority,
   }))
+
+  // Blog posts and category hubs come from Supabase. Both helpers return an
+  // empty array when Supabase isn't configured, so the sitemap degrades to
+  // the static routes above rather than failing the build.
+  const [posts, categories] = await Promise.all([
+    getAllPostSlugs(),
+    getCategories(),
+  ])
+
+  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.updated_at ?? post.published_at ?? currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  const categoryEntries: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${baseUrl}/blog/category/${category.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
+    priority: 0.6,
+  }))
+
+  return [...staticEntries, ...postEntries, ...categoryEntries]
 }
 

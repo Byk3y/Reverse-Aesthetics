@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'framerusercontent.com',
       },
+      // Blog cover images and in-article uploads live in Supabase Storage.
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
     ],
   },
 };

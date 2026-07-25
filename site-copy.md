@@ -50,7 +50,7 @@ This markdown file contains fresh, unified copy for the new Reverse Aesthetics w
 
 ### Locations & Hours
 - Headline: Visit Us
-- Copy: Lagos (Oniru, Lekki). Abuja (by appointment). Monday–Saturday: 9:00 AM–7:00 PM. Sunday: Closed.
+- Copy: Lagos (Oniru, Lekki). Abuja (Mabushi). Monday–Saturday: 9:00 AM–7:00 PM. Sunday: Closed.
 - CTA: Get Directions
 
 ---
@@ -301,14 +301,14 @@ This markdown file contains fresh, unified copy for the new Reverse Aesthetics w
 
 ### SEO
 - Title: Contact Reverse Aesthetics | Lagos & Abuja
-- Meta description: Visit our clinic in Oniru, Lekki (Lagos) or book by appointment in Abuja. Call, email, or WhatsApp. Open Monday–Saturday, 9:00 AM–7:00 PM.
+- Meta description: Visit our clinics in Oniru, Lekki (Lagos) or Mabushi (Abuja). Call, email, or WhatsApp. Open Monday–Saturday, 9:00 AM–7:00 PM.
 
 ### H1
 - We’d love to hear from you
 
 ### Details
 - Lagos: Historia Mews, No. 5 Ayo Babatunde Crescent, Oniru, Lekki, Lagos
-- Abuja: By appointment
+- Abuja: 4 Adamu Mathew Street, near Royal Hospital, Behind Capital Hub, Mabushi
 - Hours: Mon–Sat 9:00 AM–7:00 PM, Sun Closed
 - Phone: 09159188094
 - Email: reverseaestheticsng@gmail.com
@@ -345,7 +345,7 @@ Ask our team during consultation; options may be available for selected treatmen
 Yes. We regularly treat a diverse range of patients and tailor plans to each person’s anatomy and goals.
 
 8) Where are you located?  
-Lagos (Oniru, Lekki). Abuja (by appointment). See our Contact page for details and hours.
+Lagos (Oniru, Lekki). Abuja (Mabushi). See our Contact page for details and hours.
 
 ---
 
@@ -368,7 +368,7 @@ By booking or submitting an enquiry, you agree to our clinic policies on safety,
 - Phone: 09159188094
 - Email: reverseaestheticsng@gmail.com
 - Hours: Mon–Sat 9:00 AM–7:00 PM; Sun Closed
-- Lagos: Oniru, Lekki | Abuja: By appointment
+- Lagos: Oniru, Lekki | Abuja: Mabushi
 - Social: Instagram, Facebook, YouTube
 - Quick Links: Clinics, About, Blog, Shop, Bookings, Contact
 - Copyright: © 2025 Reverse Aesthetics. All Rights Reserved.

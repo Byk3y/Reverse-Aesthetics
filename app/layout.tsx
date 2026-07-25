@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: 'Reverse Aesthetics | Natural Transformations in Lagos & Abuja',
     description: "Nigeria's leading aesthetics, dermatology, weight loss, dental, and hair clinic. Safe, natural results with expert care.",
     images: ['/images/about/clinic.avif'],
-    creator: '@reverseaesthetics',
+    creator: '@reverseasthetic',
   },
   robots: {
     index: true,
@@ -159,8 +159,9 @@ export default function RootLayout({
     },
     sameAs: [
       'https://www.instagram.com/reverseaesthetics',
-      'https://www.facebook.com/reverseaesthetics',
-      'https://twitter.com/reverseaesthetics'
+      'https://www.facebook.com/profile.php?id=61566953914310',
+      'https://x.com/reverseasthetic',
+      'https://www.youtube.com/@reverse-aesthetics'
     ]
   };
 
