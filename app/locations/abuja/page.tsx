@@ -176,7 +176,7 @@ export default function AbujaLocationPage() {
                       Contact
                     </h3>
                     <p className="mt-[7px] text-[14px] leading-[1.65] text-[#65716e]">
-                      0915 918 8094<br />
+                      0901 020 3696<br />
                       reverseaestheticsng@gmail.com
                     </p>
                   </div>

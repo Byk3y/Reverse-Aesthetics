@@ -22,6 +22,10 @@ export const ABUJA_ID = `${SITE_URL}/locations/abuja#clinic`;
 
 /** E.164 — the only phone format Google reliably parses. */
 export const PHONE = "+2349159188094";
+/* The Abuja clinic has its own line — see ABUJA_PHONE_TEL in homeData.ts.
+   Each branch must carry its own number here or the two MedicalClinic nodes
+   look like one location to Google. */
+export const ABUJA_PHONE = "+2349010203696";
 export const EMAIL = "reverseaestheticsng@gmail.com";
 
 /** Mon–Sat 9–7, both clinics. Must match the hours set on each GBP listing. */
@@ -134,7 +138,7 @@ const ABUJA_CLINIC = {
   branchOf: { "@id": ORG_ID },
   parentOrganization: { "@id": ORG_ID },
   url: `${SITE_URL}/locations/abuja`,
-  telephone: PHONE,
+  telephone: ABUJA_PHONE,
   email: EMAIL,
   priceRange: "$$",
   image: `${SITE_URL}/images/about/clinic.avif`,

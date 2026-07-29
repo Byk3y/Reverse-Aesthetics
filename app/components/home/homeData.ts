@@ -26,10 +26,18 @@ export const WHATSAPP_URL =
   );
 export const BOOKING_URL = "/booking";
 
+/* Abuja has its own line. Two clinics sharing one number is allowed but reads
+   as one location to Google, and it makes an inbound call impossible to
+   attribute to a clinic. */
+export const ABUJA_PHONE_DISPLAY = "+234 901 020 3696";
+export const ABUJA_PHONE_TEL = "+2349010203696";
+
 export interface ClinicLocation {
   city: string;
   address: string;
   short: string;
+  phoneDisplay: string;
+  phoneTel: string;
   mapEmbedUrl: string;
   mapDirectionsUrl: string;
 }
@@ -39,6 +47,8 @@ export const LOCATIONS: ClinicLocation[] = [
     city: "Lagos",
     address: "Historia Mews, No. 5 Ayo Babatunde Crescent, Oniru, Lekki, Lagos",
     short: "Oniru, Lekki",
+    phoneDisplay: PHONE_DISPLAY,
+    phoneTel: PHONE_TEL,
     mapEmbedUrl:
       "https://www.google.com/maps?hl=en&q=Ayo%20Babatunde%20Crescent%2C%20Oniru%2C%20Lekki%2C%20Lagos%2C%20Nigeria&t=m&z=15&ie=UTF8&iwloc=B&output=embed",
     mapDirectionsUrl:
@@ -49,6 +59,8 @@ export const LOCATIONS: ClinicLocation[] = [
     address:
       "4 Adamu Mathew Street, near Royal Hospital, Behind Capital Hub, Mabushi, Abuja",
     short: "Mabushi, Abuja",
+    phoneDisplay: ABUJA_PHONE_DISPLAY,
+    phoneTel: ABUJA_PHONE_TEL,
     mapEmbedUrl:
       "https://www.google.com/maps?hl=en&q=4%20Adamu%20Mathew%20Street%2C%20Mabushi%2C%20Abuja%2C%20Nigeria&t=m&z=15&ie=UTF8&iwloc=B&output=embed",
     mapDirectionsUrl:
