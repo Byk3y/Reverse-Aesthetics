@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import AdminNav from "../../components/admin/AdminNav";
 import SignOutButton from "../../components/admin/SignOutButton";
 import { currentUser, currentAdmin } from "../../lib/supabase/server";
 import { isSupabaseConfigured } from "../../lib/supabase/config";
@@ -26,52 +27,72 @@ export default async function AdminLayout({
   const admin = await currentAdmin();
   if (!admin) return <NoAccess email={user.email ?? ""} />;
 
+  const who = admin.admin.full_name || user.email || "";
+
   return (
     <div
-      className="min-h-screen bg-[#f7f6f3]"
+      className="min-h-screen bg-[#f7f6f3] lg:flex"
       style={{ fontFamily: "var(--font-body), sans-serif" }}
     >
-      <header className="sticky top-0 z-50 border-b border-[#e6e2dc] bg-white">
-        <div className="mx-auto flex h-[64px] max-w-[1180px] items-center justify-between px-[20px] md:px-[32px]">
-          <div className="flex items-center gap-[26px]">
-            <Link
-              href="/admin"
-              className="inline-flex items-baseline gap-[5px] text-[15px] font-bold uppercase tracking-[0.08em] text-[var(--color-clinic-navy)]"
-              style={{ fontFamily: "var(--font-display), sans-serif" }}
-            >
-              Reverse
-              <span className="font-extrabold text-[var(--color-clinic-teal)]">
-                Admin
-              </span>
-            </Link>
-            <nav className="hidden items-center gap-[20px] md:flex">
-              <Link
-                href="/admin"
-                className="text-[13px] font-semibold text-[#5a5651] transition-colors hover:text-[var(--color-clinic-teal)]"
-              >
-                Posts
-              </Link>
-              <Link
-                href="/blog"
-                target="_blank"
-                className="inline-flex items-center gap-[5px] text-[13px] font-semibold text-[#5a5651] transition-colors hover:text-[var(--color-clinic-teal)]"
-              >
-                View blog
-                <ExternalLink className="h-[12px] w-[12px]" aria-hidden />
-              </Link>
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-[14px]">
-            <span className="hidden text-[12px] text-[#8a857f] sm:inline">
-              {admin.admin.full_name || user.email}
+      {/* ---- Rail (desktop) ----------------------------------------
+          Dark and permanent, deliberately unlike the public site's airy top
+          nav: this is a tool the clinic sits inside all day, not a page they
+          pass through. */}
+      <aside className="sticky top-0 hidden h-screen w-[236px] shrink-0 flex-col justify-between bg-[var(--color-clinic-navy)] px-[16px] py-[22px] lg:flex">
+        <div>
+          <Link
+            href="/admin"
+            className="mb-[28px] flex items-baseline gap-[5px] px-[13px] text-[15px] font-bold uppercase tracking-[0.08em] text-white"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
+          >
+            Reverse
+            <span className="font-extrabold text-[var(--color-clinic-teal-bright)]">
+              Admin
             </span>
-            <SignOutButton />
+          </Link>
+
+          <AdminNav variant="rail" />
+        </div>
+
+        <div className="grid gap-[14px] border-t border-white/10 px-[13px] pt-[18px]">
+          <Link
+            href="/"
+            target="_blank"
+            className="inline-flex items-center gap-[6px] text-[12.5px] font-semibold text-white/50 transition-colors hover:text-white"
+          >
+            View site
+            <ExternalLink className="h-[12px] w-[12px]" aria-hidden />
+          </Link>
+          <p className="truncate text-[12px] text-white/40" title={who}>
+            {who}
+          </p>
+          <div>
+            <SignOutButton tone="dark" />
           </div>
+        </div>
+      </aside>
+
+      {/* ---- Bar (mobile) ---- */}
+      <header className="sticky top-0 z-50 bg-[var(--color-clinic-navy)] px-[16px] py-[12px] lg:hidden">
+        <div className="mb-[10px] flex items-center justify-between">
+          <Link
+            href="/admin"
+            className="flex items-baseline gap-[5px] text-[14px] font-bold uppercase tracking-[0.08em] text-white"
+            style={{ fontFamily: "var(--font-display), sans-serif" }}
+          >
+            Reverse
+            <span className="font-extrabold text-[var(--color-clinic-teal-bright)]">
+              Admin
+            </span>
+          </Link>
+          <SignOutButton tone="dark" />
+        </div>
+        <div className="-mx-[16px] overflow-x-auto px-[16px]">
+          <AdminNav variant="bar" />
         </div>
       </header>
 
-      {children}
+      <div className="min-w-0 flex-1">{children}</div>
     </div>
   );
 }
@@ -106,11 +127,9 @@ function NotConfigured() {
         </li>
         <li>2. Paste in your project URL and anon key.</li>
         <li>
-          3. Run{" "}
-          <code className="font-mono text-[13px]">
-            supabase/migrations/0001_blog_schema.sql
-          </code>{" "}
-          in the Supabase SQL editor.
+          3. Run the files in{" "}
+          <code className="font-mono text-[13px]">supabase/migrations/</code> in
+          order, in the Supabase SQL editor.
         </li>
         <li>4. Restart the dev server.</li>
       </ol>

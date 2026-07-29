@@ -116,7 +116,7 @@ export default function PostEditor({ post, categories, authors }: Props) {
   const uploadCover = async (file: File) => {
     setCoverBusy(true);
     setError(null);
-    const result = await uploadMedia(file);
+    const result = await uploadMedia(file, "cover");
     if (result.ok) setCoverUrl(result.url);
     else setError(result.error);
     setCoverBusy(false);
@@ -181,7 +181,7 @@ export default function PostEditor({ post, categories, authors }: Props) {
       <div className="mb-[26px] flex flex-wrap items-center justify-between gap-[14px]">
         <div>
           <Link
-            href="/admin"
+            href="/admin/posts"
             className="text-[13px] font-semibold text-[#8a857f] transition-colors hover:text-[var(--color-clinic-teal)]"
           >
             ← All posts

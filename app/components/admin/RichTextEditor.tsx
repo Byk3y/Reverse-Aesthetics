@@ -89,7 +89,7 @@ export default function RichTextEditor({ initialContent, onChange }: Props) {
     setUploading(true);
     setUploadError(null);
 
-    const result = await uploadMedia(file);
+    const result = await uploadMedia(file, "inline");
 
     if (!result.ok) {
       setUploadError(result.error);
