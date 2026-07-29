@@ -135,6 +135,11 @@ const ABUJA_CLINIC = {
   "@type": "MedicalClinic",
   "@id": ABUJA_ID,
   name: "Reverse Aesthetics — Abuja",
+  // The Google Business Profile for this clinic is listed under a longer,
+  // service-laden string. Recording it here ties the two records to the same
+  // entity without making it the business's name on the site.
+  alternateName:
+    "Reverse Aesthetics Clinics Abuja, Dermatology, Hair Restoration, Teeth Whitening",
   branchOf: { "@id": ORG_ID },
   parentOrganization: { "@id": ORG_ID },
   url: `${SITE_URL}/locations/abuja`,
