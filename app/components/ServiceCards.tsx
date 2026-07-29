@@ -24,7 +24,7 @@ const services = [
     title: "Weight Loss",
     description:
       "Medical programs, injection support, and body contouring for sustainable, healthy transformation.",
-    image: "/images/generated/weightloss_service.avif",
+    image: "/images/generated/hero_weightloss_consult.avif",
     href: "/clinics/weightloss",
     treatmentLinks: [
       { label: "Medical Programs", href: "/treatments/medical-weight-loss-lagos" },

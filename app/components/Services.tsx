@@ -18,19 +18,13 @@ const services: Service[] = [
   {
     title: 'Aesthetics & Dermatology',
     description: 'Advanced skincare, injectables, skin tightening, and glow treatments.',
-    image: '/images/services/aesthetics.jpg',
-    beforeImage: '/images/services/acne-face.avif',
-    afterImage: '/images/services/acne-healed-face.avif',
-    hasBeforeAfter: true,
+    image: '/images/services/service-bumps-breakout.avif',
     treatments: ['Botox & Fillers', 'HIFU & Thread Lift', 'Laser & RF', 'Acne Treatment', 'Chemical Peels', 'Hydradermabrasion']
   },
   {
     title: 'Weight Loss',
     description: 'Medical programs, injection support, and body contouring.',
-    image: '/images/services/weightloss.jpg',
-    beforeImage: '/images/services/weight-loss-before.avif',
-    afterImage: '/images/services/weight-loss-after.avif',
-    hasBeforeAfter: true,
+    image: '/images/generated/hero_weightloss_consult.avif',
     treatments: ['Medical Weight Loss', 'Injection Support', 'Body Contouring', 'Skin Firming', 'Wellness Programs']
   },
   {

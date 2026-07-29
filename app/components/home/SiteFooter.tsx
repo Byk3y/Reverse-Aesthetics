@@ -52,6 +52,7 @@ const clinicLinks = [
   { label: "Weight Loss", href: "/clinics/weightloss" },
   { label: "Dental Aesthetics", href: "/clinics/dental" },
   { label: "Hair Restoration", href: "/clinics/hair" },
+  { label: "Wellness & IV Therapy", href: "/clinics/wellness" },
   { label: "All clinics", href: "/clinics" },
 ];
 

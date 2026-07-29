@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ChevronRight } from "lucide-react";
 import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import ClinicNavbar from "../components/home/ClinicNavbar";
 import { Breadcrumbs } from "../components/home/Breadcrumbs";
@@ -11,7 +12,7 @@ import { BOOKING_URL, WHATSAPP_URL } from "../components/home/homeData";
 
 export const metadata: Metadata = {
   title: "Our Clinics | Reverse Aesthetics",
-  description: "Explore our four specialist clinics: Aesthetics & Dermatology, Weight Loss, Dental Aesthetics, and Hair Restoration. World-class care in Lagos & Abuja.",
+  description: "Explore our five specialist clinics: Aesthetics & Dermatology, Weight Loss, Dental Aesthetics, Hair Restoration, and Wellness & IV Therapy. World-class care in Lagos & Abuja.",
   alternates: { canonical: "/clinics" },
 };
 
@@ -22,6 +23,7 @@ const clinics = [
     description:
       "Our flagship clinic specializes in advanced skincare, injectables, skin tightening, and glow treatments. From acne management to anti-aging protocols, every treatment is tailored to your unique complexion and goals.",
     image: "/images/generated/aesthetics_service.avif",
+    href: "/clinics/aesthetics",
     treatments: [
       "Botox & Dermal Fillers",
       "HIFU Skin Tightening",
@@ -38,7 +40,8 @@ const clinics = [
     tagline: "Transform your body, sustainably.",
     description:
       "Our medical weight loss programs combine prescription support, nutritional guidance, body contouring, and ongoing supervision for results that last. Every program is physician-led and tailored to your body.",
-    image: "/images/generated/weightloss_service.avif",
+    image: "/images/generated/hero_weightloss_consult.avif",
+    href: "/clinics/weightloss",
     treatments: [
       "Medical Weight Programs",
       "Injection Support (Saxenda, etc.)",
@@ -54,6 +57,7 @@ const clinics = [
     description:
       "Our dental aesthetics clinic delivers smile makeovers that look completely natural. From whitening to full veneer transformations, we combine artistry with dental precision.",
     image: "/images/generated/dental_smile.avif",
+    href: "/clinics/dental",
     treatments: [
       "Teeth Whitening",
       "Porcelain Veneers",
@@ -69,6 +73,7 @@ const clinics = [
     description:
       "Surgical and non-surgical solutions for hair loss. Whether it's FUE transplant, PRP therapy, or scalp regeneration, our specialists help you regain natural, full hair.",
     image: "/images/generated/hair_restoration.avif",
+    href: "/clinics/hair",
     treatments: [
       "FUE Hair Transplant",
       "Beard Transplant",
@@ -76,6 +81,21 @@ const clinics = [
       "PRP Hair Therapy",
       "Scalp Micropigmentation",
       "GFC Treatment",
+    ],
+  },
+  {
+    title: "Wellness & IV Therapy",
+    tagline: "Beauty begins from within.",
+    description:
+      "Rapidly replenish nutrients, boost immunity, and enhance cellular aging with our premium bespoke IV drips. Every infusion is custom-formulated and administered by licensed nurses in our treatment lounge.",
+    image: "/images/generated/hero_iv_therapy.avif",
+    href: "/clinics/wellness",
+    treatments: [
+      "The Reverse Signature Glow",
+      "NAD+ Anti-Aging Infusion",
+      "Glutathione Skin Brightening",
+      "Immunity & Post-Travel Drips",
+      "Custom Vitamin Blends",
     ],
   },
 ];
@@ -97,7 +117,7 @@ export default function ClinicsPage() {
             Our Clinics
           </p>
           <h1 className="hero-copy-reveal [animation-delay:120ms] mx-auto max-w-[760px] text-[32px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[52px] md:leading-[1.08]">
-            Four clinics.{" "}
+            Five clinics.{" "}
             <span className="text-[var(--color-clinic-hero-accent)]">
               One standard
             </span>{" "}
@@ -173,13 +193,26 @@ export default function ClinicsPage() {
                     >
                       Book a Consultation
                     </Link>
+                    {/* Without this the clinic sub-pages have no inbound link
+                        anywhere on the site outside the sitemap. */}
                     <Link
-                      href="/treatments"
+                      href={clinic.href}
                       className="inline-flex h-[48px] w-full items-center justify-center rounded-full border border-[#d8e6e7] px-[32px] text-[12px] font-semibold uppercase tracking-[0.12em] text-[var(--color-clinic-navy)] transition-colors hover:bg-[#e4f1f2] sm:w-auto"
                     >
-                      View All Treatments
+                      Explore This Clinic
                     </Link>
                   </div>
+
+                  <Link
+                    href="/treatments"
+                    className="group mt-[18px] inline-flex items-center gap-[7px] text-[12px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)] transition-colors hover:text-[var(--color-clinic-teal-dark)]"
+                  >
+                    View All Treatments
+                    <ChevronRight
+                      className="h-[15px] w-[15px] transition-transform duration-300 group-hover:translate-x-[3px]"
+                      aria-hidden
+                    />
+                  </Link>
                 </div>
               </div>
             </section>
