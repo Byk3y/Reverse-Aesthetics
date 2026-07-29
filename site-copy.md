@@ -308,7 +308,7 @@ This markdown file contains fresh, unified copy for the new Reverse Aesthetics w
 
 ### Details
 - Lagos: Historia Mews, No. 5 Ayo Babatunde Crescent, Oniru, Lekki, Lagos
-- Abuja: 4 Adamu Mathew Street, near Royal Hospital, Behind Capital Hub, Mabushi
+- Abuja: 4 Adamu Mathew Street, near Royal Specialist Hospital, Mabushi, Abuja 900108
 - Hours: Mon–Sat 9:00 AM–7:00 PM, Sun Closed
 - Phone: 09159188094
 - Email: reverseaestheticsng@gmail.com

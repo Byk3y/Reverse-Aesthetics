@@ -146,8 +146,9 @@ export default function AbujaLocationPage() {
                       Location
                     </h3>
                     <p className="mt-[7px] text-[14px] leading-[1.65] text-[#65716e]">
-                      4 Adamu Mathew Street, near Royal Hospital,<br />
-                      Behind Capital Hub, Mabushi, Abuja
+                      4 Adamu Mathew Street,<br />
+                      near Royal Specialist Hospital,<br />
+                      Mabushi, Abuja 900108
                     </p>
                   </div>
                 </div>

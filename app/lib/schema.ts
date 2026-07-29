@@ -144,10 +144,13 @@ const ABUJA_CLINIC = {
   image: `${SITE_URL}/images/about/clinic.avif`,
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "4 Adamu Mathew Street, Behind Capital Hub, near Royal Hospital, Mabushi",
+    // Mirrors the verified Google Business Profile character for character.
+    // The profile is the source of truth for NAP; if this drifts, the two
+    // records stop reinforcing each other in local search.
+    streetAddress: "4 Adamu Mathew Street, near Royal Specialist Hospital",
     addressLocality: "Mabushi",
     addressRegion: "FCT",
+    postalCode: "900108",
     addressCountry: "NG",
   },
   // geo deliberately omitted: no verified coordinates for the Mabushi address.

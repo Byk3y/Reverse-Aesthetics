@@ -47,8 +47,8 @@ A related piece of housekeeping: settle on one Google account as the clinic's ca
 | Field | Value |
 |---|---|
 | Business name | `Reverse Aesthetics` |
-| Address | `4 Adamu Mathew Street, Behind Capital Hub, near Royal Hospital, Mabushi, Abuja` |
-| Phone | `+234 915 918 8094` |
+| Address | `4 Adamu Mathew Street, near Royal Specialist Hospital, Mabushi, Abuja 900108` |
+| Phone | `+234 901 020 3696` |
 | Website | `https://reverseaesthetic.com/locations/abuja` |
 | Hours | Mon–Sat 09:00–19:00, Sunday closed |
 

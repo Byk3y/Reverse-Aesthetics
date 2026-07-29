@@ -57,7 +57,7 @@ export const LOCATIONS: ClinicLocation[] = [
   {
     city: "Abuja",
     address:
-      "4 Adamu Mathew Street, near Royal Hospital, Behind Capital Hub, Mabushi, Abuja",
+      "4 Adamu Mathew Street, near Royal Specialist Hospital, Mabushi, Abuja 900108",
     short: "Mabushi, Abuja",
     phoneDisplay: ABUJA_PHONE_DISPLAY,
     phoneTel: ABUJA_PHONE_TEL,
