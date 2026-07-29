@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, MapPin, MessageCircle, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, Check, MapPin, Sparkles } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import BookingStepper from "./BookingStepper";
 import OptionCardGroup from "./OptionCardGroup";
 import CalPopupButton from "./CalPopupButton";
@@ -17,6 +19,20 @@ import {
 } from "./bookingData";
 import { PHONE_DISPLAY } from "@/app/components/home/homeData";
 import { track } from "@/app/lib/track";
+
+/**
+ * The two calendars used to be switched with `md:hidden` / `hidden md:block`,
+ * which is CSS-only — both stayed mounted, so every phone-width visitor also
+ * loaded the desktop inline embed as a 0x0 cal.com iframe inside a display:none
+ * box. Two live embeds sharing Cal's global runtime is a needless footgun (and
+ * a wasted third-party request), so pick one and mount only that.
+ */
+const MD_QUERY = "(min-width: 768px)";
+const subscribeMd = (onChange: () => void) => {
+  const mq = window.matchMedia(MD_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+};
 
 export default function BookingWizard({
   initialClinic,
@@ -35,6 +51,13 @@ export default function BookingWizard({
 
   const clinic = findClinic(clinicId);
   const treatment = findTreatment(treatmentId);
+
+  // Server snapshot is `false`: SSR emits the popup, which loads no iframe until tapped.
+  const isDesktop = useSyncExternalStore(
+    subscribeMd,
+    () => window.matchMedia(MD_QUERY).matches,
+    () => false,
+  );
 
   function next() {
     setStep((s) => Math.min(s + 1, 2));
@@ -62,14 +85,16 @@ export default function BookingWizard({
       {/* Sticky header */}
       <header className="sticky top-0 z-50 border-b border-[rgba(35,32,29,0.08)] bg-[var(--color-clinic-warm-bg)]">
         <div className="mx-auto flex max-w-[725px] items-center justify-between px-5 py-[14px]">
-          <Link
-            href="/"
-            aria-label="Reverse Aesthetics home"
-            className="inline-flex items-baseline gap-[5px] text-[16px] font-bold uppercase tracking-[0.07em] text-[var(--color-clinic-navy)]"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Reverse
-            <span className="font-extrabold text-[var(--color-clinic-teal)]">Aesthetics</span>
+          <Link href="/" aria-label="Reverse Aesthetics home" className="shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="Reverse Aesthetics"
+              width={702}
+              height={194}
+              sizes="145px"
+              priority
+              className="h-[32px] w-auto"
+            />
           </Link>
           <a
             href={WHATSAPP_URL}
@@ -77,7 +102,7 @@ export default function BookingWizard({
             rel="noreferrer"
             className="inline-flex items-center gap-[6px] text-[12px] font-semibold text-[#6f6a64] transition-colors hover:text-[var(--color-clinic-teal)]"
           >
-            <MessageCircle className="h-[15px] w-[15px]" aria-hidden />
+            <WhatsAppIcon className="h-[15px] w-[15px]" />
             <span className="hidden sm:inline">Need help?</span>
           </a>
         </div>
@@ -96,7 +121,7 @@ export default function BookingWizard({
         </div>
       </header>
 
-      <div className="mx-auto max-w-[725px] px-5 pb-20 pt-8 sm:pt-10">
+      <div className={`mx-auto max-w-[725px] px-5 pt-8 sm:pt-10 ${step < 2 ? "pb-[132px]" : "pb-20"}`}>
         {/* STEP 0 — Clinic */}
         {step === 0 && (
           <div>
@@ -112,7 +137,7 @@ export default function BookingWizard({
               value={clinicId}
               onChange={setClinicId}
             />
-            <ContinueButton disabled={!clinicId} onClick={next} />
+            <ContinueButton visible={!!clinicId} onClick={next} />
           </div>
         )}
 
@@ -131,7 +156,7 @@ export default function BookingWizard({
               value={treatmentId}
               onChange={setTreatmentId}
             />
-            <ContinueButton disabled={!treatmentId} onClick={next} />
+            <ContinueButton visible={!!treatmentId} onClick={next} />
           </div>
         )}
 
@@ -167,9 +192,9 @@ export default function BookingWizard({
             </div>
 
             {clinic.calReady ? (
-              <>
-                {/* Desktop (≥768px): inline calendar — compact, higher-converting */}
-                <div className="hidden rounded-[14px] border border-[rgba(35,32,29,0.1)] bg-white p-[20px] text-center sm:p-[28px] md:block">
+              isDesktop ? (
+                /* Desktop (≥768px): inline calendar — compact, higher-converting */
+                <div className="rounded-[14px] border border-[rgba(35,32,29,0.1)] bg-white p-[20px] text-center sm:p-[28px]">
                   <p className="mx-auto mb-[18px] max-w-[440px] text-[15px] leading-[1.6] text-[#5f5b55]">
                     You&apos;re booking
                     {treatment ? ` a ${treatment.label.toLowerCase()}` : " a consultation"} at
@@ -194,10 +219,10 @@ export default function BookingWizard({
                     Instant email confirmation · reschedule anytime
                   </p>
                 </div>
-
-                {/* Mobile (<768px): popup — avoids the long slot list inline */}
-                <div className="rounded-[14px] border border-[rgba(35,32,29,0.1)] bg-white p-[28px] text-center md:hidden">
-                  <span className="mx-auto flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#e7efe7] text-[var(--color-clinic-teal)]">
+              ) : (
+                /* Mobile (<768px): popup — avoids the long slot list inline */
+                <div className="rounded-[14px] border border-[rgba(35,32,29,0.1)] bg-white p-[28px] text-center">
+                  <span className="mx-auto flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
                     <Check className="h-[24px] w-[24px]" aria-hidden />
                   </span>
                   <p className="mx-auto mt-[16px] max-w-[420px] text-[15px] leading-[1.6] text-[#5f5b55]">
@@ -217,7 +242,7 @@ export default function BookingWizard({
                         clinic: clinic.city,
                       })
                     }
-                    className="mt-[22px] inline-flex h-[54px] w-full items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] text-[15px] font-semibold text-white shadow-[0_12px_28px_-12px_rgba(46,147,111,0.7)] transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
+                    className="mt-[22px] inline-flex h-[54px] w-full items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] text-[15px] font-semibold text-white shadow-[0_12px_28px_-12px_rgba(1,120,125,0.7)] transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
                   >
                     Choose a time
                     <ArrowRight className="h-[17px] w-[17px]" aria-hidden />
@@ -226,10 +251,10 @@ export default function BookingWizard({
                     Instant email confirmation · reschedule anytime
                   </p>
                 </div>
-              </>
+              )
             ) : (
               <div className="rounded-[14px] border border-[rgba(35,32,29,0.1)] bg-white p-[28px] text-center sm:p-[40px]">
-                <span className="mx-auto flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#e7efe7] text-[var(--color-clinic-teal)]">
+                <span className="mx-auto flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
                   <Check className="h-[24px] w-[24px]" aria-hidden />
                 </span>
                 <h2 className="mt-[18px] text-[22px] font-bold text-[var(--color-clinic-navy)]">
@@ -248,7 +273,7 @@ export default function BookingWizard({
                   className="mt-[22px] inline-flex h-[48px] items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] px-[26px] text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
                 >
                   Book {clinic.city} on WhatsApp
-                  <MessageCircle className="h-[16px] w-[16px]" aria-hidden />
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
                 </a>
                 <p className="mt-[14px] text-[13px] text-[#8a857e]">
                   Or call us at {PHONE_DISPLAY}
@@ -262,22 +287,35 @@ export default function BookingWizard({
   );
 }
 
+/**
+ * Floating action bar — slides up from the bottom as soon as a choice is made,
+ * so a long option list never buries the Continue button below the fold.
+ */
 function ContinueButton({
-  disabled,
+  visible,
   onClick,
 }: {
-  disabled: boolean;
+  visible: boolean;
   onClick: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className="mt-[26px] inline-flex h-[52px] w-full items-center justify-center gap-[8px] rounded-full bg-[var(--color-clinic-teal)] text-[15px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(46,147,111,0.7)] transition-colors hover:bg-[var(--color-clinic-teal-dark)] disabled:cursor-not-allowed disabled:opacity-35 disabled:shadow-none"
+    <div
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-[rgba(35,32,29,0.08)] bg-[var(--color-clinic-warm-bg)] shadow-[0_-10px_30px_-16px_rgba(35,32,29,0.28)] transition-transform duration-300 ease-out ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
     >
-      Continue
-      <span aria-hidden>→</span>
-    </button>
+      <div className="mx-auto max-w-[725px] px-5 pt-[14px] pb-[calc(14px_+_env(safe-area-inset-bottom))]">
+        <button
+          type="button"
+          onClick={onClick}
+          tabIndex={visible ? 0 : -1}
+          aria-hidden={!visible}
+          className="inline-flex h-[52px] w-full items-center justify-center gap-[8px] rounded-full bg-[var(--color-clinic-teal)] text-[15px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(1,120,125,0.7)] transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
+        >
+          Continue
+          <ArrowRight className="h-[17px] w-[17px]" aria-hidden />
+        </button>
+      </div>
+    </div>
   );
 }

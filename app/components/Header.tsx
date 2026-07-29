@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
@@ -47,22 +48,17 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <nav className="flex items-center justify-between py-5 lg:py-6">
-          {/* Logo — Reverse Aesthetics text logo */}
-          <Link
-            href="/"
-            className={`text-lg lg:text-xl font-bold uppercase tracking-[0.05em] transition-colors duration-300 ${
-              isScrolled
-                ? "text-charcoal"
-                : isDarkPage
-                  ? "text-white lg:text-charcoal"
-                  : "text-charcoal"
-            }`}
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Reverse{" "}
-            <span className="font-extrabold">
-              Aesthetics
-            </span>
+          {/* Logo — Reverse Aesthetics neon wordmark */}
+          <Link href="/" className="shrink-0" aria-label="Reverse Aesthetics — home">
+            <Image
+              src="/images/logo.png"
+              alt="Reverse Aesthetics"
+              width={702}
+              height={194}
+              sizes="145px"
+              priority
+              className="h-8 lg:h-10 w-auto"
+            />
           </Link>
 
           {/* Mobile: Hamburger — thin editorial lines */}

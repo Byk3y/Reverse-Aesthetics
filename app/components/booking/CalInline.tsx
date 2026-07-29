@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { CAL_BRAND } from "./bookingData";
 
 const NS_BASE = "reverse-inline";
 
@@ -28,32 +29,41 @@ export default function CalInline({
 }) {
   const namespace = namespaceFor(calLink);
 
+  // See CalPopupButton — an inline onBooking arrow re-ran this effect on every
+  // parent render, re-issuing cal("ui") and leaking a listener each time.
+  const onBookingRef = useRef(onBooking);
   useEffect(() => {
-    let mounted = true;
+    onBookingRef.current = onBooking;
+  }, [onBooking]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const handler = () => onBookingRef.current?.();
     (async () => {
       try {
         const cal = await getCalApi({ namespace });
+        if (cancelled) return;
         cal("ui", {
-          styles: { branding: { brandColor: "#2E936F" } },
+          // `styles.branding` is deprecated in embed 1.5.x and warns on every call
+          cssVarsPerTheme: {
+            light: { "cal-brand": CAL_BRAND },
+            dark: { "cal-brand": CAL_BRAND },
+          },
           hideEventTypeDetails: false,
           layout: "month_view",
         });
-        if (onBooking) {
-          cal("on", {
-            action: "bookingSuccessful",
-            callback: () => {
-              if (mounted) onBooking();
-            },
-          });
-        }
+        cal("on", { action: "bookingSuccessful", callback: handler });
       } catch {
         /* embed API not ready — the calendar still renders */
       }
     })();
     return () => {
-      mounted = false;
+      cancelled = true;
+      getCalApi({ namespace })
+        .then((cal) => cal("off", { action: "bookingSuccessful", callback: handler }))
+        .catch(() => {});
     };
-  }, [namespace, onBooking]);
+  }, [namespace]);
 
   return (
     <Cal

@@ -6,10 +6,10 @@ export function WhyChooseUs() {
   return (
     <section id="why-choose-us" className="bg-[#f7f4f0] py-[70px] md:py-[100px]">
       <div className="mx-auto grid max-w-[1160px] gap-[28px] px-[20px] md:grid-cols-[0.95fr_1.05fr] md:items-center md:px-[40px]">
-        <div className="motion-image-frame reveal-on-scroll relative min-h-[380px] overflow-hidden rounded-[8px] bg-[#e7efe7] md:min-h-[560px]">
+        <div className="motion-image-frame reveal-on-scroll relative min-h-[380px] overflow-hidden rounded-[8px] bg-[#e4f1f2] md:min-h-[560px]">
           <Image
-            src="/images/generated/clinic_interior.avif"
-            alt="Reverse Aesthetics clinic interior in Lagos"
+            src="/images/about/clinic.avif"
+            alt="Reverse Aesthetics clinic reception in Lagos"
             fill
             sizes="(min-width: 768px) 520px, calc(100vw - 40px)"
             className="object-cover"

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Book an Appointment | Reverse Aesthetics",
   description:
     "Book your consultation at Reverse Aesthetics in Lagos or Abuja. Choose your clinic and treatment, then pick a time that works for you.",
+  alternates: { canonical: "/booking" },
 };
 
 export default async function BookingPage({

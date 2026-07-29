@@ -262,7 +262,7 @@ export default async function PostPage({ params }: Props) {
       {post.cover_image_url && (
         <div className="bg-[var(--color-clinic-hero-top)] pb-[50px] md:pb-[70px]">
           <div className="mx-auto max-w-[1000px] px-[20px] md:px-[40px]">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[18px] bg-[#e7efe7] md:aspect-[21/9]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[18px] bg-[#e4f1f2] md:aspect-[21/9]">
               <Image
                 src={post.cover_image_url}
                 alt={post.cover_image_alt ?? post.title}

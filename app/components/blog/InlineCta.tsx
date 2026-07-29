@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import { WHATSAPP_URL } from "../home/homeData";
 import type { Category } from "../../lib/blog/types";
 
@@ -41,7 +42,7 @@ export default function InlineCta({ category }: { category: Category | null }) {
           className="inline-flex h-[46px] items-center justify-center gap-[9px] rounded-full border border-white/25 px-[26px] text-[11px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:border-white/60"
         >
           Ask on WhatsApp
-          <MessageCircle className="h-[15px] w-[15px]" aria-hidden />
+          <WhatsAppIcon variant="mono" className="h-[15px] w-[15px]" />
         </a>
       </div>
     </aside>

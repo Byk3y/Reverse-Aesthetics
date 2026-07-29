@@ -6,11 +6,11 @@ import {
   Check,
   ClipboardList,
   HeartPulse,
-  MessageCircle,
   ShieldCheck,
   Sparkles,
   Stethoscope,
 } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import ClinicNavbar from "../components/home/ClinicNavbar";
 import ScrollMotion from "../components/home/ScrollMotion";
 import { SiteFooter } from "../components/home/SiteFooter";
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "About Reverse Aesthetics | Our Mission, Team, and Standards",
   description:
     "We deliver safe, natural, and lasting results through medical-led care, technology, and a culture of excellence. Meet our founder, Dr. Ral Abana.",
+  alternates: { canonical: "/about" },
 };
 
 const PURPOSE = [
@@ -126,7 +127,7 @@ export default function AboutPage() {
         {/* WIDE CLINIC IMAGE */}
         <section className="bg-[var(--color-clinic-hero-top)] pb-[70px] md:pb-[100px]">
           <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
-            <div className="motion-image-frame reveal-on-scroll relative aspect-[16/10] overflow-hidden rounded-[16px] bg-[#e7efe7] md:aspect-[21/9]">
+            <div className="motion-image-frame reveal-on-scroll relative aspect-[16/10] overflow-hidden rounded-[16px] bg-[#e4f1f2] md:aspect-[21/9]">
               <Image
                 src="/images/about/clinic.avif"
                 alt="Reverse Aesthetics clinic interior in Lagos"
@@ -179,10 +180,10 @@ export default function AboutPage() {
         {/* FOUNDER */}
         <section className="bg-[#eef2ef] py-[70px] md:py-[100px]">
           <div className="mx-auto grid max-w-[1160px] gap-[28px] px-[20px] md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-[52px] md:px-[40px]">
-            <div className="motion-image-frame reveal-on-scroll relative min-h-[380px] overflow-hidden rounded-[16px] bg-[#e7efe7] md:min-h-[540px]">
+            <div className="motion-image-frame reveal-on-scroll relative min-h-[380px] overflow-hidden rounded-[16px] bg-[#e4f1f2] md:min-h-[540px]">
               <Image
-                src="/images/generated/founder_portrait.avif"
-                alt="Dr. Ral Abana, founder of Reverse Aesthetics"
+                src="/images/team/dr-ral-abana.avif"
+                alt="Dr. Ral Abana, founder and aesthetic medical physician at Reverse Aesthetics"
                 fill
                 sizes="(min-width: 768px) 480px, calc(100vw - 40px)"
                 className="object-cover object-[50%_22%]"
@@ -232,7 +233,7 @@ export default function AboutPage() {
                 {FOUNDER_CREDENTIALS.map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-[10px] border border-[#dbe4df] bg-white/60 px-[12px] py-[14px]"
+                    className="rounded-[10px] border border-[#d8e6e7] bg-white/60 px-[12px] py-[14px]"
                   >
                     <p className="text-[16px] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--color-clinic-teal)] md:text-[18px]">
                       {stat.value}
@@ -267,7 +268,7 @@ export default function AboutPage() {
                     key={item.title}
                     className="motion-card motion-lift rounded-[14px] border border-[#e9ede9] bg-[#f8fbf9] p-[22px] md:p-[26px]"
                   >
-                    <span className="inline-flex h-[48px] w-[48px] items-center justify-center rounded-[12px] bg-[#e7efe7] text-[var(--color-clinic-teal)]">
+                    <span className="inline-flex h-[48px] w-[48px] items-center justify-center rounded-[12px] bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
                       <Icon className="h-[24px] w-[24px]" strokeWidth={1.7} aria-hidden />
                     </span>
                     <h3 className="mt-[18px] text-[19px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
@@ -303,7 +304,7 @@ export default function AboutPage() {
                     key={item.title}
                     className="motion-card flex items-start gap-[16px] rounded-[14px] bg-white p-[22px] md:p-[26px]"
                   >
-                    <span className="inline-flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full bg-[#e7efe7] text-[var(--color-clinic-teal)]">
+                    <span className="inline-flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
                       <Icon className="h-[22px] w-[22px]" strokeWidth={1.7} aria-hidden />
                     </span>
                     <div>
@@ -349,7 +350,7 @@ export default function AboutPage() {
                   className="inline-flex h-[52px] w-full items-center justify-center gap-[9px] rounded-full border border-white/25 px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10 sm:w-auto"
                 >
                   Chat on WhatsApp
-                  <MessageCircle className="h-[16px] w-[16px]" aria-hidden />
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
                 </a>
               </div>
             </div>

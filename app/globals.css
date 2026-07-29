@@ -12,11 +12,11 @@
   --color-charcoal-light: #3a3830;
   --color-charcoal-soft: #4a4840;
 
-  /* Accent — Teal & Sage Green */
-  --color-bronze: #2E936F;
-  --color-bronze-light: #779D7C;
-  --color-bronze-dark: #247A5A;
-  --color-bronze-muted: #8FB396;
+  /* Accent — Cyan (from logo wordmark) */
+  --color-bronze: #01787D;
+  --color-bronze-light: #6BA7A9;
+  --color-bronze-dark: #015F63;
+  --color-bronze-muted: #83BCBF;
 
   /* Brand Primary — Blue */
   --color-primary: #0000EE;
@@ -44,9 +44,18 @@
      Reverse Aesthetics brand palette)
      ============================================ */
   --color-clinic-navy: #23201d;        /* deep warm charcoal — dark panels, headings, footer */
-  --color-clinic-teal: #2E936F;        /* Reverse sage green — primary accent */
-  --color-clinic-teal-dark: #247A5A;
-  --color-clinic-hero-accent: #2E936F;
+  /* Cyan — primary accent, derived from the logo wordmark.
+     Logo cyan (#019EA4) is only 3.27:1 on white, so filled controls use the
+     darkened #01787D (5.27:1, WCAG AA). Keep -bright for icons/strokes only. */
+  --color-clinic-teal: #01787D;        /* primary — buttons, links, active states */
+  --color-clinic-teal-dark: #015F63;   /* hover */
+  --color-clinic-teal-bright: #019EA4; /* logo cyan — icons & strokes on light bg */
+  --color-clinic-hero-accent: #01787D;
+
+  /* Violet — secondary accent, the logo's other half (5.03:1 on white) */
+  --color-clinic-violet: #8557C6;
+  --color-clinic-violet-dark: #6F41AD;
+  --color-clinic-violet-tint: #f1eaf9;
   --color-clinic-hero-top: #f3f1ec;    /* warm pale hero background */
   --color-clinic-light-bg: #f1f4f1;
   --color-clinic-warm-bg: #f7f4f0;
@@ -74,7 +83,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(46, 147, 111, 0.15);
+  background-color: rgba(1,120,125, 0.15);
   color: #242220;
 }
 
@@ -124,12 +133,12 @@ h4 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(46, 147, 111, 0.2);
+  background: rgba(1,120,125, 0.2);
   border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(46, 147, 111, 0.4);
+  background: rgba(1,120,125, 0.4);
 }
 
 /* ============================================
@@ -234,7 +243,7 @@ h4 {
   align-items: center;
   justify-content: center;
   padding: 14px 36px;
-  background-color: #2E936F;
+  background-color: #01787D;
   color: #FFFFFF;
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 600;
@@ -242,17 +251,17 @@ h4 {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 20px;
-  border: 1px solid #2E936F;
+  border: 1px solid #01787D;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-gold:hover {
-  background-color: #247A5A;
-  border-color: #247A5A;
+  background-color: #015F63;
+  border-color: #015F63;
   color: #FFFFFF;
   transform: none;
-  box-shadow: 0 4px 12px rgba(46, 147, 111, 0.25);
+  box-shadow: 0 4px 12px rgba(1,120,125, 0.25);
 }
 
 .btn-gold:active {
@@ -304,8 +313,8 @@ h4 {
 }
 
 .btn-outline:hover {
-  background-color: #2E936F;
-  border-color: #2E936F;
+  background-color: #01787D;
+  border-color: #01787D;
   color: #FFFFFF;
   transform: none;
 }
@@ -323,8 +332,8 @@ h4 {
 }
 
 .card-luxury:hover {
-  border-color: #2E936F;
-  box-shadow: 0 4px 20px rgba(46, 147, 111, 0.08);
+  border-color: #01787D;
+  box-shadow: 0 4px 20px rgba(1,120,125, 0.08);
   transform: none;
 }
 
@@ -335,7 +344,7 @@ h4 {
 .divider-gold {
   width: 40px;
   height: 2px;
-  background: #2E936F;
+  background: #01787D;
   border: none;
   border-radius: 1px;
 }
@@ -343,7 +352,7 @@ h4 {
 .divider-gold-wide {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(46, 147, 111, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(1,120,125, 0.25), transparent);
   border: none;
 }
 
@@ -369,7 +378,7 @@ h4 {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(46, 147, 111, 0.1);
+  border-bottom: 1px solid rgba(1,120,125, 0.1);
 }
 
 /* ============================================
@@ -390,8 +399,8 @@ h4 {
 }
 
 .input-luxury:focus {
-  border-color: #2E936F;
-  box-shadow: 0 0 0 3px rgba(46, 147, 111, 0.1);
+  border-color: #01787D;
+  box-shadow: 0 0 0 3px rgba(1,120,125, 0.1);
 }
 
 .input-luxury::placeholder {
@@ -407,15 +416,6 @@ html {
   scroll-padding-top: 120px;
 }
 
-.testimonial-scroll {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.testimonial-scroll::-webkit-scrollbar {
-  display: none;
-}
-
 .hero-copy-reveal {
   animation: hero-copy-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -423,6 +423,20 @@ html {
 .hero-mosaic-image {
   animation: hero-mosaic-zoom-out 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
   transform: scale(1.12);
+}
+
+/* Hero video tile. The poster still always paints underneath and the video
+   layers over it, so the tile is never empty if autoplay is blocked or the
+   video fails to load. Reduced-motion hides the video and reveals the still.
+   NOTE: plays on mobile too — revisit before launch, a phone on Nigerian
+   mobile data spends ~200KB here. */
+.hero-tile-still {
+  z-index: 0;
+}
+
+.hero-tile-video {
+  display: block;
+  z-index: 1;
 }
 
 .motion-heading,
@@ -584,6 +598,10 @@ html {
     filter: none;
     transform: scale(1);
     will-change: auto;
+  }
+
+  .hero-tile-video {
+    display: none;
   }
 
   .hero-copy-reveal,

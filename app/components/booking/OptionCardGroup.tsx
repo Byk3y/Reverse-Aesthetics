@@ -28,7 +28,7 @@ export default function OptionCardGroup({
             key={option.value}
             className={`flex cursor-pointer items-center gap-[14px] rounded-[12px] border-2 bg-white px-[18px] py-[15px] transition-all ${
               selected
-                ? "border-[var(--color-clinic-teal)] shadow-[0_8px_22px_-10px_rgba(46,147,111,0.55)]"
+                ? "border-[var(--color-clinic-teal)] shadow-[0_8px_22px_-10px_rgba(1,120,125,0.55)]"
                 : "border-[rgba(35,32,29,0.14)] hover:border-[rgba(35,32,29,0.32)]"
             }`}
           >

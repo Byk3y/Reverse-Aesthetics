@@ -19,7 +19,6 @@ function CountUp({ value, suffix, duration = 2 }: { value: number; suffix: strin
   useEffect(() => {
     if (!isInView) return;
 
-    let start = 0;
     const end = value;
     const startTime = performance.now();
     const ms = duration * 1000;

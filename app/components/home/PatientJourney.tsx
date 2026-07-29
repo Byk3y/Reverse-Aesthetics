@@ -14,7 +14,7 @@ export function PatientJourney() {
         </div>
 
         <div className="reveal-on-scroll relative rounded-[8px] border border-[#e6ece7] bg-[#f8fbf9] px-[18px] py-[28px] md:px-[34px] md:py-[38px]">
-          <div className="absolute bottom-[52px] left-[45px] top-[52px] w-px bg-[#cfdcd4] md:bottom-auto md:left-[90px] md:right-[90px] md:top-[68px] md:h-px md:w-auto" />
+          <div className="absolute bottom-[52px] left-[45px] top-[52px] w-px bg-[#cbdfe0] md:bottom-auto md:left-[90px] md:right-[90px] md:top-[68px] md:h-px md:w-auto" />
           <div className="grid gap-[34px] md:grid-cols-3 md:gap-[24px]">
             {JOURNEY.map((step, index) => {
               const Icon = step.icon;

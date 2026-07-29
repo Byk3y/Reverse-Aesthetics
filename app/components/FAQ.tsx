@@ -44,7 +44,7 @@ const faqs = [
 ];
 
 export default function FAQ({ compact = false }: { compact?: boolean }) {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory] = useState('All');
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
 
   const currentFAQ = faqs.find(f => f.category === selectedCategory);

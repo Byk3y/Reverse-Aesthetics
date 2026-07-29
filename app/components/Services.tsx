@@ -58,13 +58,6 @@ export default function Services() {
       .filter(service => service.hasBeforeAfter)
       .map(service => service.title);
 
-    // Initialize all to false (show before first)
-    const initial: Record<string, boolean> = {};
-    servicesWithBeforeAfter.forEach(title => {
-      initial[title] = false;
-    });
-    setShowAfter(initial);
-
     servicesWithBeforeAfter.forEach((title, index) => {
       // Stagger the initial start time for each service (1 second apart)
       const initialDelay = index * 1000;

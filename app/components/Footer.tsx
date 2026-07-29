@@ -26,7 +26,7 @@ export default function Footer() {
             {/* Social Icons — Editorial: minimal, no borders */}
             <div className="flex gap-5">
               <a
-                href="https://www.instagram.com/reverseaesthetics"
+                href="https://www.instagram.com/reverse_aesthetics"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 flex items-center justify-center text-white/40 hover:text-bronze transition-colors duration-300 rounded-full hover:bg-white/5 cursor-pointer"

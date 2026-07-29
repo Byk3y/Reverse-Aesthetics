@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Onest, Red_Hat_Text, Montserrat } from "next/font/google";
 import "./globals.css";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
+import Analytics from "./components/Analytics";
+import { jsonLd, siteGraph } from "./lib/schema";
 
 const onest = Onest({
   variable: "--font-display",
@@ -46,9 +48,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Reverse Aesthetics" }],
   creator: "Reverse Aesthetics",
   publisher: "Reverse Aesthetics",
-  alternates: {
-    canonical: '/',
-  },
+  // No `alternates.canonical` here on purpose. Next inherits root-layout
+  // metadata into every page that doesn't override it, so setting a canonical
+  // of '/' at this level told Google that /about, /contact, /clinics/* and the
+  // rest were all duplicates of the homepage. Each page declares its own.
   openGraph: {
     type: 'website',
     locale: 'en_NG',
@@ -83,6 +86,15 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Search Console / Bing Webmaster ownership. Set the env vars and redeploy —
+  // the HTML-tag method survives DNS changes, which the file-upload method on
+  // the old Hostinger WordPress install will not.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {},
+  },
 };
 
 export const viewport = {
@@ -97,81 +109,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalBusiness',
-    '@id': 'https://reverseaesthetic.com',
-    name: 'Reverse Aesthetics',
-    alternateName: 'Reverse Aesthetics Clinic',
-    description: "Nigeria's leading aesthetics, dermatology, weight loss, dental, and hair restoration clinic offering natural transformations with expert medical care.",
-    url: 'https://reverseaesthetic.com',
-    telephone: '+2349159188094',
-    email: 'reverseaestheticsng@gmail.com',
-    priceRange: '$$',
-    image: 'https://reverseaesthetic.com/images/about/clinic.avif',
-    logo: 'https://reverseaesthetic.com/images/about/clinic.avif',
-    founder: {
-      '@type': 'Person',
-      name: 'Dr. Ral Abana',
-      jobTitle: 'Aesthetic Medical Physician',
-      description: 'GMC (UK) registered aesthetic medical physician with nearly a decade of specialty experience'
-    },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Historia Mews, No. 5 Ayo Babatunde Crescent, Oniru',
-      addressLocality: 'Lekki',
-      addressRegion: 'Lagos',
-      addressCountry: 'NG',
-      postalCode: ''
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 6.4474,
-      longitude: 3.4197
-    },
-    areaServed: [
-      { '@type': 'City', name: 'Lagos' },
-      { '@type': 'City', name: 'Abuja' }
-    ],
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        opens: '09:00',
-        closes: '19:00'
-      }
-    ],
-    medicalSpecialty: ['Dermatology', 'Aesthetic Medicine', 'Cosmetic Dermatology'],
-    availableService: [
-      { '@type': 'MedicalProcedure', name: 'Botox & Dermal Fillers', description: 'Injectable treatments for facial rejuvenation' },
-      { '@type': 'MedicalProcedure', name: 'HIFU & Thread Lift', description: 'Non-surgical skin tightening treatments' },
-      { '@type': 'MedicalProcedure', name: 'Laser & RF Treatments', description: 'Advanced laser and radiofrequency skin treatments' },
-      { '@type': 'MedicalTherapy', name: 'Weight Loss Programs', description: 'Medical weight management and body contouring' },
-      { '@type': 'MedicalProcedure', name: 'Hair Restoration', description: 'Surgical and non-surgical hair restoration solutions' },
-      { '@type': 'DentalService', name: 'Dental Aesthetics', description: 'Cosmetic dental treatments for smile enhancement' }
-    ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1'
-    },
-    sameAs: [
-      'https://www.instagram.com/reverseaesthetics',
-      'https://www.facebook.com/profile.php?id=61566953914310',
-      'https://x.com/reverseasthetic',
-      'https://www.youtube.com/@reverse-aesthetics'
-    ]
-  };
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={jsonLd(siteGraph)}
         />
+        <Analytics />
       </head>
       <body
         className={`${onest.variable} ${redHatText.variable} ${montserrat.variable} antialiased`}

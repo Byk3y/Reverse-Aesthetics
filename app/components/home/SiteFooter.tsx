@@ -8,9 +8,9 @@ import {
   WHATSAPP_URL,
 } from "./homeData";
 
-/* Social profile links — Instagram still needs the real handle */
+/* Social profile links — all confirmed by the client */
 const SOCIALS = {
-  instagram: "https://www.instagram.com/reverseaesthetics",
+  instagram: "https://www.instagram.com/reverse_aesthetics",
   facebook: "https://www.facebook.com/profile.php?id=61566953914310",
   youtube: "https://www.youtube.com/@reverse-aesthetics",
   x: "https://x.com/reverseasthetic",
@@ -173,7 +173,7 @@ export function SiteFooter() {
             <sup className="align-super text-[0.28em] leading-[0]">TM</sup>
           </h2>
           <p className="m-0 text-[0.98rem] font-bold text-[#0a0a0a]">
-            Copyright 2025 © Reverse Aesthetics • Proudly Nigerian
+            Copyright {new Date().getFullYear()} © Reverse Aesthetics • Proudly Nigerian
             <span
               aria-hidden="true"
               className="ml-[8px] inline-block h-[24px] w-[16px] rounded-[3px] align-middle"

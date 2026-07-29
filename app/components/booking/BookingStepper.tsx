@@ -13,14 +13,17 @@ export default function BookingStepper({ currentIndex }: { currentIndex: number 
         {STEPS.map((step, index) => {
           const isCompleted = index < currentIndex;
           const isActive = index === currentIndex;
-          const activeOrDone = isActive || isCompleted;
           return (
             <li key={step.label} className="flex items-center">
               <div
                 className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full border-2 transition-colors sm:h-[30px] sm:w-[30px]"
                 style={{
-                  borderColor: activeOrDone ? "#2E936F" : "rgba(35,32,29,0.22)",
-                  background: isCompleted ? "#2E936F" : "transparent",
+                  borderColor: isActive
+                    ? "var(--color-clinic-violet)"
+                    : isCompleted
+                      ? "var(--color-clinic-teal)"
+                      : "rgba(35,32,29,0.22)",
+                  background: isCompleted ? "var(--color-clinic-teal)" : "transparent",
                 }}
               >
                 {isCompleted ? (
@@ -34,14 +37,20 @@ export default function BookingStepper({ currentIndex }: { currentIndex: number 
                     />
                   </svg>
                 ) : isActive ? (
-                  <span className="h-[8px] w-[8px] rounded-full bg-[#2E936F]" />
+                  <span className="h-[8px] w-[8px] rounded-full bg-[var(--color-clinic-violet)]" />
                 ) : null}
               </div>
               <span
                 className={`ml-[6px] text-[13px] font-semibold whitespace-nowrap sm:text-[14px] ${
                   isActive ? "" : "hidden sm:inline"
                 }`}
-                style={{ color: activeOrDone ? "#2E936F" : "rgba(35,32,29,0.38)" }}
+                style={{
+                  color: isActive
+                    ? "var(--color-clinic-violet-dark)"
+                    : isCompleted
+                      ? "var(--color-clinic-teal)"
+                      : "rgba(35,32,29,0.38)",
+                }}
               >
                 {step.label}
               </span>
@@ -49,7 +58,10 @@ export default function BookingStepper({ currentIndex }: { currentIndex: number 
                 <div
                   className="mx-[8px] h-[2px] w-[36px] shrink-0 sm:w-[70px]"
                   style={{
-                    background: index < currentIndex ? "#2E936F" : "rgba(35,32,29,0.15)",
+                    background:
+                      index < currentIndex
+                        ? "var(--color-clinic-teal)"
+                        : "rgba(35,32,29,0.15)",
                   }}
                 />
               )}

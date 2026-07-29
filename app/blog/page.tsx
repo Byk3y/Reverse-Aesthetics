@@ -12,7 +12,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Blog | Expert Aesthetic & Skin Advice — Reverse Aesthetics",
   description:
-    "Evidence-based guides on skin, injectables, weight loss, hair, and dental aesthetics — written and medically reviewed by the Reverse Aesthetics clinical team in Lagos and Abuja.",
+    "Evidence-based guides on skin, injectables, weight loss, hair and dental aesthetics, written by the Reverse Aesthetics clinical team.",
   alternates: { canonical: "/blog" },
 };
 

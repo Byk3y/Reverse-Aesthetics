@@ -1,7 +1,9 @@
 "use client";
 
-import { ChevronRight, Mail, MapPin, MessageCircle, Phone, X } from "lucide-react";
+import { ChevronRight, Mail, MapPin, Phone, X } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import {
   BOOKING_URL,
@@ -81,16 +83,16 @@ export default function ClinicNavbar() {
         }`}
       >
         <div className="mx-auto max-w-[1000px] px-[24px] md:px-[20px] h-[68px] md:h-[76px] flex items-center justify-between">
-          <Link
-            href="/"
-            aria-label="Reverse Aesthetics home"
-            className="inline-flex items-baseline gap-[6px] text-[17px] md:text-[19px] font-bold uppercase tracking-[0.08em] text-[var(--color-clinic-navy)]"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Reverse
-            <span className="font-extrabold text-[var(--color-clinic-teal)]">
-              Aesthetics
-            </span>
+          <Link href="/" aria-label="Reverse Aesthetics home" className="shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="Reverse Aesthetics"
+              width={702}
+              height={194}
+              sizes="145px"
+              priority
+              className="h-[34px] md:h-[38px] w-auto"
+            />
           </Link>
 
           <div className="flex items-center gap-[14px] md:gap-[20px]">
@@ -133,19 +135,22 @@ export default function ClinicNavbar() {
                 href="/"
                 onClick={() => setMenuOpen(false)}
                 aria-label="Reverse Aesthetics home"
-                className="inline-flex items-baseline gap-[6px] text-[18px] font-bold uppercase tracking-[0.08em] text-[var(--color-clinic-navy)]"
-                style={{ fontFamily: "var(--font-display), sans-serif" }}
+                className="shrink-0"
               >
-                Reverse
-                <span className="font-extrabold text-[var(--color-clinic-teal)]">
-                  Aesthetics
-                </span>
+                <Image
+                  src="/images/logo.png"
+                  alt="Reverse Aesthetics"
+                  width={702}
+                  height={194}
+                  sizes="145px"
+                  className="h-[34px] w-auto"
+                />
               </Link>
               <button
                 type="button"
                 aria-label="Close menu"
                 onClick={() => setMenuOpen(false)}
-                className="inline-flex h-[38px] w-[38px] items-center justify-center rounded-full text-[var(--color-clinic-navy)] transition-colors hover:bg-[#eef5f2]"
+                className="inline-flex h-[38px] w-[38px] items-center justify-center rounded-full text-[var(--color-clinic-navy)] transition-colors hover:bg-[#ecf7f7]"
               >
                 <X className="h-[24px] w-[24px]" aria-hidden />
               </button>
@@ -215,7 +220,7 @@ export default function ClinicNavbar() {
                   className="inline-flex h-[48px] w-full items-center justify-center gap-[9px] rounded-full border border-[var(--color-clinic-teal)] px-[22px] text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)]"
                 >
                   Chat on WhatsApp
-                  <MessageCircle className="h-[16px] w-[16px]" aria-hidden />
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
                 </a>
               </div>
             </div>

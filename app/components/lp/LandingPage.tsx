@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Check, ChevronRight, MapPin, MessageCircle } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, ChevronRight, MapPin } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import LandingBooking from "./LandingBooking";
 import { waLink, type LpService } from "./lpData";
 import { LOCATIONS, PHONE_DISPLAY, PHONE_TEL } from "@/app/components/home/homeData";
@@ -23,14 +24,16 @@ export default function LandingPage({ service }: { service: LpService }) {
       {/* Minimal header (no full nav — keeps ad traffic focused) */}
       <header className="sticky top-0 z-50 border-b border-[rgba(35,32,29,0.08)] bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-[1080px] items-center justify-between px-5 py-[13px] md:px-8">
-          <Link
-            href="/"
-            aria-label="Reverse Aesthetics home"
-            className="inline-flex items-baseline gap-[5px] text-[16px] font-bold uppercase tracking-[0.07em] text-[var(--color-clinic-navy)]"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Reverse
-            <span className="font-extrabold text-[var(--color-clinic-teal)]">Aesthetics</span>
+          <Link href="/" aria-label="Reverse Aesthetics home" className="shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="Reverse Aesthetics"
+              width={702}
+              height={194}
+              sizes="145px"
+              priority
+              className="h-[32px] w-auto"
+            />
           </Link>
           <a
             href="#book"
@@ -81,7 +84,7 @@ export default function LandingPage({ service }: { service: LpService }) {
                 className="inline-flex h-[50px] items-center justify-center gap-[8px] rounded-full border border-[var(--color-clinic-navy)]/20 px-[26px] text-[13px] font-semibold uppercase tracking-[0.1em] text-[var(--color-clinic-navy)] transition-colors hover:border-[var(--color-clinic-navy)]/45"
               >
                 Chat on WhatsApp
-                <MessageCircle className="h-[16px] w-[16px]" aria-hidden />
+                <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
               </a>
             </div>
 
@@ -91,7 +94,7 @@ export default function LandingPage({ service }: { service: LpService }) {
             </p>
           </div>
 
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-[#e7efe7] md:aspect-auto md:h-[480px]">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-[#e4f1f2] md:aspect-auto md:h-[480px]">
             <Image
               src={service.image}
               alt={service.imageAlt}
@@ -172,7 +175,7 @@ export default function LandingPage({ service }: { service: LpService }) {
               <details key={faq.q} className="group rounded-[10px] border border-[#e6ece7] bg-white px-[18px] py-[16px]">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-[20px] text-[16px] font-bold text-[var(--color-clinic-navy)]">
                   {faq.q}
-                  <span className="inline-flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full bg-[#eef5f2] text-[var(--color-clinic-teal)] transition-transform group-open:rotate-90">
+                  <span className="inline-flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full bg-[#ecf7f7] text-[var(--color-clinic-teal)] transition-transform group-open:rotate-90">
                     <ChevronRight className="h-[15px] w-[15px]" aria-hidden />
                   </span>
                 </summary>
@@ -203,12 +206,12 @@ export default function LandingPage({ service }: { service: LpService }) {
                 style={{ fontFamily: "var(--font-display), sans-serif" }}
               >
                 Reverse
-                <span className="font-extrabold text-[#b8d6c9]">Aesthetics</span>
+                <span className="font-extrabold text-[#aedee0]">Aesthetics</span>
               </span>
               <div className="mt-[12px] grid gap-[6px] text-[13px] text-white/70">
                 {LOCATIONS.map((loc) => (
                   <span key={loc.city} className="flex items-start gap-[8px]">
-                    <MapPin className="mt-[2px] h-[14px] w-[14px] shrink-0 text-[#b8d6c9]" aria-hidden />
+                    <MapPin className="mt-[2px] h-[14px] w-[14px] shrink-0 text-[#aedee0]" aria-hidden />
                     <span>
                       <strong className="text-white/90">{loc.city}:</strong> {loc.address}
                     </span>
@@ -218,7 +221,7 @@ export default function LandingPage({ service }: { service: LpService }) {
             </div>
             <div className="flex flex-col gap-[10px]">
               <a href={wa} target="_blank" rel="noreferrer" className="inline-flex h-[42px] items-center justify-center gap-[8px] rounded-full bg-[var(--color-clinic-teal)] px-[20px] text-[11px] font-bold uppercase tracking-[0.09em] text-white">
-                <MessageCircle className="h-[14px] w-[14px]" aria-hidden />
+                <WhatsAppIcon variant="mono" className="h-[14px] w-[14px]" />
                 WhatsApp
               </a>
               <a href={`tel:${PHONE_TEL}`} className="text-[13px] text-white/70 hover:text-white">

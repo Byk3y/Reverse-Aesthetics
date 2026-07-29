@@ -1,66 +1,67 @@
 import { Star } from "lucide-react";
 import { TESTIMONIALS } from "./homeData";
 
+const displayFont = { fontFamily: "var(--font-display), sans-serif" };
+
 export function Testimonials() {
   return (
-    <section id="testimonials" className="overflow-hidden bg-[#f8fbf9] pt-[70px] pb-[38px] md:py-[105px]">
+    <section id="testimonials" className="bg-[#f7f4f0] py-[56px] md:py-[88px]">
       <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
-        <div className="motion-heading mb-[30px] flex flex-col gap-[18px] md:mb-[44px] md:flex-row md:items-end md:justify-between">
-          <div className="max-w-[640px]">
+        <div className="motion-heading mb-[26px] flex flex-col gap-[12px] md:mb-[36px] md:flex-row md:items-end md:justify-between md:gap-[40px]">
+          <div className="max-w-[700px]">
             <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
               Patient stories
             </p>
-            <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
+            <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[40px]">
               Natural results, from people who feel like themselves.
             </h2>
           </div>
-          <div className="flex items-center gap-[10px] text-[13px] font-semibold uppercase tracking-[0.12em] text-[#8a968f]">
-            <span className="hidden h-px w-[70px] bg-[#d7e2da] md:block" />
-            <span className="md:hidden">Swipe stories →</span>
-            <span className="hidden md:inline">Patient stories</span>
-          </div>
+          <p className="max-w-[260px] text-[15px] leading-[1.6] text-[#5f6c69] md:pb-[6px] md:text-right">
+            Three patients, three different treatment paths.
+          </p>
         </div>
-      </div>
 
-      <div className="testimonial-scroll overflow-x-auto px-[20px] pb-[10px] md:overflow-visible md:px-[40px]">
-        <div className="mx-auto flex w-max snap-x snap-mandatory gap-[14px] md:w-full md:max-w-[1160px] md:items-start md:gap-[18px]">
-          {TESTIMONIALS.map((story, index) => (
+        <div className="grid divide-y divide-[#ece6de] overflow-hidden rounded-[10px] border border-[#e6dfd6] bg-white md:grid-cols-3 md:divide-x md:divide-y-0">
+          {TESTIMONIALS.map((story) => (
             <figure
               key={story.name}
-              className={`motion-card motion-float ${story.tone} relative flex min-h-[356px] w-[82vw] max-w-[360px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[8px] p-[22px] md:min-h-[410px] md:w-auto md:max-w-none md:flex-1 md:p-[28px] ${
-                index === 1 ? "md:mt-[44px]" : ""
-              } ${index === 2 ? "md:mt-[12px]" : ""}`}
+              className="motion-card relative flex flex-col p-[22px] md:min-h-[192px] md:p-[26px]"
             >
-              <div className="absolute -right-[34px] -top-[34px] h-[126px] w-[126px] rounded-full bg-white/28" />
-              <div className="absolute bottom-[88px] left-[22px] h-px w-[calc(100%-44px)] bg-white/45" />
+              <span
+                aria-hidden
+                style={displayFont}
+                className="pointer-events-none absolute left-[14px] top-[2px] select-none text-[76px] leading-none text-[rgba(35,32,29,0.07)]"
+              >
+                &ldquo;
+              </span>
 
-              <div className="relative">
-                <div className="mb-[34px] flex items-center justify-between">
-                  <div className="inline-flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white/70 text-[15px] font-bold tracking-[0.08em] text-[var(--color-clinic-navy)]">
-                    {story.initials}
-                  </div>
-                  <div className="rounded-full bg-white/55 px-[12px] py-[7px] text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)]">
-                    {story.context}
-                  </div>
-                </div>
+              <blockquote
+                style={displayFont}
+                className="relative text-[16px] font-medium leading-[1.5] tracking-[-0.005em] text-[var(--color-clinic-navy)] md:text-[17px]"
+              >
+                {story.quote}
+              </blockquote>
 
-                <div className="mb-[18px] text-[58px] font-semibold leading-none text-white/70">
-                  &ldquo;
-                </div>
-                <blockquote className="text-[23px] font-semibold leading-[1.2] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[26px]">
-                  {story.quote}
-                </blockquote>
-              </div>
-
-              <figcaption className="relative mt-[34px] flex items-center justify-between gap-[16px]">
-                <span className="text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-navy)]/70">
-                  {story.name}
+              <figcaption className="relative mt-[20px] flex items-center gap-[11px] md:mt-auto md:pt-[24px]">
+                <span
+                  className={`${story.tone} inline-flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full text-[12px] font-bold tracking-[0.06em] text-[var(--color-clinic-navy)]`}
+                >
+                  {story.initials}
                 </span>
-                <span className="flex gap-[2px] text-[var(--color-clinic-gold)]">
+                <span className="min-w-0">
+                  <span className="block text-[13px] font-semibold leading-[1.35] text-[var(--color-clinic-navy)]">
+                    {story.name}
+                  </span>
+                  <span className="block text-[12px] leading-[1.35] text-[#7c8279]">
+                    {story.context}
+                  </span>
+                </span>
+                <span className="ml-auto flex shrink-0 gap-[2px] text-[var(--color-clinic-gold)]">
+                  <span className="sr-only">Rated 5 out of 5</span>
                   {Array.from({ length: 5 }).map((_, starIndex) => (
                     <Star
                       key={starIndex}
-                      className="h-[15px] w-[15px] fill-current"
+                      className="h-[12px] w-[12px] fill-current"
                       aria-hidden
                     />
                   ))}

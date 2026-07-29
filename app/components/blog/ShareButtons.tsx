@@ -1,6 +1,7 @@
 "use client";
 
-import { Check, Link2, MessageCircle } from "lucide-react";
+import { Check, Link2 } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import { useState } from "react";
 
 const BASE =
@@ -42,7 +43,7 @@ export default function ShareButtons({
         rel="noreferrer"
         aria-label="Share on WhatsApp"
       >
-        <MessageCircle className="h-[15px] w-[15px]" aria-hidden />
+        <WhatsAppIcon className="h-[15px] w-[15px]" />
         WhatsApp
       </a>
 

@@ -149,7 +149,7 @@ function EmptyState() {
   return (
     <section className="bg-white py-[80px] md:py-[110px]">
       <div className="mx-auto max-w-[560px] px-[20px] text-center">
-        <div className="mx-auto mb-[26px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#eef5f2]">
+        <div className="mx-auto mb-[26px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#ecf7f7]">
           <svg
             viewBox="0 0 24 24"
             className="h-[28px] w-[28px] text-[var(--color-clinic-teal)]"

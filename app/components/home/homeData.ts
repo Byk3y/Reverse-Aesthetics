@@ -65,13 +65,6 @@ export const CLINIC_ADDRESS_SHORT = LOCATIONS[0].short;
 export const MAP_EMBED_URL = LOCATIONS[0].mapEmbedUrl;
 export const MAP_DIRECTIONS_URL = LOCATIONS[0].mapDirectionsUrl;
 
-export const TRUST_ITEMS = [
-  { value: "Medical-led", label: "physician-guided, evidence-based care" },
-  { value: "Natural", label: "results designed to look like you" },
-  { value: "Lagos & Abuja", label: "two clinics — Oniru, Lekki & Mabushi" },
-  { value: "GMC (UK)", label: "registered founding physician" },
-];
-
 export interface HomeService {
   title: string;
   description: string;
@@ -90,9 +83,9 @@ export const SERVICES: HomeService[] = [
     description:
       "Lift, shape, and hydration with medical-grade fillers — subtly done, never overdone.",
     icon: Syringe,
-    image: "/images/generated/aesthetics_service.avif",
+    image: "/images/services/service-dermal-fillers.avif",
     imageAlt: "Dermal filler treatment at Reverse Aesthetics",
-    tone: "bg-[#e7efe7]",
+    tone: "bg-[#e4f1f2]",
     href: "/lp/dermal-fillers",
   },
   {
@@ -100,8 +93,8 @@ export const SERVICES: HomeService[] = [
     description:
       "Deep-cleansing, hydrating facials for a luminous, healthy, glass-skin glow.",
     icon: Droplets,
-    image: "/images/services/acne-healed-face.avif",
-    imageAlt: "Luminous glass-skin glow after a facial at Reverse Aesthetics",
+    image: "/images/services/service-glass-skin.avif",
+    imageAlt: "Hydrating glass-skin facial at Reverse Aesthetics",
     tone: "bg-[#e4edf1]",
     href: "/lp/glass-skin-facials",
   },
@@ -110,7 +103,7 @@ export const SERVICES: HomeService[] = [
     description:
       "Natural hairline design, transplants, and non-surgical regeneration for lasting hair health.",
     icon: Scissors,
-    image: "/images/generated/hair_service.avif",
+    image: "/images/services/service-hair-restoration.avif",
     imageAlt: "Hair restoration and hairline design consultation",
     tone: "bg-[#efe6ea]",
     href: "/lp/hair-restoration",
@@ -120,8 +113,8 @@ export const SERVICES: HomeService[] = [
     description:
       "Non-surgical refinements that harmonize your features and proportions — naturally you.",
     icon: Sparkles,
-    image: "/images/generated/testimonial_patient.avif",
-    imageAlt: "Balanced facial profile after treatment at Reverse Aesthetics",
+    image: "/images/services/service-profile-balancing.avif",
+    imageAlt: "Facial profile assessment at Reverse Aesthetics",
     tone: "bg-[#f0e9e2]",
     href: "/lp/facial-profile-balancing",
   },
@@ -130,9 +123,9 @@ export const SERVICES: HomeService[] = [
     description:
       "Medical-led plans for clearer, calmer skin — treating acne, breakouts, and bumps at the cause.",
     icon: Stethoscope,
-    image: "/images/services/acne-face.avif",
-    imageAlt: "Acne, breakout, and bumps treatment at Reverse Aesthetics",
-    tone: "bg-[#e7efe7]",
+    image: "/images/services/service-bumps-breakout.avif",
+    imageAlt: "Acne, breakout, and bumps consultation at Reverse Aesthetics",
+    tone: "bg-[#e4f1f2]",
     href: "/lp/bumps-treatment",
   },
 ];
@@ -179,16 +172,16 @@ export const TEAM: TeamMember[] = [
     name: "Dr. Ral Abana",
     role: "Founder · Aesthetic Medical Physician",
     note: "GMC (UK) registered, award-winning, specialist in injectables, skin health, and non-surgical lifting.",
-    image: "/images/generated/founder_portrait.avif",
-    imageAlt: "Dr. Ral Abana, founder of Reverse Aesthetics",
-    tone: "bg-[#e7efe7]",
+    image: "/images/team/dr-ral-abana.avif",
+    imageAlt: "Dr. Ral Abana, founder and aesthetic medical physician at Reverse Aesthetics",
+    tone: "bg-[#e4f1f2]",
   },
   {
     name: "Clinical Care Team",
     role: "Dermatology · Weight · Dental · Hair",
     note: "Accredited clinicians across every clinic, matched to the concern in front of you.",
-    image: "/images/generated/treatment_room.avif",
-    imageAlt: "Reverse Aesthetics clinical treatment room",
+    image: "/images/team/clinical-team.avif",
+    imageAlt: "The Reverse Aesthetics clinical team at the clinic",
     tone: "bg-[#f0e9e2]",
   },
 ];
@@ -207,7 +200,7 @@ export const TESTIMONIALS = [
     name: "Caroline A.",
     initials: "CA",
     context: "Aesthetics & skin",
-    tone: "bg-[#e7efe7]",
+    tone: "bg-[#e4f1f2]",
   },
   {
     quote:

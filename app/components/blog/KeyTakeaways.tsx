@@ -11,7 +11,7 @@ export default function KeyTakeaways({ items }: { items: string[] }) {
   if (takeaways.length === 0) return null;
 
   return (
-    <aside className="rounded-[18px] border border-[#dde9e3] bg-[#f4f9f6] p-[24px] md:p-[30px]">
+    <aside className="rounded-[18px] border border-[#d9eced] bg-[#f4f9f6] p-[24px] md:p-[30px]">
       <h2 className="mb-[16px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal-dark)]">
         Key takeaways
       </h2>

@@ -178,7 +178,7 @@ export default function Contact() {
 
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-bronze/10 border border-bronze text-charcoal">
-                  Thank you! We'll get back to you within 24 hours.
+                  Thank you! We&apos;ll get back to you within 24 hours.
                 </div>
               )}
 

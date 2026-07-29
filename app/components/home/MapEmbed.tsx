@@ -32,7 +32,7 @@ export default function MapEmbed({
       className={`relative overflow-hidden rounded-[6px] bg-[#eef2ef] ${className}`}
     >
       <div
-        className={`absolute inset-0 z-[2] flex items-center justify-center bg-[linear-gradient(135deg,#eef2ef_0%,#e7efe7_100%)] p-[18px] text-center transition-opacity duration-500 ${
+        className={`absolute inset-0 z-[2] flex items-center justify-center bg-[linear-gradient(135deg,#eef2ef_0%,#e4f1f2_100%)] p-[18px] text-center transition-opacity duration-500 ${
           loaded || !showFallback ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >

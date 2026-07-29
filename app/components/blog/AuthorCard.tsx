@@ -13,7 +13,7 @@ function Avatar({ author, size }: { author: Author; size: number }) {
 
   return (
     <div
-      className="relative shrink-0 overflow-hidden rounded-full bg-[#e7efe7]"
+      className="relative shrink-0 overflow-hidden rounded-full bg-[#e4f1f2]"
       style={{ height: size, width: size }}
     >
       {author.avatar_url ? (
@@ -62,7 +62,7 @@ export function AuthorByline({
       )}
 
       {reviewer && (
-        <span className="inline-flex items-center gap-[7px] rounded-full bg-[#eef5f2] px-[12px] py-[6px] text-[12px] font-semibold text-[var(--color-clinic-teal-dark)]">
+        <span className="inline-flex items-center gap-[7px] rounded-full bg-[#ecf7f7] px-[12px] py-[6px] text-[12px] font-semibold text-[var(--color-clinic-teal-dark)]">
           <ShieldCheck className="h-[14px] w-[14px]" aria-hidden />
           Medically reviewed by {reviewer.name}
         </span>

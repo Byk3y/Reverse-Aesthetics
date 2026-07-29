@@ -42,8 +42,8 @@ export const LP_SERVICES: LpService[] = [
     h1: "Restore your hairline. Naturally.",
     subcopy:
       "Surgical and non-surgical hair restoration with natural density and a hairline designed around your face — led by Reverse Aesthetics' medical team.",
-    image: "/images/generated/hair_service.avif",
-    imageAlt: "Hair restoration consultation at Reverse Aesthetics",
+    image: "/images/services/service-hair-restoration-square.avif",
+    imageAlt: "Hairline design marked during a hair restoration consultation",
     benefits: [
       "Natural-looking density and hairline design",
       "Surgical transplant & non-surgical regeneration",
@@ -72,7 +72,7 @@ export const LP_SERVICES: LpService[] = [
     h1: "Dermal fillers, subtly done.",
     subcopy:
       "Medical-led dermal fillers for lift, shape, and hydration — designed to enhance your features, never overdo them.",
-    image: "/images/generated/aesthetics_service.avif",
+    image: "/images/services/service-dermal-fillers-square.avif",
     imageAlt: "Dermal filler treatment at Reverse Aesthetics",
     benefits: [
       "Natural lift, shape & hydration",
@@ -102,8 +102,8 @@ export const LP_SERVICES: LpService[] = [
     h1: "Clearer, calmer skin.",
     subcopy:
       "Dermatology-led treatment for acne, breakouts, and stubborn skin bumps — a tailored plan for healthier, smoother skin.",
-    image: "/images/services/acne-healed-face.avif",
-    imageAlt: "Clear, healthy skin after bumps treatment at Reverse Aesthetics",
+    image: "/images/services/service-bumps-breakout-square.avif",
+    imageAlt: "Skin assessment during a bumps and breakout consultation",
     benefits: [
       "Medical assessment of your skin",
       "Plans for acne, bumps & breakouts",
@@ -132,8 +132,8 @@ export const LP_SERVICES: LpService[] = [
     h1: "Balanced features. Naturally you.",
     subcopy:
       "Harmonize your profile — jawline, chin, nose, and proportions — with subtle, medical-led, non-surgical refinements.",
-    image: "/images/generated/testimonial_patient.avif",
-    imageAlt: "Balanced facial profile after treatment at Reverse Aesthetics",
+    image: "/images/services/service-profile-balancing-square.avif",
+    imageAlt: "Facial profile assessment at Reverse Aesthetics",
     benefits: [
       "Non-surgical profile refinement",
       "Harmony and proportion, not change",
@@ -162,8 +162,8 @@ export const LP_SERVICES: LpService[] = [
     h1: "That glass-skin glow.",
     subcopy:
       "A deep-cleansing, hydrating facial for smooth, luminous, glass-skin radiance — tailored to your skin type.",
-    image: "/images/services/acne-healed-face.avif",
-    imageAlt: "Luminous glass-skin glow after a facial at Reverse Aesthetics",
+    image: "/images/services/service-glass-skin-square.avif",
+    imageAlt: "Hydrating glass-skin facial at Reverse Aesthetics",
     benefits: [
       "Deep clean + deep hydration",
       "Luminous, smooth, glass-skin finish",

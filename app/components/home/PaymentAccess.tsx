@@ -1,4 +1,5 @@
-import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import Link from "next/link";
 import { BOOKING_URL, INTAKE_CHECKLIST, WHATSAPP_URL } from "./homeData";
 
@@ -7,7 +8,7 @@ export function PaymentAccess() {
     <section id="consultation" className="bg-white pb-[70px] pt-[22px] md:pb-[95px] md:pt-[34px]">
       <div className="mx-auto grid max-w-[1160px] gap-[18px] px-[20px] md:grid-cols-[1.1fr_0.9fr] md:px-[40px]">
         <div className="reveal-on-scroll rounded-[8px] bg-[var(--color-clinic-navy)] p-[26px] text-white md:p-[42px]">
-          <p className="mb-[12px] text-[12px] font-bold uppercase tracking-[0.14em] text-[#b8d6c9]">
+          <p className="mb-[12px] text-[12px] font-bold uppercase tracking-[0.14em] text-[#aedee0]">
             Consultation &amp; pricing
           </p>
           <h2 className="max-w-[680px] text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] md:text-[44px]">
@@ -33,7 +34,7 @@ export function PaymentAccess() {
               className="inline-flex h-[46px] items-center justify-center gap-[8px] rounded-full border border-white/25 px-[22px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10"
             >
               Chat on WhatsApp
-              <MessageCircle className="h-[15px] w-[15px]" aria-hidden />
+              <WhatsAppIcon variant="mono" className="h-[15px] w-[15px]" />
             </a>
           </div>
         </div>

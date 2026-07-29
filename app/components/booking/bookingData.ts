@@ -2,6 +2,9 @@ import { LOCATIONS, WHATSAPP_URL } from "@/app/components/home/homeData";
 
 export { WHATSAPP_URL };
 
+/** Brand colour handed to the Cal.com embed — mirrors --color-clinic-teal. */
+export const CAL_BRAND = "#01787D";
+
 export interface BookingClinic {
   id: "lagos" | "abuja";
   city: string;

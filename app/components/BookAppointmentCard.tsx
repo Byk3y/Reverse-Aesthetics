@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 import { useAppointment } from "../contexts/AppointmentContext";
 
 export default function BookAppointmentCard() {
-  const pathname = usePathname();
   const { isOpen, closeAppointment } = useAppointment();
   const [formData, setFormData] = useState({
     location: "lagos",
@@ -190,7 +187,7 @@ Please confirm if this date works for you. Thank you!`;
     }
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
+  const handleTouchEnd = () => {
     if (touchStart === null || touchCurrent === null) {
       setTouchStart(null);
       setTouchCurrent(null);

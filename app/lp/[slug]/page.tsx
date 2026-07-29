@@ -19,6 +19,11 @@ export async function generateMetadata({
     title: service.metaTitle,
     description: service.metaDescription,
     alternates: { canonical: `/lp/${service.slug}` },
+    // Kept out of the organic index on purpose. These pages target the same
+    // intent as /treatments/* — indexing both would split link signals and let
+    // Google rank the nav-less ad page for a query the treatment page should
+    // win. Google Ads serves noindexed destinations without issue.
+    robots: { index: false, follow: true },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,

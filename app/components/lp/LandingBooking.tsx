@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, MapPin, MessageCircle } from "lucide-react";
+import { ArrowRight, Check, MapPin } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import CalPopupButton from "@/app/components/booking/CalPopupButton";
 import CalInline from "@/app/components/booking/CalInline";
 import { BOOKING_CLINICS, calLinkFor } from "@/app/components/booking/bookingData";
@@ -40,7 +41,7 @@ export default function LandingBooking({
               onClick={() => setClinicId(c.id)}
               className={`flex items-center justify-center gap-[8px] rounded-[10px] border-2 px-[16px] py-[13px] text-[15px] font-semibold transition-all ${
                 active
-                  ? "border-[var(--color-clinic-teal)] bg-[#e7efe7] text-[var(--color-clinic-navy)]"
+                  ? "border-[var(--color-clinic-teal)] bg-[#e4f1f2] text-[var(--color-clinic-navy)]"
                   : "border-[rgba(35,32,29,0.14)] bg-white text-[#6f6a64] hover:border-[rgba(35,32,29,0.3)]"
               }`}
             >
@@ -83,7 +84,7 @@ export default function LandingBooking({
             onBooking={() =>
               track("booking_submitted", { service: treatmentLabel, clinic: clinic.city })
             }
-            className="inline-flex h-[54px] w-full items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] text-[15px] font-semibold text-white shadow-[0_12px_28px_-12px_rgba(46,147,111,0.7)] transition-colors hover:bg-[var(--color-clinic-teal-dark)] md:hidden"
+            className="inline-flex h-[54px] w-full items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] text-[15px] font-semibold text-white shadow-[0_12px_28px_-12px_rgba(1,120,125,0.7)] transition-colors hover:bg-[var(--color-clinic-teal-dark)] md:hidden"
           >
             Choose a time
             <ArrowRight className="h-[17px] w-[17px]" aria-hidden />
@@ -95,7 +96,7 @@ export default function LandingBooking({
         </div>
       ) : (
         <div className="rounded-[12px] border border-[rgba(35,32,29,0.1)] bg-[var(--color-clinic-warm-bg)] p-[24px] text-center">
-          <span className="mx-auto flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#e7efe7] text-[var(--color-clinic-teal)]">
+          <span className="mx-auto flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
             <Check className="h-[22px] w-[22px]" aria-hidden />
           </span>
           <h3 className="mt-[14px] text-[18px] font-bold text-[var(--color-clinic-navy)]">
@@ -114,7 +115,7 @@ export default function LandingBooking({
             className="mt-[18px] inline-flex h-[46px] items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] px-[24px] text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
           >
             Book {clinic.city} on WhatsApp
-            <MessageCircle className="h-[16px] w-[16px]" aria-hidden />
+            <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
           </a>
         </div>
       )}
@@ -128,7 +129,7 @@ export default function LandingBooking({
           onClick={() => track("whatsapp_click", { service: treatmentLabel, clinic: clinic.city })}
           className="inline-flex items-center gap-[7px] text-[14px] font-semibold text-[var(--color-clinic-teal)] hover:text-[var(--color-clinic-teal-dark)]"
         >
-          <MessageCircle className="h-[16px] w-[16px]" aria-hidden />
+          <WhatsAppIcon className="h-[16px] w-[16px]" />
           Prefer to chat? Book on WhatsApp
         </a>
         <span className="text-[12px] text-[#8a857e]">Or call us at {PHONE_DISPLAY}</span>

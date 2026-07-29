@@ -22,7 +22,7 @@ export function FaqSection() {
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-[20px] text-[16px] font-bold text-[var(--color-clinic-navy)]">
                 {faq.question}
-                <span className="inline-flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-full bg-[#eef5f2] text-[var(--color-clinic-teal)] transition-transform group-open:rotate-90">
+                <span className="inline-flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-full bg-[#ecf7f7] text-[var(--color-clinic-teal)] transition-transform group-open:rotate-90">
                   <ChevronRight className="h-[16px] w-[16px]" aria-hidden />
                 </span>
               </summary>

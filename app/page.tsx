@@ -7,9 +7,13 @@ import FloatingWhatsApp from "./components/home/FloatingWhatsApp";
 import { BOOKING_URL } from "./components/home/homeData";
 
 export const metadata: Metadata = {
-  title: "Reverse Aesthetics | Natural Transformations in Lagos & Abuja",
+  // Title targets the head term ("aesthetic clinic lagos") rather than the
+  // brand tagline, which has no search demand. The tagline still carries the
+  // brand on-page in the H1. site-copy.md records the original.
+  title: "Reverse Aesthetics | Aesthetic Clinic in Lagos & Abuja",
   description:
     "Nigeria's leading aesthetics, dermatology, weight loss, dental, and hair clinic. Safe, natural results with expert medical care. Book a visit in Lagos or Abuja.",
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {
@@ -49,6 +53,14 @@ export default function Home() {
               Book Appointment
             </Link>
           </div>
+
+          <p className="hero-copy-reveal [animation-delay:460ms] mt-[20px] flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[2px] text-[13px] leading-[1.5] text-[#7d766d] md:text-[14px]">
+            <span>GMC (UK) registered founding physician</span>
+            <span aria-hidden className="hidden text-[var(--color-clinic-teal)] md:inline">
+              ·
+            </span>
+            <span>Clinics in Lekki, Lagos and Mabushi, Abuja</span>
+          </p>
         </div>
       </section>
 
@@ -56,10 +68,10 @@ export default function Home() {
       <section className="bg-[var(--color-clinic-hero-top)] pb-[80px] -mt-[42px] md:pb-[120px] md:-mt-[220px] relative z-[1] overflow-hidden">
         <div className="hero-mosaic mx-auto md:w-[1160px] px-0">
           <div className="hero-mosaic-grid grid md:grid-cols-5 gap-[14px] md:[grid-template-rows:152px_241px_295px]">
-            <div className="col-start-1 row-start-1 row-span-2 rounded-[20px] overflow-hidden relative bg-[#e7efe7]">
+            <div className="col-start-1 row-start-1 row-span-2 rounded-[20px] overflow-hidden relative bg-[#e4f1f2]">
               <Image
-                src="/images/generated/aesthetics_service.avif"
-                alt="Aesthetic skin treatment at Reverse Aesthetics"
+                src="/images/generated/hero_laser_treatment.avif"
+                alt="Laser skin treatment in progress at Reverse Aesthetics"
                 fill
                 priority
                 sizes="(min-width: 768px) 220px, 202px"
@@ -68,8 +80,8 @@ export default function Home() {
             </div>
             <div className="col-start-3 md:col-start-2 row-start-1 md:row-start-2 row-span-2 md:row-span-1 rounded-[20px] overflow-hidden relative bg-[#efe6ea]">
               <Image
-                src="/images/generated/hair_service.avif"
-                alt="Hair restoration consultation"
+                src="/images/generated/hero_dental_smile.avif"
+                alt="Bright, natural smile after dental aesthetics"
                 fill
                 priority
                 sizes="(min-width: 768px) 220px, 202px"
@@ -78,7 +90,7 @@ export default function Home() {
             </div>
             <div className="col-start-2 md:col-start-3 row-start-2 md:row-start-2 md:row-span-2 self-start hero-mosaic-tall md:h-[424px] rounded-[20px] overflow-hidden relative bg-[#e4edf1]">
               <Image
-                src="/images/generated/hero_desktop.avif"
+                src="/images/generated/hero_portrait_glow.avif"
                 alt="Reverse Aesthetics — natural, medical-led results"
                 fill
                 priority
@@ -88,39 +100,54 @@ export default function Home() {
             </div>
             <div className="hidden md:block col-start-4 row-start-2 row-span-2 rounded-[20px] overflow-hidden relative bg-[#f0e9e2]">
               <Image
-                src="/images/generated/dental_smile.avif"
-                alt="Bright, natural smile after dental aesthetics"
+                src="/images/generated/hero_hair_consult.avif"
+                alt="Scalp and hairline assessment with a dermatoscope"
                 fill
                 sizes="220px"
                 className="hero-mosaic-image [animation-delay:320ms] object-cover object-[50%_40%]"
               />
             </div>
-            <div className="hidden md:block col-start-5 row-start-1 row-span-2 rounded-[20px] overflow-hidden relative bg-[#e7efe7]">
+            <div className="hidden md:block col-start-5 row-start-1 row-span-2 rounded-[20px] overflow-hidden relative bg-[#e4f1f2]">
               <Image
-                src="/images/generated/testimonial_patient.avif"
-                alt="Happy Reverse Aesthetics patient with natural, glowing skin"
+                src="/images/generated/hero_iv_therapy.avif"
+                alt="IV wellness therapy in a comfortable treatment chair"
                 fill
                 sizes="220px"
                 className="hero-mosaic-image [animation-delay:440ms] object-cover object-[50%_30%]"
               />
             </div>
             <div className="col-start-1 col-span-2 row-start-3 md:row-start-3 rounded-[20px] overflow-hidden relative bg-[#f0e9e2]">
+              {/* Mobile + reduced-motion fall back to the poster still; the
+                  loop is desktop-only so phones on mobile data never fetch it. */}
               <Image
-                src="/images/generated/clinic_interior_2.avif"
-                alt="Reverse Aesthetics clinic interior"
+                src="/images/generated/hero_video_poster.avif"
+                alt="The Reverse Aesthetics medical team"
                 fill
                 priority
                 sizes="(min-width: 768px) 454px, 416px"
-                className="hero-mosaic-image [animation-delay:560ms] object-cover object-[50%_50%]"
+                className="hero-mosaic-image hero-tile-still [animation-delay:560ms] object-cover object-[50%_50%]"
               />
+              <video
+                className="hero-tile-video hero-mosaic-image [animation-delay:560ms] absolute inset-0 h-full w-full object-cover object-[50%_50%]"
+                poster="/images/generated/hero_video_poster.avif"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+              >
+                <source src="/videos/hero-loop.webm" type="video/webm" />
+                <source src="/videos/hero-loop.mp4" type="video/mp4" />
+              </video>
             </div>
             <div className="col-start-3 md:col-start-5 row-start-3 md:row-start-3 self-start h-[190px] md:h-[200px] rounded-[20px] overflow-hidden relative bg-[#e4edf1]">
               <Image
-                src="/images/generated/weightloss_service.avif"
-                alt="Medical weight loss and body contouring"
+                src="/images/generated/hero_weightloss_consult.avif"
+                alt="Medical weight loss consultation at Reverse Aesthetics"
                 fill
                 sizes="(min-width: 768px) 220px, 202px"
-                className="hero-mosaic-image [animation-delay:680ms] object-cover object-[50%_40%]"
+                className="hero-mosaic-image [animation-delay:680ms] object-cover object-[50%_50%]"
               />
             </div>
           </div>

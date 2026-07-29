@@ -5,7 +5,7 @@ import type { PostCard as PostCardData } from "../../lib/blog/types";
 
 function CoverPlaceholder({ label }: { label: string }) {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[#e7efe7]">
+    <div className="flex h-full w-full items-center justify-center bg-[#e4f1f2]">
       <span
         className="text-[13px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)]"
         style={{ fontFamily: "var(--font-display), sans-serif" }}
@@ -27,7 +27,7 @@ export function PostCard({
     <article className="motion-card reveal-on-scroll group flex flex-col">
       <Link
         href={`/blog/${post.slug}`}
-        className="motion-image-frame relative mb-[20px] block aspect-[4/3] overflow-hidden rounded-[16px] bg-[#e7efe7]"
+        className="motion-image-frame relative mb-[20px] block aspect-[4/3] overflow-hidden rounded-[16px] bg-[#e4f1f2]"
       >
         {post.cover_image_url ? (
           <Image
@@ -84,7 +84,7 @@ export function FeaturedPostCard({ post }: { post: PostCardData }) {
     <article className="grid items-center gap-[28px] md:grid-cols-2 md:gap-[48px]">
       <Link
         href={`/blog/${post.slug}`}
-        className="motion-image-frame reveal-on-scroll relative block aspect-[4/3] overflow-hidden rounded-[20px] bg-[#e7efe7] md:aspect-[5/4]"
+        className="motion-image-frame reveal-on-scroll relative block aspect-[4/3] overflow-hidden rounded-[20px] bg-[#e4f1f2] md:aspect-[5/4]"
       >
         {post.cover_image_url ? (
           <Image
