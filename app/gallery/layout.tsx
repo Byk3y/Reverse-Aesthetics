@@ -4,16 +4,19 @@ import type { Metadata } from "next";
  * page.tsx is a client component (category filtering uses state), so its
  * metadata lives here — without this the gallery inherits the site-wide title
  * and competes with the homepage in search results.
+ *
+ * This page documents the clinic and the procedures; it is deliberately not a
+ * before/after results page, so nothing here may claim patient outcomes.
  */
 export const metadata: Metadata = {
-  title: "Before & After Results | Reverse Aesthetics Lagos & Abuja",
+  title: "Our Work | Inside the Reverse Aesthetics Clinic, Lagos & Abuja",
   description:
-    "Real patient results from our Lagos and Abuja clinics — skin, weight loss, dental and hair restoration transformations, treated by our medical team.",
+    "A look inside our Lekki clinic — the team, the treatment rooms, and the aesthetic, weight loss, dental and hair procedures we perform.",
   alternates: { canonical: "/gallery" },
   openGraph: {
-    title: "Before & After Results | Reverse Aesthetics Lagos & Abuja",
+    title: "Our Work | Inside the Reverse Aesthetics Clinic, Lagos & Abuja",
     description:
-      "Real patient results from our Lagos and Abuja clinics — skin, weight loss, dental and hair restoration transformations.",
+      "A look inside our Lekki clinic — the team, the treatment rooms, and the procedures we perform.",
     url: "/gallery",
   },
 };

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import ClinicNavbar from "../../components/home/ClinicNavbar";
 import { Breadcrumbs } from "../../components/home/Breadcrumbs";
@@ -7,6 +8,23 @@ import ScrollMotion from "../../components/home/ScrollMotion";
 import { SiteFooter } from "../../components/home/SiteFooter";
 import FloatingWhatsApp from "../../components/home/FloatingWhatsApp";
 import { BOOKING_URL, WHATSAPP_URL } from "../../components/home/homeData";
+
+/**
+ * This URL is the 301 target for the old WordPress /aesthetics-dermatology-clinic/,
+ * so its title carries the terms that page ranked for.
+ */
+export const metadata: Metadata = {
+  title: "Aesthetics & Dermatology Clinic in Lagos | Reverse Aesthetics",
+  description:
+    "Doctor-led aesthetics and dermatology in Lekki, Lagos. Botox, dermal fillers, HIFU, laser resurfacing and acne scar treatment by a GMC-registered physician.",
+  alternates: { canonical: "/clinics/aesthetics" },
+  openGraph: {
+    title: "Aesthetics & Dermatology Clinic in Lagos | Reverse Aesthetics",
+    description:
+      "Doctor-led aesthetics and dermatology in Lekki, Lagos. Botox, dermal fillers, HIFU, laser resurfacing and acne scar treatment.",
+    url: "/clinics/aesthetics",
+  },
+};
 
 const aestheticTreatments = [
   {
