@@ -22,7 +22,7 @@ const clinics = [
     tagline: "Your skin, perfected.",
     description:
       "Our flagship clinic specializes in advanced skincare, injectables, skin tightening, and glow treatments. From acne management to anti-aging protocols, every treatment is tailored to your unique complexion and goals.",
-    image: "/images/generated/aesthetics_service.avif",
+    image: "/images/clinics/clinic-aesthetics.avif",
     href: "/clinics/aesthetics",
     treatments: [
       "Botox & Dermal Fillers",
@@ -72,7 +72,7 @@ const clinics = [
     tagline: "Reclaim your crown.",
     description:
       "Surgical and non-surgical solutions for hair loss. Whether it's FUE transplant, PRP therapy, or scalp regeneration, our specialists help you regain natural, full hair.",
-    image: "/images/generated/hair_restoration.avif",
+    image: "/images/clinics/clinic-hair.avif",
     href: "/clinics/hair",
     treatments: [
       "FUE Hair Transplant",
