@@ -25,39 +25,70 @@ export function ServicesGrid() {
           </Link>
         </div>
 
+        {/* Five services into a two-column grid leaves the last cell empty, so
+            the lead service runs full-width as a horizontal card and the
+            remaining four fall into a clean 2x2. Below `sm` every card is the
+            same stacked layout. */}
         <div className="grid gap-[14px] sm:grid-cols-2 md:gap-[18px]">
-          {SERVICES.map((service) => {
+          {SERVICES.map((service, index) => {
             const Icon = service.icon;
+            const featured = index === 0;
             return (
               <Link
                 key={service.title}
                 href={service.href}
-                className={`motion-card motion-lift ${service.tone} group block rounded-[8px] p-[18px] transition-transform duration-300 hover:-translate-y-1 md:p-[22px]`}
+                className={`motion-card motion-lift ${service.tone} group block rounded-[8px] p-[18px] transition-transform duration-300 hover:-translate-y-1 md:p-[22px] ${
+                  featured ? "sm:col-span-2" : ""
+                }`}
               >
-                <div className="motion-image-frame relative mb-[24px] h-[196px] overflow-hidden rounded-[8px] bg-white/35 md:h-[220px]">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    sizes="(min-width: 768px) 540px, calc(100vw - 76px)"
-                    className="object-cover"
-                  />
-                  <span className="absolute left-[12px] top-[12px] inline-flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white/80 text-[var(--color-clinic-teal)] backdrop-blur-sm">
-                    <Icon className="h-[21px] w-[21px]" strokeWidth={1.8} aria-hidden />
-                  </span>
-                </div>
-                <div className="flex items-start justify-between gap-[18px]">
-                  <div>
-                    <h3 className="text-[22px] font-bold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)]">
-                      {service.title}
-                    </h3>
-                    <p className="mt-[10px] text-[14px] leading-[1.55] text-[#65716e]">
-                      {service.description}
-                    </p>
+                <div className={featured ? "sm:flex sm:items-center sm:gap-[26px] md:gap-[34px]" : ""}>
+                  <div
+                    className={`motion-image-frame relative mb-[24px] h-[196px] overflow-hidden rounded-[8px] bg-white/35 md:h-[220px] ${
+                      featured
+                        ? "sm:mb-0 sm:h-[236px] sm:w-[46%] sm:shrink-0 md:h-[286px]"
+                        : ""
+                    }`}
+                  >
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes={
+                        featured
+                          ? "(min-width: 768px) 520px, calc(100vw - 76px)"
+                          : "(min-width: 768px) 540px, calc(100vw - 76px)"
+                      }
+                      className="object-cover"
+                    />
+                    <span className="absolute left-[12px] top-[12px] inline-flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white/80 text-[var(--color-clinic-teal)] backdrop-blur-sm">
+                      <Icon className="h-[21px] w-[21px]" strokeWidth={1.8} aria-hidden />
+                    </span>
                   </div>
-                  <span className="mt-[2px] inline-flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-white/60 text-[var(--color-clinic-navy)] transition-colors group-hover:bg-[var(--color-clinic-navy)] group-hover:text-white">
-                    <ChevronRight className="h-[17px] w-[17px]" aria-hidden />
-                  </span>
+                  <div
+                    className={`flex items-start justify-between gap-[18px] ${
+                      featured ? "sm:min-w-0 sm:flex-1" : ""
+                    }`}
+                  >
+                    <div>
+                      <h3
+                        className={`text-[22px] font-bold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)] ${
+                          featured ? "sm:text-[28px] md:text-[34px]" : ""
+                        }`}
+                      >
+                        {service.title}
+                      </h3>
+                      <p
+                        className={`mt-[10px] text-[14px] leading-[1.55] text-[#65716e] ${
+                          featured ? "sm:mt-[14px] sm:max-w-[44ch] sm:text-[15px] md:text-[16px]" : ""
+                        }`}
+                      >
+                        {service.description}
+                      </p>
+                    </div>
+                    <span className="mt-[2px] inline-flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-white/60 text-[var(--color-clinic-navy)] transition-colors group-hover:bg-[var(--color-clinic-navy)] group-hover:text-white">
+                      <ChevronRight className="h-[17px] w-[17px]" aria-hidden />
+                    </span>
+                  </div>
                 </div>
               </Link>
             );
