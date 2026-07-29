@@ -1,54 +1,75 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import CTABanner from "../components/CTABanner";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
+import ClinicNavbar from "../components/home/ClinicNavbar";
+import { Breadcrumbs } from "../components/home/Breadcrumbs";
+import ScrollMotion from "../components/home/ScrollMotion";
+import { SiteFooter } from "../components/home/SiteFooter";
+import FloatingWhatsApp from "../components/home/FloatingWhatsApp";
+import { BOOKING_URL, WHATSAPP_URL } from "../components/home/homeData";
 
-const categories = ["All", "Aesthetics", "Weight Loss", "Dental", "Hair"];
+const categories = ["All", "Clinic", "Aesthetics", "Weight Loss", "Dental", "Hair"];
 
+/* Documentary imagery only — the clinic, the team, and treatments in progress.
+   This page previously ran on AI-generated "before/after" pairs presented as
+   patient results, which is both untrue and unusable in Meta ad creative. */
 const galleryItems = [
   {
-    category: "Aesthetics",
-    before: "/images/services/acne-face.avif",
-    after: "/images/services/acne-healed-face.avif",
-    title: "Acne Scar Treatment",
-    description: "Multi-session protocol — clear, smooth skin restored.",
+    category: "Clinic",
+    image: "/images/about/clinic.avif",
+    title: "Our Lekki Clinic",
+    description: "Historia Mews, Oniru — reception and consultation suites.",
   },
   {
     category: "Aesthetics",
-    before: "/images/generated/aesthetics_service.avif",
-    after: "/images/generated/aesthetics_service.avif",
-    title: "Skin Rejuvenation",
-    description: "Laser treatment — even-toned, radiant skin achieved.",
+    image: "/images/generated/hero_laser_treatment.avif",
+    title: "Laser Skin Resurfacing",
+    description: "Precision laser work for pigmentation, scarring, and skin renewal.",
   },
   {
-    category: "Dental",
-    before: "/images/services/dental.avif",
-    after: "/images/generated/dental_smile.avif",
-    title: "Smile Makeover",
-    description: "Full veneer transformation — Hollywood smile achieved.",
+    category: "Aesthetics",
+    image: "/images/services/service-dermal-fillers-square.avif",
+    title: "Dermal Fillers",
+    description: "Targeted injectables for volume, contour, and facial balance.",
   },
   {
-    category: "Hair",
-    before: "/images/services/hair-services.avif",
-    after: "/images/services/hair-services-2.avif",
-    title: "Hair Restoration",
-    description: "FUE procedure — natural hairline fully restored.",
+    category: "Aesthetics",
+    image: "/images/generated/hero_iv_therapy.avif",
+    title: "IV Glow Therapy",
+    description: "Medical-grade vitamin infusions in our treatment lounge.",
   },
   {
     category: "Weight Loss",
-    before: "/images/services/weight-loss-before.avif",
-    after: "/images/services/weight-loss-after.avif",
-    title: "Body Transformation",
-    description: "Medical program — sustainable weight loss achieved.",
+    image: "/images/generated/hero_weightloss_consult.avif",
+    title: "Medical Weight Loss",
+    description: "Physician-led consultations and ongoing programme reviews.",
+  },
+  {
+    category: "Dental",
+    image: "/images/generated/hero_dental_smile.avif",
+    title: "Smile Design",
+    description: "Whitening, veneers, and complete smile makeovers.",
+  },
+  {
+    category: "Hair",
+    image: "/images/services/service-hair-restoration-square.avif",
+    title: "Hair Restoration",
+    description: "Hairline mapping, FUE transplant, and PRP therapy.",
+  },
+  {
+    category: "Clinic",
+    image: "/images/team/clinical-team.avif",
+    title: "Our Clinical Team",
+    description: "The clinicians and care team behind every treatment.",
+    wide: true,
   },
 ];
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const filtered =
     activeCategory === "All"
@@ -56,129 +77,148 @@ export default function GalleryPage() {
       : galleryItems.filter((item) => item.category === activeCategory);
 
   return (
-    <main>
-      <Header />
+    <div
+      className="w-full bg-white text-[var(--color-clinic-navy)]"
+      style={{ fontFamily: "var(--font-body), sans-serif" }}
+    >
+      <ClinicNavbar />
+      <div className="h-[118px] md:h-[126px] bg-[var(--color-clinic-hero-top)]" />
 
-      {/* Hero */}
-      <section className="pt-28 lg:pt-36 pb-16 bg-ivory">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center max-w-3xl mx-auto">
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
-            Before & After
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-[var(--color-clinic-hero-top)]">
+        <Breadcrumbs items={[{ label: "Gallery" }]} />
+        <div className="mx-auto max-w-[820px] px-[20px] pb-[54px] pt-[18px] text-center md:pb-[72px] md:pt-[30px]">
+          <p className="hero-copy-reveal mb-[18px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)] md:text-[13px]">
+            Our Work
           </p>
-          <h1
-            className="text-charcoal mb-6"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Real results. <span className="italic">Real transformations.</span>
+          <h1 className="hero-copy-reveal [animation-delay:120ms] mx-auto max-w-[760px] text-[32px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[52px] md:leading-[1.08]">
+            Inside the clinic.{" "}
+            <span className="text-[var(--color-clinic-hero-accent)]">
+              Our treatments.
+            </span>
           </h1>
-          <p className="text-warm-gray-400 text-lg leading-relaxed font-light">
-            Every image tells a story of confidence restored. Hover to see the
-            transformation — all results are from actual Reverse Aesthetics patients.
+          <p className="hero-copy-reveal [animation-delay:240ms] mx-auto mt-[26px] max-w-[620px] text-[16px] leading-[1.7] text-[#5a5651] md:text-[18px]">
+            A look at our Lekki clinic, the team who run it, and the treatments we
+            perform day to day.
           </p>
         </div>
       </section>
 
-      {/* Filter Tabs — editorial text tabs with underline */}
-      <section className="bg-white sticky top-[73px] z-30 border-b border-warm-gray-100">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="flex gap-8 py-5 overflow-x-auto">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`relative text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap pb-1 ${
-                  activeCategory === cat
-                    ? "text-charcoal"
-                    : "text-warm-gray-300 hover:text-warm-gray-500"
-                }`}
-              >
-                {cat}
-                <span
-                  className={`absolute bottom-0 left-0 h-[1px] bg-bronze transition-all duration-300 ${
-                    activeCategory === cat ? "w-full" : "w-0"
+      <div className="motion-scope">
+        <ScrollMotion />
+
+        {/* FILTER TABS */}
+        <section className="sticky top-0 z-30 border-b border-[#e9ede9] bg-white/95 backdrop-blur-sm">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="flex gap-[10px] overflow-x-auto py-[16px]">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(cat)}
+                  aria-pressed={activeCategory === cat}
+                  className={`inline-flex h-[38px] shrink-0 items-center justify-center rounded-full px-[18px] text-[11px] font-bold uppercase tracking-[0.12em] transition-colors ${
+                    activeCategory === cat
+                      ? "bg-[var(--color-clinic-teal)] text-white"
+                      : "border border-[#d8e6e7] text-[var(--color-clinic-navy)] hover:bg-[#e4f1f2]"
                   }`}
-                />
-              </button>
-            ))}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Gallery Grid */}
-      <section className="section-padding bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((item, index) => (
-              <div
-                key={item.title}
-                className="card-luxury group cursor-pointer"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Before/After Image */}
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={
-                      hoveredIndex === index ? item.after : item.before
-                    }
-                    alt={`${item.title} - ${
-                      hoveredIndex === index ? "After" : "Before"
+        {/* GALLERY GRID */}
+        <section className="bg-white py-[70px] md:py-[100px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="grid gap-[14px] sm:grid-cols-2 lg:grid-cols-3 md:gap-[18px]">
+              {filtered.map((item) => (
+                <figure
+                  key={item.title}
+                  className={`motion-card motion-lift overflow-hidden rounded-[14px] border border-[#e9ede9] bg-[#f8fbf9] ${
+                    item.wide ? "sm:col-span-2" : ""
+                  }`}
+                >
+                  <div
+                    className={`motion-image-frame relative overflow-hidden bg-[#e4f1f2] ${
+                      item.wide ? "aspect-[16/9]" : "aspect-[4/3]"
                     }`}
-                    fill
-                    className="object-cover transition-all duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-
-                  {/* Before/After Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span
-                      className={`px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] ${
-                        hoveredIndex === index
-                          ? "bg-bronze text-white"
-                          : "bg-white/90 text-charcoal"
-                      } transition-all duration-300`}
-                    >
-                      {hoveredIndex === index ? "After" : "Before"}
-                    </span>
-                  </div>
-
-                  {/* Category Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] bg-charcoal/70 text-white backdrop-blur-sm">
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <span className="absolute left-[14px] top-[14px] rounded-full bg-white/90 px-[12px] py-[6px] text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-navy)] backdrop-blur-sm">
                       {item.category}
                     </span>
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className="p-5">
-                  <h3
-                    className="text-charcoal text-lg mb-1"
-                    style={{ fontFamily: "var(--font-display), sans-serif" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-warm-gray-400 text-sm font-light">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-warm-gray-400 text-lg font-light">
-                No results in this category yet. Check back soon!
-              </p>
+                  <figcaption className="p-[20px] md:p-[22px]">
+                    <h2 className="text-[18px] font-bold leading-[1.25] tracking-[-0.01em] text-[var(--color-clinic-navy)]">
+                      {item.title}
+                    </h2>
+                    <p className="mt-[8px] text-[14px] leading-[1.6] text-[#65716e]">
+                      {item.description}
+                    </p>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
-          )}
-        </div>
-      </section>
 
-      <CTABanner
-        title="See yourself in our results?"
-        subtitle="Book a consultation to discuss your personalized treatment plan."
-      />
-      <Footer />
-    </main>
+            {filtered.length === 0 && (
+              <div className="py-[80px] text-center">
+                <p className="text-[16px] leading-[1.7] text-[#65716e]">
+                  No results in this category yet. Check back soon!
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* CTA BAND */}
+        <section className="bg-white pb-[80px] pt-[10px] md:pb-[110px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="reveal-on-scroll relative overflow-hidden rounded-[22px] bg-[var(--color-clinic-navy)] px-[26px] py-[48px] text-center md:px-[40px] md:py-[68px]">
+              <p className="mb-[14px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)]">
+                Ready to explore your options?
+              </p>
+              <h2 className="mx-auto max-w-[640px] text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-white md:text-[40px]">
+                Book a consultation to discuss your personalized treatment plan.
+              </h2>
+              <p className="mx-auto mt-[16px] max-w-[520px] text-[15px] leading-[1.7] text-white/70 md:text-[16px]">
+                Book a consultation in Lagos or Abuja, or send us a quick message
+                — we&apos;ll help you take the first step.
+              </p>
+              <div className="mt-[30px] flex flex-col items-center justify-center gap-[12px] sm:flex-row">
+                <Link
+                  href={BOOKING_URL}
+                  className="inline-flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:w-auto"
+                >
+                  Book a Consultation
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-[52px] w-full items-center justify-center gap-[9px] rounded-full border border-white/25 px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10 sm:w-auto"
+                >
+                  Chat on WhatsApp
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <SiteFooter />
+      </div>
+
+      <FloatingWhatsApp />
+    </div>
   );
 }

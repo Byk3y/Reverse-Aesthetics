@@ -1,14 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import CTABanner from "../../components/CTABanner";
+import { ChevronRight } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
+import ClinicNavbar from "../../components/home/ClinicNavbar";
+import { Breadcrumbs } from "../../components/home/Breadcrumbs";
+import ScrollMotion from "../../components/home/ScrollMotion";
+import { SiteFooter } from "../../components/home/SiteFooter";
+import FloatingWhatsApp from "../../components/home/FloatingWhatsApp";
 import TrustHighlights from "../../components/TrustHighlights";
+import { BOOKING_URL, WHATSAPP_URL } from "../../components/home/homeData";
+import { ORG_ID } from "../../lib/schema";
 
 export const metadata: Metadata = {
   title: "Botox in Lagos & Dermal Fillers Nigeria | Reverse Aesthetics",
-  description: "Top-rated aesthetic clinic in Lagos for Botox and Dermal Fillers. Get natural, balanced results with our expert doctors. Book a consultation today.",
+  description: "Doctor-led Botox and dermal fillers in Lagos. Natural, balanced results planned around your own anatomy by our medical team. Book a consultation today.",
   keywords: ["Botox Lagos", "Dermal Fillers Nigeria", "Lip fillers Lagos", "Anti-aging clinic Lagos", "Aesthetic treatment near me", "Facial balancing Nigeria"],
   alternates: {
     canonical: "https://reverseaesthetic.com/treatments/botox-and-dermal-fillers-lagos",
@@ -20,6 +26,24 @@ export const metadata: Metadata = {
   }
 };
 
+const FEATURES = [
+  { title: "Botox & Muscle Relaxants", body: "Used for anti-aging, wrinkle reduction, and shoulder/jawline slimming. We map your facial muscles before dosing, so lines soften without freezing your expression." },
+  { title: "Targeted Dermal Fillers", body: "Designed to restore lost volume, hydrate the skin from within, and provide structural lift. Perfect for lip enhancement, cheek contouring, and holistic profile balancing." },
+  { title: "Fat-Dissolving (Lipolysis)", body: "Targets stubborn pockets of fat under the chin or jawline. It usually takes more than one session per area, and it is not a treatment for overall weight loss." },
+];
+
+const FAQS = [
+  { question: "Are my results going to look natural?", answer: "That is the aim. Our founder, Dr. Ral Abana, is an aesthetic medical physician registered with the GMC (UK), and plans are built to work with your proportions rather than override them. Filler can also be dissolved if you are unhappy with the result, which is a question worth asking any clinic before you book." },
+  { question: "Is getting Botox in Lagos safe?", answer: "It is as safe as the person injecting you and the product they use. We use medical-grade, internationally approved products, screen you before treatment, and work from our Lekki clinic under hospital-standard protocols. Ask any injector to show you the vial before it goes into your face." },
+  { question: "How long is the recovery time?", answer: "Injectables have virtually no downtime. You can return to your routine immediately, though we advise against strenuous exercise or intense heat for 24 hours. Bruising and swelling at injection sites are common and settle on their own. We provide a written aftercare guide post-treatment." },
+];
+
+const RELATED = [
+  { href: "/treatments/hifu-skin-tightening-nigeria", name: "HIFU Skin Tightening", description: "Non-surgical facelift using focused ultrasound for lifting and collagen regeneration." },
+  { href: "/treatments/laser-skin-resurfacing-lagos", name: "Laser Skin Resurfacing", description: "Precision lasers for pigmentation correction, acne scars, and skin renewal." },
+  { href: "/treatments/acne-scar-treatment-lagos", name: "Acne & Scar Treatment", description: "Medical dermatology for active acne, post-acne marks, and deep scarring." },
+];
+
 export default function BotoxAndFillersPage() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -27,57 +51,48 @@ export default function BotoxAndFillersPage() {
     "name": "Botox and Dermal Fillers",
     "procedureType": "Non-surgical aesthetic treatment",
     "description": "Injectable treatments for facial rejuvenation, wrinkle reduction, and profile balancing using Botox and Dermal Fillers.",
-    "provider": {
-      "@type": "MedicalBusiness",
-      "name": "Reverse Aesthetics",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Historia Mews, No. 5 Ayo Babatunde Crescent, Oniru",
-        "addressLocality": "Lekki",
-        "addressRegion": "Lagos",
-        "addressCountry": "NG"
-      }
-    }
+    // The clinic is one entity, defined in app/lib/schema.ts and emitted
+    // site-wide. Referencing it by @id keeps a single business in the graph
+    // rather than eight unlinked copies whose addresses can drift apart.
+    "provider": { "@id": ORG_ID }
   };
 
   return (
-    <main>
-      <Header />
-      
+    <div
+      className="w-full bg-white text-[var(--color-clinic-navy)]"
+      style={{ fontFamily: "var(--font-body), sans-serif" }}
+    >
+      <ClinicNavbar />
+      <div className="h-[118px] md:h-[126px] bg-[var(--color-clinic-hero-top)]" />
+
       {/* Schema Injection */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* SEO Optimized Hero */}
-      <section className="pt-28 lg:pt-40 pb-16 lg:pb-24 bg-charcoal text-white relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <Image
-            src="/images/generated/aesthetics_service.avif"
-            alt="Botox treatment at clinic in Lagos"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-bronze mb-5 block">
-              Aesthetics & Dermatology
-            </span>
-            <h1
-              className="text-5xl lg:text-[4rem] font-light leading-tight mb-6"
-              style={{ fontFamily: "var(--font-display), sans-serif" }}
-            >
-              Premium <span className="italic">Botox</span> & <span className="italic">Dermal Fillers</span> in Lagos
-            </h1>
-            <p className="text-lg text-white/80 font-normal leading-relaxed mb-10 max-w-xl">
-              Restore volume, smooth out deep lines, and achieve perfect facial harmony without surgery. Our expert medical team delivers subtle, natural results tailored purely to your unique anatomy.
-            </p>
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-[var(--color-clinic-hero-top)]">
+        <Breadcrumbs
+          items={[
+            { label: "Treatments", href: "/treatments" },
+            { label: "Botox & Dermal Fillers" },
+          ]}
+        />
+        <div className="mx-auto max-w-[820px] px-[20px] pb-[54px] pt-[18px] text-center md:pb-[72px] md:pt-[30px]">
+          <p className="hero-copy-reveal mb-[18px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)] md:text-[13px]">
+            Aesthetics & Dermatology
+          </p>
+          <h1 className="hero-copy-reveal [animation-delay:120ms] mx-auto max-w-[760px] text-[32px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[52px] md:leading-[1.08]">
+            Premium <span className="text-[var(--color-clinic-hero-accent)]">Botox</span> & <span className="text-[var(--color-clinic-hero-accent)]">Dermal Fillers</span> in Lagos
+          </h1>
+          <p className="hero-copy-reveal [animation-delay:240ms] mx-auto mt-[26px] max-w-[620px] text-[16px] leading-[1.7] text-[#5a5651] md:text-[18px]">
+            Restore volume, soften deep lines and rebalance your profile without surgery. Our medical team plans every treatment around your own anatomy, and we would rather under-treat and review you than overfill.
+          </p>
+          <div className="hero-copy-reveal [animation-delay:340ms] mt-[30px] flex justify-center">
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center px-10 py-4 bg-white text-charcoal text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-bronze hover:text-white"
+              className="inline-flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:w-auto"
             >
               Book Your Consultation
             </Link>
@@ -85,126 +100,158 @@ export default function BotoxAndFillersPage() {
         </div>
       </section>
 
-      {/* Trust Highlights Component */}
-      <TrustHighlights />
+      <div className="motion-scope">
+        <ScrollMotion />
 
-      {/* Content Section */}
-      <section className="py-20 lg:py-32 bg-ivory">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
-            <div className="relative aspect-[4/5] overflow-hidden w-full max-w-md mx-auto lg:max-w-none">
+        <TrustHighlights />
+
+        {/* OVERVIEW */}
+        <section className="bg-[#eef2ef] py-[70px] md:py-[100px]">
+          <div className="mx-auto grid max-w-[1160px] gap-[28px] px-[20px] md:grid-cols-2 md:items-center md:gap-[52px] md:px-[40px]">
+            <div className="motion-image-frame reveal-on-scroll relative aspect-[4/5] overflow-hidden rounded-[16px] bg-[#e4f1f2]">
               <Image
-                src="/images/generated/hero_mobile.avif"
+                src="/images/services/service-dermal-fillers-square.avif"
                 alt="Dermal filler consultation in Nigeria"
                 fill
+                priority
+                sizes="(min-width: 768px) 540px, calc(100vw - 40px)"
                 className="object-cover"
               />
             </div>
 
-            {/* Copy */}
-            <div>
-              <h2
-                className="text-charcoal text-4xl mb-6 font-light"
-                style={{ fontFamily: "var(--font-display), sans-serif" }}
-              >
-                Refined injectables for a <span className="italic">natural aesthetic</span>.
+            <div className="motion-heading">
+              <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+                Aesthetics & Dermatology
+              </p>
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
+                Refined injectables for a <span className="text-[var(--color-clinic-hero-accent)]">natural aesthetic</span>.
               </h2>
-              <p className="text-warm-gray-400 leading-relaxed font-light mb-8">
+              <p className="mt-[18px] max-w-[560px] text-[15px] leading-[1.75] text-[#5f6c69] md:text-[16px]">
                 Healthy skin and facial harmony are a long game. We combine advanced medical dermatology with modern aesthetic injectables to help you look fresh, lifted, and naturally radiant—without losing what makes you, you.
               </p>
 
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-charcoal font-medium text-lg mb-2">Botox & Muscle Relaxants</h3>
-                  <p className="text-warm-gray-400 font-light text-sm leading-relaxed">
-                    Used for anti-aging, wrinkle reduction, and shoulder/jawline slimming. We map out your facial muscles to deliver precise doses, preventing static wrinkles while ensuring continuous natural movement.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-charcoal font-medium text-lg mb-2">Targeted Dermal Fillers</h3>
-                  <p className="text-warm-gray-400 font-light text-sm leading-relaxed">
-                    Designed to restore lost volume, hydrate the skin from within, and provide structural lift. Perfect for lip enhancement, cheek contouring, and holistic profile balancing.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-charcoal font-medium text-lg mb-2">Fat-Dissolving (Lipolysis)</h3>
-                  <p className="text-warm-gray-400 font-light text-sm leading-relaxed">
-                    Target stubborn pockets of fat under the chin or jawline. A highly effective injectable alternative for redefining the lower face.
-                  </p>
-                </div>
+              <div className="mt-[26px] grid gap-[12px]">
+                {FEATURES.map((item) => (
+                  <div
+                    key={item.title}
+                    className="motion-card rounded-[12px] bg-white p-[18px] md:p-[20px]"
+                  >
+                    <h3 className="text-[16px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-[8px] text-[14px] leading-[1.65] text-[#65716e]">
+                      {item.body}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SEO FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-4xl px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2
-              className="text-charcoal text-4xl font-light mb-4"
-              style={{ fontFamily: "var(--font-display), sans-serif" }}
-            >
-              Frequently Asked Questions
-            </h2>
-            <p className="text-warm-gray-400 font-light">
-              Everything you need to know about injectables in Nigeria.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            <div className="border-b border-warm-gray-200 pb-6">
-              <h3 className="text-charcoal font-medium text-lg mb-2">Are my results going to look natural?</h3>
-              <p className="text-warm-gray-400 font-light text-sm leading-relaxed">
-                Yes. Our philosophy prioritizes proportion, subtlety, and harmony. Our UK GMC-registered practitioners tailor plans to enhance, not dramatically change, your features.
+        {/* FAQ */}
+        <section className="bg-white py-[70px] md:py-[100px]">
+          <div className="mx-auto max-w-[820px] px-[20px] md:px-[40px]">
+            <div className="motion-heading mb-[34px] text-center">
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
+                Frequently Asked Questions
+              </h2>
+              <p className="mt-[14px] text-[15px] leading-[1.7] text-[#65716e] md:text-[16px]">
+                Everything you need to know about injectables in Nigeria.
               </p>
             </div>
-            <div className="border-b border-warm-gray-200 pb-6">
-              <h3 className="text-charcoal font-medium text-lg mb-2">Is getting Botox in Lagos safe?</h3>
-              <p className="text-warm-gray-400 font-light text-sm leading-relaxed">
-                Absolutely. We use purely medical-grade, internationally approved products. Every treatment runs through strict, hospital-standard safety protocols at our Lekki clinic.
-              </p>
-            </div>
-            <div className="pb-6">
-              <h3 className="text-charcoal font-medium text-lg mb-2">How long is the recovery time?</h3>
-              <p className="text-warm-gray-400 font-light text-sm leading-relaxed">
-                Injectables feature virtually no downtime. You can return to your routine immediately, though we advise against strenuous exercise or intense heat for 24 hours. We provide thorough aftercare guides post-treatment.
-              </p>
+
+            <div className="grid gap-[14px]">
+              {FAQS.map((item) => (
+                <div
+                  key={item.question}
+                  className="motion-card rounded-[14px] border border-[#e9ede9] bg-[#f8fbf9] p-[22px] md:p-[26px]"
+                >
+                  <h3 className="text-[17px] font-bold leading-[1.3] tracking-[-0.01em] text-[var(--color-clinic-navy)]">
+                    {item.question}
+                  </h3>
+                  <p className="mt-[10px] text-[14px] leading-[1.65] text-[#65716e] md:text-[15px]">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Related Treatments */}
-      <section className="py-20 bg-ivory border-t border-warm-gray-100">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <h2 className="text-2xl lg:text-3xl text-charcoal text-center mb-12 font-light" style={{ fontFamily: "var(--font-display), sans-serif" }}>
-            Related <span className="italic">Treatments</span>
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link href="/treatments/hifu-skin-tightening-nigeria" className="group p-8 border border-warm-gray-100 bg-white hover:bg-ivory transition-all duration-300">
-              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), sans-serif" }}>HIFU Skin Tightening</h3>
-              <p className="text-warm-gray-400 font-light text-sm leading-relaxed mb-4">Non-surgical facelift using focused ultrasound for lifting and collagen regeneration.</p>
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">Learn More &rarr;</span>
-            </Link>
-            <Link href="/treatments/laser-skin-resurfacing-lagos" className="group p-8 border border-warm-gray-100 bg-white hover:bg-ivory transition-all duration-300">
-              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), sans-serif" }}>Laser Skin Resurfacing</h3>
-              <p className="text-warm-gray-400 font-light text-sm leading-relaxed mb-4">Precision lasers for pigmentation correction, acne scars, and skin renewal.</p>
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">Learn More &rarr;</span>
-            </Link>
-            <Link href="/treatments/acne-scar-treatment-lagos" className="group p-8 border border-warm-gray-100 bg-white hover:bg-ivory transition-all duration-300">
-              <h3 className="text-xl text-charcoal font-light mb-3 group-hover:text-bronze transition-colors duration-300" style={{ fontFamily: "var(--font-display), sans-serif" }}>Acne & Scar Treatment</h3>
-              <p className="text-warm-gray-400 font-light text-sm leading-relaxed mb-4">Medical dermatology for active acne, post-acne marks, and deep scarring.</p>
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">Learn More &rarr;</span>
-            </Link>
+        {/* RELATED TREATMENTS */}
+        <section className="bg-[#eef2ef] py-[70px] md:py-[100px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="motion-heading mb-[34px] text-center">
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
+                Related <span className="text-[var(--color-clinic-hero-accent)]">Treatments</span>
+              </h2>
+            </div>
+
+            <div className="grid gap-[14px] sm:grid-cols-2 lg:grid-cols-3 md:gap-[18px]">
+              {RELATED.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="motion-card motion-lift group flex flex-col rounded-[14px] border border-[#e9ede9] bg-white p-[22px] transition-transform duration-300 hover:-translate-y-1 md:p-[26px]"
+                >
+                  <h3 className="text-[19px] font-bold leading-[1.2] tracking-[-0.01em] text-[var(--color-clinic-navy)]">
+                    {item.name}
+                  </h3>
+                  <p className="mt-[10px] flex-1 text-[14px] leading-[1.6] text-[#65716e]">
+                    {item.description}
+                  </p>
+                  <span className="mt-[18px] inline-flex items-center gap-[7px] text-[12px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)]">
+                    Learn More
+                    <ChevronRight
+                      className="h-[15px] w-[15px] transition-transform duration-300 group-hover:translate-x-[3px]"
+                      aria-hidden
+                    />
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <CTABanner />
-      <Footer />
-    </main>
+        {/* CTA BAND */}
+        <section className="bg-white pb-[80px] pt-[70px] md:pb-[110px] md:pt-[100px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="reveal-on-scroll relative overflow-hidden rounded-[22px] bg-[var(--color-clinic-navy)] px-[26px] py-[48px] text-center md:px-[40px] md:py-[68px]">
+              <p className="mb-[14px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)]">
+                Ready to explore your options?
+              </p>
+              <h2 className="mx-auto max-w-[640px] text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-white md:text-[40px]">
+                Ready to begin your transformation?
+              </h2>
+              <p className="mx-auto mt-[16px] max-w-[520px] text-[15px] leading-[1.7] text-white/70 md:text-[16px]">
+                Book a consultation with our expert team and discover what&apos;s possible.
+              </p>
+              <div className="mt-[30px] flex flex-col items-center justify-center gap-[12px] sm:flex-row">
+                <Link
+                  href={BOOKING_URL}
+                  className="inline-flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:w-auto"
+                >
+                  Book a Visit
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-[52px] w-full items-center justify-center gap-[9px] rounded-full border border-white/25 px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10 sm:w-auto"
+                >
+                  Chat on WhatsApp
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <SiteFooter />
+      </div>
+
+      <FloatingWhatsApp />
+    </div>
   );
 }

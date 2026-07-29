@@ -1,177 +1,252 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import CTABanner from "../../components/CTABanner";
+import { Check, ChevronRight } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
+import ClinicNavbar from "../../components/home/ClinicNavbar";
+import { Breadcrumbs } from "../../components/home/Breadcrumbs";
+import ScrollMotion from "../../components/home/ScrollMotion";
+import { SiteFooter } from "../../components/home/SiteFooter";
+import FloatingWhatsApp from "../../components/home/FloatingWhatsApp";
+import { BOOKING_URL, WHATSAPP_URL } from "../../components/home/homeData";
 
 export const metadata = {
-  title: "Medical Weightloss & Body Contouring | Reverse Aesthetics Lagos",
+  title: "Weight Loss & Body Contouring | Reverse Aesthetics Lekki",
   description: "Doctor-led medical weightloss programs including Semaglutide and body contouring treatments at Reverse Aesthetics Lekki.",
+  alternates: { canonical: "/clinics/weightloss" },
 };
+
+const HIGHLIGHTS = [
+  "Comprehensive metabolic assessment",
+  "FDA-approved weightloss medications",
+  "Zero crash diets or extreme restrictions",
+  "Targeted fat reduction and skin tightening",
+];
+
+const TREATMENTS = [
+  {
+    title: "Semaglutide Program",
+    body: "A weekly injection that mimics a natural hormone to regulate appetite and blood sugar. Our flagship medical weightloss protocol designed for significant, sustainable fat loss.",
+    tags: ["Medical Protocol", "Injectable"],
+    price: "From ₦350,000 / month",
+    href: "/treatments/medical-weight-loss-lagos",
+    linkLabel: "Learn More",
+  },
+  {
+    title: "Body Contouring (Cavitation/RF)",
+    body: "Non-invasive treatments to melt stubborn fat pockets and tighten loose skin. Perfect for post-weightloss firming or targeting specific problem areas.",
+    tags: ["Body Sculpting", "Non-Invasive"],
+    price: "From ₦80,000 / session",
+    href: BOOKING_URL,
+    linkLabel: "Book Consult",
+  },
+];
 
 export default function WeightlossClinic() {
   return (
-    <main>
-      <Header />
+    <div
+      className="w-full bg-white text-[var(--color-clinic-navy)]"
+      style={{ fontFamily: "var(--font-body), sans-serif" }}
+    >
+      <ClinicNavbar />
+      <div className="h-[118px] md:h-[126px] bg-[var(--color-clinic-hero-top)]" />
 
-      {/* Hero Section */}
-      <section className="pt-28 lg:pt-36 pb-16 bg-ivory">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center">
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-[var(--color-clinic-hero-top)]">
+        <Breadcrumbs
+          items={[
+            { label: "Clinics", href: "/clinics" },
+            { label: "Weight Loss" },
+          ]}
+        />
+        <div className="mx-auto max-w-[820px] px-[20px] pb-[54px] pt-[18px] text-center md:pb-[72px] md:pt-[30px]">
+          <p className="hero-copy-reveal mb-[18px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)] md:text-[13px]">
             Medical Weightloss
           </p>
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Sustainable Weightloss, <span className="italic font-light">Medically Guided</span>.
+          <h1 className="hero-copy-reveal [animation-delay:120ms] mx-auto max-w-[760px] text-[32px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[52px] md:leading-[1.08]">
+            Sustainable Weightloss,{" "}
+            <span className="text-[var(--color-clinic-hero-accent)]">
+              Medically Guided
+            </span>
+            .
           </h1>
-          <p className="text-warm-gray-400 font-light text-lg max-w-2xl mx-auto mb-10">
+          <p className="hero-copy-reveal [animation-delay:240ms] mx-auto mt-[26px] max-w-[620px] text-[16px] leading-[1.7] text-[#5a5651] md:text-[18px]">
             Achieve your exact body goals safely through our specialized physician-led
             protocols and non-invasive contouring treatments.
           </p>
-          <div className="flex justify-center">
-            <Link href="/booking" className="btn-gold">
+          <div className="hero-copy-reveal [animation-delay:340ms] mt-[30px] flex justify-center">
+            <Link
+              href={BOOKING_URL}
+              className="inline-flex h-[52px] items-center justify-center rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
+            >
               Consult a Specialist
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Philosophy / Intro */}
-      <section className="py-20 lg:py-32 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+      <div className="motion-scope">
+        <ScrollMotion />
+
+        {/* PHILOSOPHY / INTRO */}
+        <section className="bg-white py-[70px] md:py-[100px]">
+          <div className="mx-auto grid max-w-[1160px] gap-[28px] px-[20px] md:grid-cols-2 md:items-center md:gap-[52px] md:px-[40px]">
+            <div className="motion-image-frame reveal-on-scroll relative aspect-square overflow-hidden rounded-[16px] bg-[#e4f1f2]">
               <Image
-                src="/images/generated/weightloss_service.avif"
+                src="/images/generated/hero_weightloss_consult.avif"
                 alt="Medical Weightloss Consultation"
                 fill
+                sizes="(min-width: 768px) 540px, calc(100vw - 40px)"
                 className="object-cover"
               />
             </div>
 
-            <div>
-              <h2
-                className="text-3xl md:text-4xl font-semibold text-charcoal mb-6"
-                style={{ fontFamily: "var(--font-display), sans-serif" }}
-              >
+            <div className="motion-heading">
+              <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+                Our approach
+              </p>
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
                 A clinical approach to body confidence.
               </h2>
-              <p className="text-warm-gray-400 font-normal leading-relaxed mb-6">
+              <p className="mt-[18px] max-w-[560px] text-[15px] leading-[1.75] text-[#5f6c69] md:text-[16px]">
                 Diet and exercise aren&apos;t always enough to reach your goals. At Reverse Aesthetics,
                 we recognize that weight management is a complex medical issue requiring clinical
                 intervention, not just willpower.
               </p>
-              <p className="text-warm-gray-400 font-normal leading-relaxed mb-10">
+              <p className="mt-[14px] max-w-[560px] text-[15px] leading-[1.75] text-[#5f6c69] md:text-[16px]">
                 Our programs combine cutting-edge GLP-1 medications (like Semaglutide) with
                 continuous medical monitoring, lifestyle adjustments, and targeted contouring
                 treatments for phenomenal, lasting results.
               </p>
 
-              <ul className="space-y-4">
-                {[
-                  "Comprehensive metabolic assessment",
-                  "FDA-approved weightloss medications",
-                  "Zero crash diets or extreme restrictions",
-                  "Targeted fat reduction and skin tightening"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center text-charcoal">
-                    <svg className="w-5 h-5 text-bronze mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {item}
-                  </li>
+              <div className="mt-[26px] grid gap-[12px]">
+                {HIGHLIGHTS.map((item) => (
+                  <div
+                    key={item}
+                    className="motion-card flex items-start gap-[12px] rounded-[10px] bg-[#f8fbf9] px-[16px] py-[13px]"
+                  >
+                    <span className="mt-[1px] inline-flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-[var(--color-clinic-teal)] text-white">
+                      <Check className="h-[14px] w-[14px]" aria-hidden />
+                    </span>
+                    <span className="text-[14px] font-medium leading-[1.45] text-[var(--color-clinic-navy)] md:text-[15px]">
+                      {item}
+                    </span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Treatments List */}
-      <section className="py-24 bg-ivory">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2
-              className="text-3xl md:text-4xl font-semibold text-charcoal mb-4"
-              style={{ fontFamily: "var(--font-display), sans-serif" }}
-            >
-              Our Programs & Treatments
-            </h2>
-            <div className="w-24 h-[1px] bg-bronze mx-auto"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-
-            {/* Treatment Card */}
-            <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
-                Semaglutide Program
-              </h3>
-              <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">
-                A weekly injection that mimics a natural hormone to regulate appetite and blood sugar.
-                Our flagship medical weightloss protocol designed for significant, sustainable fat loss.
+        {/* PROGRAMS & TREATMENTS */}
+        <section className="bg-[#eef2ef] py-[70px] md:py-[100px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="motion-heading mb-[34px] max-w-[640px]">
+              <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+                Medical Weightloss
               </p>
-              <div className="flex flex-wrap gap-2 mb-8">
-                <span className="text-[11px] font-medium uppercase tracking-[0.3em] bg-ivory text-charcoal px-3 py-1">Medical Protocol</span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.3em] bg-warm-gray-50 text-bronze px-3 py-1">Injectable</span>
-              </div>
-              <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
-                <span className="text-charcoal font-semibold">From ₦350,000 / month</span>
-                <Link href="/treatments/medical-weight-loss-lagos" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Learn More
-                  <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </Link>
-              </div>
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
+                Our Programs & Treatments
+              </h2>
             </div>
 
-            {/* Treatment Card */}
-            <div className="bg-white p-8 lg:p-10 rounded-sm border border-warm-gray-100 group transition-all duration-300">
-              <h3 className="text-2xl font-semibold text-charcoal mb-4" style={{ fontFamily: "var(--font-display), sans-serif" }}>
-                Body Contouring (Cavitation/RF)
-              </h3>
-              <p className="text-warm-gray-400 font-light mb-6 leading-relaxed">
-                Non-invasive treatments to melt stubborn fat pockets and tighten loose skin.
-                Perfect for post-weightloss firming or targeting specific problem areas.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-8">
-                <span className="text-[11px] font-medium uppercase tracking-[0.3em] bg-ivory text-charcoal px-3 py-1">Body Sculpting</span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.3em] bg-warm-gray-50 text-bronze px-3 py-1">Non-Invasive</span>
-              </div>
-              <div className="flex items-center justify-between border-t border-warm-gray-100 pt-6">
-                <span className="text-charcoal font-semibold">From ₦80,000 / session</span>
-                <Link href="/booking" className="text-bronze font-medium hover:text-bronze transition-colors uppercase tracking-wider text-sm flex items-center">
-                  Book Consult
-                  <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </Link>
-              </div>
+            <div className="grid gap-[14px] md:grid-cols-2 md:gap-[18px]">
+              {TREATMENTS.map((treatment) => (
+                <div
+                  key={treatment.title}
+                  className="motion-card motion-lift flex flex-col rounded-[14px] border border-[#e9ede9] bg-white p-[22px] md:p-[26px]"
+                >
+                  <h3 className="text-[22px] font-bold leading-[1.2] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[26px]">
+                    {treatment.title}
+                  </h3>
+                  <p className="mt-[12px] flex-1 text-[15px] leading-[1.7] text-[#65716e]">
+                    {treatment.body}
+                  </p>
+                  <div className="mt-[18px] flex flex-wrap gap-[8px]">
+                    {treatment.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-[#e4f1f2] px-[12px] py-[6px] text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-[22px] flex flex-wrap items-center justify-between gap-[12px] border-t border-[#e9ede9] pt-[18px]">
+                    <span className="text-[17px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
+                      {treatment.price}
+                    </span>
+                    <Link
+                      href={treatment.href}
+                      className="group inline-flex items-center gap-[7px] text-[12px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)] transition-colors hover:text-[var(--color-clinic-teal-dark)]"
+                    >
+                      {treatment.linkLabel}
+                      <ChevronRight
+                        className="h-[15px] w-[15px] transition-transform duration-300 group-hover:translate-x-[3px]"
+                        aria-hidden
+                      />
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-24 bg-charcoal text-white relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10 text-center max-w-3xl">
-          <svg className="w-12 h-12 text-bronze mx-auto mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.714-4.605-6.273-7.017-6.273v-2.336c0-.527.473-1 1-1h13.078c.527 0 1 .473 1 1v2.336c-2.412 0-7.017.559-7.017 6.273v7.391zM5 4h14v-2.062c0-.527-.473-1-1-1h-12c-.527 0-1 .473-1 1v2.062z" />
-          </svg>
-          <h2
-            className="text-3xl md:text-4xl font-light mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            &ldquo;Weightloss is not a test of character, it is medicine. We treat the root cause.&rdquo;
-          </h2>
-          <p className="text-bronze tracking-widest uppercase text-sm font-semibold">
-            — Dr. Ral Abana
-          </p>
-        </div>
-      </section>
+        {/* QUOTE */}
+        <section className="bg-[var(--color-clinic-navy)] py-[70px] md:py-[100px]">
+          <div className="mx-auto max-w-[820px] px-[20px] text-center md:px-[40px]">
+            <div className="reveal-on-scroll">
+              <p className="mb-[16px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)]">
+                Our philosophy
+              </p>
+              <h2 className="mx-auto max-w-[720px] text-[24px] font-semibold leading-[1.35] tracking-[-0.02em] text-white md:text-[34px]">
+                &ldquo;Weightloss is not a test of character, it is medicine. We treat the root cause.&rdquo;
+              </h2>
+              <p className="mt-[22px] text-[12px] font-bold uppercase tracking-[0.14em] text-white/60">
+                — Dr. Ral Abana
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <CTABanner />
+        {/* CTA BAND */}
+        <section className="bg-white pb-[80px] pt-[70px] md:pb-[110px] md:pt-[100px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="reveal-on-scroll relative overflow-hidden rounded-[22px] bg-[var(--color-clinic-navy)] px-[26px] py-[48px] text-center md:px-[40px] md:py-[68px]">
+              <p className="mb-[14px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)]">
+                Ready to explore your options?
+              </p>
+              <h2 className="mx-auto max-w-[640px] text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-white md:text-[40px]">
+                Ready to begin your transformation?
+              </h2>
+              <p className="mx-auto mt-[16px] max-w-[520px] text-[15px] leading-[1.7] text-white/70 md:text-[16px]">
+                Book a consultation with our expert team and discover what&apos;s possible.
+              </p>
+              <div className="mt-[30px] flex flex-col items-center justify-center gap-[12px] sm:flex-row">
+                <Link
+                  href={BOOKING_URL}
+                  className="inline-flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:w-auto"
+                >
+                  Book a Visit
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-[52px] w-full items-center justify-center gap-[9px] rounded-full border border-white/25 px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10 sm:w-auto"
+                >
+                  Chat on WhatsApp
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <Footer />
-    </main>
+        <SiteFooter />
+      </div>
+
+      <FloatingWhatsApp />
+    </div>
   );
 }

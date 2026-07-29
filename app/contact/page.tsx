@@ -1,71 +1,90 @@
 import type { Metadata } from "next";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Link from "next/link";
+import { Clock, MapPin, Phone } from "lucide-react";
+import WhatsAppIcon from "@/app/components/WhatsAppIcon";
+import ClinicNavbar from "../components/home/ClinicNavbar";
+import { Breadcrumbs } from "../components/home/Breadcrumbs";
+import ScrollMotion from "../components/home/ScrollMotion";
+import { SiteFooter } from "../components/home/SiteFooter";
+import FloatingWhatsApp from "../components/home/FloatingWhatsApp";
+import MapEmbed from "../components/home/MapEmbed";
+import {
+  BOOKING_URL,
+  CLINIC_ADDRESS,
+  MAP_DIRECTIONS_URL,
+  MAP_EMBED_URL,
+  WHATSAPP_URL,
+} from "../components/home/homeData";
 
 export const metadata: Metadata = {
   title: "Contact Us | Reverse Aesthetics",
-  description: "Get in touch with Reverse Aesthetics. Visit our clinic in Lekki, Lagos or reach out for booking inquiries.",
+  description: "Get in touch with Reverse Aesthetics. Visit our clinics in Lekki, Lagos or Mabushi, Abuja — or reach out for booking inquiries.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
   return (
-    <main>
-      <Header />
+    <div
+      className="w-full bg-white text-[var(--color-clinic-navy)]"
+      style={{ fontFamily: "var(--font-body), sans-serif" }}
+    >
+      <ClinicNavbar />
+      <div className="h-[118px] md:h-[126px] bg-[var(--color-clinic-hero-top)]" />
 
-      {/* Hero */}
-      <section className="pt-28 lg:pt-36 pb-16 bg-ivory">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center max-w-3xl mx-auto">
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-bronze mb-5">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-[var(--color-clinic-hero-top)]">
+        <Breadcrumbs items={[{ label: "Contact" }]} />
+        <div className="mx-auto max-w-[820px] px-[20px] pb-[54px] pt-[18px] text-center md:pb-[72px] md:pt-[30px]">
+          <p className="hero-copy-reveal mb-[18px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)] md:text-[13px]">
             Get In Touch
           </p>
-          <h1
-            className="text-charcoal mb-6"
-            style={{ fontFamily: "var(--font-display), sans-serif" }}
-          >
-            Visit our <span className="italic">Lagos Clinic</span>
+          <h1 className="hero-copy-reveal [animation-delay:120ms] mx-auto max-w-[760px] text-[32px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[52px] md:leading-[1.08]">
+            Visit our{" "}
+            <span className="text-[var(--color-clinic-hero-accent)]">
+              Lagos Clinic
+            </span>
           </h1>
-          <p className="text-warm-gray-400 text-lg leading-relaxed mb-8 font-light">
+          <p className="hero-copy-reveal [animation-delay:240ms] mx-auto mt-[26px] max-w-[620px] text-[16px] leading-[1.7] text-[#5a5651] md:text-[18px]">
             Our patient care team is here to assist with bookings, treatment inquiries,
             and specialized care pathways.
           </p>
 
-          <div className="flex justify-center gap-4">
+          <div className="hero-copy-reveal [animation-delay:340ms] mt-[30px] flex flex-col items-center justify-center gap-[12px] sm:flex-row">
             <a
-              href="https://wa.me/2349159188094"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold"
+              className="inline-flex h-[52px] w-full items-center justify-center gap-[9px] rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:w-auto"
             >
               Chat on WhatsApp
+              <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
             </a>
-            <a href="mailto:reverseaestheticsng@gmail.com" className="btn-outline">
+            <a
+              href="mailto:reverseaestheticsng@gmail.com"
+              className="inline-flex h-[52px] w-full items-center justify-center rounded-full border border-[#d8e6e7] px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-[var(--color-clinic-navy)] transition-colors hover:bg-[#e4f1f2] sm:w-auto"
+            >
               Send an Email
             </a>
           </div>
         </div>
       </section>
 
-      {/* Contact Details & Map */}
-      <section className="section-padding bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+      <div className="motion-scope">
+        <ScrollMotion />
 
-            {/* Info Cards */}
-            <div className="space-y-6">
-              <div className="bg-ivory p-8 border border-warm-gray-100">
-                <div className="text-bronze mb-5">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                  </svg>
-                </div>
-                <h3
-                  className="text-xl text-charcoal mb-2"
-                  style={{ fontFamily: "var(--font-display), sans-serif" }}
-                >
+        {/* CONTACT DETAILS & MAP */}
+        <section className="bg-white py-[70px] md:py-[100px]">
+          <div className="mx-auto grid max-w-[1160px] gap-[28px] px-[20px] md:grid-cols-2 md:gap-[52px] md:px-[40px]">
+            {/* Info cards */}
+            <div className="grid content-start gap-[14px] md:gap-[18px]">
+              <div className="motion-card motion-lift rounded-[14px] border border-[#e9ede9] bg-[#f8fbf9] p-[22px] md:p-[26px]">
+                <span className="inline-flex h-[48px] w-[48px] items-center justify-center rounded-[12px] bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
+                  <MapPin className="h-[24px] w-[24px]" strokeWidth={1.7} aria-hidden />
+                </span>
+                <h2 className="mt-[18px] text-[19px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
                   Location
-                </h3>
-                <p className="text-warm-gray-400 leading-relaxed font-light">
+                </h2>
+                <p className="mt-[9px] text-[14px] leading-[1.65] text-[#65716e]">
                   Historia Mews,<br />
                   No. 5 Ayo Babatunde Crescent,<br />
                   Oniru, Lekki, Lagos
@@ -74,70 +93,101 @@ export default function ContactPage() {
                   href="https://maps.google.com/?q=Reverse+Aesthetics+Lagos"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative inline-block text-[11px] font-medium text-charcoal uppercase tracking-[0.2em] mt-4"
+                  className="mt-[16px] inline-flex items-center gap-[7px] text-[12px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)] transition-colors hover:text-[var(--color-clinic-teal-dark)]"
                 >
                   Get Directions
-                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-bronze" />
                 </a>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div className="bg-ivory p-8 border border-warm-gray-100">
-                  <div className="text-bronze mb-4">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3
-                    className="text-lg text-charcoal mb-2"
-                    style={{ fontFamily: "var(--font-display), sans-serif" }}
-                  >
+              <div className="grid gap-[14px] sm:grid-cols-2 md:gap-[18px]">
+                <div className="motion-card motion-lift rounded-[14px] border border-[#e9ede9] bg-[#f8fbf9] p-[22px] md:p-[26px]">
+                  <span className="inline-flex h-[44px] w-[44px] items-center justify-center rounded-[12px] bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
+                    <Clock className="h-[21px] w-[21px]" strokeWidth={1.7} aria-hidden />
+                  </span>
+                  <h2 className="mt-[16px] text-[17px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
                     Hours
-                  </h3>
-                  <p className="text-warm-gray-400 text-sm leading-relaxed font-light whitespace-pre-line">
+                  </h2>
+                  <p className="mt-[9px] whitespace-pre-line text-[14px] leading-[1.65] text-[#65716e]">
                     Mon - Sat: 9:00 AM – 7:00 PM{"\n"}
                     Sun: Closed
                   </p>
                 </div>
 
-                <div className="bg-ivory p-8 border border-warm-gray-100">
-                  <div className="text-bronze mb-4">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.08-7.076-6.975l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                    </svg>
-                  </div>
-                  <h3
-                    className="text-lg text-charcoal mb-2"
-                    style={{ fontFamily: "var(--font-display), sans-serif" }}
-                  >
+                <div className="motion-card motion-lift rounded-[14px] border border-[#e9ede9] bg-[#f8fbf9] p-[22px] md:p-[26px]">
+                  <span className="inline-flex h-[44px] w-[44px] items-center justify-center rounded-[12px] bg-[#e4f1f2] text-[var(--color-clinic-teal)]">
+                    <Phone className="h-[21px] w-[21px]" strokeWidth={1.7} aria-hidden />
+                  </span>
+                  <h2 className="mt-[16px] text-[17px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
                     Contact
-                  </h3>
-                  <a href="tel:+2349159188094" className="text-warm-gray-400 text-sm hover:text-bronze transition-colors block mb-1 font-light">
+                  </h2>
+                  <a
+                    href="tel:+2349159188094"
+                    className="mt-[9px] block text-[14px] leading-[1.65] text-[#65716e] transition-colors hover:text-[var(--color-clinic-teal)]"
+                  >
                     +234 915 918 8094
                   </a>
-                  <a href="mailto:reverseaestheticsng@gmail.com" className="text-warm-gray-400 text-sm hover:text-bronze transition-colors block truncate font-light">
+                  <a
+                    href="mailto:reverseaestheticsng@gmail.com"
+                    className="block truncate text-[14px] leading-[1.65] text-[#65716e] transition-colors hover:text-[var(--color-clinic-teal)]"
+                  >
                     reverseaestheticsng@gmail.com
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="bg-warm-gray-50 aspect-square xl:aspect-auto xl:h-full relative overflow-hidden flex items-center justify-center border border-warm-gray-100">
-              <div className="text-center p-8">
-                <svg className="w-10 h-10 text-warm-gray-200 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-                <p className="text-charcoal font-light text-sm" style={{ fontFamily: "var(--font-display), sans-serif" }}>Interactive Map</p>
-                <p className="text-warm-gray-300 text-xs mt-1">Historia Mews, Oniru</p>
+            {/* Map */}
+            <div className="motion-image-frame reveal-on-scroll overflow-hidden rounded-[16px]">
+              <MapEmbed
+                address={CLINIC_ADDRESS}
+                className="h-[360px] md:h-full md:min-h-[480px]"
+                directionsUrl={MAP_DIRECTIONS_URL}
+                embedUrl={MAP_EMBED_URL}
+                title="Map showing Reverse Aesthetics Lagos"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* CTA BAND */}
+        <section className="bg-white pb-[80px] pt-[10px] md:pb-[110px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="reveal-on-scroll relative overflow-hidden rounded-[22px] bg-[var(--color-clinic-navy)] px-[26px] py-[48px] text-center md:px-[40px] md:py-[68px]">
+              <p className="mb-[14px] text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--color-clinic-teal)]">
+                Ready to explore your options?
+              </p>
+              <h2 className="mx-auto max-w-[640px] text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-white md:text-[40px]">
+                Let&apos;s build a natural-first plan that fits you.
+              </h2>
+              <p className="mx-auto mt-[16px] max-w-[520px] text-[15px] leading-[1.7] text-white/70 md:text-[16px]">
+                Book a consultation in Lagos or Abuja, or send us a quick message
+                — we&apos;ll help you take the first step.
+              </p>
+              <div className="mt-[30px] flex flex-col items-center justify-center gap-[12px] sm:flex-row">
+                <Link
+                  href={BOOKING_URL}
+                  className="inline-flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--color-clinic-teal)] px-[40px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:w-auto"
+                >
+                  Book a Consultation
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-[52px] w-full items-center justify-center gap-[9px] rounded-full border border-white/25 px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10 sm:w-auto"
+                >
+                  Chat on WhatsApp
+                  <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
+                </a>
               </div>
             </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
-    </main>
+        <SiteFooter />
+      </div>
+
+      <FloatingWhatsApp />
+    </div>
   );
 }
