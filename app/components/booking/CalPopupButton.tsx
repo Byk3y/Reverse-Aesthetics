@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { getCalApi } from "@calcom/embed-react";
-import { CAL_BRAND } from "./bookingData";
+import { ATTENDEE_PHONE_PREFILL, CAL_BRAND } from "./bookingData";
 
 const NS = "reverse-popup";
 
@@ -72,6 +72,7 @@ export default function CalPopupButton({
         layout: "month_view",
         theme: "light",
         notes: notes ?? "",
+        attendeePhoneNumber: ATTENDEE_PHONE_PREFILL,
         ...(treatment ? { treatment } : {}),
       })}
       className={className}

@@ -5,6 +5,21 @@ export { WHATSAPP_URL };
 /** Brand colour handed to the Cal.com embed — mirrors --color-clinic-teal. */
 export const CAL_BRAND = "#01787D";
 
+/**
+ * Seeds Cal's phone field so the country selector opens on Nigeria.
+ *
+ * Cal picks the country from geo-IP, which is wrong for most of this audience:
+ * the same field has been observed defaulting to 🇺🇸 +1 and 🇬🇧 +44 depending on
+ * where the page was loaded. Every patient of both clinics is dialling +234, and
+ * a wrong prefix is close to invisible — the booking still completes, it just
+ * leaves the clinic holding a number that can't be called back. On paid traffic
+ * that is a lead paid for and then lost.
+ *
+ * Prefilled rather than locked: the field's `disableOnPrefill` is false, so the
+ * rare patient calling from abroad can still change it.
+ */
+export const ATTENDEE_PHONE_PREFILL = "+234";
+
 export interface BookingClinic {
   id: "lagos" | "abuja";
   city: string;

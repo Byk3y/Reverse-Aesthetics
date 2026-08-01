@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { CAL_BRAND } from "./bookingData";
+import { ATTENDEE_PHONE_PREFILL, CAL_BRAND } from "./bookingData";
 
 const NS_BASE = "reverse-inline";
 
@@ -76,6 +76,7 @@ export default function CalInline({
         layout: "month_view",
         theme: "light",
         notes: notes ?? "",
+        attendeePhoneNumber: ATTENDEE_PHONE_PREFILL,
         ...(treatment ? { treatment } : {}),
       }}
     />
