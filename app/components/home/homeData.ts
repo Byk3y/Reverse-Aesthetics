@@ -18,7 +18,7 @@ import {
 
 export const PHONE_DISPLAY = "+234 915 918 8094";
 export const PHONE_TEL = "+2349159188094";
-export const EMAIL = "reverseaestheticsng@gmail.com";
+export const EMAIL = "info@reverseaesthetic.com";
 export const WHATSAPP_URL =
   "https://wa.me/2349159188094?text=" +
   encodeURIComponent(

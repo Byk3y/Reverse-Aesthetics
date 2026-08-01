@@ -311,7 +311,7 @@ This markdown file contains fresh, unified copy for the new Reverse Aesthetics w
 - Abuja: 4 Adamu Mathew Street, near Royal Specialist Hospital, Mabushi, Abuja 900108
 - Hours: Mon–Sat 9:00 AM–7:00 PM, Sun Closed
 - Phone: 09159188094
-- Email: reverseaestheticsng@gmail.com
+- Email: info@reverseaesthetic.com
 - WhatsApp: Typically replies within minutes
 
 ### Contact Form Microcopy
@@ -366,7 +366,7 @@ By booking or submitting an enquiry, you agree to our clinic policies on safety,
 
 - Reverse Aesthetics was founded to deliver natural, life‑enhancing results through expert medical care and luxury experience.
 - Phone: 09159188094
-- Email: reverseaestheticsng@gmail.com
+- Email: info@reverseaesthetic.com
 - Hours: Mon–Sat 9:00 AM–7:00 PM; Sun Closed
 - Lagos: Oniru, Lekki | Abuja: Mabushi
 - Social: Instagram, Facebook, YouTube

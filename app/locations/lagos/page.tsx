@@ -195,7 +195,7 @@ export default function LagosLocationPage() {
                     </h3>
                     <p className="mt-[7px] text-[14px] leading-[1.65] text-[#65716e]">
                       0915 918 8094<br />
-                      reverseaestheticsng@gmail.com
+                      info@reverseaesthetic.com
                     </p>
                   </div>
                 </div>

@@ -60,7 +60,7 @@ export default function ContactPage() {
               <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
             </a>
             <a
-              href="mailto:reverseaestheticsng@gmail.com"
+              href="mailto:info@reverseaesthetic.com"
               className="inline-flex h-[52px] w-full items-center justify-center rounded-full border border-[#d8e6e7] px-[34px] text-[12px] font-semibold uppercase tracking-[0.12em] text-[var(--color-clinic-navy)] transition-colors hover:bg-[#e4f1f2] sm:w-auto"
             >
               Send an Email
@@ -127,10 +127,10 @@ export default function ContactPage() {
                     +234 915 918 8094
                   </a>
                   <a
-                    href="mailto:reverseaestheticsng@gmail.com"
+                    href="mailto:info@reverseaesthetic.com"
                     className="block truncate text-[14px] leading-[1.65] text-[#65716e] transition-colors hover:text-[var(--color-clinic-teal)]"
                   >
-                    reverseaestheticsng@gmail.com
+                    info@reverseaesthetic.com
                   </a>
                 </div>
               </div>

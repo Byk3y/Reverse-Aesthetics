@@ -26,7 +26,7 @@ export const PHONE = "+2349159188094";
    Each branch must carry its own number here or the two MedicalClinic nodes
    look like one location to Google. */
 export const ABUJA_PHONE = "+2349010203696";
-export const EMAIL = "reverseaestheticsng@gmail.com";
+export const EMAIL = "info@reverseaesthetic.com";
 
 /** Mon–Sat 9–7, both clinics. Must match the hours set on each GBP listing. */
 const OPENING_HOURS = [
