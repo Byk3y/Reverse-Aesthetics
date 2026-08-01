@@ -6,19 +6,24 @@ export { WHATSAPP_URL };
 export const CAL_BRAND = "#01787D";
 
 /**
- * Seeds Cal's phone field so the country selector opens on Nigeria.
+ * Cal's phone field cannot be defaulted to Nigeria. Don't try again from here.
  *
- * Cal picks the country from geo-IP, which is wrong for most of this audience:
- * the same field has been observed defaulting to 🇺🇸 +1 and 🇬🇧 +44 depending on
- * where the page was loaded. Every patient of both clinics is dialling +234, and
- * a wrong prefix is close to invisible — the booking still completes, it just
- * leaves the clinic holding a number that can't be called back. On paid traffic
- * that is a lead paid for and then lost.
+ * It picks the country from the booker's IP, and for this audience it picks
+ * wrong: 🇬🇧 +44 from Nigerian broadband *and* Nigerian mobile data, 🇺🇸 +1 from
+ * elsewhere. Upstream bug CAL-5085, open since 2024.
  *
- * Prefilled rather than locked: the field's `disableOnPrefill` is false, so the
- * rare patient calling from abroad can still change it.
+ * Neither lever works:
+ *   - `PhoneFieldInput_2024_06_14` has no country/dial-code property at all —
+ *     only type, slug, label, required, placeholder, disableOnPrefill, hidden.
+ *   - Embed prefill via `attendeePhoneNumber` needs a *complete* number
+ *     (documented example `%2B919999999999`). A bare "+234" is invalid and Cal
+ *     silently drops it — tried, deployed, verified useless.
+ *
+ * It matters because it fails quietly: the booking completes and the patient
+ * gets their confirmation, while the clinic is left holding a number it cannot
+ * dial. Fixing it means collecting the number in our own form and handing Cal
+ * a complete one, since a real number *does* prefill.
  */
-export const ATTENDEE_PHONE_PREFILL = "+234";
 
 export interface BookingClinic {
   id: "lagos" | "abuja";
