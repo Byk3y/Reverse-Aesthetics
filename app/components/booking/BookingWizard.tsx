@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Check, MapPin, Sparkles } from "lucide-react";
@@ -34,15 +35,16 @@ const subscribeMd = (onChange: () => void) => {
   return () => mq.removeEventListener("change", onChange);
 };
 
-export default function BookingWizard({
-  initialClinic,
-  initialTreatment,
-}: {
-  initialClinic?: string;
-  initialTreatment?: string;
-}) {
-  const preClinic = findClinic(initialClinic)?.id ?? null;
-  const preTreatment = findTreatment(initialTreatment)?.id ?? null;
+export default function BookingWizard() {
+  // Read once. From then on the wizard owns its state and the URL follows it,
+  // so a later history entry can't fight the user's in-page choices.
+  const searchParams = useSearchParams();
+  const [preClinic] = useState(
+    () => findClinic(searchParams.get("clinic") ?? undefined)?.id ?? null,
+  );
+  const [preTreatment] = useState(
+    () => findTreatment(searchParams.get("treatment") ?? undefined)?.id ?? null,
+  );
   const startStep = preClinic && preTreatment ? 2 : preClinic ? 1 : 0;
 
   const [step, setStep] = useState(startStep);
@@ -59,13 +61,46 @@ export default function BookingWizard({
     () => false,
   );
 
+  /**
+   * Every step gets its own history entry.
+   *
+   * The step used to live in React state alone, so the phone's back gesture —
+   * which is how most people navigate — skipped past the whole wizard and threw
+   * away the clinic and treatment they had already picked. Now back walks the
+   * steps and only leaves the page from step one.
+   *
+   * Native pushState is the App Router-supported way to change the query
+   * without a server round trip, which matters here: the point of making this
+   * route static was to stop it going to another continent.
+   */
+  const goTo = useCallback((target: number) => {
+    const sp = new URLSearchParams(window.location.search);
+    sp.set("step", String(target));
+    window.history.pushState(null, "", `${window.location.pathname}?${sp}`);
+    setStep(target);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const onPopState = () => {
+      const raw = Number(
+        new URLSearchParams(window.location.search).get("step"),
+      );
+      const restored =
+        Number.isInteger(raw) && raw >= 0 && raw <= 2 ? raw : startStep;
+      setStep(restored);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [startStep]);
+
   function next() {
-    setStep((s) => Math.min(s + 1, 2));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    goTo(Math.min(step + 1, 2));
   }
+  /** Delegated so the on-screen arrow and the system gesture do the same thing. */
   function back() {
-    setStep((s) => Math.max(s - 1, 0));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.back();
   }
 
   const clinicOptions = BOOKING_CLINICS.map((c) => ({
@@ -184,7 +219,7 @@ export default function BookingWizard({
               )}
               <button
                 type="button"
-                onClick={() => setStep(0)}
+                onClick={() => goTo(0)}
                 className="text-[12px] font-semibold text-[var(--color-clinic-teal)] underline underline-offset-2 hover:text-[var(--color-clinic-teal-dark)]"
               >
                 Edit
