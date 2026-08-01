@@ -416,12 +416,79 @@ html {
   scroll-padding-top: 120px;
 }
 
+/* Longhand, not the `animation:` shorthand — and this matters more than it
+   looks. The shorthand resets every sub-property it omits, so it was setting
+   animation-delay back to 0s. Tailwind puts `[animation-delay:Nms]` in a
+   cascade layer and these rules are unlayered, so unlayered wins no matter the
+   specificity or source order: all 73 delays across the site computed to 0s and
+   every stagger fired at once. Declaring no delay here leaves the utility as
+   the only declaration, so it applies. Don't collapse these back. */
 .hero-copy-reveal {
-  animation: hero-copy-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-name: hero-copy-reveal;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
 }
 
+/* Headline mask reveal. `.hero-line` is the mask and never moves; the span
+   inside is what rises, so the text is uncovered by a fixed edge instead of
+   sliding in from off-screen. Reads as composed rather than energetic, which
+   is the register a medical brand wants.
+
+   The padding/margin pair gives the mask room for descenders — without it the
+   overflow clips the tail of the p in "Expertly" — while cancelling the same
+   amount off the line box so vertical rhythm is unchanged. */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* Longhand for the same reason as .hero-copy-reveal above. */
+.hero-line > span {
+  display: block;
+  animation-name: hero-line-rise;
+  animation-duration: 1150ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+/* One slow sheen across the CTA on hover. Low contrast and deliberately
+   unhurried — on a clinic booking button this should read as considered, not
+   as a countdown timer. */
+.hero-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.26) 50%,
+    transparent 68%
+  );
+  transform: translateX(-130%);
+  transition: transform 780ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-cta:hover::after,
+.hero-cta:focus-visible::after {
+  transform: translateX(130%);
+}
+
+/* Longhand for the same reason as .hero-copy-reveal above — these seven tiles
+   carry the mosaic's cascade and were all landing on the same frame. */
 .hero-mosaic-image {
-  animation: hero-mosaic-zoom-out 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-name: hero-mosaic-zoom-out;
+  animation-duration: 1400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
   transform: scale(1.12);
 }
 
@@ -543,8 +610,17 @@ html {
 }
 
 @keyframes hero-copy-reveal {
-  0% { opacity: 0; transform: translateY(22px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(22px); filter: blur(5px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Overshoots to 105% so the line starts fully under the mask edge even with
+   the descender padding, and reaches full opacity before it lands — fading and
+   moving in lockstep looks like a slide, not a reveal. */
+@keyframes hero-line-rise {
+  0% { transform: translateY(105%); opacity: 0; }
+  55% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes hero-mosaic-zoom-out {
@@ -605,6 +681,7 @@ html {
   }
 
   .hero-copy-reveal,
+  .hero-line > span,
   .motion-heading,
   .motion-card,
   .reveal-on-scroll,
@@ -614,6 +691,15 @@ html {
     opacity: 1 !important;
     transform: none !important;
     will-change: auto;
+  }
+
+  /* The mask would still clip a non-animating line, so drop it entirely. */
+  .hero-line {
+    overflow: visible;
+  }
+
+  .hero-cta::after {
+    display: none;
   }
 
   .motion-image-frame img,

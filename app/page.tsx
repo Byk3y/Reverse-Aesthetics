@@ -33,34 +33,35 @@ export default function Home() {
             <span className="font-bold">aesthetic &amp; dermatology clinic</span>
           </p>
 
-          <h1 className="hero-copy-reveal [animation-delay:120ms] text-[32px] leading-[1.12] md:text-[52px] md:leading-[1.08] font-semibold tracking-[-0.02em] mb-[34px] md:mb-[44px] text-[var(--color-clinic-navy)] max-w-[840px] mx-auto">
-            Natural transformations.{" "}
-            <span className="text-[var(--color-clinic-hero-accent)]">
-              Expertly delivered.
+          {/* Each line is masked and rises from under its own edge, so the
+              headline reads as being uncovered rather than flown in — the
+              calmer of the two, which is what a medical brand wants. */}
+          <h1 className="text-[32px] leading-[1.12] md:text-[52px] md:leading-[1.08] font-semibold tracking-[-0.02em] mb-[34px] md:mb-[44px] text-[var(--color-clinic-navy)] max-w-[840px] mx-auto">
+            <span className="hero-line">
+              <span className="[animation-delay:150ms]">
+                Natural transformations.
+              </span>
+            </span>
+            <span className="hero-line">
+              <span className="[animation-delay:290ms] text-[var(--color-clinic-hero-accent)]">
+                Expertly delivered.
+              </span>
             </span>
           </h1>
 
-          <p className="hero-copy-reveal [animation-delay:240ms] text-[16px] md:text-[19px] leading-[1.6] text-[#5a5651] max-w-[620px] mx-auto mb-[36px] md:mb-[44px]">
+          <p className="hero-copy-reveal [animation-delay:440ms] text-[16px] md:text-[19px] leading-[1.6] text-[#5a5651] max-w-[620px] mx-auto mb-[36px] md:mb-[44px]">
             Personalized, medically-led treatments for skin, face, body, hair,
             and smile — designed to look like you, only refined.
           </p>
 
-          <div className="hero-copy-reveal [animation-delay:360ms] flex justify-center">
+          <div className="hero-copy-reveal [animation-delay:560ms] flex justify-center">
             <Link
               href={BOOKING_URL}
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-clinic-teal)] text-white px-[50px] h-[48px] text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
+              className="hero-cta inline-flex items-center justify-center rounded-full bg-[var(--color-clinic-teal)] text-white px-[50px] h-[48px] text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
             >
               Book Appointment
             </Link>
           </div>
-
-          <p className="hero-copy-reveal [animation-delay:460ms] mt-[20px] flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[2px] text-[13px] leading-[1.5] text-[#7d766d] md:text-[14px]">
-            <span>GMC (UK) registered founding physician</span>
-            <span aria-hidden className="hidden text-[var(--color-clinic-teal)] md:inline">
-              ·
-            </span>
-            <span>Clinics in Lekki, Lagos and Mabushi, Abuja</span>
-          </p>
         </div>
       </section>
 
@@ -152,6 +153,17 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Credentials sit under the mosaic rather than under the CTA. Above it,
+            the two lines wrap on a phone and push the whole mosaic down the
+            fold — the images are the thing worth seeing first. */}
+        <p className="hero-copy-reveal [animation-delay:860ms] mx-auto mt-[30px] md:mt-[44px] flex max-w-[620px] flex-wrap items-center justify-center gap-x-[10px] gap-y-[2px] px-[20px] text-center text-[13px] leading-[1.5] text-[#7d766d] md:text-[14px]">
+          <span>GMC (UK) registered founding physician</span>
+          <span aria-hidden className="hidden text-[var(--color-clinic-teal)] md:inline">
+            ·
+          </span>
+          <span>Clinics in Lekki, Lagos and Mabushi, Abuja</span>
+        </p>
       </section>
 
       <HomeSections />
