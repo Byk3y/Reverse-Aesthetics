@@ -75,16 +75,21 @@ export function SiteFooter() {
   return (
     <footer className="bg-white border-t border-[rgba(35,32,29,0.08)]">
       <div className="mx-auto max-w-[1160px] px-[20px] pt-[64px] pb-[52px] md:px-[40px] md:pt-[70px]">
-        <div className="grid grid-cols-2 gap-[36px] md:grid-cols-[repeat(3,minmax(130px,1fr))_minmax(210px,0.8fr)] md:gap-[42px] md:items-start">
+        {/* Two columns on a phone carry the short link lists fine, but Contact
+            holds an email and two street addresses — in a half-width column the
+            address wrapped to five lines and the email broke mid-word. It gets
+            the full width below, which is why the column count only applies to
+            the first two blocks. */}
+        <div className="grid grid-cols-2 gap-x-[24px] gap-y-[34px] md:grid-cols-[repeat(3,minmax(130px,1fr))_minmax(210px,0.8fr)] md:gap-[42px] md:items-start">
           {/* Clinics */}
           <div>
-            <h4 className="mb-[18px] text-[1rem] font-semibold text-[#0a0a0a]">Clinics</h4>
+            <h4 className="mb-[14px] text-[0.95rem] font-semibold text-[#0a0a0a] md:mb-[18px] md:text-[1rem]">Clinics</h4>
             <div className="grid gap-[14px]">
               {clinicLinks.map((item) => (
                 <Link
                   key={item.href + item.label}
                   href={item.href}
-                  className="text-[1.02rem] leading-[1.6] text-[#736f69] transition-colors hover:text-[var(--color-clinic-navy)]"
+                  className="text-[0.94rem] leading-[1.55] text-[#736f69] transition-colors hover:text-[var(--color-clinic-navy)] md:text-[1.02rem] md:leading-[1.6]"
                 >
                   {item.label}
                 </Link>
@@ -94,13 +99,13 @@ export function SiteFooter() {
 
           {/* Explore */}
           <div>
-            <h4 className="mb-[18px] text-[1rem] font-semibold text-[#0a0a0a]">Explore</h4>
+            <h4 className="mb-[14px] text-[0.95rem] font-semibold text-[#0a0a0a] md:mb-[18px] md:text-[1rem]">Explore</h4>
             <div className="grid gap-[14px]">
               {exploreLinks.map((item) => (
                 <Link
                   key={item.href + item.label}
                   href={item.href}
-                  className="text-[1.02rem] leading-[1.6] text-[#736f69] transition-colors hover:text-[var(--color-clinic-navy)]"
+                  className="text-[0.94rem] leading-[1.55] text-[#736f69] transition-colors hover:text-[var(--color-clinic-navy)] md:text-[1.02rem] md:leading-[1.6]"
                 >
                   {item.label}
                 </Link>
@@ -109,41 +114,52 @@ export function SiteFooter() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="mb-[18px] text-[1rem] font-semibold text-[#0a0a0a]">Contact</h4>
-            <div className="grid gap-[14px] text-[1.02rem] leading-[1.6] text-[#736f69]">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-[var(--color-clinic-navy)]"
-              >
-                WhatsApp
-              </a>
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="transition-colors hover:text-[var(--color-clinic-navy)]"
-              >
-                {PHONE_DISPLAY}
-              </a>
+          <div className="col-span-2 border-t border-[rgba(35,32,29,0.08)] pt-[30px] md:col-span-1 md:border-0 md:pt-0">
+            <h4 className="mb-[14px] text-[0.95rem] font-semibold text-[#0a0a0a] md:mb-[18px] md:text-[1rem]">Contact</h4>
+            <div className="grid gap-[12px] text-[0.94rem] leading-[1.55] text-[#736f69] md:gap-[14px] md:text-[1.02rem] md:leading-[1.6]">
+              {/* Three short items on one wrapped row on a phone; the desktop
+                  column is too narrow for that, so it goes back to stacked. */}
+              <div className="flex flex-wrap items-center gap-x-[10px] gap-y-[10px] md:grid md:gap-[14px]">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-[var(--color-clinic-navy)]"
+                >
+                  WhatsApp
+                </a>
+                <span aria-hidden className="text-[rgba(35,32,29,0.22)] md:hidden">
+                  /
+                </span>
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  className="transition-colors hover:text-[var(--color-clinic-navy)]"
+                >
+                  {PHONE_DISPLAY}
+                </a>
+              </div>
+              {/* No break-all — at full width the address fits, and break-all
+                  was splitting it as "info@reverseaesthetic.c / om". */}
               <a
                 href={`mailto:${EMAIL}`}
-                className="break-all transition-colors hover:text-[var(--color-clinic-navy)]"
+                className="break-words transition-colors hover:text-[var(--color-clinic-navy)]"
               >
                 {EMAIL}
               </a>
-              {LOCATIONS.map((loc) => (
-                <span key={loc.city}>
-                  <strong className="font-semibold text-[#4a4640]">{loc.city}:</strong>{" "}
-                  {loc.address}
-                </span>
-              ))}
+              <div className="grid gap-[12px] md:gap-[14px]">
+                {LOCATIONS.map((loc) => (
+                  <span key={loc.city} className="block">
+                    <strong className="font-semibold text-[#4a4640]">{loc.city}:</strong>{" "}
+                    {loc.address}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Follow */}
-          <div className="col-span-2 md:col-span-1 md:justify-self-end">
-            <h4 className="mb-[18px] text-[1rem] font-semibold text-[#0a0a0a]">Follow</h4>
+          <div className="col-span-2 border-t border-[rgba(35,32,29,0.08)] pt-[30px] md:col-span-1 md:border-0 md:pt-0 md:justify-self-end">
+            <h4 className="mb-[14px] text-[0.95rem] font-semibold text-[#0a0a0a] md:mb-[18px] md:text-[1rem]">Follow</h4>
             <div className="flex flex-wrap items-center gap-[14px]" aria-label="Social links">
               {socialButtons.map((social) => (
                 <a
