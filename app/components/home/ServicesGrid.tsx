@@ -5,7 +5,7 @@ import { BOOKING_URL, SERVICES } from "./homeData";
 
 export function ServicesGrid() {
   return (
-    <section id="services" className="bg-white pb-[46px] pt-[58px] md:pb-[58px] md:pt-[70px]">
+    <section id="services" className="bg-white [.thread-page_&]:bg-white/70 pb-[46px] pt-[58px] md:pb-[58px] md:pt-[70px]">
       <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
         <div className="motion-heading mb-[34px] flex flex-col gap-[18px] md:mb-[46px] md:flex-row md:items-end md:justify-between">
           <div>

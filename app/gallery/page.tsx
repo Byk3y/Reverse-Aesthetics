@@ -16,12 +16,28 @@ const categories = ["All", "Clinic", "Aesthetics", "Weight Loss", "Dental", "Hai
 /* Documentary imagery only — the clinic, the team, and treatments in progress.
    This page previously ran on AI-generated "before/after" pairs presented as
    patient results, which is both untrue and unusable in Meta ad creative. */
-const galleryItems = [
+interface GalleryItem {
+  category: string;
+  image: string;
+  title: string;
+  description: string;
+  /** Spans two columns. Optional, so the grid still supports a feature tile. */
+  wide?: boolean;
+}
+
+const galleryItems: GalleryItem[] = [
+  /* Lagos first, matching LOCATIONS order used in the nav, footer and contact. */
   {
     category: "Clinic",
     image: "/images/about/clinic.avif",
     title: "Our Lekki Clinic",
     description: "Historia Mews, Oniru — reception and consultation suites.",
+  },
+  {
+    category: "Clinic",
+    image: "/images/about/clinic-abuja.avif",
+    title: "Our Mabushi Clinic",
+    description: "The reception at our Abuja clinic, in Mabushi.",
   },
   {
     category: "Aesthetics",
@@ -59,13 +75,6 @@ const galleryItems = [
     title: "Hair Restoration",
     description: "Hairline mapping, FUE transplant, and PRP therapy.",
   },
-  {
-    category: "Clinic",
-    image: "/images/team/clinical-team.avif",
-    title: "Our Clinical Team",
-    description: "The clinicians and care team behind every treatment.",
-    wide: true,
-  },
 ];
 
 export default function GalleryPage() {
@@ -98,8 +107,8 @@ export default function GalleryPage() {
             </span>
           </h1>
           <p className="hero-copy-reveal [animation-delay:240ms] mx-auto mt-[26px] max-w-[620px] text-[16px] leading-[1.7] text-[#5a5651] md:text-[18px]">
-            A look at our Lekki clinic, the team who run it, and the treatments we
-            perform day to day.
+            A look inside both clinics — Lekki, Lagos and Mabushi, Abuja — and the
+            treatments we perform day to day.
           </p>
         </div>
       </section>

@@ -3,8 +3,6 @@ import {
   BOOKING_URL,
   EMAIL,
   LOCATIONS,
-  PHONE_DISPLAY,
-  PHONE_TEL,
   WHATSAPP_URL,
 } from "./homeData";
 
@@ -128,15 +126,22 @@ export function SiteFooter() {
                 >
                   WhatsApp
                 </a>
-                <span aria-hidden className="text-[rgba(35,32,29,0.22)] md:hidden">
-                  /
-                </span>
-                <a
-                  href={`tel:${PHONE_TEL}`}
-                  className="transition-colors hover:text-[var(--color-clinic-navy)]"
-                >
-                  {PHONE_DISPLAY}
-                </a>
+                {LOCATIONS.map((loc) => (
+                  <span key={loc.phoneTel} className="contents">
+                    <span aria-hidden className="text-[rgba(35,32,29,0.22)] md:hidden">
+                      /
+                    </span>
+                    <a
+                      href={`tel:${loc.phoneTel}`}
+                      className="transition-colors hover:text-[var(--color-clinic-navy)]"
+                    >
+                      <span className="font-semibold text-[var(--color-clinic-navy)]">
+                        {loc.city}
+                      </span>{" "}
+                      {loc.phoneDisplay}
+                    </a>
+                  </span>
+                ))}
               </div>
               {/* No break-all — at full width the address fits, and break-all
                   was splitting it as "info@reverseaesthetic.c / om". */}
@@ -199,6 +204,14 @@ export function SiteFooter() {
                   "linear-gradient(90deg, #008751 0 38%, #ffffff 38% 62%, #008751 62% 100%)",
               }}
             />
+          </p>
+          <p className="m-0 mt-[14px] text-[0.86rem]">
+            <Link
+              href="/privacy"
+              className="text-[#6f6a64] underline underline-offset-[4px] transition-colors hover:text-[var(--color-clinic-teal)]"
+            >
+              Privacy policy
+            </Link>
           </p>
         </div>
       </div>

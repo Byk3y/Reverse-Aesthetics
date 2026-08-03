@@ -146,7 +146,9 @@ const ABUJA_CLINIC = {
   telephone: ABUJA_PHONE,
   email: EMAIL,
   priceRange: "$$",
-  image: `${SITE_URL}/images/about/clinic.avif`,
+  // Each branch carries its own interior. Pointing both at the Lagos photo
+  // made the two records describe the same place in local search.
+  image: `${SITE_URL}/images/about/clinic-abuja.avif`,
   address: {
     "@type": "PostalAddress",
     // Mirrors the verified Google Business Profile character for character.

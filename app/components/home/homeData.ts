@@ -188,14 +188,6 @@ export const TEAM: TeamMember[] = [
     imageAlt: "Dr. Ral Abana, founder and aesthetic medical physician at Reverse Aesthetics",
     tone: "bg-[#e4f1f2]",
   },
-  {
-    name: "Clinical Care Team",
-    role: "Dermatology · Weight · Dental · Hair",
-    note: "Accredited clinicians across every clinic, matched to the concern in front of you.",
-    image: "/images/team/clinical-team.avif",
-    imageAlt: "The Reverse Aesthetics clinical team at the clinic",
-    tone: "bg-[#f0e9e2]",
-  },
 ];
 
 export const INTAKE_CHECKLIST = [

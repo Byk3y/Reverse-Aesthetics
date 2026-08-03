@@ -2,7 +2,7 @@ import { JOURNEY } from "./homeData";
 
 export function PatientJourney() {
   return (
-    <section id="how-it-works" className="bg-white pb-[42px] pt-[36px] md:pb-[52px] md:pt-[44px]">
+    <section id="how-it-works" className="bg-white [.thread-page_&]:bg-white/70 pb-[42px] pt-[36px] md:pb-[52px] md:pt-[44px]">
       <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
         <div className="motion-heading mb-[34px] max-w-[640px]">
           <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">

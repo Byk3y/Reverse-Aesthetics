@@ -5,7 +5,7 @@ const displayFont = { fontFamily: "var(--font-display), sans-serif" };
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-[#f7f4f0] py-[56px] md:py-[88px]">
+    <section id="testimonials" className="bg-[#f7f4f0] [.thread-page_&]:bg-[#f7f4f0]/70 py-[56px] md:py-[88px]">
       <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
         <div className="motion-heading mb-[26px] flex flex-col gap-[12px] md:mb-[36px] md:flex-row md:items-end md:justify-between md:gap-[40px]">
           <div className="max-w-[700px]">

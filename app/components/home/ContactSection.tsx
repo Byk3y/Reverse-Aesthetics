@@ -1,11 +1,11 @@
-import { Clock3, MapPin } from "lucide-react";
+import { Clock3, MapPin, Phone } from "lucide-react";
 import WhatsAppIcon from "@/app/components/WhatsAppIcon";
 import MapEmbed from "./MapEmbed";
-import { LOCATIONS, PHONE_DISPLAY, WHATSAPP_URL } from "./homeData";
+import { LOCATIONS, WHATSAPP_URL } from "./homeData";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-white pt-[34px] pb-[70px] md:py-[100px]">
+    <section id="contact" className="bg-white [.thread-page_&]:bg-white/70 pt-[34px] pb-[70px] md:py-[100px]">
       <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
         <div className="grid gap-[18px] md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div className="reveal-on-scroll rounded-[8px] bg-[#e4f1f2] p-[26px] md:self-start md:p-[34px]">
@@ -25,7 +25,9 @@ export function ContactSection() {
               rel="noreferrer"
               className="mt-[28px] inline-flex h-[46px] items-center justify-center gap-[8px] rounded-full bg-[var(--color-clinic-teal)] px-[24px] text-[12px] font-semibold uppercase tracking-[0.12em] text-white"
             >
-              {PHONE_DISPLAY}
+              {/* Labelled by what it does, not by a number: there is one
+                  WhatsApp line, but two clinic phone numbers below. */}
+              Chat on WhatsApp
               <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
             </a>
           </div>
@@ -47,6 +49,13 @@ export function ContactSection() {
                 <p className="mt-[10px] text-[14px] leading-[1.6] text-[#65716e]">
                   {loc.address}
                 </p>
+                <a
+                  href={`tel:${loc.phoneTel}`}
+                  className="mt-[12px] flex items-center gap-[8px] text-[15px] font-semibold text-[var(--color-clinic-navy)] transition-colors hover:text-[var(--color-clinic-teal)]"
+                >
+                  <Phone className="h-[16px] w-[16px] shrink-0 text-[var(--color-clinic-teal)]" aria-hidden />
+                  {loc.phoneDisplay}
+                </a>
                 <a
                   href={loc.mapDirectionsUrl}
                   target="_blank"

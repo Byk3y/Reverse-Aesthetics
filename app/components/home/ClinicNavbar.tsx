@@ -10,8 +10,6 @@ import {
   CITIES_SHORT,
   EMAIL,
   LOCATIONS,
-  PHONE_DISPLAY,
-  PHONE_TEL,
   WHATSAPP_URL,
 } from "./homeData";
 
@@ -56,7 +54,7 @@ export default function ClinicNavbar() {
     <div className="fixed top-0 left-0 w-full z-[100]">
       {/* Announcement bar */}
       <div
-        className={`bg-white text-center px-[16px] text-[12px] md:text-[14px] font-medium overflow-hidden whitespace-nowrap transition-all duration-300 border-b border-[#eee] ${
+        className={`bg-white [.thread-page_&]:bg-transparent [.thread-page_&]:border-transparent text-center px-[16px] text-[12px] md:text-[14px] font-medium overflow-hidden whitespace-nowrap transition-all duration-300 border-b border-[#eee] ${
           scrolled ? "max-h-0 py-0 border-b-0" : "max-h-[50px] py-[10px]"
         }`}
       >
@@ -78,8 +76,12 @@ export default function ClinicNavbar() {
       <nav
         className={`transition-all duration-300 ${
           scrolled
-            ? "bg-white border-b border-[#e8e8e8] shadow-sm"
-            : "bg-[var(--color-clinic-hero-top)]"
+            ? // Solid once scrolled: page content is passing underneath, so the
+              // bar has to be opaque regardless of the backdrop.
+              "bg-white border-b border-[#e8e8e8] shadow-sm"
+            : // At rest there's nothing behind but the backdrop, so on a
+              // thread-page the bar drops out and the field runs unbroken.
+              "bg-[var(--color-clinic-hero-top)] [.thread-page_&]:bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-[1000px] px-[24px] md:px-[20px] h-[68px] md:h-[76px] flex items-center justify-between">
@@ -190,13 +192,21 @@ export default function ClinicNavbar() {
                     </span>
                   </a>
                 ))}
-                <a
-                  href={`tel:${PHONE_TEL}`}
-                  className="flex items-center gap-[12px] transition-colors hover:text-[var(--color-clinic-teal)]"
-                >
-                  <Phone className="h-[18px] w-[18px] shrink-0 text-[var(--color-clinic-teal)]" aria-hidden />
-                  <span>{PHONE_DISPLAY}</span>
-                </a>
+                {/* Both lines, labelled — an unlabelled number next to two
+                    addresses reads as though one clinic takes all the calls. */}
+                {LOCATIONS.map((loc) => (
+                  <a
+                    key={loc.phoneTel}
+                    href={`tel:${loc.phoneTel}`}
+                    className="flex items-center gap-[12px] transition-colors hover:text-[var(--color-clinic-teal)]"
+                  >
+                    <Phone className="h-[18px] w-[18px] shrink-0 text-[var(--color-clinic-teal)]" aria-hidden />
+                    <span>
+                      <strong className="text-[var(--color-clinic-navy)]">{loc.city}:</strong>{" "}
+                      {loc.phoneDisplay}
+                    </span>
+                  </a>
+                ))}
                 <a
                   href={`mailto:${EMAIL}`}
                   className="flex items-center gap-[12px] transition-colors hover:text-[var(--color-clinic-teal)]"

@@ -3,7 +3,7 @@ import { FAQS } from "./homeData";
 
 export function FaqSection() {
   return (
-    <section id="faq" className="bg-[#f7f4f0] py-[70px] md:py-[100px]">
+    <section id="faq" className="bg-[#f7f4f0] [.thread-page_&]:bg-[#f7f4f0]/70 py-[70px] md:py-[100px]">
       <div className="mx-auto max-w-[900px] px-[20px] md:px-[40px]">
         <div className="motion-heading mb-[30px] text-center">
           <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">

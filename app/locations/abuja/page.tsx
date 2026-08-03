@@ -115,8 +115,8 @@ export default function AbujaLocationPage() {
           <div className="mx-auto grid max-w-[1160px] gap-[28px] px-[20px] md:grid-cols-2 md:items-start md:gap-[52px] md:px-[40px]">
             <div className="motion-image-frame reveal-on-scroll relative aspect-square overflow-hidden rounded-[16px] bg-[#e4f1f2]">
               <Image
-                src="/images/services/service-bumps-breakout-square.avif"
-                alt="Aesthetic medical consultation in Abuja"
+                src="/images/about/clinic-abuja.avif"
+                alt="Reverse Aesthetics clinic reception in Mabushi, Abuja"
                 fill
                 priority
                 sizes="(min-width: 768px) 540px, calc(100vw - 40px)"

@@ -5,7 +5,7 @@ import { BOOKING_URL, INTAKE_CHECKLIST, WHATSAPP_URL } from "./homeData";
 
 export function PaymentAccess() {
   return (
-    <section id="consultation" className="bg-white pb-[70px] pt-[22px] md:pb-[95px] md:pt-[34px]">
+    <section id="consultation" className="bg-white [.thread-page_&]:bg-white/70 pb-[70px] pt-[22px] md:pb-[95px] md:pt-[34px]">
       <div className="mx-auto grid max-w-[1160px] gap-[18px] px-[20px] md:grid-cols-[1.1fr_0.9fr] md:px-[40px]">
         <div className="reveal-on-scroll rounded-[8px] bg-[var(--color-clinic-navy)] p-[26px] text-white md:p-[42px]">
           <p className="mb-[12px] text-[12px] font-bold uppercase tracking-[0.14em] text-[#aedee0]">

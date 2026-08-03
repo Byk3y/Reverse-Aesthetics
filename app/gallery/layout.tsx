@@ -11,12 +11,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Work | Inside the Reverse Aesthetics Clinic, Lagos & Abuja",
   description:
-    "A look inside our Lekki clinic — the team, the treatment rooms, and the aesthetic, weight loss, dental and hair procedures we perform.",
+    "A look inside both clinics — Lekki, Lagos and Mabushi, Abuja — the treatment rooms, and the aesthetic, weight loss, dental and hair procedures we perform.",
   alternates: { canonical: "/gallery" },
   openGraph: {
     title: "Our Work | Inside the Reverse Aesthetics Clinic, Lagos & Abuja",
     description:
-      "A look inside our Lekki clinic — the team, the treatment rooms, and the procedures we perform.",
+      "A look inside both clinics — Lekki, Lagos and Mabushi, Abuja — the treatment rooms, and the procedures we perform.",
     url: "/gallery",
   },
 };
