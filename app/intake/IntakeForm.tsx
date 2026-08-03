@@ -223,9 +223,20 @@ export default function IntakeForm({
         {pending ? "Sending…" : "Send my details"}
       </button>
 
+      {/* Opens in a new tab on purpose — this form is often half-filled by the
+          time someone reads this line, and navigating away would lose it. */}
       <p className="mt-[16px] text-[12.5px] leading-[1.6] text-[#a8a39c]">
         Your details are held by the clinic to arrange your care and are never
-        sold or shared.
+        sold or shared. See our{" "}
+        <a
+          href="/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-[3px] transition-colors hover:text-[var(--color-clinic-teal)]"
+        >
+          privacy policy
+        </a>
+        .
       </p>
     </form>
   );

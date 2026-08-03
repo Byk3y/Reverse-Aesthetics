@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: '/blog', priority: 0.8, changeFrequency: 'weekly' },
     { url: '/booking', priority: 0.8, changeFrequency: 'monthly' },
     { url: '/contact', priority: 0.8, changeFrequency: 'monthly' },
+    { url: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
     
     // SEO Hub Pages (Locations)
     { url: '/locations/lagos', priority: 0.9, changeFrequency: 'monthly' },
