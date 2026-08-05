@@ -191,7 +191,7 @@ export function SiteFooter() {
               fontSize: "clamp(2.5rem, 7.4vw, 7rem)",
             }}
           >
-            Naturally you, only refined.
+            Natural transformations only.
             <sup className="align-super text-[0.28em] leading-[0]">TM</sup>
           </h2>
           <p className="m-0 text-[0.98rem] font-bold text-[#0a0a0a]">

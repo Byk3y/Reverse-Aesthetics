@@ -598,6 +598,52 @@ html {
   transform: scale(1.095);
 }
 
+/* Clinic crossfade — the "why choose us" frame holds both receptions and
+   dissolves Lagos <-> Abuja on a loop. Pure CSS, so the section stays a
+   server component: no state, no timer, nothing to hydrate. The three
+   animations share one duration and all start at page load, so they can
+   never drift out of step with each other.
+
+   The city labels hard-cut at 46% and 96% — the midpoint of each dissolve,
+   when the images are 50/50 and the swap is least noticeable. Fading them
+   with the images instead would put two lots of text at half opacity on
+   top of each other, which reads as a blur.
+
+   Reduced motion needs no rule here: the global block above collapses the
+   duration to 0.01ms with no fill mode, so every layer falls back to its
+   resting style, which is Lagos with the Lagos label. */
+.clinic-swap-alt {
+  opacity: 0;
+  animation: clinic-swap-image 12s ease-in-out infinite;
+}
+
+.clinic-swap-label {
+  animation: clinic-swap-label 12s linear infinite;
+}
+
+.clinic-swap-label-alt {
+  opacity: 0;
+  animation: clinic-swap-label-alt 12s linear infinite;
+}
+
+@keyframes clinic-swap-image {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes clinic-swap-label {
+  0%, 45.9% { opacity: 1; }
+  46%, 95.9% { opacity: 0; }
+  96%, 100% { opacity: 1; }
+}
+
+@keyframes clinic-swap-label-alt {
+  0%, 45.9% { opacity: 0; }
+  46%, 95.9% { opacity: 1; }
+  96%, 100% { opacity: 0; }
+}
+
 .motion-scope svg {
   transition:
     transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
