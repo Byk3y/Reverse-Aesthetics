@@ -144,6 +144,46 @@ export default function LandingPage({ service }: { service: LpService }) {
         </div>
       </section>
 
+      {/* Real results */}
+      {service.results && service.results.length > 0 && (
+        <section className="bg-[var(--color-clinic-warm-bg)] py-[52px] md:py-[70px]">
+          <div className="mx-auto max-w-[1080px] px-5 md:px-8">
+            <p className="mb-[10px] text-center text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+              Real results
+            </p>
+            <h2 className="mb-[28px] text-center text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[38px]">
+              Recent results from our clinic.
+            </h2>
+            <div className="grid gap-[14px] sm:grid-cols-2 md:gap-[18px]">
+              {service.results.map((result) => (
+                <figure
+                  key={result.label}
+                  className="overflow-hidden rounded-[14px] border border-[#e6ece7] bg-white"
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <Image
+                      src={result.image}
+                      alt={result.imageAlt}
+                      fill
+                      sizes="(min-width: 768px) 520px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="flex items-center justify-between px-[20px] py-[14px]">
+                    <span className="text-[15px] font-semibold text-[var(--color-clinic-navy)]">
+                      {result.label}
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)]">
+                      Real patient
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Booking */}
       <section id="book" className="scroll-mt-[70px] bg-[var(--color-clinic-warm-bg)] py-[52px] md:py-[72px]">
         <div className="mx-auto max-w-[720px] px-5">

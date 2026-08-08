@@ -14,6 +14,12 @@ export interface LpFaq {
   a: string;
 }
 
+export interface LpResult {
+  label: string;
+  image: string;
+  imageAlt: string;
+}
+
 export interface LpService {
   slug: string;
   /** matches a Cal.com "Which treatment?" value + shown in booking notes */
@@ -29,6 +35,9 @@ export interface LpService {
   expect: LpExpectStep[];
   faqs: LpFaq[];
   waMessage: string;
+  /** Real consent-approved results. Populate as photos come in; the section
+      renders only when this list is non-empty. */
+  results?: LpResult[];
 }
 
 export const LP_SERVICES: LpService[] = [
@@ -91,6 +100,18 @@ export const LP_SERVICES: LpService[] = [
       { q: "How long does it last?", a: "It depends on the product and area treated — we'll explain at your consultation." },
     ],
     waMessage: "Hi Reverse Aesthetics, I'd like to book a Dermal Fillers consultation.",
+    results: [
+      {
+        label: "Chin contour",
+        image: "/images/results/dermal-filler-chin-v2.avif",
+        imageAlt: "A dermal filler chin contouring result at Reverse Aesthetics",
+      },
+      {
+        label: "Wrinkle softening",
+        image: "/images/results/botox.avif",
+        imageAlt: "A subtle botox rejuvenation result at Reverse Aesthetics",
+      },
+    ],
   },
   {
     slug: "bumps-treatment",
@@ -151,6 +172,18 @@ export const LP_SERVICES: LpService[] = [
       { q: "How much downtime?", a: "Often minimal; we explain exactly what to expect before we begin." },
     ],
     waMessage: "Hi Reverse Aesthetics, I'd like to book a Facial Profile Balancing consultation.",
+    results: [
+      {
+        label: "Profile harmony",
+        image: "/images/results/facial-profile-enhancement.avif",
+        imageAlt: "A natural facial profile enhancement result at Reverse Aesthetics",
+      },
+      {
+        label: "Balanced contours",
+        image: "/images/results/facial-profile-enhancement-2.avif",
+        imageAlt: "A second facial profile enhancement result at Reverse Aesthetics",
+      },
+    ],
   },
   {
     slug: "glass-skin-facials",

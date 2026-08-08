@@ -42,15 +42,6 @@ export function WhyChooseUs() {
             <MapPin className="h-[12px] w-[12px]" aria-hidden />
             Mabushi, Abuja
           </p>
-          <div className="absolute inset-x-[32px] bottom-[32px] rounded-[8px] bg-white/78 p-[18px] backdrop-blur-sm">
-            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
-              Subtle changes, powerful confidence
-            </p>
-            <p className="mt-[8px] text-[18px] font-semibold leading-[1.25] text-[var(--color-clinic-navy)]">
-              Our goal is enhancement — not replacement. The best version of you,
-              as your every day.
-            </p>
-          </div>
         </div>
 
         <div className="motion-heading">

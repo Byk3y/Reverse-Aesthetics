@@ -4,6 +4,7 @@ import { ContactSection } from "./ContactSection";
 import { FaqSection } from "./FaqSection";
 import { PatientJourney } from "./PatientJourney";
 import { PaymentAccess } from "./PaymentAccess";
+import { Results } from "./Results";
 import { ServicesGrid } from "./ServicesGrid";
 import { SiteFooter } from "./SiteFooter";
 import { Testimonials } from "./Testimonials";
@@ -18,6 +19,7 @@ export default function HomeSections() {
       <PaymentAccess />
       <WhyChooseUs />
       <CareTeam />
+      <Results />
       <Testimonials />
       <ContactSection />
       <FaqSection />

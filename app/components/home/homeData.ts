@@ -93,7 +93,7 @@ export const SERVICES: HomeService[] = [
   {
     title: "Dermal Fillers",
     description:
-      "Lift, shape, and hydration with medical-grade fillers — subtly done, never overdone.",
+      "Lift, shape, and hydrate with medical-grade fillers — including **eye bag and tear trough treatment**, subtly done, never overdone.",
     icon: Syringe,
     image: "/images/services/service-dermal-fillers.avif",
     imageAlt: "Dermal filler treatment at Reverse Aesthetics",
@@ -187,6 +187,54 @@ export const TEAM: TeamMember[] = [
     image: "/images/team/dr-ral-abana.avif",
     imageAlt: "Dr. Ral Abana, founder and aesthetic medical physician at Reverse Aesthetics",
     tone: "bg-[#e4f1f2]",
+  },
+  {
+    name: "Clinical Care Team",
+    role: "Dermatology · Weight · Dental · Hair",
+    note: "Accredited clinicians across every clinic, matched to the concern in front of you.",
+    image: "/images/team/clinical-team.avif",
+    imageAlt: "The Reverse Aesthetics clinical team at the clinic",
+    tone: "bg-[#f0e9e2]",
+  },
+];
+
+/* Real, consented results from the clinic. Images live as tasteful AVIF
+   crops in /public/images/results; keep the file names free of spaces. */
+export interface Result {
+  name: string;
+  treatment: string;
+  image: string;
+  imageAlt: string;
+  tone: string;
+  /** Optional second image that crossfades over the first — lets one card
+      show two angles of the same result instead of duplicating it. */
+  secondaryImage?: string;
+  secondaryImageAlt?: string;
+}
+
+export const RESULTS: Result[] = [
+  {
+    name: "Facial profile enhancement",
+    treatment: "Balanced contours",
+    image: "/images/results/facial-profile-enhancement.avif",
+    imageAlt: "A natural facial profile enhancement result at Reverse Aesthetics",
+    tone: "bg-[#e4f1f2]",
+    secondaryImage: "/images/results/facial-profile-enhancement-2.avif",
+    secondaryImageAlt: "Another angle of the same facial profile enhancement result",
+  },
+  {
+    name: "Botox",
+    treatment: "Wrinkle softening",
+    image: "/images/results/botox.avif",
+    imageAlt: "A subtle botox rejuvenation result at Reverse Aesthetics",
+    tone: "bg-[#f0e9e2]",
+  },
+  {
+    name: "Chin filler",
+    treatment: "Contour & definition",
+    image: "/images/results/dermal-filler-chin-v2.avif",
+    imageAlt: "A dermal filler chin contouring result at Reverse Aesthetics",
+    tone: "bg-[#e4edf1]",
   },
 ];
 

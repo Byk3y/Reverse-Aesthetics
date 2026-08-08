@@ -82,7 +82,9 @@ export function ServicesGrid() {
                           featured ? "sm:mt-[14px] sm:max-w-[44ch] sm:text-[15px] md:text-[16px]" : ""
                         }`}
                       >
-                        {service.description}
+                        {service.description.split("**").map((part, i) =>
+                          i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+                        )}
                       </p>
                     </div>
                     <span className="mt-[2px] inline-flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-white/60 text-[var(--color-clinic-navy)] transition-colors group-hover:bg-[var(--color-clinic-navy)] group-hover:text-white">
