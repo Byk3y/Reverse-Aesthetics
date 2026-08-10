@@ -23,6 +23,121 @@ export const metadata: Metadata = {
   }
 };
 
+const fullServiceMenu = [
+  {
+    category: "Injectables & Contouring",
+    services: [
+      { name: "Botox", href: "/treatments/botox-and-dermal-fillers-lagos" },
+      { name: "Nefertiti Botox" },
+      { name: "Masseter / Face Slimming" },
+      { name: "Brow Lift (Toxin)" },
+      { name: "Lip Flip" },
+      { name: "Gummy Smile Correction" },
+      { name: "Dermal Fillers (cheeks, lips, jawline, chin)", href: "/treatments/botox-and-dermal-fillers-lagos" },
+      { name: "Tear Trough Filler" },
+      { name: "Non-Surgical Rhinoplasty" },
+      { name: "Collagen-Stimulating Injectables" },
+      { name: "Bio-Remodelling Injectables" },
+      { name: "Filler Dissolving" },
+    ],
+  },
+  {
+    category: "Skin Treatments",
+    services: [
+      { name: "Glass Skin Treatment", href: "/lp/glass-skin-facials" },
+      { name: "Hard Reset Facial" },
+      { name: "Acne Facial", href: "/treatments/acne-scar-treatment-lagos" },
+      { name: "Skin Booster (HA)" },
+      { name: "Exosome Therapy (Skin)" },
+      { name: "PRX Treatment" },
+      { name: "HydraGlow Facial" },
+      { name: "Brightening Facial" },
+      { name: "Anti-Acne Facial" },
+      { name: "Chemical Peels" },
+      { name: "Enzyme Peel" },
+      { name: "Acne Extraction" },
+      { name: "Blackhead / Whitehead Removal" },
+      { name: "Pore Reduction" },
+      { name: "Skin Barrier Repair Facial" },
+      { name: "Korean Glass Skin Facial" },
+      { name: "Mole & Skin Tag Removal" },
+    ],
+  },
+  {
+    category: "Advanced Rejuvenation",
+    services: [
+      { name: "Microneedling" },
+      { name: "RF Microneedling" },
+      { name: "PRP / PRF Skin Rejuvenation" },
+      { name: "Exosome / Stem Cell Facial" },
+      { name: "Polynucleotide Under-Eye Treatment" },
+      { name: "Stretch Mark Therapy" },
+    ],
+  },
+  {
+    category: "Under-Eye Treatments",
+    services: [
+      { name: "Tear Trough Fillers" },
+      { name: "Under-Eye Polynucleotide" },
+      { name: "PRF Under-Eye" },
+    ],
+  },
+  {
+    category: "Hair Restoration",
+    services: [
+      { name: "Hair Transplant", href: "/treatments/hair-transplant-nigeria" },
+      { name: "PRP Hair Restoration" },
+      { name: "PRF Hair Restoration" },
+      { name: "Exosome Hair Treatment" },
+      { name: "Dandruff / Seborrhea Treatment" },
+      { name: "Post-Transplant Maintenance" },
+    ],
+  },
+  {
+    category: "Body Aesthetics",
+    services: [
+      { name: "Fat Dissolver" },
+      { name: "Non-Surgical Bum Lift" },
+      { name: "PDO Thread Lift (Face)" },
+      { name: "Weight Loss Program", href: "/treatments/medical-weight-loss-lagos" },
+      { name: "Butt & Hip Enlargement" },
+      { name: "Bra-Line Slimming" },
+      { name: "Underarm Brightening" },
+      { name: "Knee / Elbow Lightening" },
+      { name: "Inner Thigh Brightening" },
+      { name: "Hand Rejuvenation" },
+      { name: "Neck & Chest Tightening" },
+    ],
+  },
+  {
+    category: "Wellness Drips",
+    services: [
+      { name: "Brightening Drips (Glutathione + Vit C)", href: "/treatments/iv-glow-therapy-lagos" },
+      { name: "Immune Booster", href: "/treatments/iv-glow-therapy-lagos" },
+      { name: "Hydration Drip" },
+      { name: "Anti-Aging Drip", href: "/treatments/iv-glow-therapy-lagos" },
+      { name: "Metabolism / Energy Drip" },
+      { name: "Stress-Relief Drip" },
+      { name: "Hair, Skin & Nail Drip" },
+    ],
+  },
+  {
+    category: "Dental",
+    services: [
+      { name: "Teeth Whitening", href: "/treatments/dental-aesthetics-lagos" },
+      { name: "Scaling & Polishing" },
+    ],
+  },
+  {
+    category: "Diagnostics",
+    services: [
+      { name: "Scalp Analysis" },
+      { name: "Skin Analysis" },
+      { name: "Treatment Planning Consultation" },
+    ],
+  },
+];
+
 const treatmentCategories = [
   {
     category: "Aesthetics & Dermatology",
@@ -87,21 +202,19 @@ const treatmentCategories = [
 ];
 
 export default function TreatmentsPage() {
-  /* Flatten before numbering — mapping inside flatMap restarts `i` at 0 for
-     every category, which made four separate items all claim position 1. */
-  const allTreatments = treatmentCategories.flatMap((cat) => cat.treatments);
+  const allServices = fullServiceMenu.flatMap((cat) => cat.services);
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Aesthetic Treatments at Reverse Aesthetics",
     "description": "Complete list of aesthetic, dental, hair, and wellness treatments available at Reverse Aesthetics in Lagos, Nigeria.",
-    "numberOfItems": allTreatments.length,
-    "itemListElement": allTreatments.map((t, i) => ({
+    "numberOfItems": allServices.length,
+    "itemListElement": allServices.map((t, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "name": t.name,
-      "url": `https://reverseaesthetic.com${t.href}`,
+      ...(t.href ? { "url": `https://reverseaesthetic.com${t.href}` } : {}),
     })),
   };
 
@@ -185,6 +298,67 @@ export default function TreatmentsPage() {
             </div>
           </section>
         ))}
+
+        {/* FULL SERVICE MENU */}
+        <section className="bg-white py-[70px] md:py-[100px]">
+          <div className="mx-auto max-w-[1160px] px-[20px] md:px-[40px]">
+            <div className="motion-heading mb-[20px] max-w-[720px]">
+              <p className="mb-[10px] text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+                Everything we offer
+              </p>
+              <h2 className="text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[42px]">
+                The complete{" "}
+                <span className="text-[var(--color-clinic-hero-accent)]">
+                  treatment menu
+                </span>
+              </h2>
+              <p className="mt-[14px] max-w-[640px] text-[15px] leading-[1.7] text-[#65716e] md:text-[16px]">
+                Every treatment we offer, listed in one place. Prices are set at
+                consultation, since each plan is personalised to your anatomy and
+                goals.
+              </p>
+            </div>
+
+            <div className="grid gap-[14px] md:grid-cols-2 lg:grid-cols-3 md:gap-[18px]">
+              {fullServiceMenu.map((cat) => (
+                <div
+                  key={cat.category}
+                  className="motion-card flex flex-col rounded-[14px] border border-[#e9ede9] bg-white p-[22px] md:p-[26px]"
+                >
+                  <h3 className="mb-[16px] border-b border-[#e9ede9] pb-[12px] text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-teal)]">
+                    {cat.category}
+                  </h3>
+                  <ul className="flex flex-1 flex-col gap-[9px]">
+                    {cat.services.map((service) => (
+                      <li key={service.name} className="leading-snug">
+                        {service.href ? (
+                          <Link
+                            href={service.href}
+                            className="group inline-flex items-start gap-[10px] text-[15px] font-medium text-[var(--color-clinic-navy)] transition-colors hover:text-[var(--color-clinic-teal-dark)]"
+                          >
+                            <ChevronRight className="mt-[3px] h-[14px] w-[14px] shrink-0 text-[var(--color-clinic-teal)] transition-transform duration-300 group-hover:translate-x-[2px]" />
+                            <span>{service.name}</span>
+                          </Link>
+                        ) : (
+                          <span className="inline-flex items-start gap-[10px] text-[15px] text-[#65716e]">
+                            <span className="mt-[8px] h-[6px] w-[6px] shrink-0 rounded-full bg-[var(--color-clinic-navy)]/30" />
+                            <span>{service.name}</span>
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <p className="motion-card mt-[24px] text-[14px] leading-[1.7] text-[#65716e]">
+              Some advanced or custom options are confirmed after an assessment,
+              and all treatments require a consultation for personalisation. Not
+              sure where to start? Book a consultation and we&apos;ll help you choose.
+            </p>
+          </div>
+        </section>
 
         {/* CTA BAND */}
         <section className="bg-white pb-[80px] pt-[70px] md:pb-[110px] md:pt-[100px]">
