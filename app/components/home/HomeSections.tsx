@@ -7,6 +7,7 @@ import { PaymentAccess } from "./PaymentAccess";
 import { Results } from "./Results";
 import { ServicesGrid } from "./ServicesGrid";
 import { SiteFooter } from "./SiteFooter";
+import { WatchSection } from "./WatchSection";
 import { Testimonials } from "./Testimonials";
 import { WhyChooseUs } from "./WhyChooseUs";
 
@@ -15,6 +16,7 @@ export default function HomeSections() {
     <div className="motion-scope">
       <ScrollMotion />
       <ServicesGrid />
+      <WatchSection />
       <PatientJourney />
       <PaymentAccess />
       <WhyChooseUs />

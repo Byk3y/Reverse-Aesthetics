@@ -53,6 +53,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'framerusercontent.com',
       },
+      // YouTube Short poster frames embedded on the home page watch section.
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+      },
       // Blog cover images and in-article uploads live in Supabase Storage.
       {
         protocol: 'https',
