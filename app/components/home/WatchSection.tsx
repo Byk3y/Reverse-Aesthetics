@@ -44,7 +44,7 @@ export function WatchSection() {
           </p>
         </div>
 
-        <div className="grid gap-[14px] sm:grid-cols-2 md:gap-[18px]">
+        <div className="grid gap-[14px] sm:grid-cols-2 md:mx-auto md:max-w-[840px] md:gap-[18px]">
           {SHORTS.map((short) => (
             <ShortCard key={short.id} short={short} />
           ))}
