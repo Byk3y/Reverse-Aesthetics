@@ -1,28 +1,25 @@
 import type { Metadata } from "next";
-import { Onest, Red_Hat_Text, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
 import Analytics from "./components/Analytics";
 import { jsonLd, siteGraph } from "./lib/schema";
 
-const onest = Onest({
+const onest = localFont({
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  src: "./fonts/Onest.ttf",
   display: "swap",
 });
 
-const redHatText = Red_Hat_Text({
+const redHatText = localFont({
   variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  src: "./fonts/RedHatText.ttf",
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const montserrat = localFont({
   variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  src: "./fonts/Montserrat.ttf",
   display: "swap",
 });
 
