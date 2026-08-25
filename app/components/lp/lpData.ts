@@ -20,6 +20,18 @@ export interface LpResult {
   imageAlt: string;
 }
 
+export interface LpArea {
+  label: string;
+  desc: string;
+}
+
+/** Optional plain-language explainer for services a cold audience may not know */
+export interface LpAbout {
+  title: string;
+  body: string;
+  areas: LpArea[];
+}
+
 export interface LpService {
   slug: string;
   /** matches a Cal.com "Which treatment?" value + shown in booking notes */
@@ -38,6 +50,7 @@ export interface LpService {
   /** Real consent-approved results. Populate as photos come in; the section
       renders only when this list is non-empty. */
   results?: LpResult[];
+  about?: LpAbout;
 }
 
 export const LP_SERVICES: LpService[] = [
@@ -152,7 +165,7 @@ export const LP_SERVICES: LpService[] = [
     eyebrow: "Facial Profile Balancing · Lagos & Abuja",
     h1: "Balanced features. Naturally you.",
     subcopy:
-      "Harmonize your profile — jawline, chin, nose, and proportions — with subtle, medical-led, non-surgical refinements.",
+      "Harmonize your profile, with subtle, medical-led refinements to the jawline, chin, nose, and proportions.",
     image: "/images/services/service-profile-balancing-square.avif",
     imageAlt: "Facial profile assessment at Reverse Aesthetics",
     benefits: [
@@ -172,7 +185,22 @@ export const LP_SERVICES: LpService[] = [
       { q: "How much downtime?", a: "Often minimal; we explain exactly what to expect before we begin." },
     ],
     waMessage: "Hi Reverse Aesthetics, I'd like to book a Facial Profile Balancing consultation.",
+    about: {
+      title: "What is facial profile balancing?",
+      body: "It's a non-surgical treatment that improves how your features look together in profile — the view from the side. Using dermal fillers and thread techniques, we subtly adjust the chin, jawline, nose, and cheeks so they complement each other, rather than changing any single feature.",
+      areas: [
+        { label: "Chin", desc: "Adds subtle projection so your profile reads defined in photos" },
+        { label: "Jawline", desc: "Sharpens the jaw for a cleaner silhouette from every angle" },
+        { label: "Nose", desc: "Smooths bumps or a drooping tip along the profile line — no surgery" },
+        { label: "Cheeks", desc: "Restores mid-face support that frames your whole profile" },
+      ],
+    },
     results: [
+      {
+        label: "Jaw & chin definition",
+        image: "/images/results/facial-profile-enhancement-4.avif",
+        imageAlt: "A facial profile enhancement result defining the jaw and chin at Reverse Aesthetics",
+      },
       {
         label: "Profile harmony",
         image: "/images/results/facial-profile-enhancement.avif",
@@ -182,6 +210,11 @@ export const LP_SERVICES: LpService[] = [
         label: "Balanced contours",
         image: "/images/results/facial-profile-enhancement-2.avif",
         imageAlt: "A second facial profile enhancement result at Reverse Aesthetics",
+      },
+      {
+        label: "Refined profile",
+        image: "/images/results/facial-profile-enhancement-3.avif",
+        imageAlt: "A third facial profile enhancement result at Reverse Aesthetics",
       },
     ],
   },

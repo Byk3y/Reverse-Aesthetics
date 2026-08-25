@@ -6,13 +6,6 @@ import LandingBooking from "./LandingBooking";
 import { waLink, type LpService } from "./lpData";
 import { LOCATIONS, PHONE_DISPLAY, PHONE_TEL } from "@/app/components/home/homeData";
 
-const TRUST = [
-  "Led by Dr. Ral Abana · GMC (UK)",
-  "Natural-first results",
-  "Two clinics — Lagos & Abuja",
-  "Medical-led, accredited care",
-];
-
 export default function LandingPage({ service }: { service: LpService }) {
   const wa = waLink(service.waMessage);
 
@@ -69,32 +62,33 @@ export default function LandingPage({ service }: { service: LpService }) {
               ))}
             </ul>
 
-            <div className="hero-copy-reveal [animation-delay:360ms] mt-[28px] flex flex-wrap items-center gap-[12px]">
-              <a
-                href="#book"
-                className="inline-flex h-[50px] items-center justify-center gap-[8px] rounded-full bg-[var(--color-clinic-teal)] px-[32px] text-[13px] font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)]"
-              >
-                Book your visit
-                <ArrowRight className="h-[16px] w-[16px]" aria-hidden />
-              </a>
+            <div className="hero-copy-reveal [animation-delay:360ms] mt-[28px] flex flex-wrap items-center gap-[10px] md:gap-[12px]">
               <a
                 href={wa}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-[50px] items-center justify-center gap-[8px] rounded-full border border-[var(--color-clinic-navy)]/20 px-[26px] text-[13px] font-semibold uppercase tracking-[0.1em] text-[var(--color-clinic-navy)] transition-colors hover:border-[var(--color-clinic-navy)]/45"
+                className="inline-flex h-[50px] flex-1 items-center justify-center gap-[8px] rounded-full border border-[var(--color-clinic-navy)]/20 px-[16px] text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-clinic-navy)] transition-colors hover:border-[var(--color-clinic-navy)]/45 sm:flex-none md:px-[26px] md:text-[13px] md:tracking-[0.1em]"
               >
                 Chat on WhatsApp
-                <WhatsAppIcon variant="mono" className="h-[16px] w-[16px]" />
+                <WhatsAppIcon className="h-[16px] w-[16px]" />
+              </a>
+              <a
+                href="#book"
+                className="inline-flex h-[50px] flex-1 items-center justify-center gap-[8px] rounded-full bg-[var(--color-clinic-teal)] px-[18px] text-[11px] font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-[var(--color-clinic-teal-dark)] sm:flex-none md:px-[32px] md:text-[13px] md:tracking-[0.1em]"
+              >
+                Book your visit
+                <ArrowRight className="h-[16px] w-[16px]" aria-hidden />
               </a>
             </div>
 
             <p className="mt-[18px] flex items-center gap-[8px] text-[13px] font-medium text-[#6f6a64]">
-              <BadgeCheck className="h-[16px] w-[16px] text-[var(--color-clinic-teal)]" aria-hidden />
-              Medical-led care · natural-looking results · Lagos &amp; Abuja
+              <BadgeCheck className="h-[16px] w-[16px] shrink-0 text-[var(--color-clinic-teal)]" aria-hidden />
+              Led by Dr. Ral Abana, GMC (UK) · Non-surgical · Lagos &amp; Abuja
             </p>
           </div>
 
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-[#e4f1f2] md:aspect-auto md:h-[480px]">
+          {/* Desktop-only: on mobile the Real results section carries the visuals */}
+          <div className="relative hidden aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-[#e4f1f2] md:block md:aspect-auto md:h-[480px]">
             <Image
               src={service.image}
               alt={service.imageAlt}
@@ -107,46 +101,9 @@ export default function LandingPage({ service }: { service: LpService }) {
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="border-y border-[#e9ede9] bg-white py-[22px]">
-        <div className="mx-auto flex max-w-[1080px] flex-wrap items-center justify-center gap-x-[28px] gap-y-[10px] px-5 md:px-8">
-          {TRUST.map((t) => (
-            <span key={t} className="flex items-center gap-[8px] text-[13px] font-semibold text-[var(--color-clinic-navy)]">
-              <span className="h-[6px] w-[6px] rounded-full bg-[var(--color-clinic-gold)]" aria-hidden />
-              {t}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* What to expect */}
-      <section className="bg-white py-[52px] md:py-[70px]">
-        <div className="mx-auto max-w-[1080px] px-5 md:px-8">
-          <p className="mb-[10px] text-center text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
-            How it works
-          </p>
-          <h2 className="mb-[36px] text-center text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[38px]">
-            Three simple steps.
-          </h2>
-          <div className="grid gap-[14px] md:grid-cols-3 md:gap-[18px]">
-            {service.expect.map((step, i) => (
-              <div key={step.title} className="rounded-[12px] border border-[#e6ece7] bg-[var(--color-clinic-warm-bg)] p-[22px]">
-                <span className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-white text-[15px] font-bold text-[var(--color-clinic-teal)] shadow-sm">
-                  {i + 1}
-                </span>
-                <h3 className="mt-[16px] text-[19px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
-                  {step.title}
-                </h3>
-                <p className="mt-[8px] text-[14px] leading-[1.6] text-[#65716e]">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Real results */}
       {service.results && service.results.length > 0 && (
-        <section className="bg-[var(--color-clinic-warm-bg)] py-[52px] md:py-[70px]">
+        <section className="bg-[var(--color-clinic-warm-bg)] pb-[52px] pt-[32px] md:pb-[70px] md:pt-[70px]">
           <div className="mx-auto max-w-[1080px] px-5 md:px-8">
             <p className="mb-[10px] text-center text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
               Real results
@@ -184,6 +141,80 @@ export default function LandingPage({ service }: { service: LpService }) {
         </section>
       )}
 
+      {/* What is it? (only for services a cold audience may not recognize) */}
+      {service.about && (
+        <section className="bg-white py-[52px] md:py-[70px]">
+          <div className="mx-auto max-w-[760px] px-5 md:px-8">
+            <p className="mb-[10px] text-center text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+              Understanding the treatment
+            </p>
+            <h2 className="mb-[18px] text-center text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[38px]">
+              {service.about.title}
+            </h2>
+            <p className="mx-auto max-w-[620px] text-center text-[16px] leading-[1.7] text-[#5f5b55]">
+              {service.about.body}
+            </p>
+          </div>
+          <div className="mx-auto mt-[32px] grid max-w-[720px] gap-x-[40px] gap-y-[24px] px-5 sm:grid-cols-2 md:mt-[40px] md:px-8">
+            {service.about.areas.map((area) => (
+              <div key={area.label} className="flex items-start gap-[12px]">
+                <span className="mt-[5px] h-[9px] w-[9px] shrink-0 rounded-full border-2 border-[var(--color-clinic-teal)]" aria-hidden />
+                <div>
+                  <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-[var(--color-clinic-navy)]">
+                    {area.label}
+                  </p>
+                  <p className="mt-[4px] text-[14px] leading-[1.6] text-[#65716e]">{area.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* What to expect */}
+      <section className="bg-white py-[52px] md:py-[70px]">
+        <div className="mx-auto max-w-[1080px] px-5 md:px-8">
+          <p className="mb-[10px] text-center text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+            How it works
+          </p>
+          <h2 className="mb-[36px] text-center text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[38px]">
+            Three simple steps.
+          </h2>
+          <ol className="mx-auto max-w-[620px]">
+            {service.expect.map((step, i) => {
+              const last = i === service.expect.length - 1;
+              return (
+                <li key={step.title} className="relative flex gap-[18px] pb-[34px] last:pb-0 md:gap-[22px]">
+                  {!last && (
+                    <span
+                      className="absolute bottom-0 left-[11px] top-[30px] w-[2px] bg-[#cfe2e2]"
+                      aria-hidden
+                    />
+                  )}
+                  <span
+                    className={`relative z-10 mt-[1px] flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full border-2 border-[var(--color-clinic-teal)] bg-white ${
+                      last ? "bg-[var(--color-clinic-teal)]" : ""
+                    }`}
+                    aria-hidden
+                  >
+                    {!last && <span className="h-[8px] w-[8px] rounded-full bg-[var(--color-clinic-teal)]" />}
+                  </span>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-clinic-teal)]">
+                      Step {i + 1}
+                    </p>
+                    <h3 className="mt-[5px] text-[19px] font-bold tracking-[-0.01em] text-[var(--color-clinic-navy)]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-[5px] text-[14px] leading-[1.6] text-[#65716e]">{step.desc}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
       {/* Booking */}
       <section id="book" className="scroll-mt-[70px] bg-[var(--color-clinic-warm-bg)] py-[52px] md:py-[72px]">
         <div className="mx-auto max-w-[720px] px-5">
@@ -210,16 +241,16 @@ export default function LandingPage({ service }: { service: LpService }) {
           <h2 className="mb-[26px] text-center text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-[var(--color-clinic-navy)] md:text-[34px]">
             Common questions
           </h2>
-          <div className="grid gap-[10px]">
+          <div className="mx-auto max-w-[620px] border-t border-[#e6ece7]">
             {service.faqs.map((faq) => (
-              <details key={faq.q} className="group rounded-[10px] border border-[#e6ece7] bg-white px-[18px] py-[16px]">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-[20px] text-[16px] font-bold text-[var(--color-clinic-navy)]">
+              <details key={faq.q} className="group border-b border-[#e6ece7]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-[20px] py-[18px] text-[16px] font-bold text-[var(--color-clinic-navy)]">
                   {faq.q}
-                  <span className="inline-flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full bg-[#ecf7f7] text-[var(--color-clinic-teal)] transition-transform group-open:rotate-90">
+                  <span className="inline-flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full text-[var(--color-clinic-teal)] transition-transform group-open:rotate-90">
                     <ChevronRight className="h-[15px] w-[15px]" aria-hidden />
                   </span>
                 </summary>
-                <p className="mt-[12px] text-[14px] leading-[1.65] text-[#65716e]">{faq.a}</p>
+                <p className="-mt-[6px] pb-[18px] pr-[30px] text-[14px] leading-[1.65] text-[#65716e]">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -270,7 +301,7 @@ export default function LandingPage({ service }: { service: LpService }) {
             </div>
           </div>
           <div className="mt-[24px] border-t border-white/10 pt-[16px] text-[12px] text-white/45">
-            <p>© 2025 Reverse Aesthetics. Information here is educational and does not replace personalized medical advice.</p>
+            <p>© {new Date().getFullYear()} Reverse Aesthetics. Information here is educational and does not replace personalized medical advice.</p>
           </div>
         </div>
       </footer>
